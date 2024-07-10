@@ -134,3 +134,26 @@ Quand la RAM sature, le noyau Linux ``kill`` un des process en cours d'éxécuti
 #### Regex
 
 Regular Expressions (often abbreviated as Regex, or Regexp), are expressions that can be used to describe patterns very synthetically.
+
+##### Regex Meta-characters
+
+- ``.`` : Matches any single character except a newline character (``\n``)
+- ``*`` : Matches 0 or more of the preceding element.
+- ``?`` : Matches 0 or 1 of the preceding element.
+- ``[]`` : Matches any one of the characters inside the brackets.
+  * ``[a-z]`` matches any lowercase letter.
+  * ``[A-Z]`` matches any uppercase letter.
+  * [0-9] matches digits
+  * [a-zA-Z0-9_] matches numbers, digits, and underscores.
+- ``[^]`` : Matches any character **except** the ones inside the brackets. ``^`` basically means negation.
+- ``^`` : Matches the beginning of a line.
+- ``$`` : Matches the end of a line.
+- ``{n}`` : Matches ``n`` occurences of the preceding element. ``n`` must be given in decimal (not a literal value).
+- ``{n,m}`` : Matches any ``k`` occurences of the preceding element, for any $n \leqslant k \leqslant m$.
+- ``{n,}`` : Matches any ``k`` occurences of the preceding element, for any $k \geqslant n$.
+- ``{,m}`` : Matches any ``k`` occurences of the preceding element, for any $k \leqslant m$.
+- ``\`` : Escapes special characters to treat them as literals.
+- Parenthesis ``()`` allow to group things.
+- ``...|...`` : Matches either the left or the right hand side of the pipe.
+  * Note : By default, ``...|...`` is prioritized as ``(...)|(...)`` (see example above :).
+  * To apply the logical ``OR``to only some part of the pattern, use ``...(..|..)...``

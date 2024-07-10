@@ -40,3 +40,24 @@ Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier o
 #### OOM-killer score
 
 Quand la RAM sature, le noyau Linux ``kill`` un des process en cours d'éxécution. Mais lequel ? Pour déterminer quel process tuer, Linux utilise une heuristique (badness heuristic) qui attribue un score (OOM-killer score)(OOM pour Out Of Memory) entre 0 (never kill) et 1000 (always kill). Le process ayant l'OOM-killer score le plus élevé est tué. L'OOM-killer score est _roughly_ le pourcentage de RAM utilisée par chaque process par rapport à sa RAM allouée. Par exemple, si un process utilise 50% de sa RAM allouée, son OOM-killer score sera de 500. La commande ``choom`` permet d'afficher et de modifier les OOM-killer score.
+
+#### Linux distributions and desktop environments
+
+If I got this right, Linux distributions are build on top of the Linux kernel, and Desktop Environments are build on top of Linux distributions. Without a linux Linux distributions, one can't do anything with the kernel alone. With a distribution, one has access to the shell ; but there isn't any graphical user interface. With a Desktop environment, you can have a GUI !
+
+Linux distributions include :
+- Debian
+- Ubuntu (Debian-based)
+- Redhat
+- Gentoo
+- Fedora
+- NixOS (based on the ``nix`` package manager)
+- Kali Linux
+- Oracle Linux
+- openSUSE-Tumbleweed
+- openSUSE-Leap
+
+Desktop environments include :
+- KDE
+- GNOME
+- XFCE

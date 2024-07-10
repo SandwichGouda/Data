@@ -37,6 +37,25 @@ Data not to forget.
 
 Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier ou dossier. C'est un peu comme un raccourci (``.lnk``) sur Windows. Ils sont aussi appelés softlinks, car ils sont des pointeurs indirects, par opposition aux hardlinks qui pointent directement vers la data du disque. Ils peuvent pointer vers des fichiers qui sont sur d'autres systèmes de fichiers ou partitions. Le chemin peut être relatif ou absolu. Ils sont dits _broken_ (broken links) lorsque ce vers quoi ils pointent n'existe plus. Ils peuvent être utilisés pour éviter de dupliquer des fichiers ou dossiers, ou pour éviter d'avoir à préciser la version d'une commande ou d'un éxécutable à chaque fois qu'on l'éxécute. Ils sont créés avec la commande ``ln``. Attention, cette dernière crée des hard links par défaut, il faut utiliser ``--symbolic`` pour que le lien soit symbolique. (...)
 
+#### Super User
+
+ ``sudo su``, or ``sudo -i``, allow to a sudoers (users that are sudo, that is part of the group sudo) to login as ``root``. That is, its terminal will from now on be logged in as root.  This creates a subshell : ``CTRL+D`` exits it in both cases. The difference between both commands is a question of shell environment and of environment variables. ``sudo -i`` provides a full login experience and simulates an environment as if you really just logged in as ``root``, while ``sudo su`` keeps you in your current environment with elevated privileges.  
+ More precisely : 
+- ``sudo -i`` simulates a full root login shell (in particular, you actually have to log in)
+- ``sudo su`` switches to root without login environment.
+- ``sudo -i`` shanges to root's home directory (``/root``)
+- ``sudo su`` stays in the current working directory
+- ``sudo -i`` loads root user's login environment.	
+- ``sudo su`` keeps current user environment by default
+- ``sudo -i`` Loads root-specific profile files (e.g., .bashrc, .profile).	
+- ``sudo su`` Does not load root profile files unless sudo su - is used.
+| Aspect | `sudo -i` | `sudo su` |
+|--------|-----------|-----------|
+| Shell Type | Simulates a full root login shell. | Switches to root without login environment. |
+| Working Directory | Changes to root's home directory (`/root`). | Stays in the current working directory. |
+| Environment Variables | Loads root user's login environment. | Keeps current user environment by default. |
+| Profile Scripts | Loads root-specific profile files (e.g., `.bashrc`, `.profile`). | Does not load root profile files unless `sudo su -` is used. |
+
 #### OOM-killer score
 
 Quand la RAM sature, le noyau Linux ``kill`` un des process en cours d'éxécution. Mais lequel ? Pour déterminer quel process tuer, Linux utilise une heuristique (badness heuristic) qui attribue un score (OOM-killer score)(OOM pour Out Of Memory) entre 0 (never kill) et 1000 (always kill). Le process ayant l'OOM-killer score le plus élevé est tué. L'OOM-killer score est _roughly_ le pourcentage de RAM utilisée par chaque process par rapport à sa RAM allouée. Par exemple, si un process utilise 50% de sa RAM allouée, son OOM-killer score sera de 500. La commande ``choom`` permet d'afficher et de modifier les OOM-killer score.

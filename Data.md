@@ -56,10 +56,6 @@ Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier o
 | Environment Variables | Loads root user's login environment. | Keeps current user environment by default. |
 | Profile Scripts | Loads root-specific profile files (e.g., `.bashrc`, `.profile`). | Does not load root profile files unless `sudo su -` is used. |
 
-#### OOM-killer score
-
-Quand la RAM sature, le noyau Linux ``kill`` un des process en cours d'éxécution. Mais lequel ? Pour déterminer quel process tuer, Linux utilise une heuristique (badness heuristic) qui attribue un score (OOM-killer score)(OOM pour Out Of Memory) entre 0 (never kill) et 1000 (always kill). Le process ayant l'OOM-killer score le plus élevé est tué. L'OOM-killer score est _roughly_ le pourcentage de RAM utilisée par chaque process par rapport à sa RAM allouée. Par exemple, si un process utilise 50% de sa RAM allouée, son OOM-killer score sera de 500. La commande ``choom`` permet d'afficher et de modifier les OOM-killer score.
-
 #### Linux distributions and desktop environments
 
 If I got this right, Linux distributions are build on top of the Linux kernel, and Desktop Environments are build on top of Linux distributions. Without a linux Linux distributions, one can't do anything with the kernel alone. With a distribution, one has access to the shell ; but there isn't any graphical user interface. With a Desktop environment, you can have a GUI !
@@ -131,3 +127,10 @@ For further investigation :
 
 Even if one ha no terminal emulator running, several terminal sessions continue to run behind the graphical desktop. Called _virtual terminals_ or _virtual consoles_, these sessions can be accessed on most Linux distributions with ``CTRL+ALT+F1`` to ``CTRL+ALT+F6`` on most systems. When a session is accessed, it presents a login prompt into which we can enter our username and password. To switch from one virtual console to another, press ``ALT`` and ``F1``-``F6``. To return to the graphical desktop, press ALT-F7.
 
+#### OOM-killer score
+
+Quand la RAM sature, le noyau Linux ``kill`` un des process en cours d'éxécution. Mais lequel ? Pour déterminer quel process tuer, Linux utilise une heuristique (badness heuristic) qui attribue un score (OOM-killer score)(OOM pour Out Of Memory) entre 0 (never kill) et 1000 (always kill). Le process ayant l'OOM-killer score le plus élevé est tué. L'OOM-killer score est _roughly_ le pourcentage de RAM utilisée par chaque process par rapport à sa RAM allouée. Par exemple, si un process utilise 50% de sa RAM allouée, son OOM-killer score sera de 500. La commande ``choom`` permet d'afficher et de modifier les OOM-killer score.
+
+#### Regex
+
+Regular Expressions (often abbreviated as Regex, or Regexp), are expressions that can be used to describe patterns very synthetically.

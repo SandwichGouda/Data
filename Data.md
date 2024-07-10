@@ -61,3 +61,11 @@ Desktop environments include :
 - KDE
 - GNOME
 - XFCE
+
+#### The shell
+
+When we speak of the command line, we are really referring to the **shell**. The shell is a program that takes keyboard commands and passes them to the operating system to treat. Almost all Linux distributions supply a shell program from the GNU Project called ``bash``. The name BASH is an acronym for Bourne Again Shell, a reference to the fact that bash is an enhanced replacement for SH, the original Unix shell program written by Steve Bourne. When using a graphical user interface, one needs another program called a **terminal emulator** to interact with the shell. Although, in desktop menus, it is most often called ``terminal``. The commands are written in what we call a **command prompt**. 
+* In KDE, the terminal is emulated by ``Konsole``
+* In GNOME, the terminal emulated by ``GNOME terminal``
+* In XFCE, the terminal is emulated by ``xfce4 terminal``
+* In the [X Window System](https://www.x.org/wiki/), the terminal is emulated by [``xterm``](https://invisible-island.net/xterm/).

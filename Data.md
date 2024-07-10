@@ -69,3 +69,24 @@ When we speak of the command line, we are really referring to the **shell**. The
 * In GNOME, the terminal emulated by ``GNOME terminal``
 * In XFCE, the terminal is emulated by ``xfce4 terminal``
 * In the [X Window System](https://www.x.org/wiki/), the terminal is emulated by [``xterm``](https://invisible-island.net/xterm/).
+
+- In a shell, the last character should be either a hash mark (``#``) or a dollar sign (``$``). The hash mark means the current user has Super User privileges.
+- The X Window System, also called X11 or just X, (an underlying engine that makes the GUI go) supports a quick copy-and-paste technique : when highlighting some text, it is copied into a buffer maintained by X. Then, a middle mouse button click (or right-click, on Windows, and maybe also in some other terminal emulators). ``CTRL+C`` and ``CTRL+V`` do not work (use ``CTRL+SHIFT+C`` and ``CTRL+SHIFT+V``).
+- There are actually several shells, i.e. there exist several programs, developped by different people, that are [Unix shells](https://en.wikipedia.org/wiki/Unix_shell) :
+  * ``sh`` : Bourne Shell
+  * ``ksh`` : KornShell 
+  * ``csh`` : C Shell
+  * ``tcsh`` ("T-Shell", "TC-Shell" or "TSCH") : TENEX C Shell
+  * ``bash`` : Bourne Again Shell
+  * ``zsh`` : Z Shell
+  * ``PowerShell`` : Originally developed for Windows and now available to macOS and Linux.
+
+For further investigation : 
+- [Comparison of command shells](https://en.wikipedia.org/wiki/Unix_shell)
+- [List of Unix (POSIX) commands](https://en.wikipedia.org/wiki/List_of_Unix_commands)
+- [Read–eval–print loop](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)
+- [Restricted shell](https://en.wikipedia.org/wiki/Restricted_shell)
+- [Shell (computing)](https://en.wikipedia.org/wiki/Shell_(computing))
+- [Shell account](https://en.wikipedia.org/wiki/Shell_account)
+- [Shell script](https://en.wikipedia.org/wiki/Shell_script)
+- [Shell shoveling](https://en.wikipedia.org/wiki/Shell_shoveling)

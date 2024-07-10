@@ -109,3 +109,25 @@ For further investigation :
 - [Shell account](https://en.wikipedia.org/wiki/Shell_account)
 - [Shell script](https://en.wikipedia.org/wiki/Shell_script)
 - [Shell shoveling](https://en.wikipedia.org/wiki/Shell_shoveling)
+
+#### Cursed terminal behaviour
+
+- It can happend that your terminal has a _cursed_ behaviour described as follows :
+  * Instead of `user@machine#` or `user@machine$` (depending on whether you have Super User rights or not), the prompt is a mere `$` sign
+  * The terminal does not behave correctly upon pressing the up and down arrow to navigate in the command history : does not show older (or newer) commands and only prints (cursed) `^[[A` and `^[[B` to standard output instead each time UP/DOWN arrow keys are pressed
+  * The Terminal does not autocomplete when `TAB` is pressed, and writes an actual tabulation (huge horizontal space) into the command line instead
+- When this happens, you should see, using `echo $SHELL`, that the program (binary file) used to run the shell (to run the process that displays a shell) is most likely `/bin/sh`. This means you're using SH, or Shell, the older version of BASH (Recall that BASH means Bourne Again Shell, and is newer a version of the original Shell, written bu Stephen Bourne), instead of bash, located in `/usr/bin/bash`. 
+- Note : you can see shell binaries with `which sh`, `which bash`...
+- Hence, a way around this is to simply type `bash` in the Shell. This will create a childprocess to the current `sh` shell, the binary program of which will be `bash` instead of `sh`. 
+- More generally, if you have `I/O` issues, in particular this cursed behaviour issue, in a command prompt, a way around this is to use a Read-Line wrapper such as `rlwrap`.
+  * A Read-Line wrapper (typically rlwrap, actually) is a wrapper that will handle I/O for a given process.
+  * For instance, `rlwrap sh` will run a Shell (sh) instance, but with I/O managed by `rlwrap`. 
+  * This allows to bypass the shitty (to put it more nicely : old, outdated) I/O handling of `sh` - or any other process!
+  * So, if you have, say, for instance, a Go interpreter, like `yaegi`, that takes form of a command prompt, but that does not handle I/O correctly (with the same, or any other unwanted behaviour), you can use `rlwrap [...]` (`rlwrap yaegi`, `rlwrap sh`, `rlwrap sage`, `rlwrap python3`...)(python and sage manage I/O quite well, but yea)
+  * You can also change your default shell for a given user, see [chsh](#chsh)
+  * Voilà :)
+
+#### Virtual terminals
+
+Even if one ha no terminal emulator running, several terminal sessions continue to run behind the graphical desktop. Called _virtual terminals_ or _virtual consoles_, these sessions can be accessed on most Linux distributions with ``CTRL+ALT+F1`` to ``CTRL+ALT+F6`` on most systems. When a session is accessed, it presents a login prompt into which we can enter our username and password. To switch from one virtual console to another, press ``ALT`` and ``F1``-``F6``. To return to the graphical desktop, press ALT-F7.
+

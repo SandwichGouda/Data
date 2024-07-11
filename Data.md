@@ -190,3 +190,23 @@ Regular Expressions (often abbreviated as Regex, or Regexp), are expressions tha
 #### Shell wildcard patterns 
 
 They can be used in the terminal or in ``*`` : all
+
+### Differences between Linux distributions 
+
+#### Ubuntu
+
+#### Debian
+
+#### Arch Linux
+
+#### Fedora
+
+#### OpenSUSE
+
+#### NixOS
+
+NixOS is a distribution based on the Niw package manager. It is special in it's package management and configuration systems. NixOS is the package manager that has the most package. 
+
+The NixOS repo
+
+AUR repo

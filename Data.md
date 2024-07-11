@@ -186,3 +186,7 @@ Regular Expressions (often abbreviated as Regex, or Regexp), are expressions tha
 - ``\bword\b`` matches "word" as a standalone word, i.e., does not match  "sword" or "wording".
 - ``\Bword`` matches ``sword``, but not ``word``.
 - ``word\B`` matches ``wordy``, but not ``word``.
+
+#### Shell wildcard patterns 
+
+They can be used in the terminal or in ``*`` : all

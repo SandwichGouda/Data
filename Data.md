@@ -210,3 +210,14 @@ NixOS is a distribution based on the Niw package manager. It is special in it's 
 The NixOS repo
 
 AUR repo
+
+##### Configurations in NixOS
+
+All configurations options can be written in ``/etc/nixos/configuration.nix``.
+
+### Dual boots
+
+- To create a dual boot, you must reduce the partition. Use the Disk manager on Windows to do that. 100Go is a good amount to install and use a Linux distribution.
+- NTFS the the (only) Windows File System Manager. It is the only one on Windows that allows to make disk partition reductions. FAT32, EXT4 are other File Systems.
+- BitLocker is on Windows by default. It is a disk cyphering system. 
+- F12, SUPPR, F1, F2

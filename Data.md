@@ -157,3 +157,32 @@ Regular Expressions (often abbreviated as Regex, or Regexp), are expressions tha
 - ``...|...`` : Matches either the left or the right hand side of the pipe.
   * Note : By default, ``...|...`` is prioritized as ``(...)|(...)`` (see example above :).
   * To apply the logical ``OR``to only some part of the pattern, use ``...(..|..)...``
+
+##### Special character classes
+
+- ``\d`` : Matches any digit : [0-9]
+- ``\w`` : Matches any word character : letters, digits, and underscore : [a-zA-Z0-9_]
+- ``\s`` : Matches any whitespace character : spaces, tabs, newlines.
+- ``\D`` : Matches any non-digit character : [^0-9]
+- ``\W`` : Matches any non-word character : [^a-zA-Z0-9_]
+- ``\S`` : Matches any non-whitespace character.
+- ``\b`` : Matches a position where a word boundary occurs, i.e., the position between a word character (letter, digit, or underscore : [a-zA-Z0-9_]) and a non word character (whitespace, punctuation...)
+- ``\B`` : Matches a position that is NOT a word boundary.
+
+##### Examples
+
+- ``h.t`` matches ``hit``, ``hot``, ``hat``... any thre character sequence of the form ``h_t``.
+- ``ho*t`` matches ``ht``, ``hot``, ``hoot``, ``hooot``, ..., ``hooooooooot``, ...
+- ``ho?t``matches ``ht`` and ``hot``.
+- ``h[aeiou]t`` matches ``hat``, ``hit``, ``hot``, ``hut`` and ``het``.
+- ``h[^aeiou]t`` matches any word of the form ``h.t`` except ``hat``, ``hit``, ``hot``, ``hut``, ``het``
+- ``^hello`` matches any line starting with ``hello``.
+- ``world$`` matches any line ending with ``world``.
+- ``ho{19}t`` matches only ``hooooooooooooooooooot`` (here ``o`` appears 19 times).
+- ``ho{2,19}t`` matches ``hoot``, ``hooot``, ...,  ``hooooooooooooooooooot`` (here ``o`` appears 19 times again).
+- ``\+``matches ``+``, ``\.``matches ``.``, ``\?``matches ``?``, ...
+- ``cat|dog`` matches both ``cat`` and ``dog``.
+- ``(c|d)og`` matches ``cog`` and ``dog``.
+- ``\bword\b`` matches "word" as a standalone word, i.e., does not match  "sword" or "wording".
+- ``\Bword`` matches ``sword``, but not ``word``.
+- ``word\B`` matches ``wordy``, but not ``word``.

@@ -342,3 +342,12 @@ Reports file system disk space usage by showing the current amount of free space
 - `ls --author` if used with `-l`, prints the author of each file
 - `ls --group-directories-first` groups directories first
 - `ls -r, --reverse` reverses printing order
+
+#### `htop`
+
+- `htop -t` displays processes as a tree.
+- `htop -p 1,2,` or `htop --pid 1,2,...` displays only the given PIDs.
+
+#### `tar`
+
+- `tar -xf`

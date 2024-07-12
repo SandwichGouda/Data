@@ -364,3 +364,14 @@ Reports file system disk space usage by showing the current amount of free space
   * `-X POST:`` Specifies the request method (POST).
   * `-d:`` Sends data in the POST request body.
   * For JSON data : ``curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1", "key2":"value2"}' https://example.com/api/endpoint`` (-H "Content-Type: application/json": Sets the content type to JSON)
+
+#### `mount`
+
+`mount` is a command to mount an external drive (file system), that is, sticking the root of the file tree to a node of another file tree.
+
+- On WSL :
+  * Identify the drive letter (``D:\``, ``E:\``, ``F:\``)
+  * Create the appropriate folder, in ``/mnt/`` : ``sudo mkdir /mnt/d`` for instance
+  * Mount the filesystem : For WSL, ``sudo mount -t drvfs D: /mnt/d``
+  * ``-t drvfs`` specifies the filesystem type as ``drvfs``, which is used for mounting Windows drives in WSL.
+  * You can then unmount the drive using ``sudo umount /mnt/d``

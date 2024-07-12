@@ -384,3 +384,14 @@ Unmount a drive using ``sudo umount /mnt/d`` (or ``/mnt/e``, or ``mnt/f``...)
 
 - ``grep "regex" file`` : searches for the regex ``regex`` in ``file``
 - ``grep -r "regex" /path/to/folder`` : searches recursively in all
+
+#### `chsh`
+
+This command changes the login shell of a given user.
+- The login shell of a user is the shell that's ran whenever the user logs in.
+- The default should be `bash`. It it's `sh`, change to `bash`...!
+- A normal user may only change the login shell for their own account (for their own user)
+- The superuser may change the login shell for any account.
+- This is chaned by editing the `/etc/passwd` file. More information at [/etc/passwd](#etcpasswd)
+- You can see a list of all available (and valid) login shells in `/etc/shells`. More information et [/etc/shells](#etcshells)
+- `chsh -h, --help`

@@ -395,3 +395,9 @@ This command changes the login shell of a given user.
 - This is chaned by editing the `/etc/passwd` file. More information at [/etc/passwd](#etcpasswd)
 - You can see a list of all available (and valid) login shells in `/etc/shells`. More information et [/etc/shells](#etcshells)
 - `chsh -h, --help`
+- `chsh -R, --root` : Apply changes in the `CHROOT_DIR` directory and use the configuration files from the `CHROOT_DIR` directory.
+- `chsh -s, --shell SHELL` : Specifies the shell. Having the command name in PATH does not suffice, you must specify the `path/to/the/desired/shell/binary/file`.
+- If the `-s` option is not selected, `chsh` operates in an interactive fashion, prompting the user with the current login shell. Enter the new value to change the shell, or leave the line blank to use the current one. The current shell (named "default shell" in the prompt) is displayed between a pair of [ ].
+- The only restriction placed on the login shell is that the command name must be listed in /etc/shells, unless the invoker is the superuser, and then any value may be added. 
+- **An account with a restricted login shell may not change her login shell.** 
+- For this reason, placing /bin/rsh in /etc/shells is discouraged since accidentally changing to a restricted shell would prevent the user from ever changing her login shell back to its original value!

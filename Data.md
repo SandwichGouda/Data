@@ -277,7 +277,7 @@ APT refers to a list of package available at ``https://packages.ubuntu.com/`` (.
 - It is possible to move sideways using the left and right arrow keys ! 
 - Press ``h`` while in a man page to display help, in particular navigation and searching help.
 - Type ``/`` while in a man page to open Search Forward. 
-  * Type in a keyword or a regular expression, press ENTER when finished.
+  * Type in a keyword or a regular expression, press `ENTER` when finished.
   * Pressing ENTER will search forward for next occurence. 
   * Pressing ``N`` will search for the next occurence of the regex.
   * Pressing ``SHIFT+N`` will search for the previous occurence of the regex.

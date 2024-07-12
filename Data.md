@@ -285,3 +285,14 @@ APT refers to a list of package available at ``https://packages.ubuntu.com/`` (.
   * It works the same as Search Foward, but seaches backwards when pressing ``ENTER``.
   * You can always use ``N`` and ``SHIFT+N`` to find next and previous occurences.
 - Press ``D`` to go down **half a page**. Press ``U`` to go up **half a page**.
+
+#### ``df``
+
+Reports file system disk space usage by showing the current amount of free space on each disk drive.
+
+- If a file (resp. files) is (resp. are) given as argument : ``df`` displays the amount of disk space available on the file system containing the file (resp. on each file system containing each file).
+- If no file name is given, the space available on all currently mounted file systems is shown. 
+- If an argument is the absolute file name of a disk device node containing a mounted file system, ``df`` shows the space available on that file system rather than on the file system containing the device node.  
+
+* ``-h, --human-readable`` : print sizes in powers of 1024 (e.g., 1023M)
+* ``-H``, ``--si`` : print sizes in powers of 1000 (e.g., 1.1G)

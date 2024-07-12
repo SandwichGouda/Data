@@ -318,4 +318,27 @@ Reports file system disk space usage by showing the current amount of free space
   * Ti = tebibyte
   * Pi = pebibyte
 
-  
+#### ``cd``
+
+- ``cd`` (tout court) is equivalent to ``cd ~``
+
+#### `ls`
+
+- `ls -l` uses a long listing format
+- `ls -a` additionnally displays entries starting with `.` (hidden files or directories)(or symbolic links ?)
+- `ls -A` is just like ``ls -a`` but ignoting the entries `.` and `..`
+- `ls --color` colorizes the output
+- `ls -r, --reverse` sorts in reverse order
+- `ls -S` sort entries by size
+- `ls -s, --size` print the allocated size if each file, in blocks
+- `ls -sh, --size --human-readable` prints the sizes in powers of 1024
+- `ls -sh --si, --size --human-readable --si` prints the sizes in powers of 1000, not 1024
+- `ls --hide=<PATTERN>` hides lines concerned with a given `PATTERN`
+- `ls -m` lists entries in full width, comma separated
+- `ls -C` lists entries by columns
+- `ls -w=WIDTH` set the maximum width for columns display. 0 means no limit
+- `ls -x` lists entries in lines instead of by columns
+- `ls -X` sorts by **extension**
+- `ls --author` if used with `-l`, prints the author of each file
+- `ls --group-directories-first` groups directories first
+- `ls -r, --reverse` reverses printing order

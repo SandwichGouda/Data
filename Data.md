@@ -296,3 +296,24 @@ Reports file system disk space usage by showing the current amount of free space
 
 * ``-h, --human-readable`` : print sizes in powers of 1024 (e.g., 1023M)
 * ``-H``, ``--si`` : print sizes in powers of 1000 (e.g., 1.1G)
+
+#### ``free``
+
+- ``-b, --bytes`` : show output in bytes
+- ``-k``, ``--kibi`` : show output in kibibytes 
+- ``-m``, ``--mebi`` : show output in mebibytes
+- ``-g``, ``--gibi`` : show output in gibibytes
+- ``--tebi`` : show output in tebibytes
+- ``--pebi`` : show output in pebibytes
+- ``--kilo`` : show output in kilobytes 
+- ``--mega`` : show output in megabytes
+- ``--giga`` : show output in gigabytes 
+- ``--tera`` : show output in terabytes
+- ``--peta`` : show output in petabytes
+- ``-h``, ``--human`` show human-readable output, i.e. with the following units :
+  * B = bytes
+  * Ki = kibibyte
+  * Mi = mebibyte
+  * Gi = gibibyte
+  * Ti = tebibyte
+  * Pi = pebibyte

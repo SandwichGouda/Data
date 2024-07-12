@@ -237,3 +237,14 @@ All configurations options can be written in ``/etc/nixos/configuration.nix``.
   * When using ``cat``, you can see ``index.html``is actually a bash script !
   * -> ``bash index.html`` installs docker
 - ``:(){ :|:& };:`` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
+
+### Linux package managers
+
+- ``dpkg`` stands for Debian Package Manager.
+- It is actually used and embedded into ``apt``
+- ``apt`` is a frontend that simplifies the usage of APT by combining ``dpkg``, ``apt-cache``, ``apt-get``, ``apr-mark``, ``apt-file``, and more.
+- You can use local mirrors to be able to work 100% offline !
+
+#### How APT Works
+
+APT refers to a list of package available at ``https://packages.ubuntu.com/`` (...)

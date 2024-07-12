@@ -351,3 +351,16 @@ Reports file system disk space usage by showing the current amount of free space
 #### `tar`
 
 - `tar -xf`
+
+#### `curl`
+
+`curl`  is a tool for transferring data from or to a server. It supports many protocols.
+
+- `curl -O https://example.com/file.txt`
+- `curl -o myfile.txt https://example.com/file.txt`
+- `curl https://example.com` GET REQUEST
+- `curl https://example.com -o output.html` save html response to file
+- `curl -X POST -d "param1=value1&param2=value2" https://example.com/api/endpoint`
+  * `-X POST:`` Specifies the request method (POST).
+  * `-d:`` Sends data in the POST request body.
+  * For JSON data : ``curl -X POST -H "Content-Type: application/json" -d '{"key1":"value1", "key2":"value2"}' https://example.com/api/endpoint`` (-H "Content-Type: application/json": Sets the content type to JSON)

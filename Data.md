@@ -248,3 +248,23 @@ All configurations options can be written in ``/etc/nixos/configuration.nix``.
 #### How APT Works
 
 APT refers to a list of package available at ``https://packages.ubuntu.com/`` (...)
+
+#### APT Subcommands
+
+- ``apt``
+  * ``apt search`` searches and prints the list of packages containing the 
+- ``tree``
+  * ``tree -L 2`` : maximum depth = 2
+- ``apt``
+  * ``apt``
+    + ``apt search``
+    + ``
+  * ``dpkg``
+  * ``apt-get``
+  * ``apt-cache``
+  * ``apt-mark``
+    + ``apt-mark showmanual`` (supposedly) shows the list of all manually installed WSL packages. There are, actually, more packages printed than that. See [Linux packages](#linux-packages) for more info.
+
+- ``apt-file search`` seemingly works better than ``apt search``
+- If the installation of a package fails : ``sudo apt install pip --fix-missing`` ; ``sudo apt --fix-broken install`` 
+- ``dpkg -L packagename`` displays exacly all files added to the system after installing packagename. In particular, ``dpkg -L packagename | grep /usr/bin`` should display all commands newly installed !

@@ -268,3 +268,20 @@ APT refers to a list of package available at ``https://packages.ubuntu.com/`` (.
 - ``apt-file search`` seemingly works better than ``apt search``
 - If the installation of a package fails : ``sudo apt install pip --fix-missing`` ; ``sudo apt --fix-broken install`` 
 - ``dpkg -L packagename`` displays exacly all files added to the system after installing packagename. In particular, ``dpkg -L packagename | grep /usr/bin`` should display all commands newly installed !
+
+### Linux base system commands and options
+
+#### ``man``
+
+- Read the first lines of the manual - the DESCRIPTION section, it is often enlightening !
+- It is possible to move sideways using the left and right arrow keys ! 
+- Press ``h`` while in a man page to display help, in particular navigation and searching help.
+- Type ``/`` while in a man page to open Search Forward. 
+  * Type in a keyword or a regular expression, press ENTER when finished.
+  * Pressing ENTER will search forward for next occurence. 
+  * Pressing ``N`` will search for the next occurence of the regex.
+  * Pressing ``SHIFT+N`` will search for the previous occurence of the regex.
+- Type ``?`` while in a man page to open Search Backward. 
+  * It works the same as Search Foward, but seaches backwards when pressing ``ENTER``.
+  * You can always use ``N`` and ``SHIFT+N`` to find next and previous occurences.
+- Press ``D`` to go down **half a page**. Press ``U`` to go up **half a page**.

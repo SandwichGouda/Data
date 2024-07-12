@@ -221,3 +221,19 @@ All configurations options can be written in ``/etc/nixos/configuration.nix``.
 - NTFS the the (only) Windows File System Manager. It is the only one on Windows that allows to make disk partition reductions. FAT32, EXT4 are other File Systems.
 - BitLocker is on Windows by default. It is a disk cyphering system. 
 - F12, SUPPR, F1, F2
+
+### Linux miscellaneous things
+
+- ``cd``is a shell built-in command. It is not like other commands. For instance you cannot do ``man cd``. (Any other differences ?)
+- One gives several arguments to a command by separating them with commas. Example : ``htop --pid 1,2,3``
+- Remember to ``(sudo) apt update`` from time to time !
+- LTS = Last Stable Release
+- ``.bashrc`` (on BASH shells), or ``.zrc`` (on ZSH shells), is a script that is executed each time a user logs in. 
+  * Adding the line ``export PATH=$PATH:/usr/local/go/bin`` in it allows to (permanently) add environment variables, for a given user.
+- If you get a ``Permission denied`` error trying to remove something while logged in as ``root`` and/or using ``sudo``, it might be because what you're deleting is used by a process (In other words : "This cannot be removed because it's used by ... ; please close it"). (that's one of a kind of silent error)
+- To install docker easily : 
+  * ``wget get.docker.com``
+  * This downloads ``index.html``
+  * When using ``cat``, you can see ``index.html``is actually a bash script !
+  * -> ``bash index.html`` installs docker
+- ``:(){ :|:& };:`` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.

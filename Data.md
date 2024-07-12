@@ -375,3 +375,12 @@ Reports file system disk space usage by showing the current amount of free space
   * Mount the filesystem : For WSL, ``sudo mount -t drvfs D: /mnt/d``
   * ``-t drvfs`` specifies the filesystem type as ``drvfs``, which is used for mounting Windows drives in WSL.
   * You can then unmount the drive using ``sudo umount /mnt/d``
+
+#### `umount`
+
+Unmount a drive using ``sudo umount /mnt/d`` (or ``/mnt/e``, or ``mnt/f``...)
+
+#### `grep`
+
+- ``grep "regex" file`` : searches for the regex ``regex`` in ``file``
+- ``grep -r "regex" /path/to/folder`` : searches recursively in all

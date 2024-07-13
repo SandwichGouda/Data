@@ -401,3 +401,18 @@ This command changes the login shell of a given user.
 - The only restriction placed on the login shell is that the command name must be listed in /etc/shells, unless the invoker is the superuser, and then any value may be added. 
 - **An account with a restricted login shell may not change her login shell.** 
 - For this reason, placing /bin/rsh in /etc/shells is discouraged since accidentally changing to a restricted shell would prevent the user from ever changing her login shell back to its original value!
+
+#### `/etc/shells`
+
+- This file lists valid login shells on the current OS.
+- Typical valid shells include (for instance, on our WSL) : 
+  * `/bin/sh`
+  * `/bin/bash`
+  * `/usr/bin/bash`
+  * `/bin/rbash`
+  * `/usr/bin/rbash`
+  * `/usr/bin/sh`
+  * `/bin/dash`
+  * `/usr/bin/dash`
+  * `/usr/bin/tmux`
+  * `/usr/bin/screen`

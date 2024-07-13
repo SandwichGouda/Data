@@ -435,3 +435,16 @@ This command changes the login shell of a given user.
     + The x indicates that the encrypted password is stored in a separate, shadowed, `/etc/shadow`. Only users with root privileges can access `/etc/shadow`.
     + If this field were blank (though rare), it would allow login without a password, which is usually a security risk.
     + Some older UNIX systems might store the actual password hash here, but modern systems use /etc/shadow instead.
+  * `UID` is the User ID
+    + This is the user ID number (UID) assigned to the user.
+    + The UID is used by the system to identify the user, rather than by their username. It’s referenced for file permissions and ownership.
+    + In this field :
+      - 0 is the root user (the superuser).
+      - 1-999 are t ypically reserved for system accounts and services (like daemon, bin).
+      - 1000+ are generally used for regular user accounts (though this cutoff can vary by Linux distribution).
+      - So, you would see 0 for `root`, and typically 1001, 1002, ... for regular users.
+  * `GID` is the Group ID
+    + It links the user to a default group, specifying the user’s group permissions.
+    + The group name corresponding to this GID is defined in `/etc/group`.
+    + The system uses the GID for permissions to files and directories.
+    + For instnace, if a user is assigned a primary group with GID 1001, they’ll inherit permissions associated with that group.

@@ -448,3 +448,20 @@ This command changes the login shell of a given user.
     + The group name corresponding to this GID is defined in `/etc/group`.
     + The system uses the GID for permissions to files and directories.
     + For instnace, if a user is assigned a primary group with GID 1001, they’ll inherit permissions associated with that group.
+
+  * Comment (User Info / GECOS Field)
+    + This field often contains additional information about the user. It’s also called the GECOS (General Electric Comprehensive Operating System) field, named after an early operating system.
+    + Usage: It’s generally used to store the full name of the user, along with optional extra information (such as their phone number, office location, etc.).
+    + It can contain multiple pieces of information separated by commas, though typically it just stores the full name. 
+    + Example: `John Doe`, or `John Doe,Room 101,123-456-7890`
+  * `home_directory`
+    + This is the absolute path to the user’s home directory.
+    + It is the directory where the user starts when they log in, and it’s where their personal files, configurations, and settings are stored.
+    + Most regular user home directories are located under `/home`, e.g., `/home/johndoe`.
+    + The root user’s home directory is usually `/root`.
+  * `shell` is the Login Shell
+    + This is the path to the default shell that the system runs when the user logs in.
+    + The login shell defines the command-line interface for the user. It can be any shell installed on the system (such as `/bin/bash`, `/bin/zsh`, or `/bin/sh`).
+    + A list of all valid shells is available at `/etc/shells`, see [`/etc/shells`](#etcshells)
+    + If this field is set to /usr/sbin/nologin or /bin/false, the user cannot log in interactively.
+    + This is common for system accounts and service accounts to prevent shell access.

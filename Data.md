@@ -448,7 +448,6 @@ This command changes the login shell of a given user.
     + The group name corresponding to this GID is defined in `/etc/group`.
     + The system uses the GID for permissions to files and directories.
     + For instnace, if a user is assigned a primary group with GID 1001, they’ll inherit permissions associated with that group.
-
   * Comment (User Info / GECOS Field)
     + This field often contains additional information about the user. It’s also called the GECOS (General Electric Comprehensive Operating System) field, named after an early operating system.
     + Usage: It’s generally used to store the full name of the user, along with optional extra information (such as their phone number, office location, etc.).

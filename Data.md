@@ -423,3 +423,15 @@ This command changes the login shell of a given user.
   * The Korn Shell is a shell (yet another) created by David Korn
   * `rbash` (Restricted Bash) is a shell that aims restricting some of the capabilities available to users (to interactive user sessions), or to a shell scripts running within it. It is intended to provide an additional layer of security, but is insufficient to allow execution of entirely untrusted software.
   * `sh` is also called Bourne Shell. Bash stands for Bourne Again SHell (because Stephen Bourne wrote it)
+
+#### `/etc/passwd`
+
+- The `/etc/passwd` file contains specific information about a user account in a format with seven fields, separated by colons (:). 
+- Each line is of the form `username:x:UID:GID:comment:home_directory:shell`
+  * `username` is the login name for the user.
+    + I must be be unique across the system, typically 1–32 characters, and usually contains only lowercase letters, numbers, and underscores.
+  * `x` is the password placeholder. 
+    + This field once held the encrypted user password but is now almost always set to x for security reasons.
+    + The x indicates that the encrypted password is stored in a separate, shadowed, `/etc/shadow`. Only users with root privileges can access `/etc/shadow`.
+    + If this field were blank (though rare), it would allow login without a password, which is usually a security risk.
+    + Some older UNIX systems might store the actual password hash here, but modern systems use /etc/shadow instead.

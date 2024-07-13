@@ -416,3 +416,10 @@ This command changes the login shell of a given user.
   * `/usr/bin/dash`
   * `/usr/bin/tmux`
   * `/usr/bin/screen`
+- Note : 
+  * Dash (Debian Almquist SHell) is (supposed to be) a "modern POSIX-compliant implementation of /bin/sh".
+    + So, it's a variant of sh, that's implemented to comply with the POSIX standards.
+    + So, it's old and should not be used. :)
+  * The Korn Shell is a shell (yet another) created by David Korn
+  * `rbash` (Restricted Bash) is a shell that aims restricting some of the capabilities available to users (to interactive user sessions), or to a shell scripts running within it. It is intended to provide an additional layer of security, but is insufficient to allow execution of entirely untrusted software.
+  * `sh` is also called Bourne Shell. Bash stands for Bourne Again SHell (because Stephen Bourne wrote it)

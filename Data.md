@@ -464,3 +464,15 @@ This command changes the login shell of a given user.
     + A list of all valid shells is available at `/etc/shells`, see [`/etc/shells`](#etcshells)
     + If this field is set to /usr/sbin/nologin or /bin/false, the user cannot log in interactively.
     + This is common for system accounts and service accounts to prevent shell access.
+
+#### /etc/shadow
+
+#### chroot
+
+- **This part has to be re-processed, and studied hands-on with a shell**
+- The `CHROOT_DIR` (or simply chroot directory) is a directory that serves as the root directory for a program or user, but only within a restricted environment. It’s used when executing a chroot (short for "change root") command, which changes the apparent root directory for a running process and its children.
+- It's useful for 
+  * Isolating Processes: By restricting a process to a specified directory, it creates a separate environment, effectively “jailing” the process so that it can’t access files or directories outside of its specified `CHROOT_DIR`.
+  * Enhancing Security: Commonly used for security purposes, especially for running potentially risky or unknown applications. For example, web servers, FTP servers, and other services can run within a chroot jail to minimize damage from potential security vulnerabilities.
+  * Testing and Development: Developers can set up different versions of libraries and dependencies in `CHROOT_DIR` without affecting the main operating system environment. It’s a safer way to test and debug software.
+  * System Recovery: chroot can be used to "enter" a separate Linux installation, such as when you need to repair a system from a live CD by accessing it from within a chroot environment.

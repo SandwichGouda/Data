@@ -501,3 +501,13 @@ This command changes the login shell of a given user.
   * Not Full Isolation: chroot isn’t a replacement for full containerization (like Docker or LXC), as it doesn’t isolate network, process tables, or other system-level resources.
   * Requires Root Privileges: Only users with root access can create or execute commands within a chroot environment.
   * Limited Security: While it adds a layer of security, advanced users can sometimes escape a chroot jail if it’s misconfigured, which is why it’s generally used alongside other security practices.
+
+#### ``tee``, ``boundary``, ``vboundary``
+
+I don't know
+
+#### Other small commands
+
+- ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).
+- ``cal`` : Prints a calendar.
+- ``exit`` : Exits the current terminal.

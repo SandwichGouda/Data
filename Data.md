@@ -548,3 +548,22 @@ I don't know
 - ``file``
   * Allows to see the nature of some file.
   * This is very useful : file extensions in Linux are sometimes misleading...
+- ``wget``
+- ``export`` 
+- ``awk``, `mawk`
+- ``nslookup``, `dig`, `host`, `named`
+- ``chmod``
+- ``chroot``
+- ``chown``
+- ``chgrp``
+- ``chfn``
+- ``chrt``
+- ``chsh``
+- ``chvt``
+- `chsh`, `chfn`, `passwd`, `shadow`, `usermod`, `chpasswd`, `login.defs`, `su`, `login`, `pam`
+- `useradd`, `newusers`, `userdel`
+- `subgid`, `subuid`, `newgidmap`, `newidmap`
+- `chage`, `sulogin`, `pwck`, `pwconv`, `pwunconv`, `grpck`
+- `group`, `groupmod`, `gshadow`, `groupadd`, `groupdel`
+- `pam`, `Netpbm`, `pbm`, `pgm`, `ppm`, `pnm`, `libnetpbm`
+`- https://www.gnu.org/software/coreutils

@@ -493,3 +493,12 @@ This command changes the login shell of a given user.
     + Switch to `CHROOT_DIR` : `sudo chroot /var/chroot /bin/bash`
     + After this command, you’ll be inside a restricted shell where `/var/chroot` is treated as /, meaning you’re effectively isolated from the actual root filesystem.
     + To exit the chroot environment, simply type exit or press Ctrl+D.
+
+- Practical Uses of CHROOT_DIR
+  * Web and FTP Servers: Servers running in chroot jails are restricted to only those files they need to function, minimizing access to the rest of the system.
+  * Package Compilation: Distributions often use chroot environments to build software packages without conflicting dependencies.
+  * System Recovery: If you boot a system from a live CD, you can chroot into the system’s root partition to run commands as if you were in the installed environment, allowing repairs or updates.
+-  Limitations of chroot
+  * Not Full Isolation: chroot isn’t a replacement for full containerization (like Docker or LXC), as it doesn’t isolate network, process tables, or other system-level resources.
+  * Requires Root Privileges: Only users with root access can create or execute commands within a chroot environment.
+  * Limited Security: While it adds a layer of security, advanced users can sometimes escape a chroot jail if it’s misconfigured, which is why it’s generally used alongside other security practices.

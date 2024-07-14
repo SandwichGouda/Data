@@ -511,3 +511,24 @@ I don't know
 - ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).
 - ``cal`` : Prints a calendar.
 - ``exit`` : Exits the current terminal.
+
+#### Remaining commands to deal with
+
+- Use which or command -v to check for specific commands in your environment.
+- compgen -c lists all available commands, helpful after installing a new package.
+- ``wc``
+- ``tr``
+- ``sed``
+- ``echo``
+- ``printenv`` affiche (aussi) les variables d'environnement
+- ``shred`` removes things safely. https://www.gnu.org/software/coreutils/manual/html_node/shred-invocation.html
+- ``nice`` runs commands with modified scheduling priority (https://gnu.org/software/coreutils)
+- ``pwd`` prints working directory
+- ``shutdown`` shuts down
+- ``make`` is very powerful
+- ``emacs`` you know what this is
+- ``tree``
+- ``mv``
+- ``cp``
+- ``scp``
+- ``source``

@@ -480,3 +480,16 @@ This command changes the login shell of a given user.
   * Creates a New Root Environment: It designates a specific directory as the new root (/) for any  process running within it.
   * Restricts Path Access: Processes inside the `CHROOT_DIR` environment cannot access files outside this directory, as they see it as the root of the filesystem.
   * Executes Commands in the Environment: Any command you run within this environment uses the filesystem and libraries available in the `CHROOT_DIR`.
+- Example of Setting Up a `CHROOT_DIR` :
+  * Suppose we want to set up a basic chroot jail in /var/chroot for testing purposes:
+    + Create the `CHROOT_DIR`: `sudo mkdir -p /var/chroot`
+    + Copy essential system binaries, libraries, and dependencies into this directory. For example:
+    + ```bash 
+      sudo cp /bin/bash /var/chroot/bin/
+      sudo cp -r /lib /var/chroot/
+      sudo cp -r /lib64 /var/chroot/
+      ```
+    + You’ll need to include all libraries required by binaries inside `CHROOT_DIR`, as they won’t have access to the main system libraries.
+    + Switch to `CHROOT_DIR` : `sudo chroot /var/chroot /bin/bash`
+    + After this command, you’ll be inside a restricted shell where `/var/chroot` is treated as /, meaning you’re effectively isolated from the actual root filesystem.
+    + To exit the chroot environment, simply type exit or press Ctrl+D.

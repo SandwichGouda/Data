@@ -493,7 +493,6 @@ This command changes the login shell of a given user.
     + Switch to `CHROOT_DIR` : `sudo chroot /var/chroot /bin/bash`
     + After this command, you’ll be inside a restricted shell where `/var/chroot` is treated as /, meaning you’re effectively isolated from the actual root filesystem.
     + To exit the chroot environment, simply type exit or press Ctrl+D.
-
 - Practical Uses of CHROOT_DIR
   * Web and FTP Servers: Servers running in chroot jails are restricted to only those files they need to function, minimizing access to the rest of the system.
   * Package Compilation: Distributions often use chroot environments to build software packages without conflicting dependencies.

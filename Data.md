@@ -476,3 +476,7 @@ This command changes the login shell of a given user.
   * Enhancing Security: Commonly used for security purposes, especially for running potentially risky or unknown applications. For example, web servers, FTP servers, and other services can run within a chroot jail to minimize damage from potential security vulnerabilities.
   * Testing and Development: Developers can set up different versions of libraries and dependencies in `CHROOT_DIR` without affecting the main operating system environment. It’s a safer way to test and debug software.
   * System Recovery: chroot can be used to "enter" a separate Linux installation, such as when you need to repair a system from a live CD by accessing it from within a chroot environment.
+- When you use the chroot command, it:
+  * Creates a New Root Environment: It designates a specific directory as the new root (/) for any  process running within it.
+  * Restricts Path Access: Processes inside the `CHROOT_DIR` environment cannot access files outside this directory, as they see it as the root of the filesystem.
+  * Executes Commands in the Environment: Any command you run within this environment uses the filesystem and libraries available in the `CHROOT_DIR`.

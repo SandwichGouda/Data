@@ -532,3 +532,19 @@ I don't know
 - ``cp``
 - ``scp``
 - ``source``
+  * ``source a.sh`` with ``a.sh`` containing for instance ``cd /path/to/somewhere`` works !
+- ``bash`` (Bourne-Again Shell)(Difference with source ?)
+- ``alias``
+- ``nano``
+- ``exec`` 
+- ``rm``
+  * ``rm -- -f``
+- ``history`` (Beware, everything you do is saved...)(Permanently?)(And where ?)
+- ``lsblk``
+- ``df``(``df -h /boot``)
+- ``find``
+- ``ps``, (``ps -fe``)
+- ``exec``
+- ``file``
+  * Allows to see the nature of some file.
+  * This is very useful : file extensions in Linux are sometimes misleading...

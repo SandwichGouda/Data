@@ -588,3 +588,8 @@ I don't know
 - sysvinit-utils
 - ubuntu-minimal
 - ubuntu-standard
+
+#### ``tldr``
+
+TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.
+As opposed to `man`, despite which's honourable effort to help users, is much less easy to rea

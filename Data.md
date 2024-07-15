@@ -567,3 +567,24 @@ I don't know
 - `group`, `groupmod`, `gshadow`, `groupadd`, `groupdel`
 - `pam`, `Netpbm`, `pbm`, `pgm`, `ppm`, `pnm`, `libnetpbm`
 `- https://www.gnu.org/software/coreutils
+
+### Other Linux packages
+
+- base-files
+- base-passwd
+- bash
+- bsdutils
+- dash
+- diffutils
+- findutils
+- grep
+- gzip
+- hostname
+- init
+- libdebconfclient0
+- login
+- ncurses-base
+- ncurses-bin
+- sysvinit-utils
+- ubuntu-minimal
+- ubuntu-standard

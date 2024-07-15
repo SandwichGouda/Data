@@ -592,4 +592,11 @@ I don't know
 #### ``tldr``
 
 TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.
-As opposed to `man`, despite which's honourable effort to help users, is much less easy to rea
+As opposed to `man`, despite which's honourable effort to help users, is much less easy to read.
+
+#### poppler-utils
+
+Poppler is a PDF rendering library. It is based on xPDF, which is itself based on Motif.
+Recall that you can see all commands provided by a given (dpkg- or apt-installed) package using ``dpkg -L packagename``.
+Commands provided :
+- ``pdfattach``

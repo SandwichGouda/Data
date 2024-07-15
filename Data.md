@@ -608,3 +608,9 @@ The difference between xpopple, poppler and xpdf is quite subtle (and historical
 "xpopple uses the Poppler library to process PDF files. Poppler was originally derived from [the] Xpdf suite, but Poppler  doesn't            include the Xpdf viewer program itself. xpopple is the Xpdf program, modified to use Poppler".
 
 _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as GNOME or KDE.
+
+### Commands cool things
+
+- (pipe, double pipe, <, >, <<, >>)
+- comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
+- comm -23 <(apt-mark showmanual | sort) <(apt-mark showauto | sort)

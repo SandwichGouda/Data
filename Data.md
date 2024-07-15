@@ -600,3 +600,11 @@ Poppler is a PDF rendering library. It is based on xPDF, which is itself based o
 Recall that you can see all commands provided by a given (dpkg- or apt-installed) package using ``dpkg -L packagename``.
 Commands provided :
 - ``pdfattach``
+
+#### xpdf or xpopple
+
+xpopple is a viewer for Portable Document Format (PDF) files. xpopple runs under the X Window System on UNIX.
+The difference between xpopple, poppler and xpdf is quite subtle (and historical). I don't quite get it, but reading from the xpdf manual : 
+"xpopple uses the Poppler library to process PDF files. Poppler was originally derived from [the] Xpdf suite, but Poppler  doesn't            include the Xpdf viewer program itself. xpopple is the Xpdf program, modified to use Poppler".
+
+_Bref_, these are PDF viewers widely used on Linux Desktop Environments such as GNOME or KDE.

@@ -614,3 +614,8 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 - (pipe, double pipe, <, >, <<, >>)
 - comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
 - comm -23 <(apt-mark showmanual | sort) <(apt-mark showauto | sort)
+
+### Linux miscellaneous things
+
+- ``cd "$(cat file)"`` to go to the path written in ``file``.
+- ``cd $OLDPWD`` gets back to the previous working directory - or, even better : ``cd -`` does so too !

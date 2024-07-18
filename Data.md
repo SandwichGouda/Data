@@ -646,3 +646,26 @@ Fundamentally, a kernel is just a piece of software. Heuristically, we call it "
 ### HTML
 
 #### HTML Basics
+
+Basic structure of a HTML page :
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Titre</title>
+    </head>
+
+    <body>
+        <h1> h1 </h1>
+        <h2> h2 </h2>
+        <h3> h3 </h3>
+        <h4> h4 </h4>
+        <h5> h5 </h5>
+        <h6> h6 </h6>
+        <p> Paragraph <br/> Carriage return</p>  
+
+        <p> <em>Another</em> paragraph, with a line skip </p>  
+    </body>
+</html>
+```

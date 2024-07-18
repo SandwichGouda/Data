@@ -619,3 +619,11 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 
 - ``cd "$(cat file)"`` to go to the path written in ``file``.
 - ``cd $OLDPWD`` gets back to the previous working directory - or, even better : ``cd -`` does so too !
+
+## Operating systems
+
+### The kernel
+
+The kernel is a first interface between hardware and software. It is the "core" of the OS. The kernel manages processes, I/O, along with many other things. It has complete control on the system.
+
+Fundamentally, a kernel is just a piece of software. Heuristically, we call it "kernel" because it is at the core of the Operating System in the sense that it has control on all the system and manages many things. Applications and the (rest of the) OS make syscalls (calls to the kernel) to "ask for permission" to do stuff on the hardware (writing stuff in the RAM, for instance). A syscall happens when any piece of software needs access to anything related to hardware. The kernel may refuse it. By default, the OS is in "user mode". If the syscall is accepted, the OS passes in "Kernel mode" the time necessary to do the stuff (and then switches back to user mode). When in user mode, the OS and applications don't have permissions to do everything.

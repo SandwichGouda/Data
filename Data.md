@@ -697,3 +697,21 @@ Basic structure of a HTML page :
 - Unordered lists with ``<ul>``. Text between the tag the the first element (``<ul>here<li>``) is aligned with the elements, without bullet point.
 - It is possible to make sublists into lists - that is, floors.
 - There are ordered (``ol``) and unordered (``ul``) lists (and definitions lists, but who cares about them). Items are delimited with ``<li>``.
+- Hyperlinks require the ``<a href="link"></a>`` tag. 
+  * You can put a hyperlink to another page of the same website : ``<a href="path/to/other/page.html>``.
+  * Do not put spaces, uppercase letter, and special caracters (including 'é', 'è', 'à'...) in file or folder names.
+  * You can put hyperlinks to different tags on the same page  : ``<tag id="tag_name">`` and then ``<a href="#tag_name>``. That's when you see ``#``'s in URLs !
+  * NB : do not put spaces in ``id``s, you could encounter problems.
+  * You can henceforth link to specific parts (tags) of other pages : ``<a href="ancres.html#rollers">``
+  * You can put titles to hyperlinks : ``<a href title="A title that will be displayed when hoovering into the hyperlink">``
+- ``id``'s are used to give (unique) identifiers to tags. They are used a lot to apply styles to specific things in CSS.
+- You can insert images with ``<img src="montagne.jpg" alt="Photo de montagne" title="Montagne"/>>``. 
+  * ``src`` is the (path to) the file (the image).
+  * ``alt`` is used to describe the content of the image. It is the text that will be displayed if the image doesn't load. It's used by search engines to know what's supposed to be on the picture. 
+  * Remember : do not put uppercase letters, spaces or special caracter in file or folder names (or paths).
+  * ``title`` is the text that will be displayed in the info-bubble that will appear when hoovering the image.
+  * Thumbnails : ``<a href="montagne.jpg"><img src="montagne_thumbnail" alt="montagne thumbnail" title=cliquez pour agrandir/></a>``
+- Figures (``<figure>``) are a _semantic_ tag that allow to know that this tag is a figure used to illustrate some text.
+  * It is possible to add the ``<figcaption></figcaption>`` tag that will add a caption underneath the figures.
+- The ``<span>`` tag can be used to point at specific words (for CSS).
+- The ``<div>`` tag can be used to point at to blocks of words (for CSS).

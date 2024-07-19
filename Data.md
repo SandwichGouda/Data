@@ -669,3 +669,22 @@ Basic structure of a HTML page :
     </body>
 </html>
 ```
+- General facts
+  * Code Indentation is optional (improves readability, will be ignored by browsers)
+  * Comments can be added with : ``<!-- Comment -->``
+  * NB : Anyone will be able to read the HTML of your page...
+- Tags
+  * There are two types of HTML tags : 
+    + Pairwise tags/non self-closing : ``<body> </body>``
+    + Self-closing : ``<img src="img.png" />``
+    + Note : the ending `/` is optional. It is common to put it anyway.
+  * There are also two types of HTML tags
+    + Online tags : ``<span>``, ``<em>``, ``<strong>``
+    + Block tags : ``<div>``, ``<p>``, ``<hi>``
+  * Tags have attributes : ``<tag attribute="value">``
+  * The ``<html>`` tag contains all the html code.
+  * The ``<head>`` tag contains nothing that will be displayed by browsers, just (useful!) meta information about the page.
+  * The ``<body>`` tag contains every element that will be displayed on screen.
+  * ``<meta charset="utf-8" />`` indicates the encoding of the file. UTF-8 is cool. Make sure your files are saved as utf-8.
+  * Use ``<br>`` (or ``<br/>`` for carriage returns)
+  * The ``<title>`` is what is displayed on top of the screen (on the tab in Chrome). It's also what's displayed on Google Searches

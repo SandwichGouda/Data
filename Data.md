@@ -766,3 +766,17 @@ tag2, tag3
     + **If the font name contains spaces, it is mandatory to enclose it in quotation marks** ! (Keep quotes around font names)
     + It is also (fortunately!) possible to make the browser download a font.
     + ``fontsquirrel.com`` or ``dafont.com`` provide copyright-free fonts. ``fontsquirrel.com`` also provides "CSS 3 packs", with multiple formats.
+    + Some font formats include : 
+      - ``.ttf``, TrueType Font. The most standard one, seemingly.
+      - ``.eot``, Embedded OpenType. Works on Internet Explorer only. Proprietary format, owned by Microsoft.
+      - ``.otf``, OpenType Font. 
+      - ``.svg``, Scalabe Vector Graphics. 
+      - ``.woff``, Web Open Font Format.
+    + Note : Font files, such as TrueType Font (.ttf) files, are not text files, so they are not typically associated with a specific character encoding like UTF-8, ANSI, or Unicode. Instead, they are binary files that contain a mix of binary data, structured tables, and occasionally embedded metadata that might include text strings.
+    + Note : Some fonts are the same whatever ``font-weight`` you give them. Sometimes ``font-weight`` (boldness) does not impact the font !
+    + To know whether a given font format works on which browser : 
+      - ``https://www.lambdatest.com/web-technologies/eot``
+      - ``https://www.lambdatest.com/web-technologies/woff``
+      - ``https://www.lambdatest.com/web-technologies/ttf``
+      - Note : ``https://www.lambdatest.com/web-technologies/otf`` does not exist. ``CTRL+F`` (or ``F3``) on ``https://www.lambdatest.com/web-technologies/`` yields that it is actually together with ``https://www.lambdatest.com/web-technologies/ttf``
+  * **Declaring a new font** 

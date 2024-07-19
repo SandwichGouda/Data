@@ -715,3 +715,15 @@ Basic structure of a HTML page :
   * It is possible to add the ``<figcaption></figcaption>`` tag that will add a caption underneath the figures.
 - The ``<span>`` tag can be used to point at specific words (for CSS).
 - The ``<div>`` tag can be used to point at to blocks of words (for CSS).
+
+### CSS
+
+- General facts
+  * Comments are written using /* */
+  * There are three ways (places) to write CSS :
+    + In a ``.css`` file
+    + In the header (``<head>``) of the HTML, using the ``<style>``tag. and closing) ``style`` tags.
+    + Directly into the tags, using the ``style`` attribute. 
+    + For the three methods, just write the css code normally, either between the ``<style>`` tags, or between quotation marks for the ``styte`` attribute.
+    + The first method is widely used and highly recommended.
+  * Use ``<link rel="stylesheet" href="style.css" />`` to indicate the CSS file associated to the HTML page (file).

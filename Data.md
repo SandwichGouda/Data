@@ -727,3 +727,42 @@ Basic structure of a HTML page :
     + For the three methods, just write the css code normally, either between the ``<style>`` tags, or between quotation marks for the ``styte`` attribute.
     + The first method is widely used and highly recommended.
   * Use ``<link rel="stylesheet" href="style.css" />`` to indicate the CSS file associated to the HTML page (file).
+- General syntax : 
+```css
+tag1
+{
+  property1: value;
+  property2: value;
+  property3: value;
+}
+
+tag2, tag3
+{
+  property4: value;
+  property5: value;
+  property6: value;
+}
+.classname
+{
+  property7: value;
+  property8: value;
+  property9: value;
+}
+```
+- Properties
+  * ``color`` indicates the color of the text. Default is black. It is possible to write it as ````, with ``a``,``b``,``c`` integers in base 10.
+  * ``font-size: 1em``. Default is ``16px``, or ``12pt``, or **``1em``**.
+    + Absolute value : in ``px``, ``pt``, ``em``, ``in``, ``cm``...
+    + Note : ``em`` corresponds to the default font size value. Conversely the default font size value is ``1em`` !
+    + Relative value : ``xx-small``, ``x-small``, ``small``, ``medium``, ``large``, ``x-large``, ``xx-large``, 
+    + Relative values are recommended : will fit better on different screen/window sizes, might better adapt to browser zooming...
+  * ``font-family: font;``
+    + By default, the browser will search on the (local !) client computer if the font ``font`` exists. 
+    + If it does not exist, the browser will render with a default font (which is ``Times New Roman`` for Chrome...!)
+    + You can specify multiple fonts : ``font-family: font1, font2, font3, font4;``
+    + The last font is often ``serif``. Éventuellement ``sans-serif``.
+    + ``Arial``, ``Arial Black``, ``Comic Sans MS``, ``Courier New``, ``Georgia``, ``Impact``, ``Times New Roman``, ``Trebuchet MS``, ``Verdana`` are classical fonts that work well on all browsers (but not very original).
+    + [Here is an updated list of CSS secure fonts](https://www.w3schools.com/cssref/css_websafe_fonts.php)
+    + **If the font name contains spaces, it is mandatory to enclose it in quotation marks** ! (Keep quotes around font names)
+    + It is also (fortunately!) possible to make the browser download a font.
+    + ``fontsquirrel.com`` or ``dafont.com`` provide copyright-free fonts. ``fontsquirrel.com`` also provides "CSS 3 packs", with multiple formats.

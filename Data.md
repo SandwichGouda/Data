@@ -688,3 +688,12 @@ Basic structure of a HTML page :
   * ``<meta charset="utf-8" />`` indicates the encoding of the file. UTF-8 is cool. Make sure your files are saved as utf-8.
   * Use ``<br>`` (or ``<br/>`` for carriage returns)
   * The ``<title>`` is what is displayed on top of the screen (on the tab in Chrome). It's also what's displayed on Google Searches
+- Paragraph (``<p></p>``) tags for paragraphs
+- ``<h1></h1>``...``<h6></h6>`` correspond to `#`...`######` in Markdown. 
+- More generally there are many correspondences between Markdown and HTM(arkup)L : it is possible to use HTML tags in Markdown
+- ``<strong>`` bits are displayed in **bold** by default. CSS allows to display ``<strong>`` parts as we want.
+- Idem for ``<mark>`` (<mark>marked</mark>) parts. CSS allows to display them as we want.
+- (Probably?) idem for ``<em>`` (<em>emphasized</em>) parts.
+- Unordered lists with ``<ul>``. Text between the tag the the first element (``<ul>here<li>``) is aligned with the elements, without bullet point.
+- It is possible to make sublists into lists - that is, floors.
+- There are ordered (``ol``) and unordered (``ul``) lists (and definitions lists, but who cares about them). Items are delimited with ``<li>``.

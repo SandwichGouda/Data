@@ -882,3 +882,47 @@ Replace this section by "Backend" ?
 Uninstalled migrations -> python -m django manage.py migrate
 
 ```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```
+
+### Further reading and tools
+
+- World Wide Web Consortium :
+  * https://www.w3.org/
+- W3Schools
+  * https://www.w3schools.com/
+  * HTML, CSS, JavaScript, SQL, Java, PHP, Typescript, Angular, Vue, Node, Git, XML, Django, C, C++...
+  * Useful to refresh stuff, but not necessarily to learn.
+- All HTML Tags 
+  * https://www.w3schools.com/tags/default.asp
+- CSS Compaptibility tables
+  * https://www.caniuse.com
+  * https://www.normansblog.de
+- Further reading on CSS, on W3C : 
+  * https://www.w3.org/Style/
+- Lea Verou : an inspiring Web Designer
+  * https://projects.verou.me/css3patterns/
+- CSS 3 Patterns, and more
+  * https://tailwindcss.com/ (Used on bulle.rezel.net !)
+  * https://css-pattern.com/
+  * https://10015.io/tools/css-background-pattern-generator
+  * https://cssgradient.io/blog/gradient-patterns/
+  * https://bansal.io/pattern-css
+- Magic Pattern
+  * https://www.magicpattern.design
+  * https://www.magicpattern.design/tools/css-backgrounds
+- Free Frontent
+  * https://freefrontend.com/
+  * https://freefrontend.com/css-background-patterns/
+- Design
+  * https://superdesigner.co/tools/css-backgrounds
+- Bootstrap
+  * https://www.w3schools.com/bootstrap/bootstrap_ver.asp
+- Resources for Developers, by Developers
+  * https://developer.mozilla.org/en-US/
+- Web.dev
+  * https://web.dev/
+- HTML, CSS, JavaScript, SVG, JS API (and more) **browser compaptibility tests**, and (importantly) **features** (possibilities) :
+  * https://www.lambdatest.com/web-technologies/
+- Tests for web-related stuff :
+  * https://www.lambdatest.com/
+- Echo framework for Go 
+  * https://echo.labstack.com/docs

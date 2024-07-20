@@ -780,3 +780,54 @@ tag2, tag3
       - ``https://www.lambdatest.com/web-technologies/ttf``
       - Note : ``https://www.lambdatest.com/web-technologies/otf`` does not exist. ``CTRL+F`` (or ``F3``) on ``https://www.lambdatest.com/web-technologies/`` yields that it is actually together with ``https://www.lambdatest.com/web-technologies/ttf``
   * **Declaring a new font** 
+```css
+@font-face {
+font-family: 'Font Name';
+src: url('path/to/font.ttf');
+}
+```
+  * Importing multiple formats can be a good habit, browsers will automatically select their preferred format (one that they support) :
+```css
+@font-face {
+    font-family: 'Font Name';
+    src: url('Font Name.eot') format('eot'),
+         url('Font Name.woff') format('woff'),
+         url('Font Name.ttf') format('truetype'),
+         url('Font Name.svg') format('svg');
+}
+```
+  * ``font-style``
+    + ``normal``
+    + ``italic``
+    + ``oblique``
+    + ``oblique`` is kinda like ``italic`` but different. It's actually like ``italic`` by default (with the default ``Times New Roman`` font)...
+  * ``font-weight``
+    + ``normal``
+    + ``bold``
+    + Note : as already mentionned before, some fonts are unaffected by the ``font-weight`` property : they can't be bold.
+  * ``text-decoration``
+    + ``underline``
+    + ``line-through`` : Strikethrough 
+    + ``overline`` : Overline
+    + ``none``
+  * ``text-align``
+    + ``left``
+    + ``center``
+    + ``right``
+    + ``justify``
+    + Only works for block tags, not for inline tags
+  * ``float``
+    + For images essentially, can apply to other things aswell (charts, buttons, ...). 
+    + Allows text to float around an image : it's like the image was inserted into the text, and the text moved a bit to give the image some room.
+    + ``<img src="...", alt="Image flottante", style="float: right/left/center"
+            />
+  * ``clear``
+    + This allows to _stop text from floating_. 
+    + It basically says : Yes, the image (or whatever thing has the attribute ``float``) was supposed to be "inserted" into the text (allowing text to float around it), but no, the following text (enclosed in the tag that has the (style) attribute ``clear``) should not.
+    + More specifically: 
+      - ``clear: left`` means stop floating around things floating left (``float: left``)
+      - ``clear: right`` means stop floating around things floating right (``float: right``)
+      - ``clear: both`` means stop floating around both
+  * ``background-color``
+    + The background color of an element. It may be a div, a span, some text... For text, it will be text highlighting.
+    + To set the page background color : 

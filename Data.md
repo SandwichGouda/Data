@@ -831,3 +831,46 @@ src: url('path/to/font.ttf');
   * ``background-color``
     + The background color of an element. It may be a div, a span, some text... For text, it will be text highlighting.
     + To set the page background color : 
+```css
+body
+{
+    background-color: black; /* Page background color */
+    color: white; /* Text color (important) */
+}
+```
+* ``background-image``
+  * You can set the background color and background image to any HTML element.
+- **Heritage**
+  * Any CSS property given to a tag will apply to **all children**.
+  * Hence the name : **Cascading Style Sheets** !
+  * Note that since all tags are children of the ``<body>`` tag, properties given to ``<body>`` will apply to everyone by default (except told otherwise, cf. next point)
+  * Priority rules apply from narrowest to broadest (intuitively).
+- It is possible to specify colors using either
+  * Hexadecimal notation
+  * RGB colors (``rgb(a,b,c)`` with ``a,b,c`` integers in base 10)
+  * Hexadecimal colors
+  * Hexadecimal colors with transparency
+  * RGB colors
+  * RGBA colors
+  * HSL colors
+  * HSLA colors
+  * currentcolor : refers to the ``color`` property of the element. Will be black (default) is the HTML element has no ``color`` property given by CSS.
+  * [One of the 140 predefined CSS colors](https://www.w3schools.com/cssref/css_selectors.php)
+- Selectors :
+  * ``id`` and ``class`` are attributes that work for **all** HTML tags.
+    + Use ``.class_name`` to refer to the tags that have this class. 
+    + Classes are used to group elements.
+    + Use ``#id_name`` to refer to the tags that have this id.
+    + Ids are used to point specific elements. 
+    + It looks like they work the same anyway (i.e. it looks like you can group things using ``id``, and the behaviour remains the same) but don't play with fire too much.
+  * The ``<span>`` tag can be used to refer to specific words.
+  * The ``<div>`` tag can be used to refer to blocks of words.
+  * ``A,B,C,D {...}`` will refer to all occurences of A,B,C and D (without having to copypaste)(A,B,C,D can be ``h1, em, .class_name, #id_name).
+  * ``*`` is the universal selector : ``* {...}`` will apply to _all_ tags.
+  * ``A B`` will refer to all occurences of B **contained in** an occurence of A.
+  * ``A + B`` will refer to all occurences of B **right after** an occurence of A.
+  * ``A[attr]`` will refer to all occurences of A **that do have** the attribute ``attr`` (set to some value).
+  * ``A[attr="value"]`` will refer to all occurences of A that **have** the attribute ``attr``  **set** to value ``value``.
+  * ``A[attr*="value"]`` will refer to all occurences of A that **contain** ``value`` in their attribute ``attr``.
+  * Other selectors : https://www.w3.org/Style/css3-selectors-updates/WD-css3-selectors-20010126.fr.html
+  * [Comprehensive list of CSS selectors](https://www.w3schools.com/cssref/css_selectors.php)

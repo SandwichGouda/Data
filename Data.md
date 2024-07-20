@@ -874,3 +874,11 @@ body
   * ``A[attr*="value"]`` will refer to all occurences of A that **contain** ``value`` in their attribute ``attr``.
   * Other selectors : https://www.w3.org/Style/css3-selectors-updates/WD-css3-selectors-20010126.fr.html
   * [Comprehensive list of CSS selectors](https://www.w3schools.com/cssref/css_selectors.php)
+
+### Django
+
+Replace this section by "Backend" ?
+
+Uninstalled migrations -> python -m django manage.py migrate
+
+```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```

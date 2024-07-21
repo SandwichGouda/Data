@@ -945,3 +945,10 @@ Uninstalled migrations -> python -m django manage.py migrate
 - Acquiring a certificate is a procedure named [Certificate signing request](https://en.wikipedia.org/wiki/Certificate_signing_request). 
   * When requesting a certificate, the latter neither has an emission date, nor does it have an expiration date. These are decided and set by the Certificate Authority, when giving the (signed) certificate back. 
   * The certificate authority will ask the requester to certify its identity : by asking him to make the domain name point to some random text. (Note : the DNS is a complex system, it can be used to make a domain name point to basically anything : some text...)
+
+### Web hosting
+
+- Proxies, reverse-proxies, are often used. Firewalls are always used. 
+- When hosting a website, you must always specify the port the server is listening onto. 
+- Requests : port 3000 (cf. https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers port 3000) or 80/443 (HTTP/HTTPS) ? (...)
+  * How com Sacha Montel's website listens on port 8080 and not 43 ?? When browsers emit requests, they should emit either on 80 or 443 don't they ?

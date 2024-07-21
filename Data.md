@@ -926,3 +926,22 @@ Uninstalled migrations -> python -m django manage.py migrate
   * https://www.lambdatest.com/
 - Echo framework for Go 
   * https://echo.labstack.com/docs
+
+### Web certificates
+
+- Web authenticity certificates are used to certify that someone talking to an IP address (or domain name) gets server responses that _are indeed_ sent by the right server, and not by some other machine that attempts to send you something else.
+- This is (would be) called a **man in the middle** attack.
+- Note that this kind of authentification is analoguous to what does the ``known_hosts`` file for SSH connections.
+- When hosting a HTTPS website, say ``https://www.rezel.net`` for instance, you have to contact a [Certificate authority](https://en.wikipedia.org/wiki/Certificate_authority) that will sign a certificate linking the web server's IP adress to its public key. 
+- More precisely, a Web certificate contains, amongst [other things](https://en.wikipedia.org/wiki/Public_key_certificate#Common_fields) :
+  * An emission date
+  * An expiration date
+  * The server's public key
+  * The server's IP address
+- The Certificate Authority then computes a signed hash of this data and gived is it to the domain name owner. The web server then gives the certificate among with the signed hash with all the requests it sends.
+- The signature validates the _coherence_ of the information contained in the certificate, i.e. the coherence between all _certificate fields_ : the signature ensures that, for instance, the domain name ``https://www.rezel.net`` is linked to the Public key ``f60473d34377c4a094027fde23d4efb19deba0a36101d6c3ed7a3e314dcca142``.
+- Client browsers can check that the signature is legitimate. This is most likely done by decrypting the signature itself using the Certificate authority's public key. Recall that only someone who has a private key can encrypt something that can be decoded usign the public key. Hence, if the fingerprint can be decoded, it means that the certificate is legit.
+- Client browsers that recieve data from a distant server whose certificate is inexistant or not signed by a Certificate Authority will reject the data and tell the user that the website is not secure. Note that the browser will still often let the user access the website, but will warn the user that the website might be dangerous as the certificate is invalid.
+- Acquiring a certificate is a procedure named [Certificate signing request](https://en.wikipedia.org/wiki/Certificate_signing_request). 
+  * When requesting a certificate, the latter neither has an emission date, nor does it have an expiration date. These are decided and set by the Certificate Authority, when giving the (signed) certificate back. 
+  * The certificate authority will ask the requester to certify its identity : by asking him to make the domain name point to some random text. (Note : the DNS is a complex system, it can be used to make a domain name point to basically anything : some text...)

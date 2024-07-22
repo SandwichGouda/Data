@@ -956,3 +956,16 @@ Uninstalled migrations -> python -m django manage.py migrate
 ### Identity providers
 
 #### Authentik
+
+### Self-hosting
+
+#### CodiMD
+
+CodiMD is what Rezel hosts for its self-hosted collaborative markdown notes.
+
+#### HedgeDoc
+
+HedgeDoc is a fork of CodiMD.
+Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be amazing. :O
+
+### Web miscellaneous things

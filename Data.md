@@ -952,3 +952,7 @@ Uninstalled migrations -> python -m django manage.py migrate
 - When hosting a website, you must always specify the port the server is listening onto. 
 - Requests : port 3000 (cf. https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers port 3000) or 80/443 (HTTP/HTTPS) ? (...)
   * How com Sacha Montel's website listens on port 8080 and not 43 ?? When browsers emit requests, they should emit either on 80 or 443 don't they ?
+
+### Identity providers
+
+#### Authentik

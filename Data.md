@@ -1002,7 +1002,33 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * Or declared and assigned in one go using the `:=`constructor :
     + `e := 5`
 	  + `h, i := true, "indeed"`
-  * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.les, the package is called main, but the name of the file is decided by the programmer.
+  * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.
+- When a variable is declared it is assigned the natural "null" value of the corresponding type. 
+  * For example, ``var k int`` assigns k to the value ``0``
+  * ``var s string`` assigns s to the value ``""``.
+- Declaring and assigning values :
+  * ``var x = 5``
+- Go handles a short variable declaration, without keyword : 
+  * `k := 3`
+  * Note that **outside a function, every statement must begin with a keyword** (var, func, ...). The `:=` construct is hence not available.
+- Available types include :
+  * ``uint8``
+  * ``uint16``
+  * ``uint32``
+  * ``uint64``
+  * ``int``
+  * ``int8``
+  * ``int16``
+  * ``int32``
+  * ``int64``
+  * ``float32``
+  * ``float64``
+  * ``complex64``
+  * ``complex128``
+  * ``bool``
+  * ``string`` (UTF-8)
+- ``int`` is ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
+- The Go documentation says to use `int` unless you have a specific reason to use a fixed-size ``intXX`` type. les, the package is called main, but the name of the file is decided by the programmer.
   * The ``fmt`` package that implements formatted I/O.
   * All go files start with ``package [packagename]``. When importing, one imports ``path/to/package``. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement ``package rand``.
 - Package importation :
@@ -1027,3 +1053,30 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
     + `e := 5`
 	  + `h, i := true, "indeed"`
   * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.
+
+- When a variable is declared it is assigned the natural "null" value of the corresponding type. 
+  * For example, ``var k int`` assigns k to the value ``0``
+  * ``var s string`` assigns s to the value ``""``.
+- Declaring and assigning values :
+  * ``var x = 5``
+- Go handles a short variable declaration, without keyword : 
+  * `k := 3`
+  * Note that **outside a function, every statement must begin with a keyword** (var, func, ...). The `:=` construct is hence not available.
+- Available types include :
+  * ``uint8``
+  * ``uint16``
+  * ``uint32``
+  * ``uint64``
+  * ``int``
+  * ``int8``
+  * ``int16``
+  * ``int32``
+  * ``int64``
+  * ``float32``
+  * ``float64``
+  * ``complex64``
+  * ``complex128``
+  * ``bool``
+  * ``string`` (UTF-8)
+- ``int`` is ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
+- The Go documentation says to use `int` unless you have a specific reason to use a fixed-size ``intXX`` type. 

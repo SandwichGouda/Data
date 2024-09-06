@@ -969,3 +969,17 @@ HedgeDoc is a fork of CodiMD.
 Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be amazing. :O
 
 ### Web miscellaneous things
+
+## Go
+
+### Go basics 
+
+- Go is a compiled language. 
+  * ``go build file.go`` to compile a go file. Then, run the executable (``./file``)
+  * ``go run file.go`` performs the same operation, but stores the excutable somewhere, runs it, and then deletes it. It's very useful for one-shots.
+- The first line of a file indicates the package the file is in.
+  * Every Go program is organized in a package. 
+  A package is a collection of source files in the same directory that allows variables, types, and functions to be visible among other source files within the same package. 
+  * For standalone files, the package is called main, but the name of the file is decided by the programmer.
+  * The ``fmt`` package that implements formatted I/O.
+  * All go files start with ``package [packagename]``. When importing, one imports ``path/to/package``. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement ``package rand``.

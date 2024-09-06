@@ -980,6 +980,50 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
 - The first line of a file indicates the package the file is in.
   * Every Go program is organized in a package. 
   A package is a collection of source files in the same directory that allows variables, types, and functions to be visible among other source files within the same package. 
-  * For standalone files, the package is called main, but the name of the file is decided by the programmer.
+  * For standalone fi
+- Package importation :
+  * ``import package`` or `import path/to/package`
+- Variables must be declared before being assigned.
+  * Either declared and assigned in one go :
+    + `var f = 5`
+    + `var g int = 5`
+    + `var j, k = false, 5`
+    + `var l, m bool = false, true`
+  * Or, declared, and then assigned (they can be declared outside functions and assigned in a function)
+```go 
+  var (
+	  b bool
+  	c float32
+	  d string
+  )
+  
+  b, c = true, 32.0
+```
+  * Or declared and assigned in one go using the `:=`constructor :
+    + `e := 5`
+	  + `h, i := true, "indeed"`
+  * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.les, the package is called main, but the name of the file is decided by the programmer.
   * The ``fmt`` package that implements formatted I/O.
   * All go files start with ``package [packagename]``. When importing, one imports ``path/to/package``. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement ``package rand``.
+- Package importation :
+  * ``import package`` or `import path/to/package`
+- Variables must be declared before being assigned.
+  * Either declared and assigned in one go :
+    + `var f = 5`
+    + `var g int = 5`
+    + `var j, k = false, 5`
+    + `var l, m bool = false, true`
+  * Or, declared, and then assigned (they can be declared outside functions and assigned in a function)
+```go 
+  var (
+	  b bool
+  	c float32
+	  d string
+  )
+  
+  b, c = true, 32.0
+```
+  * Or declared and assigned in one go using the `:=`constructor :
+    + `e := 5`
+	  + `h, i := true, "indeed"`
+  * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.

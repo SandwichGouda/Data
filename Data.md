@@ -1080,3 +1080,25 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * ``string`` (UTF-8)
 - ``int`` is ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
 - The Go documentation says to use `int` unless you have a specific reason to use a fixed-size ``intXX`` type. 
+- Aliases :
+  * ``byte`` is an alias for ``uint8``
+  * ``rune`` is an alias for ``int32``
+  * ``int`` is an alias for ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
+- Not unsigned (i.e., signed) int types use two's complement. 
+  * In particular, on 64-bits systems, 
+  * Note that the bitwise left-shift (`<<`) operator doesn't let you shift until you reach the right-most bit that's supposed to represent the sign. 
+  * i.e., on 64-bits systems for instance, `1<<63` does not work, although it could yield $-2^63$.
+  * This is likely for security reasons (doesn't let you do something that would yield something you didn't expect).
+- The Go compiler isn't happy when you declare variables that aren't used...
+- But it will let you declare functions without using them.
+- ``fmt.Printf()`` allows to print formatted text to standard output, just like ``printf`` in C.
+  * It uses _verbs_ : ``fmt.Print("The value of x is : %d",x)``
+  * Go _verbs_ include :
+    + ``%v`` : The value in a default format
+    + ``%+v`` : Same as ``%v``, but adds field names when printing structs
+    + ``%#v`` :	a Go-syntax representation of the value
+  (floating-point infinities and NaNs print as ±Inf and NaN)
+    + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
+    + `%%` : The way to write a percent `%` sign (without it being interpreted as a verb attempt)
+    + See more in our breakdown of the [fmt](#fmt) package.
+- ``fmt.Println()`` allows to print stuff without bothering with ``%T``, ``%d``...

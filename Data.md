@@ -1102,3 +1102,32 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
     + `%%` : The way to write a percent `%` sign (without it being interpreted as a verb attempt)
     + See more in our breakdown of the [fmt](#fmt) package.
 - ``fmt.Println()`` allows to print stuff without bothering with ``%T``, ``%d``...
+```go
+package main
+
+import "fmt"
+
+/* Declare a single variable */
+var a
+
+/* Declare a group of variables */
+var (
+    b bool
+    c float32
+    d string
+)
+
+func main() {
+  a = 42                  // Assign single value
+  b, c = true, 32.0       // Assign multiple values
+  d = "string"            // Strings must contain double quotes
+
+  e := 5                  // Declare and assign a variable in one go
+
+  const f = 2            //
+  x, y := true, false  // bool
+
+
+  fmt.Println(a, b, c, d) // 42 true 32 string
+}
+```

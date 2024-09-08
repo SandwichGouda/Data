@@ -1152,3 +1152,13 @@ func main() {
       return s,x 
     }
     ```
+- **Naked returns**
+  * If you see a `return` at the end of a function... that's _naked_, i.e. just a `return` without anything right after it (not `return ...`, just `return`), it's a _naked return_. In this case, the return values are specified where the function return value types are specified (at the very beginning, between `(arguments)` and `{code}`). The return variable names are then specified there, and a naked return is possible :
+  * ```go
+    func split(sum int) (x, y int) {
+      x = sum * 4 / 9
+      y = sum - x
+      return
+    }
+    ```
+  * Naked return statements should be used only in short functions, as with the example shown here. They can harm readability in longer functions.

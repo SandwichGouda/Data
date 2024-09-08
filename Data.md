@@ -1131,3 +1131,11 @@ func main() {
   fmt.Println(a, b, c, d) // 42 true 32 string
 }
 ```
+- **Exported names** : As said before, variables, types, and functions declared in a file associated to a package `package` are visible among other source files within the same package. This is actually only partially true : it is only true for **exported names**. Exported names are the names that start with a capital letter. Exported names will be seen from other source files in the same package. For instance, `import "math"` allows to write `math.Pi` to display the value of $\pi$, but `math.pi`won't work.
+- Functions are declared like so :
+  * ```go
+    func add(x int, y int) int {
+      return x + y
+    }
+    ``` 
+- Note that the types are after each argument variables, and the return type of the function (if any)(i.e. : if the function returns something - if the function does not return anything, then nothing shoud be written between `(...args...)` and `{ ... }` is after the arguments of the function.

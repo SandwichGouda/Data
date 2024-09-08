@@ -1139,3 +1139,16 @@ func main() {
     }
     ``` 
 - Note that the types are after each argument variables, and the return type of the function (if any)(i.e. : if the function returns something - if the function does not return anything, then nothing shoud be written between `(...args...)` and `{ ... }` is after the arguments of the function.
+- It is possible to omit the types of some consecutive variables that have the same type but indicating their type only at the last one :
+  * ```go
+    func mul(x, y int, s string) int {
+      fmt.Println("Multiplying", x, "and", y, "together. Additional message :", s)
+      return x*y
+    }
+    ```
+- If the function returns several values (as a tuple), the return should be indicated as follows :
+  * ```go
+    func swap(int x, string s) (string, int) {
+      return s,x 
+    }
+    ```

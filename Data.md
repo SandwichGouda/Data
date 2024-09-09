@@ -1162,3 +1162,40 @@ func main() {
     }
     ```
   * Naked return statements should be used only in short functions, as with the example shown here. They can harm readability in longer functions.
+- Operators : 
+  * `+`, `-`, `*`
+  * If one of its arguments is a `string`, `+` will automatically cast its other argument into a string and concatenate them (as strings). Example : `5 + "i"` returns the string "5i".
+  * The `/` operator rounds up **towards zero**, if both arguments are `int`s, otherwise it'll be a float) : `-1/2` returns 0, `0.5/2` returns `0.25`
+  * The bitwise left shift `<<` (and the bitwise right shift `>>`) do what we expect they do.
+  * Not that for all int types (recall that all int types are fixed-sized, somethimes signed using two's complement, sometimes not)
+- Type conversions : 
+  * The expression `T(v)` converts the value `v` to the type `T`.
+  * Example : `r := float64(5)`
+- Type inference : 
+  * When the types aren't statically precised, they are inferred. 
+  * Examples :
+    + `i := 42` defines an `int`
+    + `f := 3.142` defines a `float64`
+    + `g := 0.867 + 0.5i` defines a `complex128`
+    + Recall that `fmt.Printf("v is of type %T\n", v)` will print the type of `v`
+- Constants
+  * Constants are declared using the `const` **before** the variable.
+  * `const x = 5`
+  * Constants can be character, string, boolean, or numeric values.
+  * Constants cannot be declared using the := syntax.
+  * Constants can also be declared in groups, as with `var`, like so : 
+  * ```go
+    const (
+        a int = 5
+        b     = "a"
+      )
+    ```
+- Go supports chain commands separated by semicolons : 
+  * `x := 0 ; x++ ; fmt.Println(x) ; x++ ; fmt.Println(x)`
+- You can "manipulate" integers that are over $2^63$ in `consts`.
+  * You can define `const big = 1<<100` and even `const big 1<<100 + 1`.
+  * But once defined, constants cannot be edited. 
+  * Doing this, the `const` **does not have a type**. It is an **untyped const**.
+  * You cannot cast them as `int`s because of overflow. 
+  * You cannot `Println` them beccause that requires to convert the `const` to have a type.
+  * You can cast them as `float64`s because... idk why, but it works. It will yield a float of the type `1.2676506002282295e+29`.

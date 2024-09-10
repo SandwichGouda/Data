@@ -1199,3 +1199,50 @@ func main() {
   * You cannot cast them as `int`s because of overflow. 
   * You cannot `Println` them beccause that requires to convert the `const` to have a type.
   * You can cast them as `float64`s because... idk why, but it works. It will yield a float of the type `1.2676506002282295e+29`.
+- For statements : 
+    * ```go
+      for n := 0; n <= 10; n++ {
+          fmt.Println(sum_of_squares(n))
+        }
+      ```
+  * The first and last statements are optional !
+  * ```go
+    sum := 1
+    for ; sum < 1000; {
+      sum += sum
+    }
+      * But at that point... This is just a while loop. You can drop the semicolons !
+    ```go
+    sum := 1
+    for sum < 1000 {
+      sum += sum
+    }
+    ```
+  * Hence, `for` is go's spelling of `while` loops.
+  * You can even do "while true" loops by ommiting everything !
+  * ```go
+    for {
+    }
+    ```
+- If statements 
+  * They can, but need not to, have curly braces arount their condition, and require curly braces.
+  * ```go
+    if n >= 0 {
+      return true
+    }
+    ```
+  * It is possible to add a short statement before the `if` condition. Variables declared in the statement will only exist in the scope of the `if`.
+  * ```go
+    if v := math.Pow(2, 10); x < v {
+      return true
+    }
+    ```
+  * Add an `else` like so :
+  * ```go
+    if v := math.Pow(2, 10); x < v {
+      return true
+    } else {
+      return false
+    }
+    ```
+  * Variables declared inside an if short statement (i.e. in the short statement between the `if` keyword and the short statement condition) are also available inside any of the else blocks.

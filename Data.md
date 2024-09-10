@@ -1246,3 +1246,43 @@ func main() {
     }
     ```
   * Variables declared inside an if short statement (i.e. in the short statement between the `if` keyword and the short statement condition) are also available inside any of the else blocks.
+- Switches
+  * They work like so
+  * ```go
+    switch p := n; p {
+      case 0:
+        fmt.Println("aa")
+        return true
+      case 1:
+        return true
+      default:
+        return false
+      }
+    ```
+  * You can write short statements as in `if`s, as seen earlier.
+  * Note that it's kinda weird that Go suddently uses colons to indicate the content of the `case`s, while still using curly braces for `if`s, `for`s... ¯\_(ツ)_/¯
+  * Note that `switch true` allows to write long if-elif-elif chains :
+  * ```go
+    t := time.Now()
+    switch true {
+    case t.Hour() < 12:
+      fmt.Println("Good morning!")
+    case t.Hour() < 17:
+      fmt.Println("Good afternoon.")
+    default:
+      fmt.Println("Good evening.")
+    }
+    ```
+  * This tests every condition and runs the appropriate one. _Bref_, this is a is-elif-elif chain.
+  * Hence, in this `true` can be ommited : `switch {...}` is the same as `switch true {...}`
+  * ```go
+    t := time.Now()
+    switch {
+    case t.Hour() < 12:
+      fmt.Println("Good morning!")
+    case t.Hour() < 17:
+      fmt.Println("Good afternoon.")
+    default:
+      fmt.Println("Good evening.")
+    }
+    ```

@@ -1286,3 +1286,26 @@ func main() {
       fmt.Println("Good evening.")
     }
     ```
+- Defers
+  * The `defer` keyword defers (this means : postpones) the execution of a function to after the current function returns.
+  * The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+  * ```go
+    func main() {
+      defer fmt.Println("world")
+
+      fmt.Println("hello")
+    }
+    ```
+  * When having several `defer`s, their function calls are pushed onto a stack.
+  * Hence, they will be executed in reverse order.`
+  * ```go
+    func main() {
+      fmt.Println("counting")
+
+      for i := 0; i < 10; i++ {
+        defer fmt.Println(i)
+      }
+
+      fmt.Println("done")
+    }
+    ```

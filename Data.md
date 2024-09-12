@@ -1309,3 +1309,30 @@ func main() {
       fmt.Println("done")
     }
     ```
+- Pointers
+  * The type `*T` is the type "Pointer to a value of type `*T`"
+  * The `&` operator returns a pointer to its operand.
+  * i.e., if `x` is anything, `&x` will return a pointer to `x`.
+  * The `*` operator returns the pointer's underlying value.
+  * i.e., if `x` is _a pointer_, `*x` returns the value `x` points to.
+  * This is known as "dereferencing" or "indirecting".
+  * Unlike C, Go has no pointer arithmetic.
+  * By definition, if `p` points to `x`, it changes pretty much nothing to manipulate `*p` or `x` (whether it be in reading access or writing access)
+- Structs
+  * A struct is a collection of fields. If is analoguous to the constructuon `type` in OCaml.
+  * Example : 
+  * ```go
+    type Vertex struct {
+      X int
+      Y int
+    }
+
+    fmt.Println(v := Vertex{1,2},v.X,v.Y)
+    v1 = Vertex{1, 2}  // has type Vertex
+	  v2 = Vertex{X: 1}  // Y:0 is implicit
+	  v3 = Vertex{}      // X:0 and Y:0
+	  p  = &Vertex{1, 2} // has type *Vertex
+    fmt.Println(v1,v2,v3,p,*p)
+    ```
+  * If you have a pointer `p` to a struct `v`, you can access the fields of `v` with `(*p).field`.
+  * This is kind of cumbersome. Hence, Go allows to access these using `p.X`, without explicit dereference.

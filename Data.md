@@ -1336,3 +1336,18 @@ func main() {
     ```
   * If you have a pointer `p` to a struct `v`, you can access the fields of `v` with `(*p).field`.
   * This is kind of cumbersome. Hence, Go allows to access these using `p.X`, without explicit dereference.
+- Arrays
+  * The type `[n]T` is an array of n values of type `T`.
+  * Declaration and initialization go as follows : 
+  * ```go 
+    var a [3]int 
+    var b [3]int = [3]int{1,2,3}
+    var c = [3]int{1,2,3}
+    d := int[3]{1,2,3}
+    ```
+  * `a[i]` then accesses the i-th element of `a`.  
+  * An array's length is part of its type, so arrays cannot be resized. Slices offer a dynamic solution to this problem/
+  * You can get the length of an array with `len(arr)`.
+- Slices 
+  * An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
+  * The type `[]T` is a slice with elements of type `T`.

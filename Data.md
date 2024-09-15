@@ -1351,3 +1351,32 @@ func main() {
 - Slices 
   * An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
   * The type `[]T` is a slice with elements of type `T`.
+
+### fmt
+
+Printf, all %... verbs
+Println, \n  support
+
+### math
+
+MaxInt uint64     = 1<<64 - 1
+z      complex128 = cmplx.Sqrt(-5 + 12i)
+
+#### math/cmplx
+
+math.Sqrt(x)
+Sqrt(-2)
+Sqrt(-5 + 12i)
+
+#### math/rand
+
+rand.Intn(10)
+Mod
+Power
+
+#### time
+
+today := time.Now().Weekday()
+time.Saturday 
+today + 0:
+today + 2:

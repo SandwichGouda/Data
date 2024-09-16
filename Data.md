@@ -1380,3 +1380,32 @@ today := time.Now().Weekday()
 time.Saturday 
 today + 0:
 today + 2:
+
+### Go interpreters 
+
+#### Yaegi
+
+- Yaegi is a Go interpreter made my [Traefik Labs](https://github.com/traefik/yaegi).
+- Yaegi stands for "Yaegi is Another Elegant Go Interpreter". :O
+- It can have some bugs (but not too much, at least not for a simple usage of Go.
+- **Installation :**
+  * As a Go package
+    + `import "github.com/traefik/yaegi/interp"`
+  * As a Command-line executable
+    + `go install github.com/traefik/yaegi/cmd/yaegi@latest`
+    + Or `sudo apt install yaegi`
+    + Note that you can use `rlwrap` (install it `apt` or any other package manager), and alias the `yaegi` as `rlwrap yaegi` in `~/.bashrc`, to have history and command line edition.
+    + Otherwise the history won't be accessible.
+  * For CI integration
+    + `curl -sfL https://raw.githubusercontent.com/traefik/yaegi/master/install.sh | bash -s -- -b $GOPATH/bin v0.9.0`
+- The go interpreter command prompt is... kinda shitty by default 
+  * (unable to use arrow keys, no command history...)
+  * Use rlwrap to bypass this issue :)
+- It doesn't always work quite well. 
+  * Try compiling the following code
+  * ```go
+    	primes := [6]int{2, 3, 5, 7, 11, 13}
+	    var s []int = primes[1:4]
+    ```
+  * And then try to interpret it with yaegi. 
+  * ...it doesn't work.

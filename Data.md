@@ -1415,3 +1415,13 @@ today + 2:
 - https://github.com/labstack/echo
 - https://echo.labstack.com/
 - https://echo.labstack.com/docs/quick-start
+
+## Python 
+
+### Python virtual environments
+
+```
+python3 -m venv .venv (on signale qu'on utilise un module depuis python)
+source .venv/bin/activate
+
+pip install ..., pip install ..., ...

@@ -1426,3 +1426,18 @@ pip install ..., pip install ..., ...
     - ``wsl --set-default-version 2`` sets up WSL's default version to WSL _2_, which can get it to work
     - ``wsl.exe --update`` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
+
+### Windows Powershell
+
+- Variables d'environnement
+  * Pour afficher une variable d'environnement, par exemple (au hasard) PATH : ``echo $env:path``
+  * Pour toutes les afficher : ``gci env:``, ou ``ls env:`` (``gci`` est l'alias de ``Get-ChildItem``, comme ``ls``)
+- ``systeminfo`` sur Windows pour avoir des informations sur le système
+- Infinite loop in PowerShell : ``while ($true) { DoStuff } ``
+- Infinite loop in ``cmd`` (or batch script) : ``for /l %n in (1,0,10) do (DoStuff)`` for instance (for loop, from 1, to 0, with increment 10)(lol)
+- Shutting down :
+  * ``shutdown | shutdown /?``  to show help
+  * ``shutdown /t 0`` to shutdown now
+  * ``shutdown /r`` to reboot
+  * ``shutdown /r /t 0`` to reboot now
+  * ``shutdown /a`` to cancel planned shutdown

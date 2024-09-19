@@ -1441,6 +1441,7 @@ pip install ..., pip install ..., ...
     - ``wsl --set-default-version 2`` sets up WSL's default version to WSL _2_, which can get it to work
     - ``wsl.exe --update`` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
+- WSL is very cool, but not for computer notworking. Use Linux.
 
 ### Windows miscellaneous information
 

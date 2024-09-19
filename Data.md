@@ -1414,7 +1414,6 @@ pip install ..., pip install ..., ...
 
 ## Windows 
 
-
 ### Windows Powershell
 
 - Variables d'environnement
@@ -1442,3 +1441,9 @@ pip install ..., pip install ..., ...
     - ``wsl --set-default-version 2`` sets up WSL's default version to WSL _2_, which can get it to work
     - ``wsl.exe --update`` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
+
+### Windows miscellaneous information
+
+- Open the Run Command dialog (``WIN+R``) and type ``shell:AppsFolder``to get a pretty exhaustive list of installed apps/softwares on the OS. Very useful for setting up a shortcut to open them (WhatsApp for instance) ! Create a shortcut, ``sh.lnk`` for instance, place it somewhere accessible from the PATH environment variable (``~`` for instance) and typing ``sh`` in the Run Command dialog (``WIN+R``) will open it !
+- Paint is opened with the ``mspaint.exe`` executable file located in `` C:\WINDOWS\system32``, which is in the PATH environment variable : ``WIN+R`` and ``mspaint`` opens it.
+- If, especially when trying to backup, some folders like Pictures, Videos, Documents... don't appear in the `~`, they may be in `~/OneDrive` (i.e., OneDrive has been configured on this hard drive)! (cf. Adventures with Paola and her hard drive)

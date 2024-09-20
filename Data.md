@@ -1448,3 +1448,26 @@ pip install ..., pip install ..., ...
 - Open the Run Command dialog (``WIN+R``) and type ``shell:AppsFolder``to get a pretty exhaustive list of installed apps/softwares on the OS. Very useful for setting up a shortcut to open them (WhatsApp for instance) ! Create a shortcut, ``sh.lnk`` for instance, place it somewhere accessible from the PATH environment variable (``~`` for instance) and typing ``sh`` in the Run Command dialog (``WIN+R``) will open it !
 - Paint is opened with the ``mspaint.exe`` executable file located in `` C:\WINDOWS\system32``, which is in the PATH environment variable : ``WIN+R`` and ``mspaint`` opens it.
 - If, especially when trying to backup, some folders like Pictures, Videos, Documents... don't appear in the `~`, they may be in `~/OneDrive` (i.e., OneDrive has been configured on this hard drive)! (cf. Adventures with Paola and her hard drive)
+
+## SSH
+
+### How SSH works
+
+- Cryptography (in general) must ensure the three following fundamental principles : 
+  * **Authenticity** : The person who talks _is indeed_ who they pretend they are. No one can steal anyone's identity.
+  * **Confidentiality** : The message is encrypted and sent publicly, with anyone being able to catch it, hear it, having access to it and being able to read it, but no one except the intended recipient is able to decipher it.
+  * **Integrity** : The message recieved _is ideed_ (exactly) the one sent. No transmission errors, or channel attacks, can happen.
+- SSH provides ability to communicate to distant machines (often servers) in a totally secure and encrypted manner.
+- SSH relies on the **asymmetric encrypting** principle. This principle is described as follows :
+  * Alice and Bob want to communicate. Alice has a private-key public-key pair (and so does Bob, if Bob wants to communicate back).
+  * When sending a message to Bob, Alice encrypts it using her private key.
+  * Then, Bob can decypher it using **Alice's public key**
+- Hash maps are created such that : 
+  * Only the person who has the private key can encrypt a message that can be decoded using their public key.
+  * Consequently, since the private key is kept private (and only if the private key was able to be kept private), if Bob is able to decrypt a message using Alice's public key, then he can be certain that it is indeed Alice who encrypted it : in other words, that the message was indeed sent by Alice.
+  * Note : Mathematicallt, the private and public keys play symmetric roles. It could theoretically be possible to swap them. The fact that the private key is kept private is what breaks the symmetry, in terms of usage : the fact that the private key is kept private ensures **Authenticity**.
+- This way, SSH ensures **authenticity** of encrypted data. 
+- Confidentiality and Integrity are implemented simultaneously, and (simultaneously) also ensured by SSH.
+- SSH uses TCP port 22.
+- If (on WSL for instance) ssh tells you that it doesn't have the permissions ti use the key (or thinks you're not the real owner), use ``chmod 600 ~/.ssh/privatekay`` (and ``chmod 600 ~/.ssh/publickey``, tant qu'on y est) to open the permissions.
+- SSH uses an _SSH Agent_ to find the the 

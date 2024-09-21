@@ -1490,3 +1490,52 @@ pip install ..., pip install ..., ...
   * In practice, no one does that. We just type "yes". 
   * The _public-key_-_ip address_ pair (a hash of it, actually) is then stored in the ``known_host`` file. (It adds one line to the file, the fact that they are paired is made by the fact that they are on the same line). 
   * Your machine then knows that this remote host is trustworthy and it won't ask this a second time.
+
+### SSH Config files
+
+- An SSH config allow to win time by pre-configuring some SSH parameter to connect to distant servers quicker without having to write the same command over and over again.
+- An SSH config must be written in a (text) file, either :
+  * named ``config`` and located in ``~/.ssh/``
+  * or named ``ssh_config`` and located in ``/etc/ssh/ssh_config`` (on Linux)
+- Example :
+```
+Host ssh.enst.fr
+  Hostname ssh.enst.fr
+  User driot-23
+  IdentityFile ~/.ssh/ed
+
+Host bulledev
+  Hostname bulle-ssh.rezel.net
+  User dev
+  IdentityFile ~/.ssh/ed
+  ProxyCommand ssh -W %h:%p ssh.enst.fr
+
+Host bulle
+  Hostname bulle-ssh.rezel.net
+  User root
+  IdentityFile ~/.ssh/ed
+  ProxyCommand ssh -W %h:%p ssh.enst.fr
+
+Host pace
+  Hostname 137.194.13.180
+  User root
+  IdentityFile ~/.ssh/ed
+```
+- Uppercase first letters are mandatory.
+- ``Hostname``, ``User``, ``IdentityFile`` are self-explanatory...
+- ``ProxyCommand`` specifies the command to use to connect to the server. (...)
+  * The command string extends to the end of the line, and is executed using the user's shell ‘exec’ directive to avoid a lingering shell process. (...)
+  * ``ProxyCommand ssh -W %h:%p ssh.enst.fr`` can be used to automate the connection to a SSH bridge. (What does -W do though ?)(...)
+- ProxyJump too, but easier. 
+  * ``ProxyJump user@host:port``
+- ``ProxyCommand`` and ``ProxyJump`` accept [TOKENS](https://man.openbsd.org/ssh_config#TOKENS) :
+  * ``%h`` : will be replaced by the Host
+  * ``%n`` : will be replaced by the original remote hostname, as given on the command line.
+  * ``%p`` : will be replaced by the remote Port.
+  * ``%r`` : will be replaced by the remote Username.
+  * ``%%`` : will be replaced by ``%``
+  * ProxyCommand and ProxyJump do not accept any other [TOKENS  described by the Documentation](https://man.openbsd.org/ssh_config#TOKENS)
+  * There exists other tokens.
+- **Documentation** : 
+  * https://man.openbsd.org/ssh_config
+  * https://man.openbsd.org/ssh_config#ProxyCommand

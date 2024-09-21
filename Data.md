@@ -1470,4 +1470,23 @@ pip install ..., pip install ..., ...
 - Confidentiality and Integrity are implemented simultaneously, and (simultaneously) also ensured by SSH.
 - SSH uses TCP port 22.
 - If (on WSL for instance) ssh tells you that it doesn't have the permissions ti use the key (or thinks you're not the real owner), use ``chmod 600 ~/.ssh/privatekay`` (and ``chmod 600 ~/.ssh/publickey``, tant qu'on y est) to open the permissions.
-- SSH uses an _SSH Agent_ to find the the 
+- SSH uses an _SSH Agent_ to find the keys
+
+### SSH usage
+
+- ``ssh -i "~/.ssh/privatekey_filename" user@[IPv4 or IPv6 address, or domain name]``
+- ``ssh -i "~/.ssh/privatekey" user@hostname -J -i "~/.ssh/privatekey" user@ssh-bridge``
+( u)
+- Note : if something doesn't work, check that you have specified a private key (and that it's the right one)
+- When using an SSH bridge, both what is sent by you to the ssh bridge _and_ what is sent by the ssh bridge to the desired distant host are encrypted with your private key. Actually, the private keys can be configured to be different (just set different keys in the command), but the ssh bridge will not use any key located on their storage. You must specify (and give) both keys.
+- The **authorized_keys** file : 
+  * It is located in ``~/.ssh/``, on the appropriate user (there is one per user, it will correspond to the user you connect to when you use ``user@host``)
+  * It lists all public keys that are allowed to connect to the server (to the host (machine) and user concerned).
+  * You typically have to contact the server administrator for him to add your public key in this file for you to be able to connect.
+- The **known_host** file : 
+  * It is located in ``~/.ssh/``, but (typically) on _your_ machine.
+  * It lists _public-key_-_ip address_ pairs, to avoid man-in-the-middle attacks (in the form of hashs computed using the SHA256 (or another) hash map)
+  * When a machine connects to an IP address for the first time, the terminal (OpenSSH) tells something like : "Are you sure you want to connect to this host ? Here is (a hash of) the remote host's public key". The idea is that you should then contact the server administrator to make sure this fingerprint is actually the one of the server you want to connect to : to avoid a man-in-the-middle attack, i.e. to avoid connecting to the wrong remote host. 
+  * In practice, no one does that. We just type "yes". 
+  * The _public-key_-_ip address_ pair (a hash of it, actually) is then stored in the ``known_host`` file. (It adds one line to the file, the fact that they are paired is made by the fact that they are on the same line). 
+  * Your machine then knows that this remote host is trustworthy and it won't ask this a second time.

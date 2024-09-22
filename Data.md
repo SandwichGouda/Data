@@ -1539,3 +1539,13 @@ Host pace
 - **Documentation** : 
   * https://man.openbsd.org/ssh_config
   * https://man.openbsd.org/ssh_config#ProxyCommand
+
+### SCP
+
+- Usage : 
+  * ``scp -i "path/to/key" user@[IP Address]`` (Brackets are optional)
+  * ``scp -i "path/to/key" [filename | path/to/filename] user@[IP Address]:desired/path/to/file`` (First brackets are unnecessary (maybe even command-breaking), second brackets are mandatory)(Also, it is possible to change the filename in the process : ``desired/path/to/newfilename.fileextension``. In other words, ``file`` can be different from the original filename (the new file created will then have this name). Specifying no file name (that is, ``desired/path/to/file/``, with the path **ending in a ``/``**) will keep the file name)
+  * **To copy (whole) directories** : ``scp (-i ...) -r foolder/* root@pace-lxc.rezel.net:~/``. The ``*`` wildcard is optional.
+- SHA256 (et SHA512, SHA1, ...) sont des fonctions de hashage.
+- **authorized_keys** : C'est le fichier, situé dans ``~/.ssh/`` d'un serveur, qui dit les clés publiques qui sont autorisées à se connecter à un certain user. 
+  * Un client peut se connecter à un serveur en SSH au user ``utilisateur`` si (et seulement si) sa clé publique se situe dans le ``authorized_keys`` de l'utilisateur, autrement dit dans le fichier ``/home/utilisateur/.ssh/authorized_keys``. 

@@ -1607,3 +1607,26 @@ Cryptography is about protecting and piercing secrets. Cryptography algorithms u
   * Both people don’t share the same secret (they have different keys)
   * It is more secure, but slower. 
   * Most commonly used schemes are broken by quantum-computers
+
+#### Symmetric cryptography
+
+Data is encrypted and decrypted with the same key (and the same algorithm)
+It works with a function : $ s : (\mathrm{key},\mathrm{message}) \to s(\mathrm{key}, \mathrm{message}) $ and a key.
+- Substitution method
+  * Sherlock Holme's alphabet : choose another alphabet, i.e. a bijection between the latin alphabet and another set of symbols ; then write the message using the other alphabet.
+- Caesar's encryption is a particular case of symmetric cryptography (where the key is a single number : "5", for instance).
+  * Bruteforce cracks Caesar's encryption, frequency analysis too, even faster.
+- Vigenère's encryption : : We use a key, say "HELLOWORLD", and then
+  * Encrypt the 1st letter with the wheel that sends A onto H
+  * Encrypt the 2nd letter with the wheel that sends A onto E
+  * Encrypt the 3rd letter with the wheel that sends A onto L
+  * Encrypt the 4th letter with the wheel that sends A onto L
+  * Encrypt the 5th letter with the wheel that sends A onto O
+  * Encrypt the 6th letter with the wheel that sends A onto W
+  * Encrypt the 7th letter with the wheel that sends A onto O
+  * Encrypt the 8th letter with the wheel that sends A onto R
+  * ...
+  * (More complex) statistical methods can be used to try to crack it.
+- **Block cyphering ? Pourquoi il y a pas le même nombre de clés que de blocks ?**
+- **Modes ?**
+- AES : https://cryptohack.org/challenges/aes/-

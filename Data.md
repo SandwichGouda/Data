@@ -1595,3 +1595,15 @@ Host pace
   * CSP : complicated, we'll see that later
 - To put payload into URLs, you must use URL encoding : ``urlencoder.org``. This can also be used for URL decoding. More generally, to inject text into URLs, you must encode things into the right "URL format". Otherwise things dont work. 
 - The ``eval()`` function in JavaScript is very dangerous in terms of security. Avoid it (voire : banish it).
+
+### Cryptography
+
+Cryptography is about protecting and piercing secrets. Cryptography algorithms use keys to encrypt messages.
+- **Symmetric cryptography** :  Both people who want to talk share the same secret (the same key). 
+  * Information symmetry
+  * Security depends on key exchange process + encryption algorithm
+  * It is faster, but less secure : hence, needs bigger keys. It is hard to scale up (taking bigger (prime) numbers isn't enough, you need more work for things to work out)
+- **Asymmetric cryptography**
+  * Both people don’t share the same secret (they have different keys)
+  * It is more secure, but slower. 
+  * Most commonly used schemes are broken by quantum-computers

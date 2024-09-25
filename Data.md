@@ -1630,3 +1630,47 @@ It works with a function : $ s : (\mathrm{key},\mathrm{message}) \to s(\mathrm{k
 - **Block cyphering ? Pourquoi il y a pas le même nombre de clés que de blocks ?**
 - **Modes ?**
 - AES : https://cryptohack.org/challenges/aes/-
+
+### Reverse
+
+If you have the code source of a compiled binary file, it is easy to understand what the code is used to. 
+
+Reminder : Compilation chain
+- Compiler (gcc, g++) : ``.c``, ``.cpp``, ``.h`` -> ``.s``
+- Assembler (as) : ``.s`` -> ``.o``
+- Linker (ld) ``.o`` -> ``.exe``
+- CISC Architectires : (x86/Intel, AMD)
+- RISC Architectures : (ARM, MIPS, RISC-V)
+To train reversing : Crackme challenges.
+It is easier on Linux to have these : VirtualBox
+- Static approach : using a decompiler (Ghidra,Cutter) to reverse machine code into [source code](...)
+- Dynamic : Run the binary with debugger ([gdb](https://www.sourceware.org/gdb/), GNU Project Debugger) to inspect memory, registers and the execusion of the code
+- Always start with a static approach
+  * Use ``file`` on an executable file to get th
+  * Use ``strings`` to display all strings located in the executable file. If there is a password hidden it, it can be
+  * Note : in reality 
+  * Use Ghidra to try to (statically) un
+- If the static approach isn't enough, you can use gdb
+  * You can mix both approaches : Use gdb, set breakpoints, find a function, and decompile it using a _static_ approach (Ghidra), swtich back to the dynamic
+  * More generally you can switch between tools to get more diversified results :)
+
+### Steganography
+
+Hiding data into data : changing certain pixels in an image to 
+
+### Forensic
+
+Understanding what happened in 
+
+### Network
+
+Wireshark is your friend. 
+
+### OSint
+
+Some information is public, but hidden.
+
+### Other
+
+- Pentesting, IMSI Catcher, ...
+- root.me, hackthebox, Cryptohack (for crypto, very pedagogic, more than root.me), Ozint ; practice !

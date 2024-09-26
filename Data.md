@@ -1674,3 +1674,16 @@ Some information is public, but hidden.
 
 - Pentesting, IMSI Catcher, ...
 - root.me, hackthebox, Cryptohack (for crypto, very pedagogic, more than root.me), Ozint ; practice !
+
+## Virtualization 
+
+https://fr.wikipedia.org/wiki/Virtualisation
+
+### Containers and virtual machines
+
+- A virtual machine is a software that simulates a computer. The computer emulates the kernel along with everything else, and the VM makes syscalls everytimes it needs.
+
+### ProxmoxVE
+
+- The local and local-zfs are storages that correspond to the hypervisors. 
+- When creating a container, the Proxmox (UI) Network configuration is reset whenever realoading the container.

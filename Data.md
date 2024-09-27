@@ -1687,3 +1687,26 @@ https://fr.wikipedia.org/wiki/Virtualisation
 
 - The local and local-zfs are storages that correspond to the hypervisors. 
 - When creating a container, the Proxmox (UI) Network configuration is reset whenever realoading the container.
+
+## Git
+
+### Creating a repo
+
+- Initialize a local repo with `git init`. 
+  * **Note :** The repo will then not have any commits. 
+  * Start by committing (with commit message "Initial commit", to respect the tradition) to have a commit on the main branch.
+  * Don't mess around too much creating new branches without having any commits. :)
+- You can also clone a distant repo and commit to it.
+  * The repo can be empty, it can have been created from a web UI. This is practice that prevents errors.
+
+### Git branches
+
+- `git branch` or `git branch --list` lists branches.
+- `git branch <branchname>` create a branch with name `<branchname>`
+- Whe non branch `branch1`, `git branch -m branch2
+
+### Git rebase
+
+### Git remotes
+
+### Git credentials

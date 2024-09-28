@@ -1710,3 +1710,30 @@ https://fr.wikipedia.org/wiki/Virtualisation
 ### Git remotes
 
 ### Git credentials
+
+#### SSH
+
+- You can use SSH to interact with your remote repo with quite a lot of ease.
+- For this, just put your public key in the settings on the website where the GitHub repo is (it could be GitHub (github.com), or git/gitlab/gitea.yourcompany.com, ...).
+- Then, if you have writing rights on the repo, you should be able to push.
+
+### Git CICD
+
+#### GitHub Actions
+
+[#### ?] (that other thing)(if it exists ?)
+
+### Git miscellaneous information
+
+- ``Your configuration specifies to merge with the ref 'refs/heads/dev-prod' from the remote, 
+``but no such ref was fetched.`` happens when you try to pull from a branch that doesn't exist. 
+- Git credentials : 
+  * When using Github, Gitlab or Gitea : if you try to push using HTTP, it should likely ask for your Git(Hub/Lab/Tea) credentials.
+  * If you don't have any credientials (on ``git.rezel.net`` or ``gitlab.telecom-paris.fr`` for instance : connecting using SSO), you can generate acces tokens from the Settings panel. Then connect using your username (git.[...]/username/repo)
+- When git is installed on a given machine, it must have set up a username and a email (that will correspond to the user that'll use Git in this machine). 
+  * Set up the email with ``git config --global user.email "email@domain.com"``
+  * Set up the username with ``git config --global user.name "username"``
+  * When this is set up, appear as done by you : ``Author: William Driot <william.driot@gmail.com>``
+  * **You can set up a username and email for a repo only**
+    + This is useful for specific projects
+    + Just remove the ``--global`` flag (and execute the commands in the right repo) : ``git config user.email "email@domain.com"``, ``git config user.name "username"``

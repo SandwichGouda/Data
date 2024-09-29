@@ -1737,3 +1737,50 @@ https://fr.wikipedia.org/wiki/Virtualisation
   * **You can set up a username and email for a repo only**
     + This is useful for specific projects
     + Just remove the ``--global`` flag (and execute the commands in the right repo) : ``git config user.email "email@domain.com"``, ``git config user.name "username"``
+
+## Computer architecture
+
+### Storage types
+
+Storage Drives can be either :
+- SSD or HDD
+  * This refers to the storage type. 
+  * SSD is faster than HDD.
+- PCIe or SATA : 
+  * This refers to the bus connection standard (≃ protocol, roughly).
+  * PCIe is faster than SATA.
+Note that, in particular, "SATA SSD" Drives exist. SATA and SSD aren't exclusive.
+Fun fact : PCIe SSD is cheaper than SATA SSD !
+
+### Character encoding
+
+#### ASCII
+
+#### UTF-8
+
+#### Unicode
+
+What "is a code point" ? (...)
+
+#### Other ways of encoding / other encoding tables
+
+ANSI ?
+
+Exercise : Find the characters that break the ``EditSummary`` script (they are it the ``Editsummary`` file)
+
+#### Building a server
+
+-  The alimentation typically has three cables connected to it :
+  * The "24 pins" : it powers the motherboard
+  * The "4 pins : it powers the CPU. If the motherboard has (can have) two CPUs, there should be two of these next to eachother. It often reads "CPU".
+  * The "... pins" : it must be connected to the GPU.
+  * The ends that read "PSU" mean "Power Supply" : This end must be connected to the power supply.
+- The motherboard must be connected to several things. Often, it includes :
+  * The USB cable : (image)
+  * The LEDs : (three things)
+  * The power supply
+- The cable 
+
+### Other
+
+- se203.telecom-paris.fr

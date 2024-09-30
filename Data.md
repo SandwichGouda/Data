@@ -1784,3 +1784,85 @@ Exercise : Find the characters that break the ``EditSummary`` script (they are i
 ### Other
 
 - se203.telecom-paris.fr
+
+## Computer networking - Theory
+
+Note : Wireshark is your friend ! :)
+
+### The OSI Model
+
+The Open Systems Interconnection (OSI) model is a (reference) model from the International Organization for Standardization (**ISO**) that provides a separation of functionalities necessary for computer communications to work properly. The whole Computer Networking system is split into seven different abstraction layers : 
+- Layer 1 : Physical layer
+- Layer 2 : Data Link layer 
+- Layer 3 : Network layer
+- Layer 4 : Transport layer
+- Layer 5 : Session layer
+- Layer 6 : Presentation layer
+- Layer 7 : Application layer
+
+#### Layer 1 - Physical layer
+
+The physical layer is responsible for the transmission and reception of data between a device and a physical transmission medium. It converts the digital bits into electrical, radio, or optical signals. Voltage levels, timing of voltage changes, physical data rates, maximum transmission distances are specified at this layer. 
+
+**Network Interface Controllers** (NICs, i.e. computer hardware components that connect a computer to a network : Ethernet ports, Wi-Fi cards, ...) and **Transmission media** (optical fibers, air for radio signals...) are systems that operate on the Physical layer (note : media is the plural of medium). 
+
+It may also define transmission modes as simplex (only one person speaks, everyone else listens), half duplex (one person speaks at a time ; you can't talk is someone else is already talking, and if no one's talking, you can start talking and everyone will be hearing. Basically the **Talkie-Walkie** way of talking, in a nutshell.), and full duplex (everyone can speak and listen to anyone simultaneously at any given moment). 
+
+The physical layer also specifies how encoding occurs over a physical signal, such as electrical voltage or a light pulse. For example, a 1 bit might be represented on a copper wire by the transition from a 0-volt to a 5-volt signal, whereas a 0 bit might be represented by the transition from a 5-volt to a 0-volt signal. As a result, common problems occurring at the physical layer are often related to the incorrect media termination, noise scrambling, and Network Interface Controllers (NICs) and hubs that are misconfigured or do not work correctly.
+
+#### Layer 2 - Data Link layer
+
+The data link layer provides node-to-node data transfer—a link between two directly connected nodes. It detects and possibly corrects errors that may occur in the physical layer. It defines the protocol to establish and terminate a connection between two physically connected devices. It also defines the protocol for flow control between them. It basically operates everything needed for a network to properly function, for end points being able to connect to them and talk on them, and packet redirection between two nodes that are on the same network. 
+
+**Switches** are devices that operate at the Data Link layer.
+**Ethernet** (II) is an (the) ubiquitous protocol that operates at this layer.
+
+The IEEE divides the data link layer into two sublayers :
+- Medium access control (MAC) sublayer, responsible for controlling how devices in a network gain access to a medium and permission to transmit data.
+- Logical link control (LLC) sublayer, responsible for identifying and encapsulating network layer protocols, and controls error checking and synchronization.
+
+#### Layer 3 - Network layer
+
+The network layer provides what's needed to transfer packets from one _point_ to another, connected in different networks. There is a usual semantic distinction between what we call a _point_ and an _end_ :
+- A _network node_ refers to any hardware (or virtual !) device that's able to recieve and/or send data : a computer, a switch, a router, ...
+- Point-to-point transmission means sending a data packet from a network node to another one that's connected on the same network (with eventual switches standing in the midst). No routers are involved.
+- End-to-end transmission means transmitting data packets between two network nodes that are not necessarily on the same network : routers are then involved.
+If the message is too large to be transmitted from one node to another on the data link layer between those nodes, the network may implement message delivery by splitting the message into several fragments at one node, sending the fragments independently, and reassembling the fragments at another node. This is typically done in the IP Protocol. Message delivery at the network layer is not necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it does not need to do so.
+
+**Routers** are uniquitous that operate on the Network layer.
+**Internet Protocol** (IP) is an ubisuitous third-layer protocol.
+
+#### Layer 4 - Transport layer
+
+The protocols of this layer provide end-to-end communication services between applications. Services provided by this layer include :
+- Reliability : Resending packets lost during transport due to network congestion and errors, with error detection code, such as a checksum, to check that the data is not corrupted, and verification correct receipt by sending an ACK or NACK message to the sender. Automatic repeat request schemes may be used to retransmit lost or corrupted data.
+- Flow control
+- Congestion control and avoindance : Congestion control controls traffic entry into a network, so as to avoid congestive collapse by attempting to avoid overwhelming any of the processing or link capabilities of the intermediate nodes. For instance, in can reduce the rate of sending packets. Automatic repeat requests may keep the network in a congested state; this situation can be avoided by adding congestion avoidance to the flow control, like slow start. This keeps the bandwidth consumption at a low level in the beginning of the transmission, or after packet retransmission.
+- Multiplexing : Ports are the abstraction that allows to provide multiple endpoints on a single node, in the same way that the name on a postal address is a way of implementing multiplexing to distinguish between different recipients of the same location. Computer applications will each listen for information on their own ports, which enables the use of more than one network service at the same time. Actually, some people say that this is part of the transport layer in the TCP/IP model, but of the session layer in the OSI model.
+- Connection-oriented communication :
+
+Some people make a distinction between :
+- The transport layer (layer 4) of the OSI model
+- The protocols used for the Internet that originated in the development of TCP/IP, referring to them as the Internet Protocol suite or "TCP/IP". Numbered layers are not used in TCP/IP.
+
+**Transmission Control Protocol** (TCP) and **User Datagram Procotol** (UDP) are the best-known transport protocol of the Internet protocol suite. 
+
+TCP is for connection-oriented transmissions, whereas UDP is connexionless (Fire And Forget) and used for simpler messaging transmissions.
+
+TCP is more complex since it implements reliable transmission, package recovery (resending), ... . Together, TCP and UDP comprise essentially all traffic on the Internet and are the only protocols implemented in every major operating system. Additional transport layer protocols that have been defined and implemented include the Datagram Congestion Control Protocol (DCCP) and the Stream Control Transmission Protocol (SCTP).
+
+#### Layer 5 - Session layer
+
+The session layer provides the mechanism for opening, closing and managing a session between end-user application processes, i.e., a semi-permanent dialogue. It implements connection establishment and release, i.e. ability to establish a connection, called a session, and allows orderly release of the connection.
+
+#### Layer 6 - Presentation layer
+
+The presentation layer serves as the data translator for a network. It ensures the information that the application layer of one system sends out is readable by the application layer of another system. 
+- On the sending system, it converts data into to standard, transmittable formats.
+- On the receiving system, translates, formats, and delivers information (for processing or display).
+
+Encryption and Decryption are typically done at this level too,[9] although it can be done on the application, session, transport, or network layers, each having its own advantages and disadvantages. For example, when logging on to bank account sites the presentation layer will decrypt the data as it is received.
+
+#### Layer 7 - Application layer
+
+The application layer is the top layer, the one that contains most of the human-machine interfaces. Its definition varies between the OSI Model and the Internet Protocol suite. Essentially, the application layer is where everything related to user-facing application occurs.

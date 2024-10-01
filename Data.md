@@ -1866,3 +1866,75 @@ Encryption and Decryption are typically done at this level too,[9] although it c
 #### Layer 7 - Application layer
 
 The application layer is the top layer, the one that contains most of the human-machine interfaces. Its definition varies between the OSI Model and the Internet Protocol suite. Essentially, the application layer is where everything related to user-facing application occurs.
+
+### Layer 2 networking
+
+Switches
+
+### Layer 3 networking
+
+Routers
+- ``ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]``
+- One MAC per interface.
+- Never use DHCP for routers !
+- ``ip link set dev [interace] up`` to up an interface
+
+### Layer 6 networking
+
+The standard protocol for cyphering data over the internet is TLS (Transport Layer Security). Its predecessor was SSL (Secure Sockets Layer). TLS is used to cypher HTTPS, mails, ...
+One can say that HTTPS is basically HTTP + TLS
+
+### Networking protocols 
+
+#### Link layer
+
+[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
+
+##### ARP 
+
+##### Tunnels
+
+##### PPP 
+
+##### MAC
+
+##### IPv4
+
+##### IPv6
+
+##### ICMP 
+
+##### NDP
+
+##### ECN
+
+##### IGMP
+
+##### IPsecmore...
+
+### VLANS
+
+VLANs are used in an effort to apply the hardware virtualization principle to layer-2 networking to create Software Defined Networking. Software Defined Networking is Computer Network's analog of Software-defined radio and Software-defined data centers.
+
+Without VLANs, a switch can only belong to one network. There is no possible notion of a switch beloning to several networks without VLANs. It then does its job and routes the frames (trames) to the right switches and endpoints normally. With VLANs, a switch is able to belong to sifferent networks at the same time. The way it works is as follows : 
+- The endpoints are not aware of the existence of VLANs and of several networks. They talk to (send and recieve) untagged frames. It is the switches' problem to deal with VLANs and tagged frames. When a switch recieves an un tagged frame (that is : from an endpoint), it either :
+  * transmits it _as is_ to the reciever endpoint, if the next hop is an endpoint (the intended recipient)
+  * or, if the next hop is a switch : tags it with the corresponding VLAN (the port's VLAN), and send it to the switch. 
+- In ACCESS A switch has several ports, and theses are _tagged_.
+- In virtual networking, a câble requires a VLAN to exist
+
+### VXLANS
+
+### VPNs
+
+### Firewalls, proxies, reverse-proxies
+
+Note : By default, "port 3000" meands "TCP port 3000". Of the protocol is not specified, it is TCP by default.
+
+### DHCP
+
+DCHP is useful for configuring several IP addresses on a network, automatically and without conflict. 
+
+### NAT
+
+NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.

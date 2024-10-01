@@ -1938,3 +1938,4 @@ DCHP is useful for configuring several IP addresses on a network, automatically 
 ### NAT
 
 NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
+

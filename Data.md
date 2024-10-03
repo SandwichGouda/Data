@@ -1939,3 +1939,59 @@ DCHP is useful for configuring several IP addresses on a network, automatically 
 
 NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
 
+## Computer Networking : Practice
+
+### Configuring a switch
+
+### Configuring a router
+
+Note : this actually applies to any device 
+
+- ``ip route add default via [IP]``
+
+#### Physical routers
+
+#### Virtual routers
+
+- "Up-ing" an interface is the virtual equivalent to plug a cable onto a router. It's like turning on the electrical power (turning on, basically) the interface. When an interface is down, it is as it was unplugged. When it's up, it's plugged.
+
+### Netbox
+
+Netbox is a self-hosted service that allows to manage routers (Devices, connexions, IPAM...)
+
+An IPAM, IP Address Manager, allows to manage IP addresses manually, kind of like an EXCEL file, but with some additional (specific tp IP address management) features.
+
+### VPNs 
+
+#### OpenVPN
+
+OpenVPN is what Telecom Paris uses for its VPN.
+
+#### Wireguard
+
+Wireguard is what Clément uses for his private use of VPN. :O
+
+### Reverse-proxies
+
+#### Nginx
+
+GitHub stars : 25k
+NGINX is the world's most popular Web Server. It provides load balancing, reverse proxy, ...
+
+#### Caddy
+
+GitHub stars : 57.9k
+Caddy is very cool ! :)
+It allows easy configuration, automatic HTTPS, without any external dependencies.
+
+#### Traefik
+
+GitHub stars : 51k
+Traefik is kinda like Caddy : it is configured with configuration files. 
+The syntax is obiously different. It uses YaML (``.yml``) (configuration) files. It's kinda less simple than Caddy (some things require 10 lines in Traefik vs. a pair in Caddy).
+
+#### Haproxy
+
+GitHub stars : 4.9k
+Haproxy is what Antonin uses at Rezel for the hosting-gateway reverse-proxy. 
+It is not as easy to use as Caddy...

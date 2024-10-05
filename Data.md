@@ -1995,3 +1995,67 @@ The syntax is obiously different. It uses YaML (``.yml``) (configuration) files.
 GitHub stars : 4.9k
 Haproxy is what Antonin uses at Rezel for the hosting-gateway reverse-proxy. 
 It is not as easy to use as Caddy...
+
+## Other
+
+### VSCode
+
+- ``CTRL+K CTRL+O`` to expand all.
+- (...) to collapse all.
+- ``CTRL+K CTRL+S`` to open (and edit) keyboard shortcuts !
+- ``CTRL+*`` to split up the screen vertically.
+
+### ffmpeg
+
+- ``choco install ffmpeg`` to install it on any device (that has chocolatey installed)
+- Conversion : ``ffmpeg -i input.ext1 output.ext2``
+
+### Chrome  
+- ``CTRL+SHIFT+B`` pour afficher/cacher la barre des favoris
+- ``view-source:https://...`` ou ``CTRL+U`` pour afficher la code source d'une page
+- YouTube : Press the `o` key to change the brightness of the text on subtitles. Particularly useful as the text often tends to become darker and grey<sup>USA</sup>/gray<sup>GB</sup>.
+- You can set particular website query shortcuts in `chrome://settings/searchEngines` : add the URL with `%s` where the query should be inserted and the shortcut to type in the search bar.
+
+### Markdown
+- ``<ins> ... </ins>`` to underline text.
+- ``<sup> ... </sup>`` to superscript (écrire en exposant)
+- ``<sub> ... </sub>`` to subscript (écrire en indice)
+- It is possible to make hypertext links to different parts of the same Markdown document using :``[Hyperlink name](#name-of-the-title-in-lowercase-and-with-dashes-instead-of-spaces)
+- Unfortunately, if several titles have the same name, any hyperlink will link to the first occurence of that name. Even if they aren't at the same "stage", or "scope" (i.e., even if they don't have the same number of `#` (sharps))
+- You can write inline code with backticks : `. 
+- Triple backticks allow to write code on several lines. Adding a keyword right after the opening triple backticks allow to specify the language used (Go, Python, JavaScript, ..., or even git diff !) for the preview to color the code appropriately.
+- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containint special caracters and backticks (example : `` ### `/etc/passwd` ``) !
+- Is is possible to make tables :
+```
+| Left Aligned | Center Aligned | Right Aligned |
+|:------------ |:--------------:| -------------:|
+| Row 1 Col 1  | Row 1 Col 2    | Row 1 Col 3   |
+| Row 2 Col 1  | Row 2 Col 2    | Row 2 Col 3   |
+```
+| Left Aligned | Center Aligned | Right Aligned |
+|:------------ |:--------------:| -------------:|
+| Row 1 Col 1  | Row 1 Col 2    | Row 1 Col 3   |
+| Row 2 Col 1  | Row 2 Col 2    | Row 2 Col 3   |
+
+### The FTP Protocol
+
+It is possible to transfer files between computers over the same network by using FTP URLs in a web browser like Google Chrome. However, web browsers typically only support downloading files from an FTP server, not uploading. You need an FTP client (like FileZilla or WinSCP) if you want to upload files as well.
+
+To send files through the FTP Protocol :
+- Set Up the FTP Server : You need to set up an FTP server on the computer that sends the file.
+- After setting up the FTP server, get the IP Address of the FTP Server : find the local IP address of the computer that is running the FTP server.
+- Access Files Using Chrome (or any other browser) : In the URL bar, you can enter an FTP URL in the following format: ``ftp://username:password@ip-address:port``
+  * ``username`` : The username you set up on the FTP server.
+  * ``password`` : The password associated with that username.
+  * ``ip-address`` : The local IP address of the FTP server.
+  * ``port`` : The port number of the FTP server : default for FTP is 21.
+  * If authentication is not required, you can omit the username and password.
+- Once you enter the FTP URL, you should be able to browse the directories on the FTP server. Clicking on a file will start a download.
+
+### Vivenot.dev
+
+- ``configuration.nix`` is located in ``/etc/nixos/profiles/homelab``
+
+### OpenGL
+
+### Cairo

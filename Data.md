@@ -2059,3 +2059,66 @@ To send files through the FTP Protocol :
 ### OpenGL
 
 ### Cairo
+
+### Free software
+
+- **Free software** refers to any type of software that's distributed under a license that allows the software recipients to use it, read the source code, edit it, and redistribute it, whether it be intact or edited.
+  * The opposite of Free Software is **proprietary software**.
+  * Chrome, Windows, Discord, the Microsoft Office suite (Word, Excel...), the Adobe suite (Photoshop, Premiere, After Effects...) are proprietary softwares. 
+  * Chromium, Firefox, Git, Gimp, Inkscape, everything that's on GitHub or Gitlab, and litterally everything that's Linux-related, are free softwares. 
+  * Free software guarantees freedoms to the user (as opposed to proprietary softwares that restrain the use, access and edition to source code and (re)distribution)
+  * Free software is also another mode of (software) development, collaborative and open. This is what we often refet to with the word "open-source". 
+- [GitHub Collections](https://github.com/collections) and [Awesome Lists](https://github.com/sindresorhus/awesome)
+- The name "Free software" was popularized by Richard Stallman and the Free Software Foundation (1985).
+  * It emphasize **freedom** : 
+    + Freedom to use a given (source) code anywhere, for any use ;
+    + Freedom to read and write the source code of a given software ;
+    + Freedom to redistribute copies of a software ;
+    + Freedom to redistribute edited copies of a software.
+- The name "Open source" was populazired by Eric Raymond and the Open Source Initiative (1998).
+  * It emphasizes sharing of source code and/for open collaboration as a development mode.
+- Many people confuse both terms, but in practice, most free software are open-source, and conversely. 
+- Miscellanea on miscellaneous free (and not free) softwares : 
+  * Unix is not a free software
+  * But the BSD (Berkeley Software Distribution : FreeBSD, OpenBSD, NetBSD), and GNU / Linux, their spiritual descendants, are.
+  * The GNU Project, initiated in 1983 by Richard Stallman to create a completely free Unix, is free.
+  * It is a collection of projects (GNU Emacs, glibc, GDB, GNU Bash, GNU Core Utilities (cat, ls, rm, ...), GIMP (yes, you read that right)). Richard Stallman also created the Free Software Foundation in 1985.
+  * The X Windows System (see x.org) is also free. 
+  * The Linux kernel is the first open-source software, i.e. collaboratively developped.
+  * Debian is entirely community-based, almost entirely free
+  * RedHat is simultaneously a company and a Linux distribution.
+    + It distributes the Red Hat distribution, and sells its maintenance
+    + Fedora is the community version of Red Hat.
+    + RedHat was sold to IBM for 34G$ in 2019.
+  * Apache (HTTP Server) is also very widely used.
+  * LibreOffice is a community fork of OpenOffice, maintained by the The Document Foundation.
+  * Android is Linux-based, and free too.
+  * SourceForge is aimed ad providing Git-like features. It lost credibility after an Adware controversy. 
+    + An Adware is a software that's an ad. Typically, it would be a software that's installed on a device within another software setup. I.e. : you install some software, and the setup proposes to install some (other, unrelated) software , this (other, unrelated) software paying the original software for it to display their software in their setup. 
+    + In July 2013, SourceForge announced that it would provide project owners an optional feature called _DevShare_, which places adwares into the binary installers and gives the project part of the ad revenue.
+    + Opinions of this new feature varied; some complained about users not being as aware of what they are getting or being able to trust the downloaded content, whereas others saw it as a reasonably harmless option that keeps individual projects and users in control.
+    + In November 2013, GIMP removed its download from SourceForge, citing misleading download buttons that potentially confuse customers as well as SourceForge's own Windows installer, which bundles potentially unwanted programs with GIMP. 
+    + In a statement, GIMP called SourceForge a "once useful and trustworthy place to develop and host FLOSS applications" that now faces "a problem with the ads they allow on their sites".
+    + That pretty much describes the decline of SourceForge in a nutshell.
+  * Git was created by Linux Torvalds as a free alternative to BitKeeper (a proprietary version... of Git) for the development of the Linux Kernel.
+- Intellectual property
+  * Free software **licenses** determine what you can do with them.
+  * **Copy rights** protect original creations, it empasizes expression, not ideas.
+    + In France, it applies automatically.
+    + The "moral rights" correspond to paternity, 
+    + The "patrimonial rights" correspond to a right of exploitation monopole for a determined duration such as 70 years after the death of the author. They can be ceded.
+    + Something reaches **public domain** if it is not protected by patrimonial rights
+  * **Patents** offer a monopole for exploitation of industrial inventions.
+    + They require the idea to be new, and non-trivial.
+    + They are generally applicable for a determined length, such as 20 years.
+  * **Companies**
+    + They indicate the origin of a product.
+- Licenses 
+  * A license is a contract that allows an owner (of a software for instance)(but not necessarily)(but typically), who detain copyrights (or a patent), to enable rights to the recipients of the license.
+  * No license means no rights.
+  * When a software is sold, the buyer buys... a license ! That allows him to use the software, often (but not always) in a given context, for a specific use. 
+  * In the case of Free software, licenses enable rights, more or less permissively, to all recipients of the software.
+  * Note : **Licence** [FR] ; vs. **License** [EN].
+  * The website [Choose A License](https://choosealicense.com/appendix/) is very useful ! 
+  * It synthesizes all rights and restrictions among all (the most popular) licenses. :D
+  * Copyleft means allowing to redistribute edited copies of a software, but only **under the same license**.

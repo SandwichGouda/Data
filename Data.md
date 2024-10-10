@@ -2122,3 +2122,122 @@ To send files through the FTP Protocol :
   * The website [Choose A License](https://choosealicense.com/appendix/) is very useful ! 
   * It synthesizes all rights and restrictions among all (the most popular) licenses. :D
   * Copyleft means allowing to redistribute edited copies of a software, but only **under the same license**.
+```
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+- License examples 
+  * Very permissive
+    + The MIT License (see text above)
+    + BSD3
+    + BSD2
+    + Apache 2.0
+  * Weak copyleft
+    + MPL 2.0
+    + GNU LGPL 3.0
+    + LGPL 2.1
+  * Strong copyleft
+    + GNU GPL 2.0
+    + GPL 3.0
+    + GNU AGPL 3.0
+- (two) Licenses are compaptible if its possible to to have a software that **derives from both**.
+  * GNU GPL 2.0 imposes (strong) copyleft
+  * CDDL too.
+- Choosing a license
+  * Rule n°1 : Do not forget tu put al icense onto your project !
+    + Without a license, copyright and patrimonial rights apply, and users do not have any right.
+  * Rule n°2 : Do not invent you own license !
+    + If too many licenses show up, there are juridical risks (licenses are less understood, less tested)
+    + Risk of incompaptibility between licenses.
+    + Better choose a popular license !
+  * Rule n°3 : Choose a license that you understand !
+    + Some licenses are complex.
+    + For instance, the GNU LGPL License offer additional rights, under technical conditions that do not suit all programming languages.
+    + It is hard to change the license of a program later, after numerous external contributions.
+- Recall that Creative Commons licenses exist. Only CC-BY and CC-BY-SA are free.
+  * In a nutshell
+  * BY : Cite the author
+  * SA : Copyleft, i.e. edited versions but be under the same (Creative Commons) license
+  * NC : Non commercial, do not make profit out of what's under the license
+  * ND : No Derivatives, do not distribute edited copies of what's under the license
+- You can abbreviate a license by using the [SPDX typology](https://spdx.org/licenses/) :
+  * MIT
+  * BSD-2-Clause, BSD-3-Clause
+  * Apache-2.0
+  * MPL-2.0
+  * LGPL-2.1-only, LGPL-2.1-or-later, LGPL-3.0-only, LGPL-3.0-or-later
+  * GPL-2.0-only, GPL-2.0-or-later, GPL-3.0-only, GPL-3.0-or-later
+  * AGPL-3.0-only, AGPL-3.0-or-later
+  * MIT OR Apache-2.0 (multiple licenses)
+  * GPL-3.0-only WITH Classpath-exception-2.0 (additional clauses)
+- Some projects ask to sign some documents for liceses to apply to contributor's contributions 
+  * DCO (Developer Certificate of Origin)
+    + The contributor engages to the origin of the contribution, _bref_, signs his contribution. 
+    + Very light ; requires one line per commit (Signed-off-by: Your Name <your@email.com>)
+    + This corresponds to the `-s`in Git.
+  * CLA (Contributor License Agreement)
+    + Like a DCO, with additional rights for the project owner(s),
+    + such as the right to include the code into proprietary software
+    + or to **change the license**.
+  * CTA (Copyright Transfer Agreement)
+    + Cede your patrimonial rights.
+- Note : Extract of GitHub
+```
+Whenever you add Content to a repository containing notice of a
+license, you license that Content under the same terms, and
+you agree that you have the right to license that Content
+under those terms. 
+
+If you have a separate agreement to license
+that Content under different terms, such as a contributor license
+agreement, that agreement will supersede.
+
+Isn’t this just how it works already? Yep. This is widely accepted
+as the norm in the open-source community; it’s commonly referred
+to by the shorthand “inbound=outbound”. We’re just making it
+explicit.
+```
+- Economic models
+  * The classical model : a company sells licenses to allow usage of their product.
+  * Commercial use exclusion : Software is free to use only for non-commercial use
+  * Paid development instead of paid (sold) usage
+    + The client then pays a company to develop a software with the wanted features. 
+    + The client is then _a priori_ owner of the software, and can choose to distribute it under a license.
+    + This is often the model chosen by some US Universities or public entities.
+  * Open core
+    + A free (as in "free speech" and/or as in "free beer") "core" of features, a paid version for extended features. 
+  * Free usage, but non-free maintainance, or hosting (or other...)
+    + Example : RedHat sells maintainance, support, development... of (some parts of) the RedHat Linux distribution
+  * SaaS : Software as a Service
+    + Example : Zulip, an (growingly popular) alternative to Slack, offers paid pre-configures hosting services for their software. 
+    + These are (actually) free for research purposes and open-source projects, paid for companies.
+  * Crownfunding / funding through donations / funding by bourses
+    + For instance, the creator of Vue.js was funded this way.
+    + Though, projects that recieve enough donations to fund a full-time development are very rare.
+- Conventions around Free software
+  * Individuals that interact with Free software have social norms. 
+  * These are sometimes implicit, sometimes explicit.
+  * In the latter case, very often, a Code of Conduct (`CODE OF CONDUCT.md`) is at the root of the (open) project (at the root of the GitHub project, ...)
+  * People often fork projects
+    + Either to develop some feature as to merge it afterwards (development fork)
+    + Or, to maintain an abandonned project (Example : LibreOffice)
+    + Or, to create a concurrent project (Example : CodiMD / HedgeDoc)
+- Governance models
+  * BDFL : Benevolum Dictator For Life (Example : Linus Torvalds for Linux, Guido van Rossum for Python)
+  * The latters get their legitimacy either for initiating the project, or showing a high implication in the long run. 
+  * Hierarchied meritocracy :
+  * Do-ocracy : Quite explicit, this is actually implicitely implemented in most open-source projects (and projects in general)
+  * Cooptation, onion structure...
+- Possible contributions
+  * Report a bug
+  * Fix a bug
+  * Suggest a feature
+  * Add a feature
+  * Change an existing feature
+  * Write some documentation
+  * Edit some documentation to make it clearer

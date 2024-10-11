@@ -2241,3 +2241,21 @@ explicit.
   * Change an existing feature
   * Write some documentation
   * Edit some documentation to make it clearer
+
+### @ This document
+
+- When deploying this manual on our personal website, it might be a good thing to _parse_ it and remove some unnecessary parts : like this, or the one right above. Maybe add a tag for titles lines of whole paragraphs that don't need to be deployed (Make them start with ``### @`` for instance).
+- As Louis Chollet said : when undertaking something, always remember its original purpose :
+  * Remembering things : when learning, reading, processing, writing down, to remember things better (rather than hearing/reading and forgetting) ; as a reminder this is the best way for learning (cf. Anki in prépa...)
+  * Cheatsheet
+  * A document I can quickly readthrough to re-grasp everything I've seen/known/understood before, to quickly reactivate my knowledge
+  * To show people what we've seen in Computer Science before
+- It should only contain non-trivial data, not trivial stuff everyone knows
+- This website should be presented to others as a Memo (a big cheatsheet) containing information I processed, and not as something _intended to_ show my skills (or worse, to show off !) 
+- Conventions :
+  * Writing in English
+  * Linting 
+- Add appendixes for pratical stuff ?
+  * Photos of server building
+  * Code snippets for different languages
+  * Screenshots of GIN practical works...

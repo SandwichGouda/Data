@@ -2259,3 +2259,11 @@ explicit.
   * Photos of server building
   * Code snippets for different languages
   * Screenshots of GIN practical works...
+
+### Fun facts
+
+- Rollbacks happen in online multiplayer videogames because packets are sent using UPD. :):D
+- ``.io`` is the Top-Level Domain associated to the British Indian Ocean Territory. In October 2024, the United Kingdom announced that it would cede the British Indian Ocean Territory to Mauritius 'République de Maurice, in French). After the transfer, current IANA rules require the ``.io`` domain to be phased out within the following several years...! (Although, historically, some exceptions have been granted, as was the case for ``.su``). ``agar.io``, ``slither.io``, ``diep.io``, and ``github.io`` are extremely famous pages on the ``.io`` Top-Level Domain.
+- Ubuntu devs are quite golems because of the existence of the link
+  * http://archive.ubuntu.com/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/
+  * http://archive.ubuntu.com/ubuntu exists, and if you click on the `ubuntu` folder, it leads to (a copy of ?) itself. This loop stops after clicking 38 times. Ptdrrr

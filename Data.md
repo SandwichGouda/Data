@@ -2267,3 +2267,24 @@ explicit.
 - Ubuntu devs are quite golems because of the existence of the link
   * http://archive.ubuntu.com/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/
   * http://archive.ubuntu.com/ubuntu exists, and if you click on the `ubuntu` folder, it leads to (a copy of ?) itself. This loop stops after clicking 38 times. Ptdrrr
+
+### Other other
+
+- https://bitwarden.com/ has a good strong password generator
+- When choosing a Web framework to work with, or a programming language to develop (basically) anything :
+  * **Look at what has been done with it**, choose something you like and would like to reproduce !
+  * You are pretty much guaranteed to (be able to) get something you like.
+  * Examples :
+    + React : The final website developped by Séverin has a global style that... I don't really like so much (it reminds of (shitty) mobile apps). Happy that I didn't enter 
+    + wordle.louan.me has a cool layout that I like !
+    + dimden.dev too !
+- ``^`` in Computer Science is called a **caret**
+- 2FA = Two-Factor Authtication
+- A Request for Comments (RFC) is a series of standards-setting documents  or the Internet. An RFC is authored by individuals or groups of engineers and computer scientists in the form of a memorandum describing methods, behaviors, research, or innovations applicable to the working of the Internet and Internet-connected systems.
+- ``https://cppreference.com`` lists C and C++ commands. It can be used as a standard C and C++ documentation.
+- W3Schools (``https://www.w3schools.com/``) is very useful for learning many things about many languages, especially Web-oriented programming languages.
+- ``https://awesome-selfhosted.net/`` lists a bunch of self-hostable open-source softwares
+- Linting is the automated checking of your source code for programmatic and stylistic errors. This is done by using a lint tool (otherwise known as linter).
+- By default, "port" understates "TCP port".
+- The ` character is called _backtick`. 
+- When in (_virtually any_) terminal, `ALT+ENTER` puts in fullscreen. :):D

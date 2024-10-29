@@ -1150,16 +1150,16 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * Or, declared, and then assigned (they can be declared outside functions and assigned in a function)
 ```go 
   var (
-	  b bool
-  	c float32
-	  d string
+    b bool
+    c float32
+    d string
   )
   
   b, c = true, 32.0
 ```
   * Or declared and assigned in one go using the `:=`constructor :
     + `e := 5`
-	  + `h, i := true, "indeed"`
+    + `h, i := true, "indeed"`
   * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.
 - When a variable is declared it is assigned the natural "null" value of the corresponding type. 
   * For example, ``var k int`` assigns k to the value ``0``
@@ -1436,9 +1436,9 @@ func main() {
 
     fmt.Println(v := Vertex{1,2},v.X,v.Y)
     v1 = Vertex{1, 2}  // has type Vertex
-	  v2 = Vertex{X: 1}  // Y:0 is implicit
-	  v3 = Vertex{}      // X:0 and Y:0
-	  p  = &Vertex{1, 2} // has type *Vertex
+    v2 = Vertex{X: 1}  // Y:0 is implicit
+    v3 = Vertex{}      // X:0 and Y:0
+    p  = &Vertex{1, 2} // has type *Vertex
     fmt.Println(v1,v2,v3,p,*p)
     ```
   * If you have a pointer `p` to a struct `v`, you can access the fields of `v` with `(*p).field`.
@@ -1511,8 +1511,8 @@ today + 2:
 - It doesn't always work quite well. 
   * Try compiling the following code
   * ```go
-    	primes := [6]int{2, 3, 5, 7, 11, 13}
-	    var s []int = primes[1:4]
+      primes := [6]int{2, 3, 5, 7, 11, 13}
+      var s []int = primes[1:4]
     ```
   * And then try to interpret it with yaegi. 
   * ...it doesn't work.
@@ -2524,11 +2524,7 @@ Antonin Blot
 - 24/09
   * s.rezel.net semble avoir un problème de certificats 😅 Flavien Forest
   * hello ! de toute façon ça va migrer sur le nouveau, je pense que la hosting gw fait de la merde (cf le pb que j'ai eu avec transforumers)
-
-
-- What is 
-  * 
-
+  
 ## What is...
 
 - What is...

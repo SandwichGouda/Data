@@ -1825,7 +1825,8 @@ https://fr.wikipedia.org/wiki/Virtualisation
 
 - `git branch` or `git branch --list` lists branches.
 - `git branch <branchname>` create a branch with name `<branchname>`
-- Whe non branch `branch1`, `git branch -m branch2
+- When on branch `branch1`, `git branch -m branch2` renames current branch `branch1` `branch2`.
+- `git branch -m branch1 branch2` renames `branch1` `branch2`
 
 ### Git rebase
 

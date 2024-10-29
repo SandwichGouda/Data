@@ -1827,12 +1827,55 @@ https://fr.wikipedia.org/wiki/Virtualisation
 - `git branch <branchname>` create a branch with name `<branchname>`
 - When on branch `branch1`, `git branch -m branch2` renames current branch `branch1` `branch2`.
 - `git branch -m branch1 branch2` renames `branch1` `branch2`
+- When on any branch _except_ `test`, `git branch -d test` deletes branch test.
+  * **Be cautious with this !** 
+  * There is no turning back ! And no safety dialog ("There are 491 commits (1600 hours of work) in this branch. Are you sure you want to delete it ?") !
+- `git checkout branch` switches to branch `branch`
+- `git switch branch` also switches to branch `branch`. 
+  * There is no difference with `checkout`, simply, the `checkout` command was too weird (it is indeed!!) so they changed it, by splitting its features into several other subcommands. 
+  * Git being already widely spread and used, they kept `checkout` for habit purposes.
+
+### Git merge
+
+- When on branch `main`, `git merge develop` merges `develop` into `main`.
 
 ### Git rebase
 
+The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,  _changing their base_.
+- `git pull --rebase` will
+  * Pull the remote repository into the local repository
+  * And rebase your local repository onto the. 
+  * i.e., if the local repository has commits `A <- B <- C`
+  * and the distant has commits `D <- E`
+  * After `git pull --rebase`, the local repository will have commits `D <- E <- A <- B <-`
+
+#### Fast-forwarding
+
+- "Fast-forwarding" means adding a bunch of commits on top of existing ones; typically commits made by other people. 
+- _Id est_, typically, if your co-workers, or friends, have done some work, fast-forwarding means getting up do date with their recent changes.
+- In particular, `git pull --ff-only` or `git pull --no-ff` (or `git pull --ff`, which is equivalent to `git pull --no-ff`)(yes, that's a bit weird)(but whatever) pull respectively only fast-forward changes, or no fast-forward changes.
+
+
 ### Git remotes
 
+- `git push --force` with force push your repo to the remote. 
+  * Be cautious with this ! This will erase the distant repo contents !
+
 ### Git credentials
+
+### Git stash
+
+- `git stash list `
+- `git stash show `
+- `git stash drop `
+- `git stash pop `
+- `git stash apply`
+- `git stash branch`
+- `git stash`
+- `git stash save `
+- `git stash clear`
+- `git stash create`
+- `git stash store`
 
 #### SSH
 

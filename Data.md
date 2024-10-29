@@ -665,6 +665,7 @@ I don't know
 #### Other small commands
 
 - ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).
+  * `(sudo) date MMDDhhmmYYYY.ss` will set the date to `DD/MM/YYYY hh:mm:ss`
 - ``cal`` : Prints a calendar.
 - ``exit`` : Exits the current terminal.
 
@@ -1855,11 +1856,19 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 - _Id est_, typically, if your co-workers, or friends, have done some work, fast-forwarding means getting up do date with their recent changes.
 - In particular, `git pull --ff-only` or `git pull --no-ff` (or `git pull --ff`, which is equivalent to `git pull --no-ff`)(yes, that's a bit weird)(but whatever) pull respectively only fast-forward changes, or no fast-forward changes.
 
-
 ### Git remotes
 
 - `git push --force` with force push your repo to the remote. 
   * Be cautious with this ! This will erase the distant repo contents !
+- Once the remote is set up, you must set an upstream for every branch in the project. 
+  * i.e., linking all branches of the local project to an existing branch in the remote repository.
+  * Checkout on the branch you want to link (`git checkout localbranch`)
+  * Run `git branch --set-upstream-to=origin/main localbranch`
+  * You can then push this branch to its upstream.
+  * If it doesn't work, run `git push --set-upstream origin main`. 
+  * This commands pushes _and_ sets the upstream to the local branch.
+  * Once it worked once (even if you have to `--force` the command), the upstream'll be set (and a simple `git push` will suffice)
+  * It'll likely tell you that the remote branch already has commits and that you can't just push like that. If the remote repo is pretty much empty (has no subtantial work that mustn't be deleted), you can clean it (it will delete everything on it) by adding `--force`
 
 ### Git credentials
 

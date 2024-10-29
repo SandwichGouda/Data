@@ -2,6 +2,168 @@
 
 Data not to forget.
 
+## Sommaire
+
+- [Sommaire](#sommaire)
+- [Linux](#linux)
+  * [How Linux Works](#how-linux-works)
+    + [Environment variables](#environment-variables)
+    + [Hard links and symbolic links](#hard-links-and-symbolic-links)
+    + [Super User](#super-user)
+    + [Linux distributions and desktop environments](#linux-distributions-and-desktop-environments)
+    + [The shell](#the-shell)
+    + [Virtual terminals](#virtual-terminals)
+    + [OOM-killer score](#oom-killer-score)
+    + [Regex](#regex)
+      - [Regex Meta-characters](#regex-meta-characters)
+      - [Special character classes](#special-character-classes)
+      - [Examples](#examples)
+    + [Shell wildcard patterns](#shell-wildcard-patterns)
+    + [Setting up external hard drives](#setting-up-external-hard-drives)
+  * [Differences between Linux distributions](#differences-between-linux-distributions)
+    + [Ubuntu](#ubuntu)
+    + [Debian](#debian)
+    + [Arch Linux](#arch-linux)
+    + [Fedora](#fedora)
+    + [OpenSUSE](#opensuse)
+    + [NixOS](#nixos)
+      - [Package management in NixOS](#package-management-in-nixos)
+      - [Configurations in NixOS](#configurations-in-nixos)
+  * [Dual boots](#dual-boots)
+  * [Linux miscellaneous things](#linux-miscellaneous-things)
+  * [Linux package managers](#linux-package-managers)
+    + [How APT Works](#how-apt-works)
+    + [APT Subcommands](#apt-subcommands)
+  * [Linux base system packages and options](#linux-base-system-packages-and-options)
+    + [``man``](#man)
+    + [``df``](#df)
+    + [``free``](#free)
+    + [``tldr``](#tldr)
+    + [``cd``](#cd)
+    + [``ls``](#ls)
+    + [``htop``](#htop)
+    + [``tar``](#tar)
+    + [``curl``](#curl)
+    + [``mount``](#mount)
+    + [``umount``](#umount)
+    + [``grep``](#grep)
+    + [``tee``, ``boundary``, ``vboundary``](#tee,-boundary,-vboundary)
+    + [Other small commands](#other-small-commands)
+    + [Remaining commands to deal with](#remaining-commands-to-deal-with)
+  * [Other Linux packages](#other-linux-packages)
+    + [poppler-utils](#poppler-utils)
+  * [Commands cool things](#commands-cool-things)
+  * [Linux miscellaneous things](#linux-miscellaneous-things)
+- [Operating systems](#operating-systems)
+  * [The kernel](#the-kernel)
+- [Web](#web)
+  * [Web development](#web-development)
+  * [HTML](#html)
+    + [HTML Basics](#html-basics)
+  * [CSS](#css)
+  * [Django](#django)
+  * [Further reading and tools](#further-reading-and-tools)
+  * [Web certificates](#web-certificates)
+  * [Web hosting](#web-hosting)
+  * [Identity providers](#identity-providers)
+  * [Web miscellaneous things](#web-miscellaneous-things)
+- [Go](#go)
+  * [Go basics](#go-basics)
+  * [Echo framework](#echo-framework)
+- [Python](#python)
+  * [Python virtual environments](#python-virtual-environments)
+- [Windows](#windows)
+  * [Windows Powershell](#windows-powershell)
+  * [Windows miscellaneous information](#windows-miscellaneous-information)
+  * [WSL](#wsl)
+- [SSH](#ssh)
+  * [How SSH works](#how-ssh-works)
+  * [SSH usage](#ssh-usage)
+  * [SSH Config files](#ssh-config-files)
+  * [SCP](#scp)
+- [Cybersecurity](#cybersecurity)
+  * [Metadatas](#metadatas)
+  * [Cross-site scripting (XSS)](#cross-site-scripting-(xss))
+  * [Cryptography](#cryptography)
+    + [Symmetric cryptography](#symmetric-cryptography)
+  * [Reverse](#reverse)
+  * [Cryptography](#cryptography)
+  * [Stéganography](#st�ganography)
+  * [Forensic](#forensic)
+  * [Network](#network)
+  * [OSint](#osint)
+  * [Other](#other)
+- [Virtualization](#virtualization)
+  * [Containers and virtual machines](#containers-and-virtual-machines)
+  * [ProxmoxVE](#proxmoxve)
+- [Git](#git)
+  * [Git miscellaneous information](#git-miscellaneous-information)
+- [VSCode](#vscode)
+- [Computer architecture](#computer-architecture)
+  * [Storage types](#storage-types)
+  * [Character encoding](#character-encoding)
+    + [ASCII](#ascii)
+    + [UTF-8](#utf-8)
+    + [Unicode](#unicode)
+    + [Other ways of encoding / other encoding tables](#other-ways-of-encoding-/-other-encoding-tables)
+    + [Building a server](#building-a-server)
+  * [Other](#other)
+- [Computer networking - Theory](#computer-networking---theory)
+  * [The OSI Model](#the-osi-model)
+    + [Layer 1 - Physical layer](#layer-1---physical-layer)
+    + [Layer 2 - Data Link layer](#layer-2---data-link-layer)
+    + [Layer 3 - Network layer](#layer-3---network-layer)
+    + [Layer 4 - Transport layer](#layer-4---transport-layer)
+    + [Layer 5 - Session layer](#layer-5---session-layer)
+    + [Layer 6 - Presentation layer](#layer-6---presentation-layer)
+    + [Layer 7 - Application layer](#layer-7---application-layer)
+  * [Routers](#routers)
+  * [Switches](#switches)
+  * [Networking protocols](#networking-protocols)
+    + [Link layer](#link-layer)
+      - [ARP](#arp)
+      - [Tunnels](#tunnels)
+      - [PPP](#ppp)
+      - [MAC](#mac)
+      - [IPv4](#ipv4)
+      - [IPv6](#ipv6)
+      - [ICMP](#icmp)
+      - [NDP](#ndp)
+      - [ECN](#ecn)
+      - [IGMP](#igmp)
+      - [IPsecmore...](#ipsecmore...)
+  * [VLANS](#vlans)
+  * [VXLANS](#vxlans)
+  * [VPNs](#vpns)
+  * [Firewalls, proxies, reverse-proxies](#firewalls,-proxies,-reverse-proxies)
+  * [DHCP](#dhcp)
+  * [NAT](#nat)
+- [Computer Networking : Practice](#computer-networking-:-practice)
+  * [Configuring a switch](#configuring-a-switch)
+  * [Configuring a router](#configuring-a-router)
+    + [Physical routers](#physical-routers)
+    + [Virtual routers](#virtual-routers)
+  * [Netbox](#netbox)
+- [Other](#other)
+  * [ffmpeg](#ffmpeg)
+  * [Chrome](#chrome)
+  * [Markdown](#markdown)
+  * [The FTP Protocol](#the-ftp-protocol)
+  * [Vivenot.dev](#vivenot.dev)
+  * [@ This document](#this-document)
+  * [Other other](#other-other)
+- [Remaining questions](#remaining-questions)
+- [Rezel](#rezel)
+  * [Infrastructures internes](#infrastructures-internes)
+  * [FAI (Fournission d'Accès à Internet)](#fai-(fournission-d'acc�s-�-internet))
+  * [Choses faites et à faire](#choses-faites-et-�-faire)
+  * [Autre](#autre)
+  * [Rezel Daily](#rezel-daily)
+- [What is...](#what-is...)
+- [Ressources](#ressources)
+- [Projets](#projets)
+- [Unsorted](#unsorted)
+
 ## Linux
 
 ### How Linux Works
@@ -176,6 +338,11 @@ Regular Expressions (often abbreviated as Regex, or Regexp), are expressions tha
 
 They can be used in the terminal or in ``*`` : all
 
+#### Setting up external hard drives
+
+First, plug the hard drive. 
+Then use parted to create a partition and format the disk.
+
 ### Differences between Linux distributions 
 
 #### Ubuntu
@@ -195,6 +362,8 @@ NixOS is a distribution based on the Niw package manager. It is special in it's 
 The NixOS repo
 
 AUR repo
+
+##### Package management in NixOS
 
 ##### Configurations in NixOS
 
@@ -262,7 +431,7 @@ APT refers to a list of package available at ``https://packages.ubuntu.com/`` (.
 - It is possible to move sideways using the left and right arrow keys ! 
 - Press ``h`` while in a man page to display help, in particular navigation and searching help.
 - Type ``/`` while in a man page to open Search Forward. 
-  * Type in a keyword or a regular expression, press `ENTER` when finished.
+  * Type in a keyword or a regular expression, press ENTER when finished.
   * Pressing ENTER will search forward for next occurence. 
   * Pressing ``N`` will search for the next occurence of the regex.
   * Pressing ``SHIFT+N`` will search for the previous occurence of the regex.
@@ -283,6 +452,8 @@ Reports file system disk space usage by showing the current amount of free space
 * ``-H``, ``--si`` : print sizes in powers of 1000 (e.g., 1.1G)
 
 #### ``free``
+
+Displays the amount of free and used memory in the system
 
 - ``-b, --bytes`` : show output in bytes
 - ``-k``, ``--kibi`` : show output in kibibytes 
@@ -965,55 +1136,7 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
 - The first line of a file indicates the package the file is in.
   * Every Go program is organized in a package. 
   A package is a collection of source files in the same directory that allows variables, types, and functions to be visible among other source files within the same package. 
-  * For standalone fi
-- Package importation :
-  * ``import package`` or `import path/to/package`
-- Variables must be declared before being assigned.
-  * Either declared and assigned in one go :
-    + `var f = 5`
-    + `var g int = 5`
-    + `var j, k = false, 5`
-    + `var l, m bool = false, true`
-  * Or, declared, and then assigned (they can be declared outside functions and assigned in a function)
-```go 
-  var (
-	  b bool
-  	c float32
-	  d string
-  )
-  
-  b, c = true, 32.0
-```
-  * Or declared and assigned in one go using the `:=`constructor :
-    + `e := 5`
-	  + `h, i := true, "indeed"`
-  * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.
-- When a variable is declared it is assigned the natural "null" value of the corresponding type. 
-  * For example, ``var k int`` assigns k to the value ``0``
-  * ``var s string`` assigns s to the value ``""``.
-- Declaring and assigning values :
-  * ``var x = 5``
-- Go handles a short variable declaration, without keyword : 
-  * `k := 3`
-  * Note that **outside a function, every statement must begin with a keyword** (var, func, ...). The `:=` construct is hence not available.
-- Available types include :
-  * ``uint8``
-  * ``uint16``
-  * ``uint32``
-  * ``uint64``
-  * ``int``
-  * ``int8``
-  * ``int16``
-  * ``int32``
-  * ``int64``
-  * ``float32``
-  * ``float64``
-  * ``complex64``
-  * ``complex128``
-  * ``bool``
-  * ``string`` (UTF-8)
-- ``int`` is ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
-- The Go documentation says to use `int` unless you have a specific reason to use a fixed-size ``intXX`` type. les, the package is called main, but the name of the file is decided by the programmer.
+  * For standalone files, the package is called main, but the name of the file is decided by the programmer.
   * The ``fmt`` package that implements formatted I/O.
   * All go files start with ``package [packagename]``. When importing, one imports ``path/to/package``. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement ``package rand``.
 - Package importation :
@@ -1038,7 +1161,6 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
     + `e := 5`
 	  + `h, i := true, "indeed"`
   * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.
-
 - When a variable is declared it is assigned the natural "null" value of the corresponding type. 
   * For example, ``var k int`` assigns k to the value ``0``
   * ``var s string`` assigns s to the value ``""``.
@@ -1412,7 +1534,7 @@ source .venv/bin/activate
 pip install ..., pip install ..., ...
 ```
 
-## Windows 
+## Windows
 
 ### Windows Powershell
 
@@ -1470,7 +1592,7 @@ pip install ..., pip install ..., ...
 - Confidentiality and Integrity are implemented simultaneously, and (simultaneously) also ensured by SSH.
 - SSH uses TCP port 22.
 - If (on WSL for instance) ssh tells you that it doesn't have the permissions ti use the key (or thinks you're not the real owner), use ``chmod 600 ~/.ssh/privatekay`` (and ``chmod 600 ~/.ssh/publickey``, tant qu'on y est) to open the permissions.
-- SSH uses an _SSH Agent_ to find the keys
+- SSH uses an _SSH Agent_ to find the keys 
 
 ### SSH usage
 
@@ -2288,3 +2410,157 @@ explicit.
 - By default, "port" understates "TCP port".
 - The ` character is called _backtick`. 
 - When in (_virtually any_) terminal, `ALT+ENTER` puts in fullscreen. :):D
+
+## Remaining questions
+
+- How come ``la`` displays anything in a Linux terminal ? How could I've known that ? Same for `l` ???
+- The existence of the ``-T`` option for the ``clear`` command (the manual description of which is "``indicates the type of the terminal``" (<ins>type</ins> being an argument to be given : ``clear -T <type>`` ) implies the existence of different terminal Types. A way to understand why (the fucking hell on earth) ``bulledev`` acts strangely when pressing the arrow keys ? <ins>Note :</ins> The ``$TERM`` environment variable (``echo $TERM``) contains the terminal type.
+- What does ``curl`` really do ?
+- How to use a printer with linux ?
+- How to use ``mount`` and ``umount`` ?
+- ``sudo apt intall tm`` returned ``E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'`` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between ``apt`` and ``dpkg`` (and, more generally, between ``pacman``, ``nala`` ... and all other package managers) ?
+- What is the difference between ``apt-get`` and ``apt`` ?
+- What is the difference between ``apt update`` and ``apt upgrade`` ?
+- What is the difference between ``apt rm`` and ``apt remove`` ?
+- How to update a pacjage manager's package list ? ``sudo apt update-list`` ?
+- What do the colors mean in ``ls /`` and ``ls /bin`` (directories vs. files) ?
+- How to use ``||``, ``&&``, ``>>`` and ``<<`` on Linux terminal ? 
+- What is the language used on linux terminals ? 
+- What does ``/usr``contain ? ``/usr/share/ `` ? ``/usr/local/share`` ?
+- What does ``/etc`` contain ? How to use configurations ?
+- What do the text/lighlight colors mean when using ``ls`` ?
+- **What does ``curl`` do ?**
+- Why does `.` in a Linux terminal not return an (a syn tax) error ? (There is clearly a hidden feature)
+- **What is the difference between a command and a package ?** When using apt can I install commands directly ? What happens if I try to do that ?
+- What's in ``/bin``, ``/var``, ``/usr/share``, and all other folders at ``/`` (``lost+found``, ...) ? (...)
+- ``http://archive.ubuntu.com/ubuntu jammy-updates/`` ? Whos is Jammy (lol) ? What can be found on this website ?
+
+## Rezel
+
+This part should probably be hidden for security purposes
+
+### Infrastructures internes
+
+- grafana.fai.rezel.net est une instance de [Grafana](https://grafana.com/) hébergée chez Rezel qui permet d'avoir un Dashboard qui donne entre autres le traffic de FAI (Fournission Accès Intenet, en l'occurence, vu la grammaire de la phrase)
+- garezeldap.rezel.net sert à se connecter (Keycloak, etc)
+- Garezeldap est un annuaire LDAP, qui sert à gérer les comptes des télécommiens pour l'accès aux services des télécommiens. 
+- GDO est un autre annuaire LDAP qui sert à gérer les comptes pour l'accès à la FAI.
+- Authentik est aussi un fournisseur d'identité, dont Rezel se sert pour gérer l'accès (les connexions) au Gitlab FAI, aux routeurs...
+- Zitadel est aussi un fournisseur d'identité, dont Rezel se sert pour gérer pour gérer l'accès (les connexions) aux adhérents pour la FAI.
+- Il y a, dans Zitadel, une partie exposition et une partie stockage des données. Le stockage des données utilise un protocole différent
+- Keycloak utilise l'annuaire LDAP. C'est un cousin de Authentik et Zitadel.
+- Vaultwarden est le gestionnaire de mots de passe utilisé par Rezel
+- vache.fai.rezel.net
+- gdo.rezel.net (ou gdo.rezel.enst.fr) est le nom de la machine qui héberge le **FreeIPA**, qui est ce dont ils se servent pour gérer les droits d'administration.
+- gitlab.fai.rezel.net contient le gitlab de tout le code lié à la FAI
+- Proxmox & Truenas :
+  * Proxmox is an hypervisor
+  * Truenas is a special OS that's useful for doing backups.
+- Garezeldap is a Directory service (in French : un annuaire)
+- Our Garezeldap authentication information (account username/identifier) is the same as on ``matrix`` :
+  * william.driot@gmail.com / sandwichfromage
+- Sous-domaines de rezel.net :
+  * ``lufi.rezel.net``
+  * ``git.rezel.net`` (Gitea)
+    + https://git.rezel.net/Rezel/ contains all public repositories
+    + ``https://git.rezel.net/Rezel/rezelator`` is the one to add websites on ``index.rezel.net``
+  * ``fai.rezel.net``
+  * ``hosting.rezel.net``
+  * ``bulle.rezel.net``
+  * ``chat.rezel.net``
+  * ``index.rezel.net``
+  * ``matrix.rezel.net``
+  * ``s.rezel.net`` (``https://s.rezel.net/account/qrcodes/new``)
+  * ``peertube.rezel.net``
+  * ``drive.rezel.net``
+  * ``auth.rezel.net``
+  * Some other services available at ``https://index.rezel.net/``
+  * List on rezel.zone or hosting.repart
+  * ``gitlab.rezel.net`` 
+    + ``rezel.zone`` contains the DNS, especially ``/rezel/include/hosting.rezel``
+    + ``hosting-repart`` contains the reverse-proxy server configuration, espacially ``haproxy-conf/domains_list.txt``
+    + Read the documentations (READMEs) !
+- To add some website to the DNS and make the reverse-proxy accept it...
+
+enki : déploiement du réseau, écrit avec ansible (YAML)
+
+### FAI (Fournission d'Accès à Internet) 
+
+- OpenWRT est l'OS installé sur les Routeurs fournis et distribués par Rezel dans le cadre de la FAI qu'ils mettent en place.
+- FTTH = Fiber To The Home : Fibre À La Maison
+
+### Choses faites et à faire
+
+- Petits trucs faits
+  * Flasher des box, bugtracker le site de Séverin
+  * Retrier les adresses sur hosting repart 
+- Hosting : Gérer mieux
+  * Faire en sorte qu'on ait le contact des gens
+  * Et de pouvoir savoir quand ils ont plus besoin de leur VM
+  * Automatiser ça
+
+### Autre
+
+- Process ``kswapd0`` taking 100% of CPU : 
+
+### Rezel Daily
+
+- 14/08/24
+  * Hm Ansible est pété sur ansible.rezel.net
+wtf y'a un binaire ansible dans ``/usr/local/bin/ansible`` mais aucune trace d'un paquet Ansible installé via pip ou apt :/
+Ouais le paquet ansible n'existe pas... Y'a juste le binaire
+J'ai tej le binaire dans /usr/local/bin et j'ai installé ansible via APT à la place
+C'est réparé - j'ai installé ``ansible``, ``python3-ipalib`` & ``python3-ipaclient via APT``
+Au vu de l'emplacement de l'ancien binaire ``Ansible /usr/local/bin`` & du fait que maintenant la machine est sous debian 12, j'imagine que Ansible avait globalement été installé via pip à l'époque et qu'il n'a pas survécu à l'upgrade :)
+Maintenant l'install devrait être solide...
+Antonin Blot
+  * Sinon... Source .venv/bon/activate dans le dossier ansible et hop
+  * Ça marchait
+- 20/09
+  * J'ai finis de déployer traefik et authentik en test. J'ai besoin d'aide pour la config du proxy d'auth Séverin Messiaen  pour arriver à discriminer un path qui doit être protégé et pas tout le domaine
+- 23/09 
+  * Pour hosting-repartv2, on a eu un test en prod pour le site d'une liste forum, si ça te paraît ok Flavien on migre ?
+  * btw la fwd auth c'est par cookie, je pense que du coup pas besoin de modifier le front end de comete-tp
+- 24/09
+  * s.rezel.net semble avoir un problème de certificats 😅 Flavien Forest
+  * hello ! de toute façon ça va migrer sur le nouveau, je pense que la hosting gw fait de la merde (cf le pb que j'ai eu avec transforumers)
+
+
+- What is 
+  * 
+
+## What is...
+
+- What is...
+  * un certificat ?
+  * a DNS ?
+  * "RDNS" ?
+  * un proxy ? un reverseproxy ?
+  * un pare-feu ?
+  * Ansible
+  * ``FTP`` ? Difference with HTTP ?
+  * dolibarr ? 
+  * KDE ? GNOME ?
+  * Jammy ? (seen while installing packages with apt on Ubuntu)(https://manpages.ubuntu.com/manpages/) 
+  * https://snapcraft.io/
+  * X11 ? Wayland ? The XFCE Wayland development roadmap ? https://wiki.xfce.org/releng/wayland_roadmap
+  * POSIX 
+
+## Ressources
+
+- https://git-scm.com/docs/
+- https://www.gnu.org/software/coreutils/manual/html_node/
+- https://gnu.org/software/coreutils
+- Tunnel : Acquérir toute la data sur SSH
+  * From ``man ssh``
+  * From RFCs
+
+## Projets
+
+- ``curl la-tim.fr/marge``
+- https://github.com/sagemath/sage
+- https://github.com/manimCommunity/
+
+## Unsorted 
+
+- "Powerful websites you should know part. ..."

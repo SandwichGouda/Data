@@ -746,12 +746,17 @@ I don't know
 - ubuntu-minimal
 - ubuntu-standard
 
-#### ``tldr``
+#### Tldr
 
-TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.
-As opposed to `man`, despite which's honourable effort to help users, is much less easy to read.
+- TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.
+- As opposed to `man`, despite which's honourable effort to help users, is much less easy to read.
 
-#### poppler-utils
+### Cron
+
+- Cron is used to perform some tasks as precise given times
+- For instance, running a script everyday at a given hour.
+
+#### Poppler-utils
 
 Poppler is a PDF rendering library. It is based on xPDF, which is itself based on Motif.
 Recall that you can see all commands provided by a given (dpkg- or apt-installed) package using ``dpkg -L packagename``.
@@ -1270,6 +1275,14 @@ func main() {
     }
     ```
   * Naked return statements should be used only in short functions, as with the example shown here. They can harm readability in longer functions.
+  * Don't forget the parenthesis, otherwise the Go compiler doesn't accept it. 
+  * When doing this, the variable is (pre-)declared. You can affect it (so don't re-declare it).
+  * ```go 
+    func split(sum int) (x int) {
+	  x = sum * 4 / 9
+	  return
+    }
+    ```
 - Operators : 
   * `+`, `-`, `*`
   * If one of its arguments is a `string`, `+` will automatically cast its other argument into a string and concatenate them (as strings). Example : `5 + "i"` returns the string "5i".
@@ -1895,8 +1908,6 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 ### Git CICD
 
 #### GitHub Actions
-
-[#### ?] (that other thing)(if it exists ?)
 
 ### Git miscellaneous information
 

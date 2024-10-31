@@ -539,7 +539,7 @@ Unmount a drive using ``sudo umount /mnt/d`` (or ``/mnt/e``, or ``mnt/f``...)
 #### `grep`
 
 - ``grep "regex" file`` : searches for the regex ``regex`` in ``file``
-- ``grep -r "regex" /path/to/folder`` : searches recursively in all
+- ``grep -r "regex" /path/to/folder`` : searches recursively in all subfolders
 
 #### `chsh`
 
@@ -621,9 +621,9 @@ This command changes the login shell of a given user.
     + If this field is set to /usr/sbin/nologin or /bin/false, the user cannot log in interactively.
     + This is common for system accounts and service accounts to prevent shell access.
 
-#### /etc/shadow
+#### `/etc/shadow`
 
-#### chroot
+#### `chroot`
 
 - **This part has to be re-processed, and studied hands-on with a shell**
 - The `CHROOT_DIR` (or simply chroot directory) is a directory that serves as the root directory for a program or user, but only within a restricted environment. It’s used when executing a chroot (short for "change root") command, which changes the apparent root directory for a running process and its children.
@@ -658,10 +658,6 @@ This command changes the login shell of a given user.
   * Requires Root Privileges: Only users with root access can create or execute commands within a chroot environment.
   * Limited Security: While it adds a layer of security, advanced users can sometimes escape a chroot jail if it’s misconfigured, which is why it’s generally used alongside other security practices.
 
-#### ``tee``, ``boundary``, ``vboundary``
-
-I don't know
-
 #### Other small commands
 
 - ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).
@@ -673,6 +669,7 @@ I don't know
 
 - Use which or command -v to check for specific commands in your environment.
 - compgen -c lists all available commands, helpful after installing a new package.
+- ``tee``, ``boundary``, ``vboundary``
 - ``wc``
 - ``tr``
 - ``sed``
@@ -1577,7 +1574,24 @@ pip install ..., pip install ..., ...
     - ``wsl --set-default-version 2`` sets up WSL's default version to WSL _2_, which can get it to work
     - ``wsl.exe --update`` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
-- WSL is very cool, but not for computer notworking. Use Linux.
+- WSL is very cool, _except_ for computer notworking. Use (actual) Linux.
+- On windows, by default, the WSL executable is stored in `C:\Program Files\WSL\wsl.exe`. 
+  * This means that you can also open WSL from a PowerShell by typing `wsl`. (actually, `C:\Program Files\WSL` is not in the PATH - not in mine at least, I don't know how it works)
+  * If you run `wsl` from PowerShell
+  * The Windows file system is mounted in WSL in `/mnt/c`. 
+  * Conversely, you can access the WSL file system from Windows :
+    + Either from the file explorer by clicking on Linux in the left panel in the windows file explorer 
+    + Either from Powershell, by running `cd \\wsl$\Distro`
+    + Recall that all available distributions are lookupable by running `wsk --list` or `wsl --list --running` 
+    + (some sources quote the first, some quote the second, I suspect the first (option) is sufficient and that the second is useless)
+    + Here by available distribution we really mean distros that are currently installed on WSL. 
+    + It is possible to have several distributions installed (in WSL) on a given Windows installation.
+- You can run `explorer.exe` from WSL. :o
+  * More generally, every Windows Path environment variable if 
+  * It seems that these these aren't automatically updated (synced) in WSL from Windows (i.e., adding/removing a environment variable in Windows, does not add/remove it from WSL)
+  * But anyway, you can run any command available in the Windows PowerShell in WSL - but you have to use it in the form `executable.exe` ! 
+  * (obviously, otherwise, it won't work : it'll search for a command in WSL - i.e., an executable file, in the PATH, the name of which is `command` - rather than `command.exe`.)
+  * (_Bref_, the difference here is that Powershell interprets `command` as a search for `command.exe` while linux only searches an executable file the name of which is `command`)
 
 ### Windows miscellaneous information
 

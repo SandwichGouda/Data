@@ -658,6 +658,19 @@ This command changes the login shell of a given user.
   * Requires Root Privileges: Only users with root access can create or execute commands within a chroot environment.
   * Limited Security: While it adds a layer of security, advanced users can sometimes escape a chroot jail if it’s misconfigured, which is why it’s generally used alongside other security practices.
 
+#### `nc` (netcat)
+
+- The nc (or netcat) utility is a tool to do things involving TCP, UDP, or UNIX-domain sockets.
+- It can open TCP connections, send UDP packets, listen on arbitrary TCP and UDP ports, do port scanning, and deal with both IPv4 and IPv6.
+- Telnet seems to be netcat's precedessor (or a friend ?)(i.e., is telnet still used today ?).
+- Unlike telnet, netcat separates error messages onto standard error instead of sending them to standard output, as telnet does with some. 
+- `nc -l -p 12345` listens on port `12345`.
+- `nc ipaddr 12345` will send whatever it recieves afterwards to IP address `ipaddr` on port `12345`
+  * If you just run this (raw) command, you will be able to write things, press `ENTER` (indefinitely) and it'll send what it gets from standard input.
+  * If you run `somecommand | nc ipaddr 12345`, it'll send the output of command `somecommand`
+  * For instance, `somecommand` could be `cat file`. :)
+  * On the reciever machine, `nc -l -p 12345 > received_file` will store the recieved data into `received_file`. :)
+
 #### Other small commands
 
 - ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).

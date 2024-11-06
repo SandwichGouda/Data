@@ -761,7 +761,7 @@ This command changes the login shell of a given user.
 - TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.
 - As opposed to `man`, despite which's honourable effort to help users, is much less easy to read.
 
-### Cron
+#### Cron
 
 - Cron is used to perform some tasks as precise given times
 - For instance, running a script everyday at a given hour.
@@ -780,6 +780,22 @@ The difference between xpopple, poppler and xpdf is quite subtle (and historical
 "xpopple uses the Poppler library to process PDF files. Poppler was originally derived from [the] Xpdf suite, but Poppler  doesn't            include the Xpdf viewer program itself. xpopple is the Xpdf program, modified to use Poppler".
 
 _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as GNOME or KDE.
+
+#### Screen
+
+- Screen is a terminal multiplexer, i.e. it allows to run separate shells (in separate processes) and, in particular. 
+- Remember that when you run a command in a shell, it will execute a program as a process which will be a child-process of your shell. This implies that if your shell is a remote shell (typically, connected using SSH), since the shell process is killed as soon as the connexion is stopped, all its subprocesses will be killed too and the programm will be killed. This way, for instance, you can't have a persistent program launched (without having it attached to the terminal - even by running it in the background by using `command &`). 
+- Terminal multiplexers allow to run processes without them being a child process of your shell.
+- `screen -S <name>` creates a screen
+- `screen` starts a new screen session
+- `screen -r` reattach to existing session
+- `screen -ls` List existing screen sessions
+- `Ctrl-A d` **detach from the current session**
+- `Ctrl-A c` Create a new window
+- `Ctrl-A n` Switch to the next window
+- `Ctrl-A p` Switch to the previous window
+- `Ctrl-A k` Kill the current window
+
 
 ### Commands cool things
 
@@ -1557,6 +1573,7 @@ source .venv/bin/activate
 
 pip install ..., pip install ..., ...
 ```
+Use `deactivate` to exit the venv
 
 ## Windows
 

@@ -796,7 +796,6 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 - `Ctrl-A p` Switch to the previous window
 - `Ctrl-A k` Kill the current window
 
-
 ### Commands cool things
 
 - (pipe, double pipe, <, >, <<, >>)

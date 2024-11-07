@@ -2053,7 +2053,13 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
     + This is useful for specific projects
     + Just remove the ``--global`` flag (and execute the commands in the right repo) : ``git config user.email "email@domain.com"``, ``git config user.name "username"``
 
-## Computer architecture
+## Computer 
+
+### Processors
+
+- Processorts processor instructions that are defined in instruction sets.
+- `x86_64` is what runs on most computers sold on the market.
+- If you see an installer with `x86_64` in it, it should be executable by your computer.
 
 ### Storage types
 

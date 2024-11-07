@@ -357,7 +357,7 @@ Then use parted to create a partition and format the disk.
 
 #### NixOS
 
-NixOS is a distribution based on the Niw package manager. It is special in it's package management and configuration systems. NixOS is the package manager that has the most package. 
+NixOS is a distribution based on the Nix package manager. It is special in it's package management and configuration systems. NixOS is the package manager that has the most package. 
 
 The NixOS repo
 
@@ -418,10 +418,11 @@ APT refers to a list of package available at ``https://packages.ubuntu.com/`` (.
   * ``apt-cache``
   * ``apt-mark``
     + ``apt-mark showmanual`` (supposedly) shows the list of all manually installed WSL packages. There are, actually, more packages printed than that. See [Linux packages](#linux-packages) for more info.
-
 - ``apt-file search`` seemingly works better than ``apt search``
 - If the installation of a package fails : ``sudo apt install pip --fix-missing`` ; ``sudo apt --fix-broken install`` 
 - ``dpkg -L packagename`` displays exacly all files added to the system after installing packagename. In particular, ``dpkg -L packagename | grep /usr/bin`` should display all commands newly installed !
+- `apt upgrade` upgrades installed packages. It does not remove anything or install anything more than what's not installed.
+- `apt-get dist-upgrade` does what upgrade does while also intelligently handling changing dependencies with new versions. It a "smart" conflict resolution system, and it will attempt to upgrade the most important packages at the expense of less important ones if necessary. _Bref_, it is better.
 
 ### Linux base system commands and options
 

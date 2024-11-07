@@ -761,6 +761,13 @@ This command changes the login shell of a given user.
 - ubuntu-minimal
 - ubuntu-standard
 
+#### Nano
+
+- When in nano, `CTRL + X` `Y` `ENTER` saves and exists.
+- `CTRL + X` `N` saves and exists.
+- `CTRL + K` allows to _cut_ large chunks of text. 
+- In particular, `CTRL + K` allows to _remove_ large chunks of code !
+
 #### Tldr
 
 - TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.

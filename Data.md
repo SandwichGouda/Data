@@ -1786,6 +1786,14 @@ Cryptography is about protecting and piercing secrets. Cryptography algorithms u
   * Both people don’t share the same secret (they have different keys)
   * It is more secure, but slower. 
   * Most commonly used schemes are broken by quantum-computers
+- In both cases, base principles of cryptography include : 
+  * The fact that the "secret" should never be the cyphering method itself.
+  * I.e, the security should never rely on the fact that people _do not know_ what the cyphering method is.
+  * I.e., and this is what's done in all real use-cases, the cyphering method should not be secret :
+  * The secret is then something else, typically such as a (secret) key that only the users know, that's impossible to guess, reverse-engineer, and bruteforce.
+  * It is clearly way too dangerous to rely on a "secret" cyphering method : there could be attacks : for instance, Caesar's encryption is easily breakable using statistical methods. 
+  * An attacker could try several options and there would be a risk.
+  * Unless there'd exist at least $10^20$ encryption methods to choose from, having a un-bruteforce-able key is much better.
 
 #### Symmetric cryptography
 

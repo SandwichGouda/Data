@@ -2341,6 +2341,22 @@ sudo apt install caddy
   * Note : `root * ...` can be simplified as `root ...`
   * `log { ... }` and `{ debug }` do what we expect from them, that is, being verbose about problems and errors. (This will be seen in `systemctl status <service>` if caddy is run as a service)
 
+#### Systemctl
+
+- Systemctl allows to run processes as _services_ : i.e., 
+- Services could typically include : 
+  * Reverse-proxies such as nginx, caddy, traefik... 
+  * Proxies
+  * Web servers...
+- `systemctl restart service` to restart a service
+- `systemctl enable service` to have a service enabled.
+- When _enabled_, a service will be started at boot of your computer. 
+- i.e., services remain active after system restart (after rebooting).
+- `systemctl status service` shows the status of a service. 
+  * In particular, it shows the command that's ran when (re)starting the service : `caddy ... ...`, or `nginx ... ...`...
+- You can set your own services (with corresponding custom configuration files)
+- When in production, things should be always deployed as services. (in particular, web servers should not be deployed using mere terminal multiplexers)(I mean, both work, but ya know.)
+
 #### Traefik
 
 GitHub stars : 51k

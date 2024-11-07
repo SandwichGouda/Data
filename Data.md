@@ -399,6 +399,9 @@ All configurations options can be written in ``/etc/nixos/configuration.nix``.
 - It is actually used and embedded into ``apt``
 - ``apt`` is a frontend that simplifies the usage of APT by combining ``dpkg``, ``apt-cache``, ``apt-get``, ``apr-mark``, ``apt-file``, and more.
 - You can use local mirrors to be able to work 100% offline !
+- `apt` is the package manager for Ubuntu/Debian
+- `pacman` is the package manager on Arch 
+- `yum` is the one for Redhat/Fedora
 
 #### How APT Works
 
@@ -2562,10 +2565,10 @@ explicit.
 - What does ``curl`` really do ?
 - How to use a printer with linux ?
 - How to use ``mount`` and ``umount`` ?
-- ``sudo apt intall tm`` returned ``E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'`` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between ``apt`` and ``dpkg`` (and, more generally, between ``pacman``, ``nala`` ... and all other package managers) ?
-- What is the difference between ``apt-get`` and ``apt`` ?
-- What is the difference between ``apt update`` and ``apt upgrade`` ?
-- What is the difference between ``apt rm`` and ``apt remove`` ?
+- ``sudo apt intall tm`` returned ``E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'`` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between ``apt`` and ``dpkg`` (and, more generally, between `pacman`, `nala` ... and all other package managers) ?
+- What is the difference between `apt-get` and ``apt`` ?
+- What is the difference between `apt update` and `apt upgrade` ?
+- What is the difference between `apt rm` and `apt remove` ?
 - How to update a pacjage manager's package list ? ``sudo apt update-list`` ?
 - What do the colors mean in ``ls /`` and ``ls /bin`` (directories vs. files) ?
 - How to use ``||``, ``&&``, ``>>`` and ``<<`` on Linux terminal ? 

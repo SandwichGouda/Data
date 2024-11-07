@@ -1844,7 +1844,7 @@ It works with a function : $ s : (\mathrm{key},\mathrm{message}) \to s(\mathrm{k
   * The uncrackability of this protocol relies on the "fact" that the discrete logarithm is hard to compute.
   * If it is, the protocol is very secure. If it's not, it's not. 
   * As always, it has been uncracked for decades, so...
-- RSA is the most commonly used cryptography algorithm. It is quite standard. It is used in SSH by default. 
+- RSA is the most commonly used cryptography algorithm. It is quite standard. It is used in SSH by default.
   * RSA key generation : 
     + Choose two (very, very large) primes $p$ and $q$
     + Let $n = pq$
@@ -2288,9 +2288,58 @@ NGINX is the world's most popular Web Server. It provides load balancing, revers
 
 #### Caddy
 
-GitHub stars : 57.9k
-Caddy is very cool ! :)
-It allows easy configuration, automatic HTTPS, without any external dependencies.
+- GitHub stars : 57.9k
+- Caddy is very cool ! :)
+- It allows easy configuration, automatic HTTPS, without any external dependencies.
+- Caddy is one of those packages that you don't install directly via a package manager.
+  * The [documentation](https://caddyserver.com/docs/install) says to run 
+  * ```
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+sudo apt update
+sudo apt install caddy
+```
+  * This could be updated so re-check directly
+- Once installed it should be run as a service : `systemctl restart caddy`. 
+- The configuration file is then in `/etc/caddy/Caddyfile`
+- An example of Caddy file configuration : 
+```
+{
+  debug
+}
+
+:8000 {
+    handle_path /first_folder/* {
+        root * /path/to/folder
+        file_server
+    }
+
+    handle_path /second_folder/* {
+        root * /path/to/folder2
+        file_server browse
+    }
+
+    log {
+        output stderr
+        level debug
+        format console
+    }
+
+    handle {
+        reverse_proxy localhost:8001
+    }
+}
+```
+- The code snippet above does the following : 
+  * When recieving requests on port 8000, 
+  * If the request is on folder `/first_folder/` (i.e., the user requested `<ip address or domain name>/first_folder`), then redirect to `/path/to/folder`.
+  * If none of the above paths are met, then the request will be given away to itself on port 8001 (`localhost` : loopback)
+  * By adding `file_server`, if the request is `.../first_folder/file.pdf`, caddy will serve the file.
+  * **Note :** This does not work if caddy does not have permissions in the folder. For instance, it doesn't work in any subfolders of `/root/` !
+  * By adding `file_server browse`, caddy will display an interface allowing to browse files and folder in that folder.
+  * Note : `root * ...` can be simplified as `root ...`
+  * `log { ... }` and `{ debug }` do what we expect from them, that is, being verbose about problems and errors. (This will be seen in `systemctl status <service>` if caddy is run as a service)
 
 #### Traefik
 

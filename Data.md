@@ -1823,6 +1823,45 @@ It works with a function : $ s : (\mathrm{key},\mathrm{message}) \to s(\mathrm{k
 - **Modes ?**
 - AES : https://cryptohack.org/challenges/aes/-
 
+#### Asymmetric cryptography 
+
+- Asymmetric cryptography is a cryptography paradigm in which each communicant has a public and a private key.
+  * Data is encrypted using the recipient's public key.
+  * This way, only him can decypher it !
+  * (Assuming that the privacy of the private key is ensured).
+- Diffie-Hellman is an assymetric cryptography algorithm (exchange protocol)
+  * The goal of this protocol is to use an assymetric protocol for generating a common symmetric key. 
+  * i.e., we assume that Alice and Bob both have (private key, public key) pairs, 
+  * and that they want a way to generate a _common secret_ key to start a communication 
+  * based on symmetric cryptography.
+  * Let $n \geqslant 2$ and $g$ be a generator of $ \mathbb Z / n \mathbb Z $. 
+  * Alice has a private key $a$ and Bob has a private key $b$.
+  * Alice sends $A = g^a [N]$. Bob sends $B = g^b [N]$.
+  * Alice computes $K_a = B^a [N]$, Bob computes $K_b = A^b [N]$...
+  * ... and we then have $ K_a = K_b =: K $ ! 
+  * Indeed (this is an easy exercise) : , $ K_a = B^a = g^{ab} = A^b = K_b [N] $
+  * They can then use this key to communicate securely.
+  * The uncrackability of this protocol relies on the "fact" that the discrete logarithm is hard to compute.
+  * If it is, the protocol is very secure. If it's not, it's not. 
+  * As always, it has been uncracked for decades, so...
+- RSA is the most commonly used cryptography algorithm. It is quite standard. It is used in SSH by default. 
+  * RSA key generation : 
+    + Choose two (very, very large) primes $p$ and $q$
+    + Let $n = pq$
+    + Thus, $\varphi(n) = (p-1)(q-1)$ where $\varphi$ is Euler' Totient function. 
+    + Choose $e$ coprime with $\varphi(n)$
+    + Find $d = e^{-1} [\varphi(n)]$ (using Euclid's algorithm)
+    + The public key is then $(n,e)$
+    + The private key is then $d$.
+  * RSA encryption 
+    + If Alice wants to send an encrypted message $m$ to Bob.
+    + She computes, using Bob's public $(n,e)$ key, $c = m^e [n]$
+    + Bob recieves $m^e [n]$ and knows his private key $d = e^{-1} [\varphi(n)]$ 
+    + By Euler's theorem, $m^{ed} = m [\varphi(n)]$. This way he can get $m [N]$ !
+    + N is called (public) modulus or cryptographic modulus
+    + e is called encryption exponent (public exponent)
+    + d is called decryption exponent (private exponent)
+
 ### Reverse
 
 If you have the code source of a compiled binary file, it is easy to understand what the code is used to. 

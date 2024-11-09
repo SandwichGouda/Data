@@ -682,7 +682,7 @@ This command changes the login shell of a given user.
 - i.e., even if other options are applied (rather than only applying only when `ls` is used alone, without any other options)
 - Aliases only work for the current login session (!)
 - So what's typycally done is to write them in `.bashrc`, the file that's executed on each login session start.
-- If the shell is `zsh`, it should be put in `.zsh` (obviously)
+- If the shell is `zsh`, it should be put in `.zrc` (obviously)
 - You can deal with command arguments by adding `$1`, `$2`, ... in the alias.
 - If the arguments involve quotation marks, it might not work. Use a function, like so :
 ```

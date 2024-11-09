@@ -561,6 +561,18 @@ This command changes the login shell of a given user.
 - **An account with a restricted login shell may not change her login shell.** 
 - For this reason, placing /bin/rsh in /etc/shells is discouraged since accidentally changing to a restricted shell would prevent the user from ever changing her login shell back to its original value!
 
+#### `.bashrc` and `.profile`
+
+- `.profile` is a script that's executed each time a user logs into the system (login shell)
+  * `.profile` is loaded only once, at login (login shell),
+  * for instance when opening an SSH session, _bref_, whenever logging in.
+  * People typically set environment variables (commands to add them on each session) in this file.
+- `.bashrc` is also a script, but its purpose is different. 
+  * It's executed each time user opens a new terminal window or new interactive shell (terminal emulators, subshells)(non-login shell)
+  * It's also **sourced** by `.profile` on logging in. 
+  * `.bashrc` is loaded every time a new terminal session is opened (non-login shell)
+  * People typically set up interactive shell behaviors in it (e.g., aliases, prompt...)
+
 #### `/etc/shells`
 
 - This file lists valid login shells on the current OS.

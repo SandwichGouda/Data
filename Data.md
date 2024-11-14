@@ -1105,11 +1105,30 @@ body
 
 ### Django
 
-Replace this section by "Backend" ?
+- Uninstalled migrations -> python -m django manage.py migrate
+- ```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```
 
-Uninstalled migrations -> python -m django manage.py migrate
+### PHP
 
-```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```
+- PHP used to stand for Personal Home Page, but now the official meaning is "PHP : Hypertext Processor"
+- It's a widely-used open source general-purpose scripting language, it's especially oriented for web development. 
+- It can be embedded into HTML :
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+
+        <?php
+            echo "Hi, I'm a PHP script!";
+        ?>
+
+    </body>
+</html>
+```
+- PHP is "server-side", which means that the code is executed on the server. As opposed to client-side JavaScript, HTML is generated (on the server) and _then_ sent to the client. The client receives the results of running that script, but it only recieves HTML. In particular, they do not know what the underlying code was. A web server can even be configured to process all HTML files with PHP, and then there's no way that users can tell that PHP is being used.
 
 ### Further reading and tools
 

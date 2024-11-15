@@ -2438,31 +2438,32 @@ It is not as easy to use as Caddy...
 
 ### VSCode
 
-- ``CTRL+K CTRL+O`` to expand all.
+- `CTRL+K CTRL+O` to expand all.
 - (...) to collapse all.
-- ``CTRL+K CTRL+S`` to open (and edit) keyboard shortcuts !
-- ``CTRL+*`` to split up the screen vertically.
+- `CTRL+K CTRL+S` to open (and edit) keyboard shortcuts !
+- `CTRL+*` to split up the screen vertically.
+- When in "Find and replace mode", pressing enter in the first field searches for next occurence of the pattern, while pressing enter in the second _replaces current occurence_ and finds the next one. ! :)
 
 ### ffmpeg
 
-- ``choco install ffmpeg`` to install it on any device (that has chocolatey installed)
-- Conversion : ``ffmpeg -i input.ext1 output.ext2``
+- `choco install ffmpeg` to install it on any device (that has chocolatey installed)
+- Conversion : `ffmpeg -i input.ext1 output.ext2`
 
 ### Chrome  
-- ``CTRL+SHIFT+B`` pour afficher/cacher la barre des favoris
-- ``view-source:https://...`` ou ``CTRL+U`` pour afficher la code source d'une page
+- `CTRL+SHIFT+B` pour afficher/cacher la barre des favoris
+- `view-source:https://...` ou `CTRL+U` pour afficher la code source d'une page
 - YouTube : Press the `o` key to change the brightness of the text on subtitles. Particularly useful as the text often tends to become darker and grey<sup>USA</sup>/gray<sup>GB</sup>.
 - You can set particular website query shortcuts in `chrome://settings/searchEngines` : add the URL with `%s` where the query should be inserted and the shortcut to type in the search bar.
 
 ### Markdown
-- ``<ins> ... </ins>`` to underline text.
-- ``<sup> ... </sup>`` to superscript (écrire en exposant)
-- ``<sub> ... </sub>`` to subscript (écrire en indice)
-- It is possible to make hypertext links to different parts of the same Markdown document using :``[Hyperlink name](#name-of-the-title-in-lowercase-and-with-dashes-instead-of-spaces)
+- `<ins> ... </ins>` to underline text.
+- `<sup> ... </sup>` to superscript (écrire en exposant)
+- `<sub> ... </sub>` to subscript (écrire en indice)
+- It is possible to make hypertext links to different parts of the same Markdown document using :`[Hyperlink name](#name-of-the-title-in-lowercase-and-with-dashes-instead-of-spaces)
 - Unfortunately, if several titles have the same name, any hyperlink will link to the first occurence of that name. Even if they aren't at the same "stage", or "scope" (i.e., even if they don't have the same number of `#` (sharps))
 - You can write inline code with backticks : `. 
 - Triple backticks allow to write code on several lines. Adding a keyword right after the opening triple backticks allow to specify the language used (Go, Python, JavaScript, ..., or even git diff !) for the preview to color the code appropriately.
-- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containint special caracters and backticks (example : `` ### `/etc/passwd` ``) !
+- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containint special caracters and backticks (example : ` ### `/etc/passwd` `) !
 - Is is possible to make tables :
 ```
 | Left Aligned | Center Aligned | Right Aligned |

@@ -1239,15 +1239,15 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
     + `var j, k = false, 5`
     + `var l, m bool = false, true`
   * Or, declared, and then assigned (they can be declared outside functions and assigned in a function)
-```go 
-  var (
-    b bool
-    c float32
-    d string
-  )
+  * ```go a
+    var (
+      b bool
+      c float32
+      d string
+    )
   
-  b, c = true, 32.0
-```
+    b, c = true, 32.0
+    ```
   * Or declared and assigned in one go using the `:=`constructor :
     + `e := 5`
     + `h, i := true, "indeed"`
@@ -1406,11 +1406,11 @@ func main() {
   * You cannot `Println` them beccause that requires to convert the `const` to have a type.
   * You can cast them as `float64`s because... idk why, but it works. It will yield a float of the type `1.2676506002282295e+29`.
 - For statements : 
-    * ```go
-      for n := 0; n <= 10; n++ {
-          fmt.Println(sum_of_squares(n))
-        }
-      ```
+  * ```go
+    for n := 0; n <= 10; n++ {
+        fmt.Println(sum_of_squares(n))
+      }
+    ```
   * The first and last statements are optional !
   * ```go
     sum := 1
@@ -2354,15 +2354,16 @@ Wireguard is what Clément uses for his private use of VPN. :O
 - GitHub stars : 57.9k
 - Caddy is very cool ! :)
 - It allows easy configuration, automatic HTTPS, without any external dependencies.
+- An amazing fun fact : A paper written by experts describing Let's encrypt, "Let’s Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
 - Caddy is one of those packages that you don't install directly via a package manager.
   * The [documentation](https://caddyserver.com/docs/install) says to run 
-  * ```
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update
-sudo apt install caddy
-```
+  * ```bash 
+    sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+    curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+    curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+    sudo apt update
+    sudo apt install caddy
+    ```
   * This could be updated so re-check directly
 - Once installed it should be run as a service : `systemctl restart caddy`. 
 - The configuration file is then in `/etc/caddy/Caddyfile`
@@ -2463,7 +2464,19 @@ It is not as easy to use as Caddy...
 - Unfortunately, if several titles have the same name, any hyperlink will link to the first occurence of that name. Even if they aren't at the same "stage", or "scope" (i.e., even if they don't have the same number of `#` (sharps))
 - You can write inline code with backticks : `. 
 - Triple backticks allow to write code on several lines. Adding a keyword right after the opening triple backticks allow to specify the language used (Go, Python, JavaScript, ..., or even git diff !) for the preview to color the code appropriately.
-- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containint special caracters and backticks (example : ` ### `/etc/passwd` `) !
+- Note : It is possible to use triple backticks code (code that expands on several lines) _within_ bullet point lists, but **beware** : for these to be correctly displayed (when the Markdown will be rendered), the following formatting must be applied :
+  * ```md
+    - (Text)(optional)
+      * (Text)(optional)
+      * [Triple backtick]
+        code
+        [Triple backtick]
+      * (Text)(optional)
+    ```
+  * i.e. : 
+    + The triple backticks must imperatively be indented accordingly, at the same level as the bullet point.
+    + The code too. _Bref_, everything must be indented at the same level as the bullet point.
+- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containing special caracters and backticks (example : ` ### `/etc/passwd` `) !
 - Is is possible to make tables :
 ```
 | Left Aligned | Center Aligned | Right Aligned |
@@ -2706,6 +2719,7 @@ explicit.
 - Ubuntu devs are quite golems because of the existence of the link
   * http://archive.ubuntu.com/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/
   * http://archive.ubuntu.com/ubuntu exists, and if you click on the `ubuntu` folder, it leads to (a copy of ?) itself. This loop stops after clicking 38 times. Ptdrrr
+- A paper written by experts describing Let's encrypt, "Let’s Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
 
 ### Other other
 

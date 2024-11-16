@@ -2259,6 +2259,16 @@ One can say that HTTPS is basically HTTP + TLS
 
 [All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
 
+##### STP
+
+- The Spanning Tree protocol is a protocol
+- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
+
+##### MSTP
+
+- Multiple Spanning-Tree Protocol is a variant of the Spanning Tree Protocol.
+- It is used at Rezel for their ISP (Internet Service Provider) service
+
 ##### ARP 
 
 ##### Tunnels

@@ -2316,8 +2316,12 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * They come in different types :
   * LC/APC, SC/APC, LC/UPC, SC/APC
   * The LC / SC distinction refers to the type of connector - the form-factor of the end of the cable.
-    + SC (Subscriber connector) is slightly bigger, and is essentially (supposed to be) plugged on the "user end" (Subscriber)
-    + LC (Lucent connector) is slightly smaller. It is (supposed to be) plugged on the service-provider end.
+    + SC (Subscriber connector) are slightly bigger, and are essentially (supposed to be) plugged on the "user end" (Subscriber)
+    + LC (Lucent connector) are slightly smaller. They are (supposed to be) plugged on the service-provider end.
+  * The APC/UPC distinction refers to the way the fiber is polished at its end.
+    + UPC (Ultra Physical Contact) : the fiber is polished with a **flat** end face.
+    + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
+    + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
   * All of the above are **single-mode** connector
 
 ### Configuring a switch

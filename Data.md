@@ -2327,6 +2327,14 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * They do what we expect : multiplex and demultiplex optical colors.
   * They are passive equippments.
   * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
+- OADMs
+  * OADM stands for Optical Add-Drop Multiplexer.
+  * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
+  * Its inputs are one polychromatic input (A), one monochrome input (B) at with wavelength $\lambda$
+  * Its outputs are one polychromatic output (C), and one monochrome output (D) with wavelength $\lambda$.
+  * The OADM takes the polychromatic input (A), removes the wavelength $\lambda$, and drops it on output (D)
+  * and injects the input (B), at the same wavelength, on the output (D), together with rest of the polychromatic signal on a (A) (the signal (A), without its $\lambda$ wavelength)
+  * So, in a nutshell, it takes a (polychromatic) signal, and replaces the content on some wavelength (which is fixed and depends on the OADM, it's part of its specs) (with a given input), and it drops it such that you can retrieve this specific wavelength in the input signal.
  
 ### Configuring a switch
 

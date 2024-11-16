@@ -2323,7 +2323,11 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
     + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
     + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
   * All of the above are **single-mode** connector
-
+- Multiplexers & demultiplexers
+  * They do what we expect : multiplex and demultiplex optical colors.
+  * They are passive equippments.
+  * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
+ 
 ### Configuring a switch
 
 ### Configuring a router

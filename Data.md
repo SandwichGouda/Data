@@ -108,7 +108,7 @@ Data not to forget.
     + [Other ways of encoding / other encoding tables](#other-ways-of-encoding-/-other-encoding-tables)
     + [Building a server](#building-a-server)
   * [Other](#other)
-- [Computer networking - Theory](#computer-networking---theory)
+- [Computer Networking Theory](#computer-networking---theory)
   * [The OSI Model](#the-osi-model)
     + [Layer 1 - Physical layer](#layer-1---physical-layer)
     + [Layer 2 - Data Link layer](#layer-2---data-link-layer)
@@ -138,7 +138,7 @@ Data not to forget.
   * [Firewalls, proxies, reverse-proxies](#firewalls,-proxies,-reverse-proxies)
   * [DHCP](#dhcp)
   * [NAT](#nat)
-- [Computer Networking : Practice](#computer-networking-:-practice)
+- [Computer networking Practice](#computer-networking-:-practice)
   * [Configuring a switch](#configuring-a-switch)
   * [Configuring a router](#configuring-a-router)
     + [Physical routers](#physical-routers)
@@ -2154,7 +2154,7 @@ Exercise : Find the characters that break the `EditSummary` script (they are it 
 
 - se203.telecom-paris.fr
 
-## Computer networking - Theory
+## Computer networking Theory
 
 Note : Wireshark is your friend ! :)
 
@@ -2308,7 +2308,17 @@ DCHP is useful for configuring several IP addresses on a network, automatically 
 
 NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
 
-## Computer Networking : Practice
+## Computer Networking Practice
+
+### Layer 1 networking equippment
+
+- Optical fibers
+  * They come in different types :
+  * LC/APC, SC/APC, LC/UPC, SC/APC
+  * The LC / SC distinction refers to the type of connector - the form-factor of the end of the cable.
+    + SC (Subscriber connector) is slightly bigger, and is essentially (supposed to be) plugged on the "user end" (Subscriber)
+    + LC (Lucent connector) is slightly smaller. It is (supposed to be) plugged on the service-provider end.
+  * All of the above are **single-mode** connector
 
 ### Configuring a switch
 

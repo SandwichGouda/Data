@@ -2337,6 +2337,8 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * They do what we expect : multiplex and demultiplex optical colors.
   * They are passive equippments.
   * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
+- When working with optic fibers, **be cautious** ! **They can blind you** !
+- For that reason, there attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. T
 - OADMs
   * OADM stands for Optical Add-Drop Multiplexer.
   * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
@@ -2345,8 +2347,12 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * The OADM takes the polychromatic input (A), removes the wavelength $\lambda$, and drops it on output (D)
   * and injects the input (B), at the same wavelength, on the output (D), together with rest of the polychromatic signal on a (A) (the signal (A), without its $\lambda$ wavelength)
   * So, in a nutshell, it takes a (polychromatic) signal, and replaces the content on some wavelength (which is fixed and depends on the OADM, it's part of its specs) (with a given input), and it drops it such that you can retrieve this specific wavelength in the input signal.
- - DWDM stands for Dense Wavelength Division Multiplexing. It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
- - CWDM stands for Coarse Wavelength Division Multiplexing, it's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
+  * This equippment is passive. 
+  * They come with two sides, that are symmetric by definition (the input and output can be switched).
+  * For that reason, they are named "West" and "End"
+- Multiplexers (WDM - Wavelength Division Multiplexing technology) come in two sorts
+  * DWDM stands for Dense Wavelength Division Multiplexing. It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
+  * CWDM stands for Coarse Wavelength Division Multiplexing, it's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
 - LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
 - SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
 

@@ -2339,6 +2339,7 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
 - When working with optic fibers, **be cautious** ! **They can blind you** !
 - For that reason, attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. They are used whenever one needs to mittigate an output or input signal.
+- Wavelengths are separated into channels (C44, C45, C46, C47...). These correspond to wavelengths ranges (there is a standard, for the precise corresponding wavelengths, lookup on the net - no one knows these by heart)
 - OADMs
   * OADM stands for Optical Add-Drop Multiplexer.
   * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
@@ -2355,6 +2356,17 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * CWDM stands for Coarse Wavelength Division Multiplexing, it's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
 - LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
 - SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
+- SFP(-/+/28/...) Optical Transceiver Modules are the small metallic things you plug into switches. 
+  * They convert optical signals to electric signals.
+  * There exists SFP (1Gb/s), SFP+ (10Gb/s), SFP28 (25Gb/s) and SFP28 50G (50Gb/s).
+  * The form factor are the same for all the SFP variants.
+  * The first two are quite common, the last are less.
+  * Since the latter are much more expensive, they are mostly used un big datacenter and server clusters. 
+- There also exists QSFP(-/+/28/...) ports, with require adequate (QSFP(-/+/28/...))
+  * All SFP things have a Q- counterpart. The associated are larger. 
+  * Q stands for quad : these are merges of four SFP(-/+/28/...) ports.
+  * The associated speeds are four time their non-Q counterpart : 4G/s, 40G/s, 100G/s.
+- ONT/OLTs
 
 ### Configuring a switch
 

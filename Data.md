@@ -2345,7 +2345,11 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * The OADM takes the polychromatic input (A), removes the wavelength $\lambda$, and drops it on output (D)
   * and injects the input (B), at the same wavelength, on the output (D), together with rest of the polychromatic signal on a (A) (the signal (A), without its $\lambda$ wavelength)
   * So, in a nutshell, it takes a (polychromatic) signal, and replaces the content on some wavelength (which is fixed and depends on the OADM, it's part of its specs) (with a given input), and it drops it such that you can retrieve this specific wavelength in the input signal.
- 
+ - DWDM stands for Dense Wavelength Division Multiplexing. It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
+ - CWDM stands for Coarse Wavelength Division Multiplexing, it's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
+- LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
+- SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
+
 ### Configuring a switch
 
 ### Configuring a router

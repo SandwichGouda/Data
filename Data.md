@@ -852,9 +852,24 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 
 ### The kernel
 
-The kernel is a first interface between hardware and software. It is the "core" of the OS. The kernel manages processes, I/O, along with many other things. It has complete control on the system.
+- The kernel is a first interface between hardware and software. It is the "core" of the OS. The kernel manages processes, I/O, along with many other things. It has complete control on the system.
+- Fundamentally, a kernel is just a piece of software. Heuristically, we call it "kernel" because it is at the core of the Operating System in the sense that it has control on all the system and manages many things. Applications and the (rest of the) OS make syscalls (calls to the kernel) to "ask for permission" to do stuff on the hardware (writing stuff in the RAM, for instance). 
+- A syscall happens when any piece of software needs access to anything related to hardware. The kernel may refuse it. By default, the OS is in "user mode". If the syscall is accepted, the OS passes in "Kernel mode" the time necessary to do the stuff (and then switches back to user mode). When in user mode, the OS and applications don't have permissions to do everything.
 
-Fundamentally, a kernel is just a piece of software. Heuristically, we call it "kernel" because it is at the core of the Operating System in the sense that it has control on all the system and manages many things. Applications and the (rest of the) OS make syscalls (calls to the kernel) to "ask for permission" to do stuff on the hardware (writing stuff in the RAM, for instance). A syscall happens when any piece of software needs access to anything related to hardware. The kernel may refuse it. By default, the OS is in "user mode". If the syscall is accepted, the OS passes in "Kernel mode" the time necessary to do the stuff (and then switches back to user mode). When in user mode, the OS and applications don't have permissions to do everything.
+### I/O and drivers
+
+- Drivers are necessary to handle some input. 
+- A driver teaches the operating system to handle some specific i/o with peripheral devices. 
+- Many drivers are already installed by default.
+  * The most common ones are HID (Human Interface Devices) drivers and Mass Storage drivers.
+  * These are "subnorms" of the USB norm. 
+  * The HID drivers are used for handling devices such as keyboard, mouses...
+  * The mass storage devices are used for handling mass storage devices such as USB sticks, (internal or external) hard drives...
+  * The reason why connecting a keyboard, a mouse or a storage device on a computer always works on first try is that these drivers are **installed by default** on most (every) Operating Systems (for ovious reasons : everyone needs at least a keyboard, and it is quite obvious that almost everyone will want to plug a mouse or a hard drive to their PC)
+  * But, sometimes some peripherals require to manually install drivers. For instance, for serial communication, you will likely need a Serial-USB driver to teach to your OS how to handle serial communication on USB ports.
+  * Drivers can be seen as extensions to your OS.
+  * For futher investigation, read the wikipedia page for USB. 
+  * But also, recall and don't forget  that the USB norm is over 500 pages long.
 
 ## Web
 
@@ -2369,6 +2384,14 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 - ONT/OLTs
 
 ### Configuring a switch
+
+- To connect to a switch, there are essentially two options
+  * Either using a serial connexion
+  * Or exposing an interface with an IP address on one of its VLANs, and then SSHing into it 
+- Serial connexions 
+  * Switches usually have a serial port, to connect using a serial.
+  * Serial communication usually goes through either RJ-45 ports, or, on older equippments (computers or switches), serial ports, which look like VGA ports, but with **2 pin rows** (often 9 pins, can be 25 pins sometimes), unlike VGA ports which contain 3 rows.
+  * It can also, very usefully, be pased through USB ! For this, you will likely need a Serial USB driver. There exist many on the web, just lookup Serial-USB driver. 
 
 ### Configuring a router
 

@@ -2338,7 +2338,7 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * They are passive equippments.
   * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
 - When working with optic fibers, **be cautious** ! **They can blind you** !
-- For that reason, there attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. T
+- For that reason, attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. They are used whenever one needs to mittigate an output or input signal.
 - OADMs
   * OADM stands for Optical Add-Drop Multiplexer.
   * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.

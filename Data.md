@@ -2284,6 +2284,11 @@ One can say that HTTPS is basically HTTP + TLS
 - Multiple Spanning-Tree Protocol is a variant of the Spanning Tree Protocol.
 - It is used at Rezel for their ISP (Internet Service Provider) service
 
+##### LACP
+
+- Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
+- You could think that aggregating two (same speed) links would double the link speed, but in practice, the traffic due to protocol communication implies that you would typically get around 1.5x speed.
+
 ##### ARP 
 
 ##### Tunnels
@@ -2381,6 +2386,12 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * All SFP things have a Q- counterpart. The associated are larger. 
   * Q stands for quad : these are merges of four SFP(-/+/28/...) ports.
   * The associated speeds are four time their non-Q counterpart : 4G/s, 40G/s, 100G/s.
+  * These are an aggregated version of four of their non-Q counterpart, but better.
+  * There exists breakout cables that allow to convert QSFP(-/+/28/...) (resp. 4x SFP(-/+/28/...)) to 4x SFP(-/+/28/...) (resp. QSFP(-/+/28/...))
+- There also exists XFP, which is quite rare.
+  * It served as a transition between SFP and SFP+.
+  * It became outdated as soon as SFP+ existed.
+  * But it can still be found sometimes.
 - ONT/OLTs
 
 ### Configuring a switch

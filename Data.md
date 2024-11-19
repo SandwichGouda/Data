@@ -108,7 +108,7 @@ Data not to forget.
     + [Other ways of encoding / other encoding tables](#other-ways-of-encoding-/-other-encoding-tables)
     + [Building a server](#building-a-server)
   * [Other](#other)
-- [Computer Networking Theory](#computer-networking---theory)
+- [Computer Networking Theory](#computer-networking-theory)
   * [The OSI Model](#the-osi-model)
     + [Layer 1 - Physical layer](#layer-1---physical-layer)
     + [Layer 2 - Data Link layer](#layer-2---data-link-layer)
@@ -2337,6 +2337,25 @@ DCHP is useful for configuring several IP addresses on a network, automatically 
 ### NAT
 
 NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
+
+### Control plane, Management plane, Data plane
+
+- The Control Plane
+  * It is where we decide what our networking will look like. 
+  * How to we setup our networking ? Where do we put what ? 
+  * How many switches ? Where do we put them ? 
+  * Who's connected to who, and how (with which support) ?
+  * It is basically the first step, deciding the "theory" of how do we set things up.
+  * Typically, at Rezel, the big schemes on the networking infrastructure explain everything that's Control-plane related.
+- The Management Plane
+  * It is about actually setting up in practice.
+  * Configuring switches, routers, with the corresponding interfaces
+  * monitoring the connexions...
+  * It can be seen as a "second step"
+- The Data Plane
+  * It is about actually transferring data.
+  * It concerns everything that's related to actual data transferring.
+  * It can be seen as a "third step".
 
 ## Computer Networking Practice
 

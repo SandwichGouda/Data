@@ -2378,8 +2378,11 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 - "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
 - The more correct term would be "Twisted pair" cable, because the strings are twisted in pairs. 
-- They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
-- There exist non-twisted, called "flat", cables. These are not more than a few meters long.
+  * They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
+  * There exist non-twisted, called "flat", cables. These are not more than a few meters long.
+  * The data is then transferred using tensions (potential differences) between the two strings of each pair (hence, 4 potential differences, one for each pair).
+  * There are also power supply strings in these cables.
+  * 
 - Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
   * RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
   * Their plastic is often transparent, and we can see eight little strings, that ought to be twisted in pairs (or not, in flat cables).
@@ -2401,7 +2404,6 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
 - When working with optic fibers, **be cautious** ! **They can blind you** !
 - For that reason, attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. They are used whenever one needs to mittigate an output or input signal.
-- Wavelengths are separated into channels (C44, C45, C46, C47...). These correspond to wavelengths ranges (there is a standard, for the precise corresponding wavelengths, lookup on the net - no one knows these by heart)
 - OADMs
   * OADM stands for Optical Add-Drop Multiplexer.
   * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
@@ -2414,8 +2416,12 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * They come with two sides, that are symmetric by definition (the input and output can be switched).
   * For that reason, they are named "West" and "End"
 - Multiplexers (WDM - Wavelength Division Multiplexing technology) come in two sorts
-  * DWDM stands for Dense Wavelength Division Multiplexing. It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
-  * CWDM stands for Coarse Wavelength Division Multiplexing, it's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
+  * DWDM stands for Dense Wavelength Division Multiplexing. 
+    + It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
+    + This part separates the wavelengths into channels (C44, C45, C46, C47...). These correspond to wavelengths ranges (there is a standard, for the precise corresponding wavelengths, lookup on the net - no one knows these by heart)
+  * CWDM stands for Coarse Wavelength Division Multiplexing
+    + It's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
+    + This part works raw wavelenths : actual values of $\lambda$
 - LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
 - SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
 

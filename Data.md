@@ -2379,9 +2379,14 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 - "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
 - The more correct term would be "Twisted pair" cable, because the strings are twisted in pairs. 
 - They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
-- There exist non-twisted cables. These are not more than a few meters long.
+- There exist non-twisted, called "flat", cables. These are not more than a few meters long.
 - Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
-- RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
+  * RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
+  * Their plastic is often transparent, and we can see eight little strings, that ought to be twisted in pairs (or not, in flat cables).
+  * RJ-45 ports can be crossed, non-crossed, rollback...
+  * Non-crossed means that the eight little strings are in the same order on both ends : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
+  * Crossed means that the pairs are crossed : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
+  * Rollback are the strings are in reverse order : (1,2,3,4,5,6,7,8) -> (8,7,6,5,4,3,2,1)
 - Twisted pairs cables have categories, ranging from 3 to 8 (maybe more in the future).
   * Some normalisation (EIA/TIA 568, 1990) started the numerotation at 3 for some (good) reason.
   * Category 3 and 4 are not used anymore, except maybe for telephony or 10base-T Ethernet.

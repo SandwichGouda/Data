@@ -2377,13 +2377,16 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 #### Ethernet cables
 
 - "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
-- The more correct term would be "Twisted pair" cable, because.
+- The more correct term would be "Twisted pair" cable, because the strings are twisted in pairs. 
+- They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
+- There exist non-twisted cables. These are not more than a few meters long.
 - Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
+- RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
 - Twisted pairs cables have categories, ranging from 3 to 8 (maybe more in the future).
   * Some normalisation (EIA/TIA 568, 1990) started the numerotation at 3 for some (good) reason.
   * Category 3 and 4 are not used anymore, except maybe for telephony or 10base-T Ethernet.
   * Category 5 and more support 1000base-T Ethernet.
-- There is a distinction between Fast Ethernet (100BASE-TX, 100BASE-T), Gigabit Ethernet (1000base-T, 100BASE-TX), there is autonegotiation to
+- There is a distinction between Fast Ethernet (100BASE-TX, 100BASE-T), Gigabit Ethernet (1000base-T, 100BASE-TX), there is autonegotiation to allow endpoints (NICs) to negotiate a speed... Ask Dorian next-time we see him for more details.
 
 #### DWDM Equippment
 

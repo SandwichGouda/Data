@@ -2342,8 +2342,9 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 ### Layer 1 networking equippment
 
-- Optical fibers
-  * They come in different types :
+#### Optical fibers
+
+- They come in different types :
   * LC/APC, SC/APC, LC/UPC, SC/APC
   * The LC / SC distinction refers to the type of connector - the form-factor of the end of the cable.
     + SC (Subscriber connector) are slightly bigger, and are essentially (supposed to be) plugged on the "user end" (Subscriber)
@@ -2353,6 +2354,20 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
     + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
     + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
   * All of the above are **single-mode** connector
+
+#### Ethernet cables
+
+- "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
+- The more correct term would be "Twisted pair" cable, because.
+- Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
+- Twisted pairs cables have categories, ranging from 3 to 8 (maybe more in the future).
+  * Some normalisation (EIA/TIA 568, 1990) started the numerotation at 3 for some (good) reason.
+  * Category 3 and 4 are not used anymore, except maybe for telephony or 10base-T Ethernet.
+  * Category 5 and more support 1000base-T Ethernet.
+- There is a distinction between Fast Ethernet (100BASE-TX, 100BASE-T), Gigabit Ethernet (1000base-T, 100BASE-TX), there is autonegotiation to
+
+#### DWDM Equippment
+
 - Multiplexers & demultiplexers
   * They do what we expect : multiplex and demultiplex optical colors.
   * They are passive equippments.
@@ -2376,7 +2391,11 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * CWDM stands for Coarse Wavelength Division Multiplexing, it's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
 - LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
 - SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
+
+#### Transcievers
+
 - SFP(-/+/28/...) Optical Transceiver Modules are the small metallic things you plug into switches. 
+  * SFP means Small Form-factor pluggable.
   * They convert optical signals to electric signals.
   * There exists SFP (1Gb/s), SFP+ (10Gb/s), SFP28 (25Gb/s) and SFP28 50G (50Gb/s).
   * The form factor are the same for all the SFP variants.
@@ -2392,6 +2411,7 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * It served as a transition between SFP and SFP+.
   * It became outdated as soon as SFP+ existed.
   * But it can still be found sometimes.
+- There also exist GBIC transcievers (Gigabit Interface Converter)
 - ONT/OLTs
 
 ### Configuring a switch

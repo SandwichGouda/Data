@@ -892,6 +892,15 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * As a matter of fact, **source ports are random**. When an application wants to send data - typically, a request to a server, the OS binds a socket to a port. 
   * This port is random. Because, why not.
   * When the server responds, the source and destination ports are swapped (normal !).
+- Sockets must not be confused with Websocket.
+  * Websocket(s) is a communication protocol. 
+  * It basically serves the same function as HTTP.
+  * It works over TCP.
+  * The difference with HTTP is that it provides a simultaneous two-way (duplex) communication channel over a single TCP connection.
+  * Unlike traditional HTTP, which is stateless and requires repeated requests (polling), WebSockets maintain an open connection.
+  * Polling is a technique that **repeatedly requests data** from a server at **regular intervals until** a desired response is received or a timeout period elapses.
+  * RFC 6455 states that WebSocket "is designed to work over HTTP ports 443 and 80 as well as to support HTTP proxies and intermediaries". 
+  * Obviously, to communicate, Websocket uses sockets ! 
 
 ## Web
 

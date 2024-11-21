@@ -1274,7 +1274,7 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * Every Go program is organized in a package. 
   A package is a collection of source files in the same directory that allows variables, types, and functions to be visible among other source files within the same package. 
   * For standalone files, the package is called main, but the name of the file is decided by the programmer.
-  * The `fmt` package that implements formatted I/O.
+  * The `fmt` package implements formatted I/O.
   * All go files start with `package [packagename]`. When importing, one imports `path/to/package`. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement `package rand`.
 - Package importation :
   * `import package` or `import path/to/package`
@@ -1377,7 +1377,7 @@ func main() {
 ```
 - **Exported names** : As said before, variables, types, and functions declared in a file associated to a package `package` are visible among other source files within the same package. This is actually only partially true : it is only true for **exported names**. Exported names are the names that start with a capital letter. Exported names will be seen from other source files in the same package. For instance, `import "math"` allows to write `math.Pi` to display the value of $\pi$, but `math.pi`won't work.
 - Functions are declared like so :
-  * ``go
+  * ```go
     func add(x int, y int) int {
       return x + y
     }
@@ -1390,7 +1390,7 @@ func main() {
       return x*y
     }
     ```
-- If the function returns several values (as a tuple), the return should be indicated as follows :
+- If the function returns several values (as a tuple), the return type should be indicated as follows :
   * ```go
     func swap(int x, string s) (string, int) {
       return s,x 
@@ -1588,6 +1588,20 @@ func main() {
     ```
   * If you have a pointer `p` to a struct `v`, you can access the fields of `v` with `(*p).field`.
   * This is kind of cumbersome. Hence, Go allows to access these using `p.X`, without explicit dereference.
+- Anonymous structs
+  * It is possible to use anonymous structs, i.e., structs that don't have a name.
+  * ```go
+    z := struct {
+      i int
+      b bool
+    }{2, true}
+    ```
+  * i.e., these are structs, but not defined in the standard way seen just above. 
+  * They are defined and used in-place ; they don't have a name. 
+  * A inline version is possible, but you have to add a semicolon between the fields to replace the carriage return.
+  * `z := struct {x int; y bool}{2, true}`
+  * `z := struct {x int; y bool}{x: 2, y: true}`
+  * `z := struct {int; bool}{2, true}`
 - Arrays
   * The type `[n]T` is an array of n values of type `T`.
   * Declaration and initialization go as follows : 
@@ -1601,8 +1615,20 @@ func main() {
   * An array's length is part of its type, so arrays cannot be resized. Slices offer a dynamic solution to this problem/
   * You can get the length of an array with `len(arr)`.
 - Slices 
-  * An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
+  * An array has a fixed size. A slice, on the other hand, is a dynamically-sized, and flexible. In practice, slices are much more common than arrays.
   * The type `[]T` is a slice with elements of type `T`.
+  * A slice is build from an array, by taking a slice of it :
+  * ```go
+    primes := [6]int{2, 3, 5, 7, 11, 13}
+    var s []int = primes[1:4]
+    ```
+  * Slices are _references to arrays_, in the sense that changing the elements of a slice modifies the corresponding elements of its underlying array. 
+  * Other slices that are built from the same underlying array will be impacted.
+  * A slice does not store any data, it just describes a section of an underlying array.
+- Slice literals
+  * `[3]bool{true, true, false}` is an array.
+  * `[]bool{true, true, false}` creates the same array as above, then builds a slice that references it.
+  * So, slice literals are arrays without the length.
 
 ### fmt
 

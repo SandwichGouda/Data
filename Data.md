@@ -1710,6 +1710,9 @@ Use `deactivate` to exit the venv
     - `wsl.exe --update` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
 - WSL is very cool, _except_ for computer notworking. Use (actual) Linux.
+- More generally, networking on Windows is shitty. 
+  * The Windows Firewall is unmanageable and has uncontrollable and unpredictable behaviour. 
+  * Use Linux.
 - On windows, by default, the WSL executable is stored in `C:\Program Files\WSL\wsl.exe`. 
   * This means that you can also open WSL from a PowerShell by typing `wsl`. (actually, `C:\Program Files\WSL` is not in the PATH - not in mine at least, I don't know how it works)
   * If you run `wsl` from PowerShell
@@ -1727,6 +1730,14 @@ Use `deactivate` to exit the venv
   * But anyway, you can run any command available in the Windows PowerShell in WSL - but you have to use it in the form `executable.exe` ! 
   * (obviously, otherwise, it won't work : it'll search for a command in WSL - i.e., an executable file, in the PATH, the name of which is `command` - rather than `command.exe`.)
   * (_Bref_, the difference here is that Powershell interprets `command` as a search for `command.exe` while linux only searches an executable file the name of which is `command`)
+- You can run a wsl instance (terminal) from PowerShell using the command `wsl`. 
+- You can run a Powershell instance (terminal) from WSL by running `powershell.exe` which is located in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/` : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe`.
+- You can also run Powershell commands in Linux (WSL) scripts, by `source`-ing such command : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\Users\willi\Documents\_La vie\Computers\Go'"`
+- This is particularly useful for running VSCode on the Windows file system instead of WSL's. As a matter of fact, doing the latter is slower.
+- You can run a wsl instance (terminal) from PowerShell using the command `wsl`. 
+- You can run a Powershell instance (terminal) from WSL by running `powershell.exe` which is located in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/` : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe`.
+- You can also run Powershell commands in Linux (WSL) scripts, by `source`-ing such command : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\Users\willi\Documents\_La vie\Computers\Go'"`
+- This is particularly useful for running VSCode on the Windows file system instead of WSL's. As a matter of fact, doing the latter is slower.
 
 ### Windows miscellaneous information
 

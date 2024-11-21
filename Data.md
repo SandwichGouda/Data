@@ -1754,8 +1754,21 @@ Use `deactivate` to exit the venv
 - This way, SSH ensures **authenticity** of encrypted data. 
 - Confidentiality and Integrity are implemented simultaneously, and (simultaneously) also ensured by SSH.
 - SSH uses TCP port 22.
-- If (on WSL for instance) ssh tells you that it doesn't have the permissions ti use the key (or thinks you're not the real owner), use ``chmod 600 ~/.ssh/privatekay`` (and ``chmod 600 ~/.ssh/publickey``, tant qu'on y est) to open the permissions.
-- SSH uses an _SSH Agent_ to find the keys 
+- If (on WSL for instance) ssh tells you that it doesn't have the permissions to use the key (or thinks you're not the real owner), use ``chmod 600 ~/.ssh/privatekay`` (and ``chmod 600 ~/.ssh/publickey``, tant qu'on y est) to open the permissions.
+- We call **ssh client**, or **ssh client program**, the program that runs on your machine and manages ssh.
+- For instance, OpenSSH is a ssh client (an implementation of SSH). PuTTY is another one (but, lol.).
+- SSH uses a program called `ssh-agent`.
+  * SSH client programs (`ssh` from OpenSSH. Or PuTTY, lol) typically run for the duration of a remote login session. 
+  * They and are configured to look for the user's private key in a file in the user's home directory (~/.ssh/...).
+  * For more security, the private key is stored in an encrypted form, and the key's password is used to compute decypher the private key.
+  * So, to sum it up, the private key that's stored on disk is not the actual private key, it's an encrypted version of it, and the key's password is necessary to retrieve the decrypted key.
+  * The problem with that is that, without anything else, the user would have to type it's key password each time a packet is sent.
+  * That would be annoying. A solution could be to store the unencrypted key in memory, in a space associated to the space to the ssh client process.
+  * This would imply that the key would've to be typed each time it's needed.
+  * People weren't happy with that, they wanted it to last for longer, and not have to type it all the time. 
+  * So, they needed a separate process to manage this. `ssh-agent` is such program. 
+  * `ssh-agent` communicates with the SSH Client to provide the unencrypted key each time its needed.
+  * For this, the client uses Unix domain socket, i.e., a (Berkeley) socket that allows data to be exchanged between two processes executing on the same (Unix or Unix-like) host computer.
 
 ### SSH usage
 

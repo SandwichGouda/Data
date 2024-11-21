@@ -192,9 +192,9 @@ Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier o
 - `sudo su` switches to root without login environment.
 - `sudo -i` shanges to root's home directory (`/root`)
 - `sudo su` stays in the current working directory
-- `sudo -i` loads root user's login environment.	
+- `sudo -i` loads root user's login environment.  
 - `sudo su` keeps current user environment by default
-- `sudo -i` Loads root-specific profile files (e.g., .bashrc, .profile).	
+- `sudo -i` Loads root-specific profile files (e.g., .bashrc, .profile).  
 - `sudo su` Does not load root profile files unless sudo su - is used.
 | Aspect | `sudo -i` | `sudo su` |
 |--------|-----------|-----------|
@@ -1340,7 +1340,7 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * Go _verbs_ include :
     + `%v` : The value in a default format
     + `%+v` : Same as `%v`, but adds field names when printing structs
-    + `%#v` :	a Go-syntax representation of the value
+    + `%#v` :  a Go-syntax representation of the value
   (floating-point infinities and NaNs print as ±Inf and NaN)
     + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
     + `%%` : The way to write a percent `%` sign (without it being interpreted as a verb attempt)
@@ -1410,8 +1410,8 @@ func main() {
   * When doing this, the variable is (pre-)declared. You can affect it (so don't re-declare it).
   * ```go 
     func split(sum int) (x int) {
-	  x = sum * 4 / 9
-	  return
+    x = sum * 4 / 9
+    return
     }
     ```
 - Operators : 
@@ -1625,10 +1625,29 @@ func main() {
   * Slices are _references to arrays_, in the sense that changing the elements of a slice modifies the corresponding elements of its underlying array. 
   * Other slices that are built from the same underlying array will be impacted.
   * A slice does not store any data, it just describes a section of an underlying array.
+  * When slicing, one can omit the lower or higher bounds.
+  * `a[0:length of a]`, `a[:length of a]`, `a[0:]` and `a[:]` are equivalent.
 - Slice literals
   * `[3]bool{true, true, false}` is an array.
   * `[]bool{true, true, false}` creates the same array as above, then builds a slice that references it.
   * So, slice literals are arrays without the length.
+- Reslicing slices
+  * The length of a slice is the number of elements it contains.
+  * It is obtained with `len(s)`.
+  * The capacity of a slice is the number of elements in the underlying array **counting from the first element in the slice**.
+  * It is obtained with `cap(s)`
+  * ```go
+    s := []int{2, 3, 5, 7, 11, 13}
+    s = s[:0] // Slices the slice to give it zero length.
+    s = s[:4] // Extends its length.
+    s = s[2:] // Drops its first two values.
+    ```
+- Nil slices
+  * The zero value of a slice is nil.
+  * A nil slice has a length and capacity of 0 and has **no underlying array**.
+- Dynamically sized slices
+  * Slices can be created with the built-in `make` function. 
+  * This allows to create dynamically-sized arrays.
 
 ### fmt
 

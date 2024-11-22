@@ -2548,7 +2548,15 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 - There also exist GBIC transcievers (Gigabit Interface Converter)
 - ONT/OLTs
 
+### Layer 2 networking equippment 
 
+- Layer 3 networking equippment essentially boils down to swiches and bridges.
+  * One could argue, rightly, that some equippment other than a switch or a bridge, is a layer-2 équippment... Whatever.
+  * The difference between a switch and a bridge is not so obvious. 
+  * Usual
+  * A bridge is, essentially, either a virtual switch, or a switch that connects different networks that are on different supports (optical fiber / waves / ethernet cables...)
+  * When configuring a switch, it is possible to logically "split" it up into several virtual switch.
+  * Your hardware then acts as if it was two switches. But, on the same hardware. -> Software-Defined Networking !
 
 ### Configuring a switch
 

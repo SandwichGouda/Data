@@ -2558,6 +2558,28 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * When configuring a switch, it is possible to logically "split" it up into several virtual switch.
   * Your hardware then acts as if it was two switches. But, on the same hardware. -> Software-Defined Networking !
 
+### Layer 3 networking equippment
+
+- Layer 3 networking equippment essentially boils down to routers.
+- You can separate these into several categories :
+  * Routers (actual routers)
+  * Layer-3 switches (switches that can perform routing tasks in addition to mere switching)
+  * MPSL Routers (see Multi Protocol Label Switching)
+  * ...
+- An important thing to note is that most router OSs are Unix-based !
+  * For instance, the Xiaomi routers we bought at Rezel for our ISP service run OpenWRT,
+    + Note : Our very (very) competent people at Rezel qualified the OpenWRT documentation of really not terrible.
+    + Dixit them "You can spend a damn lot, lot of time reading the OpenWRT documentation without learning anything"
+  * Anyway, this means that are nothing more than Linux machines !
+    + For instance, the command `ip route add A via B`, on all Linux distributions, change the device's routing table to set the next hop for the IP range A to the IP B.
+    + Note that here A must be an IP address range.
+    + Mnemonic : `ip route add default via B` sets `B` as default gateway for the machine.
+  * I think that's quite a damn good thing to note. When you see how switches (configuration) work, you can quite quicly see that their OS is NOT Unix-based xD
+  * But routers, yes. This also implies that a router can be a virtual machine, it can be a home computer... !
+  * Buying a router means buying some device that's essentailly made to be a router. There's a good chance that not all home computers have the appropriate ports to be able to _prétendre à être un_ actual router.
+
+### Multi Protocol Label Switching (MPLS)
+
 ### Configuring a switch
 
 - To connect to a switch, there are essentially two options

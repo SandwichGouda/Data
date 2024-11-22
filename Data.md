@@ -389,6 +389,7 @@ All configurations options can be written in `/etc/nixos/configuration.nix`.
   * This downloads `index.html`
   * When using `cat`, you can see `index.html`is actually a bash script !
   * -> `bash index.html` installs docker
+- When a prompt asks you what to do - typically : "Do this ? [Y/n] / Are you sure ? [y/N]" -, the option that's in uppercase letter is the "default" one, i.e., concretely, the one that'll be chosen if the prompt is left blank.
 - `:(){ :|:& };:` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
 
 ### Linux package managers
@@ -2547,15 +2548,42 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 - There also exist GBIC transcievers (Gigabit Interface Converter)
 - ONT/OLTs
 
+
+
 ### Configuring a switch
 
 - To connect to a switch, there are essentially two options
   * Either using a serial connexion
   * Or exposing an interface with an IP address on one of its VLANs, and then SSHing into it 
-- Serial connexions 
+  * Or using a WebUI : the switch then has an IP address on one of its interfaces (on one of its VLANs, typically), and will expose a web server on (some port on) that IP address. Then, just go to the associated website (by typing the switch's IP address in the URL bar, specifying the port if needed - i.e. if it's neither 80 nor 443, could be that it's the case)
+- Serial connexions
   * Switches usually have a serial port, to connect using a serial.
   * Serial communication usually goes through either RJ-45 ports, or, on older equippments (computers or switches), serial ports, which look like VGA ports, but with **2 pin rows** (often 9 pins, can be 25 pins sometimes), unlike VGA ports which contain 3 rows.
   * It can also, very usefully, be pased through USB ! For this, you will likely need a Serial USB driver. There exist many on the web, just lookup Serial-USB driver. 
+- Then, the detail of the switch configuration, i.e. what commands should be typed, depend on the switch manufacturer : MikroTik, Cisco, Brocade, HP...
+
+#### MiktoTik switches
+
+- Physical-aspects related generalities
+  * Quite obviously, the CONSOLE RJ45 port is for establishing a serial connection.
+  * Then, the SFP(-/+/28/...) ports nature are specified under the ports.
+- Console generalities
+  * If you type the beginning of a command, and that there's no ambiguity as to the follow-up of your command, you can write a part of it and the console will understand what you meant.
+  * For example, you can write `span ...` instead of `spanning-tree ...`, `p ...` instead of `print`...
+  * There is a lot of autocompletion, in the sense of what's right above, but also right below.
+  * When anywhere in the console, and even, anywhere right in the middle of a a command, you can press `TAB` for autocompletion. 
+  * This will tell you all possible arguments to all commands, and even all possible values to command arguments ! 
+  * (i.e. : `add ` + `TAB` will tell you that you can write `bridge` as parameter to `add`, and then, `add bridge=` + `TAB` will tell you all the possible values to the argument `bridge` : that is, all possible bridges,hence, all existing bridges).
+- The notion of context
+  * When in the console, there is a notion of "context", which is kind of like a folders, but not really.
+  * There is a an arborescence, kind of like the Linux file system arborescence, but the folders do not "contain files".
+  * Actually, a entering a "subfolder" of a "folder" means going more specific in the configuration.
+  * When anywhere in the console (in any context), you can write
+
+#### Cisco switches
+
+- Similarities with MikroTik switches :
+  * It is possible to type the beginning of keyword, the console will guess what you meant if there's no ambiguity.
 
 ### Configuring a router
 

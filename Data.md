@@ -2385,7 +2385,6 @@ One can say that HTTPS is basically HTTP + TLS
 
 ##### STP
 
-- The Spanning Tree protocol is a protocol
 - In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
 
 ##### MSTP
@@ -2616,6 +2615,10 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * Serial communication usually goes through either RJ-45 ports, or, on older equippments (computers or switches), serial ports, which look like VGA ports, but with **2 pin rows** (often 9 pins, can be 25 pins sometimes), unlike VGA ports which contain 3 rows.
   * It can also, very usefully, be pased through USB ! For this, you will likely need a Serial USB driver. There exist many on the web, just lookup Serial-USB driver. 
 - Then, the detail of the switch configuration, i.e. what commands should be typed, depend on the switch manufacturer : MikroTik, Cisco, Brocade, HP...
+- A switch has a login and password for serial communication (probably not only serial communication, by the way).
+  * When the switch is turned off, the session is closed.
+  * But, if the switch is configures using serial communication, recall that the **serial protocol is only made to inject text**.
+  * Hence, it **won't logout** when you unplug the serial port.
 
 #### MiktoTik switches
 
@@ -2623,18 +2626,16 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * Quite obviously, the CONSOLE RJ45 port is for establishing a serial connection.
   * Then, the SFP(-/+/28/...) ports nature are specified under the ports.
 - Console generalities
-  * If you type the beginning of a command, and that there's no ambiguity as to the follow-up of your command, you can write a part of it and the console will understand what you meant.
-  * For example, you can write `span ...` instead of `spanning-tree ...`, `p ...` instead of `print`...
+  * If you type the beginning of a command, and that there's no ambiguity as to the follow-up of your command, you can type a part of it and the console will understand what you meant.
+  * For example, you can type `span ...` instead of `spanning-tree ...`, `p ...` instead of `print`...
   * There is a lot of autocompletion, in the sense of what's right above, but also right below.
   * When anywhere in the console, and even, anywhere right in the middle of a a command, you can press `TAB` for autocompletion. 
   * This will tell you all possible arguments to all commands, and even all possible values to command arguments ! 
-  * (i.e. : `add ` + `TAB` will tell you that you can write `bridge` as parameter to `add`, and then, `add bridge=` + `TAB` will tell you all the possible values to the argument `bridge` : that is, all possible bridges,hence, all existing bridges).
+  * (i.e. : `add ` + `TAB` will tell you that you can type `bridge` as parameter to `add`, and then, `add bridge=` + `TAB` will tell you all the possible values to the argument `bridge` : that is, all possible bridges,hence, all existing bridges).
 - The notion of context
   * When in the console, there is a notion of "context", which is kind of like a folders, but not really.
   * There is a an arborescence, kind of like the Linux file system arborescence, but the folders do not "contain files".
   * Actually, a entering a "subfolder" of a "folder" means going more specific in the configuration.
-  * When anywhere in the console (in any context), you can write
-
 #### Cisco switches
 
 - Similarities with MikroTik switches :
@@ -2644,8 +2645,32 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * `command ?` will list all possible arguments to command `command`
   * `command arg=?` will list all possible values to argument `arg` for command `command`
 - Commande modes :
-  * `Switch>`
+  * Prompt `Switch>`
+    + "User EXEC" mode.
+    + The default mode when accessing the switch command line.
+    + Exit with `logout` or `quit`
+  * Prompt `Device#`
+    + "Privileged EXEC" mode (≃`root`)
+    + Enter with `enable`
+    + Exit with `disable`
+    + Is password protected, or should be...
+  * Prompt `Device(config)#`
+    + Global configuration mode
+    + Enter with `configure` in Priviledged mode
+    + Exit with `exit`, or `end`, or `CTRL+Z`
+    + Use this mode to configure parameters that apply to the **entire switch**.
+  * Prompt `Device(config-vlan)#`
+    + VLAN configuration mode
+    + Enter with `vlan <vlan-id>` in Global configuration mode
+    + Exit to global configuration mode with `exit`
+    + Exit to Privileged mode with `end` or `CTRL+Z`
+  * Prompt `Device(config-if)#`
+    + Interface configuration mode
+    + Enter with `interface <interface>` in Global configuration mode
+  * Prompt `Device(config-line)#`
     + 
+    + Exit to global configuration mode with `exit`
+    + Exit to Privileged mode with `end` or `CTRL+Z`
 
 ### Configuring a router
 

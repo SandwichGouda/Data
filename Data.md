@@ -2523,15 +2523,35 @@ The application layer is the top layer, the one that contains most of the human-
 - Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
 - You could think that aggregating two (same speed) links would double the link speed, but in practice, the traffic due to protocol communication implies that you would typically get around 1.5x speed.
 
-#### SNMP 
+##### SNMP 
 
 - Simple Network Management Protocol (SNMP) is an [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard) protocol (which means that it's standard over the Internet ; especially and typically, standardized by the IETF (Internet Engineering Task Force)(which looks like is the layer-3 equivalent to the IEEE, which semingly works more on layer 2)). 
   * It allows to get/manage **and edit** information about devices on IP networks.
   * Routers, switches, servers, workstations, printers, ... handle SNMP.
 
-#### LLDP
+##### LLDP
 
-- LLDP, Link Layer Discovery Protocol,  
+- LLDP, Link Layer Discovery Protocol, a manufacturer-neutral link layer protocol used by network devices for showing their identity, capabilities, and neighbors on a local area network. 
+  * It is based on IEEE 802 technology, principally wired Ethernet.
+  * There are many proprietary equivalent protocols :
+    + Cisco Discovery Protocol (CDP)
+    + Foundry Discovery Protocol (FDP)
+    + Nortel Discovery Protocol (NDP)
+    + MikroTik Neighbor Discovery protocol (MNDP) 
+    + Link Layer Topology Discovery (LLTP)(Microsoft)
+  * In practice, devices are often, sometimes, but not always, compaptible with (some of) these.
+- This protocols allows a device to retrieve information such as 
+  * The topology of the network - actually, of the part of the network that's LLDP-enabled network
+  * Information on the hosts of the network, such as :
+    + System name and description
+    + Port name(s) and description
+    + VLAN name
+    + IP management address
+    + System capabilities (switching, routing, ...)
+    + MAC/PHY information
+    + Power of links (see Power over Ethernet, PoE)
+    + Link aggregation
+
 ##### ARP 
 
 ##### Tunnels

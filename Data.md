@@ -2414,14 +2414,21 @@ One can say that HTTPS is basically HTTP + TLS
 
 ### VLANS
 
-VLANs are used in an effort to apply the hardware virtualization principle to layer-2 networking to create Software Defined Networking. Software Defined Networking is Computer Network's analog of Software-defined radio and Software-defined data centers.
-
-Without VLANs, a switch can only belong to one network. There is no possible notion of a switch beloning to several networks without VLANs. It then does its job and routes the frames (trames) to the right switches and endpoints normally. With VLANs, a switch is able to belong to sifferent networks at the same time. The way it works is as follows : 
+- VLANs are used in an effort to apply the hardware virtualization principle to layer-2 networking to create Software Defined Networking. Software Defined Networking is Computer Network's analog of Software-defined radio and Software-defined data centers.
+- Without VLANs, a switch can only belong to one network. There is no possible notion of a switch beloning to several networks without VLANs. It then does its job and routes the frames (trames) to the right switches and endpoints normally. With VLANs, a switch is able to belong to sifferent networks at the same time. The way it works is as follows : 
 - The endpoints are not aware of the existence of VLANs and of several networks. They talk to (send and recieve) untagged frames. It is the switches' problem to deal with VLANs and tagged frames. When a switch recieves an un tagged frame (that is : from an endpoint), it either :
   * transmits it _as is_ to the reciever endpoint, if the next hop is an endpoint (the intended recipient)
   * or, if the next hop is a switch : tags it with the corresponding VLAN (the port's VLAN), and send it to the switch. 
 - In ACCESS A switch has several ports, and theses are _tagged_.
 - In virtual networking, a câble requires a VLAN to exist
+
+### QinQ
+
+- VLANs were introduced with the standard [IEEE_802.1Q](https://fr.wikipedia.org/wiki/IEEE_802.1Q)
+  * Note the presence of the Q letter : this is why its descendent is called QinQ.
+  * As a matter of fact, the standard [IEEE 802.1ad](https://en.wikipedia.org/wiki/IEEE_802.1ad), known informally as **QinQ** (or stacked VLANs), allows multiple VLAN tags to be inserted into a single frame.
+  * The frame is then double tagged.
+  * We call _header_ the first tag, the one that specifies the VLAN. We cann
 
 ### VXLANS
 

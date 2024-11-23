@@ -2426,11 +2426,15 @@ One can say that HTTPS is basically HTTP + TLS
 
 - VLANs were introduced with the standard [IEEE_802.1Q](https://fr.wikipedia.org/wiki/IEEE_802.1Q)
   * Note the presence of the Q letter : this is why its descendent is called QinQ.
-  * As a matter of fact, the standard [IEEE 802.1ad](https://en.wikipedia.org/wiki/IEEE_802.1ad), known informally as **QinQ** (or stacked VLANs), allows multiple VLAN tags to be inserted into a single frame.
-  * The frame is then double tagged.
-  * We call _header_ the first tag, the one that specifies the VLAN. We cann
+  * The standard [IEEE 802.1ad](https://en.wikipedia.org/wiki/IEEE_802.1ad), known informally as **QinQ** (or stacked VLANs), allows multiple VLAN tags to be inserted into a single frame.
+  * The frame is then double tagged. One tag contains the VLAN ID, the second the "sub-vlan" ID (so to speak).
 
 ### VXLANS
+
+- VXLANs are a way to pass Layer-2 frames over IP.
+  * The idea is to be able to send a Layer-2 (Ethernet, typically) frame using the IP protocol.
+  * So, the ethernet frame becomes the payload of an IP packet : it is encapsulated into an IP packet and sent - hence, encapsulated into Ethernet again.
+  * So, to sum it up, you have an Ethernet Header, followed by an IP header, maybe followed by a TCP header, that contains, as its payload, an Ethernet frame : i.e., the TCP payload starts with an Ethernet header (that might, again, contain an IP header, etc... or not)
 
 ### VPNs
 

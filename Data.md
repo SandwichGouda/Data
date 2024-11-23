@@ -903,6 +903,14 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * RFC 6455 states that WebSocket "is designed to work over HTTP ports 443 and 80 as well as to support HTTP proxies and intermediaries". 
   * Obviously, to communicate, Websocket uses sockets ! 
 
+### Miscellaneous OS information
+
+- Swapping is the process of moving data from the computer's RAM and storage (hard drive).
+  * This is often used to get some more memory space on computers in situations that require more RAM that there actually is.
+  * Hence the name : RAM <-- swap --> Storage
+  * On Windows for instance, if you see files ending in `.swp`, especially in a saturated RAM context, you know what this is !
+  * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.
+
 ## Web
 
 ### Web development
@@ -2625,6 +2633,13 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 - Similarities with MikroTik switches :
   * It is possible to type the beginning of keyword, the console will guess what you meant if there's no ambiguity.
+  * Using `TAB` will complete a partial command (without ambiguity) into a whole one.
+  * `?` will list all possible commands (in current configuration mode)
+  * `command ?` will list all possible arguments to command `command`
+  * `command arg=?` will list all possible values to argument `arg` for command `command`
+- Commande modes :
+  * `Switch>`
+    + 
 
 ### Configuring a router
 

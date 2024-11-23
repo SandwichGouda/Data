@@ -2397,6 +2397,12 @@ One can say that HTTPS is basically HTTP + TLS
 - Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
 - You could think that aggregating two (same speed) links would double the link speed, but in practice, the traffic due to protocol communication implies that you would typically get around 1.5x speed.
 
+#### SNMP 
+
+- Simple Network Management Protocol (SNMP) is an [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard) protocol (which means that it's standard over the Internet ; especially and typically, standardized by the IETF (Internet Engineering Task Force)(which looks like is the layer-3 equivalent to the IEEE, which semingly works more on layer 2)). 
+  * It allows to get/manage **and edit** information about devices on IP networks.
+  * Routers, switches, servers, workstations, printers, ... handle SNMP.
+
 ##### ARP 
 
 ##### Tunnels
@@ -2462,6 +2468,12 @@ DCHP is useful for configuring several IP addresses on a network, automatically 
 ### NAT
 
 NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
+
+### Other protocols
+
+- Telnet (lol)
+  * Telnet is an old, archaic ancestor of SSH
+  * No one uses it anymore x)
 
 ### Control plane, Management plane, Data plane
 
@@ -2631,11 +2643,18 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * There is a lot of autocompletion, in the sense of what's right above, but also right below.
   * When anywhere in the console, and even, anywhere right in the middle of a a command, you can press `TAB` for autocompletion. 
   * This will tell you all possible arguments to all commands, and even all possible values to command arguments ! 
-  * (i.e. : `add ` + `TAB` will tell you that you can type `bridge` as parameter to `add`, and then, `add bridge=` + `TAB` will tell you all the possible values to the argument `bridge` : that is, all possible bridges,hence, all existing bridges).
+  * (i.e. : `add ` + `TAB` will tell you that you can type `bridge` as parameter to `add`, and then, `add bridge=` + `TAB` will tell you all the possible values to the argument `bridge` : that is, all possible bridges, hence, all existing bridges).
 - The notion of context
   * When in the console, there is a notion of "context", which is kind of like a folders, but not really.
   * There is a an arborescence, kind of like the Linux file system arborescence, but the folders do not "contain files".
-  * Actually, a entering a "subfolder" of a "folder" means going more specific in the configuration.
+  * Actually, a entering a "subfolder" of a "folder" means going more specific in the configuration.  * When anywhere in the console (in any context), you can type `/path/to/something/command` to execute the command `command` in the context `path/to/something`. 
+  * In particular, for instance, typing `/command` executes command `command` at the "root" `/`. 
+  * So, typing `/command` and command at `/` is the same thing.
+  * i no path is specified (which is equivalent to : if the typed prompt does not start with `/`), the command will be executed in the current context.
+- To see all the configuration that's been set up on the switch, to can type /export.
+  * More generally, `export` shows the list of commands that have been executed in the current context, and recursively in all subcontexts.
+  * It allows to export a configuration ! (or part of a configuration)
+
 #### Cisco switches
 
 - Similarities with MikroTik switches :
@@ -2668,9 +2687,11 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
     + Interface configuration mode
     + Enter with `interface <interface>` in Global configuration mode
   * Prompt `Device(config-line)#`
-    + 
+    + This is for connecting to the switch via Telnet or SSH
+    + Enter with `line vty <x> <y>`, specifying a line (`line console` exists)
     + Exit to global configuration mode with `exit`
     + Exit to Privileged mode with `end` or `CTRL+Z`
+- The Cisco documentation distinguishes the "Command Reference" and "Command Reference Guide" : (Excerpt from "Consolidated Platform Command Reference, Cisco IOS Release 15.2" : "For more detailed information on the command modes, see the command reference guide for this release")
 
 ### Configuring a router
 

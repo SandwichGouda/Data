@@ -909,7 +909,7 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * This is often used to get some more memory space on computers in situations that require more RAM that there actually is.
   * Hence the name : RAM <-- swap --> Storage
   * On Windows for instance, if you see files ending in `.swp`, especially in a saturated RAM context, you know what this is !
-  * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.
+  * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.q
 
 ## Web
 
@@ -2436,6 +2436,12 @@ One can say that HTTPS is basically HTTP + TLS
   * Note the presence of the Q letter : this is why its descendent is called QinQ.
   * The standard [IEEE 802.1ad](https://en.wikipedia.org/wiki/IEEE_802.1ad), known informally as **QinQ** (or stacked VLANs), allows multiple VLAN tags to be inserted into a single frame.
   * The frame is then double tagged. One tag contains the VLAN ID, the second the "sub-vlan" ID (so to speak).
+- Using the norm IEEE_802.1ad implies to increase the maximum ethernet frame size of 4 bytes
+- Or, to switch into Jumbo frame.
+  * Jumbo frames are Ethernet frames with more than 1500 bytes of payload, the limit set by the IEEE (802.3) standard.
+  * The payload limit for jumbo frames is variable, 9000 bytes is the most commonly used limit, but smaller and larger limits exist.
+  * Many Gigabit Ethernet switches and Gigabit Ethernet NICs, and some Fast Ethernet switches and Fast Ethernet NICs can support jumbo frames.
+  * Many vendors also adopted the size; however, jumbo frames are not part of the official IEEE (802.3) Ethernet standard.
 
 ### VXLANS
 

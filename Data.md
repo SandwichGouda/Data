@@ -2281,6 +2281,9 @@ Exercise : Find the characters that break the `EditSummary` script (they are it 
 ## Computer networking Theory
 
 Note : Wireshark is your friend ! :)
+Note 2 : The difference between "Theory" and "Practice" should be the following :
+  * Practice is about how to actually set up networking and how to configure the different equippments.
+  * Theory is about explaining the nature and role of the underlying concepts, equippment and protocols.
 
 ### The OSI Model
 
@@ -2360,22 +2363,145 @@ Encryption and Decryption are typically done at this level too,[9] although it c
 
 The application layer is the top layer, the one that contains most of the human-machine interfaces. Its definition varies between the OSI Model and the Internet Protocol suite. Essentially, the application layer is where everything related to user-facing application occurs.
 
-### Layer 2 networking
+### Layer 1 networking equippment
 
-Switches
+#### Optical fibers
 
-### Layer 3 networking
+- They come in different types :
+  * LC/APC, SC/APC, LC/UPC, SC/APC
+  * The LC / SC distinction refers to the type of connector - the form-factor of the end of the cable.
+    + SC (Subscriber connector) are slightly bigger, and are essentially (supposed to be) plugged on the "user end" (Subscriber)
+    + LC (Lucent connector) are slightly smaller. They are (supposed to be) plugged on the service-provider end.
+  * The APC/UPC distinction refers to the way the fiber is polished at its end.
+    + UPC (Ultra Physical Contact) : the fiber is polished with a **flat** end face.
+    + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
+    + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
+  * All of the above are **single-mode** connector
 
-Routers
-- `ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]`
-- One MAC per interface.
-- Never use DHCP for routers !
-- `ip link set dev [interace] up` to up an interface
+#### Ethernet cables
 
-### Layer 6 networking
+- "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
+- The more correct term would be "Twisted pair" cable, because the strings are twisted in pairs. 
+  * They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
+  * There exist non-twisted, called "flat", cables. These are not more than a few meters long.
+  * The data is then transferred using tensions (potential differences) between the two strings of each pair (hence, 4 potential differences, one for each pair).
+  * There are also power supply strings in these cables.
+- Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
+  * RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
+  * Their plastic is often transparent, and we can see eight little strings, that ought to be twisted in pairs (or not, in flat cables).
+  * RJ-45 ports can be crossed, non-crossed, rollback...
+  * Non-crossed means that the eight little strings are in the same order on both ends : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
+  * Crossed means that the pairs are crossed : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
+  * Rollback are the strings are in reverse order : (1,2,3,4,5,6,7,8) -> (8,7,6,5,4,3,2,1)
+- Twisted pairs cables have categories, ranging from 3 to 8 (maybe more in the future).
+  * Some normalisation (EIA/TIA 568, 1990) started the numerotation at 3 for some (good) reason.
+  * Category 3 and 4 are not used anymore, except maybe for telephony or 10base-T Ethernet.
+  * Category 5 and more support 1000base-T Ethernet.
+- There is a distinction between Fast Ethernet (100BASE-TX, 100BASE-T), Gigabit Ethernet (1000base-T, 100BASE-TX), there is autonegotiation to allow endpoints (NICs) to negotiate a speed... Ask Dorian next-time we see him for more details.
 
-The standard protocol for cyphering data over the internet is TLS (Transport Layer Security). Its predecessor was SSL (Secure Sockets Layer). TLS is used to cypher HTTPS, mails, ...
-One can say that HTTPS is basically HTTP + TLS
+#### DWDM Equippment
+
+- Multiplexers & demultiplexers
+  * They do what we expect : multiplex and demultiplex optical colors.
+  * They are passive equippments.
+  * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
+- When working with optic fibers, **be cautious** ! **They can blind you** !
+- For that reason, attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. They are used whenever one needs to mittigate an output or input signal.
+- OADMs
+  * OADM stands for Optical Add-Drop Multiplexer.
+  * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
+  * Its inputs are one polychromatic input (A), one monochrome input (B) at with wavelength $\lambda$
+  * Its outputs are one polychromatic output (C), and one monochrome output (D) with wavelength $\lambda$.
+  * The OADM takes the polychromatic input (A), removes the wavelength $\lambda$, and drops it on output (D)
+  * and injects the input (B), at the same wavelength, on the output (D), together with rest of the polychromatic signal on a (A) (the signal (A), without its $\lambda$ wavelength)
+  * So, in a nutshell, it takes a (polychromatic) signal, and replaces the content on some wavelength (which is fixed and depends on the OADM, it's part of its specs) (with a given input), and it drops it such that you can retrieve this specific wavelength in the input signal.
+  * This equippment is passive. 
+  * They come with two sides, that are symmetric by definition (the input and output can be switched).
+  * For that reason, they are named "West" and "End"
+- Multiplexers (WDM - Wavelength Division Multiplexing technology) come in two sorts
+  * DWDM stands for Dense Wavelength Division Multiplexing. 
+    + It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
+    + This part separates the wavelengths into channels (C44, C45, C46, C47...). These correspond to wavelengths ranges (there is a standard, for the precise corresponding wavelengths, lookup on the net - no one knows these by heart)
+  * CWDM stands for Coarse Wavelength Division Multiplexing
+    + It's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
+    + This part works raw wavelenths : actual values of $\lambda$
+- LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
+- SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
+
+#### Transcievers
+
+- SFP(-/+/28/...) Optical Transceiver Modules are the small metallic things you plug into switches. 
+  * SFP means Small Form-factor pluggable.
+  * They convert optical signals to electric signals.
+  * There exists SFP (1Gb/s), SFP+ (10Gb/s), SFP28 (25Gb/s) and SFP28 50G (50Gb/s).
+  * The form factor are the same for all the SFP variants.
+  * The first two are quite common, the last are less.
+  * Since the latter are much more expensive, they are mostly used un big datacenter and server clusters. 
+- There also exists QSFP(-/+/28/...) ports, with require adequate (QSFP(-/+/28/...))
+  * All SFP things have a Q- counterpart. The associated are larger. 
+  * Q stands for quad : these are merges of four SFP(-/+/28/...) ports.
+  * The associated speeds are four time their non-Q counterpart : 4G/s, 40G/s, 100G/s.
+  * These are an aggregated version of four of their non-Q counterpart, but better.
+  * There exists breakout cables that allow to convert QSFP(-/+/28/...) (resp. 4x SFP(-/+/28/...)) to 4x SFP(-/+/28/...) (resp. QSFP(-/+/28/...))
+- There also exists XFP, which is quite rare.
+  * It served as a transition between SFP and SFP+.
+  * It became outdated as soon as SFP+ existed.
+  * But it can still be found sometimes.
+- There also exist GBIC transcievers (Gigabit Interface Converter)
+- ONT/OLTs
+
+#### Ethernet hubs
+
+- Ethernet hubs are layer-1 devices that have several ethernet ports.
+  * Their goal is to redistribute packets, acting as "forks", or "nodes".
+  * They can be called Ethernet hubs or active hubs, or network hubs, or repeater hubs, or even multiport repeaters, or simply hubs. 
+  * They make several devices act as a single network segment.
+  * They have multiple input/output (I/O) ports, in which a signal introduced at any input is repeated in all outputs, except the original input.
+
+### Layer 2 networking theory and equippment 
+
+- Layer 2 networking equippment essentially boils down to swiches and bridges.
+  * One could argue, rightly, that some equippment other than a switch or a bridge, is a layer-2 équippment... Whatever.
+  * The difference between a switch and a bridge is not so obvious. 
+  * Usual
+  * A bridge is, essentially, either a virtual switch, or a switch that connects different networks that are on different supports (optical fiber / waves / ethernet cables...)
+  * When configuring a switch, it is possible to logically "split" it up into several virtual switch.
+  * Your hardware then acts as if it was two switches. But, on the same hardware. -> Software-Defined Networking !
+- Switches redirect packets to the right device using their **Forwarding Information Base** (FIB), also known as **forwarding table**, or **MAC table**.
+  * It is a dynamic table that maps MAC addresses to ports.
+- This mechanism is what distinguishes switches from Ethernet hubs.
+
+### Layer 3 networking equippment
+
+- Layer 3 networking equippment essentially boils down to routers.
+- You can separate these into several categories :
+  * Routers (actual routers)
+  * Layer-3 switches (switches that can perform routing tasks in addition to mere switching)
+  * MPSL Routers (see Multi Protocol Label Switching)
+  * ...
+- An important thing to note is that most router OSs are Unix-based !
+  * For instance, the Xiaomi routers we bought at Rezel for our ISP service run OpenWRT,
+    + Note : Our very (very) competent people at Rezel qualified the OpenWRT documentation of really not terrible.
+    + Dixit them "You can spend a damn lot, lot of time reading the OpenWRT documentation without learning anything"
+  * Anyway, this means that are nothing more than Linux machines !
+    + For instance, the command `ip route add A via B`, on all Linux distributions, change the device's routing table to set the next hop for the IP range A to the IP B.
+    + Note that here A must be an IP address range.
+    + Mnemonic : `ip route add default via B` sets `B` as default gateway for the machine.
+  * I think that's quite a damn good thing to note. When you see how switches (configuration) work, you can quite quicly see that their OS is NOT Unix-based xD
+  * But routers, yes. This also implies that a router can be a virtual machine, it can be a home computer... !
+  * Buying a router means buying some device that's essentailly made to be a router. There's a good chance that not all home computers have the appropriate ports to be able to _prétendre à être un_ actual router.
+
+### Layer 3 networking theory
+
+- Routers route IP packets to their next hop according to their Routing Table.
+- Routers and more generally any Layer-3 networking device abstract any Layer-2 (by definition of networking layers and the OSI models) : Adding a switch or not is basically equivalent to adding cables, changing cables, plugging a longer cables... The routers have no idea of this. They send Ethernet frames, encapsulating with a MAC destination in the header, and let switches to their job afterwards.
+- Note that we say Ethernet **frames** and IP **packets**.
+
+### Layer 6 networking theory
+
+- The standard protocol for cyphering data over the internet is TLS (Transport Layer Security). Its predecessor was SSL (Secure Sockets Layer). TLS is used to cypher HTTPS, mails, ...
+- One can say that HTTPS is basically HTTP + TLS
+- For that reason, when looking at the internet traffic going in and out of your computer (with Wireshark) when browsing the internet, you see TLS everywhere. That's because traffic is encrypted !²
 
 ### Networking protocols 
 
@@ -2403,6 +2529,9 @@ One can say that HTTPS is basically HTTP + TLS
   * It allows to get/manage **and edit** information about devices on IP networks.
   * Routers, switches, servers, workstations, printers, ... handle SNMP.
 
+#### LLDP
+
+- LLDP, Link Layer Discovery Protocol,  
 ##### ARP 
 
 ##### Tunnels
@@ -2496,128 +2625,20 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 ## Computer Networking Practice
 
-### Layer 1 networking equippment
+### Layer 1 networking pratice
 
-#### Optical fibers
+- There isn't much to do except plugging the right cables at the right places. :)
+- Except maybe being cautious : 
+  * When working with opticAL fibers, beware of never approaching your eyes from stuff that can blind you.
+  * Also, when working with optical fibers and transcievers, be gentle. Fibers are fragile and can break if you pinch them too hard. 
+  * You likely won't break a transciever by merely pinching it, but letting it fall on the ground pretty much sign's its death warrant.
+  * More generally never let layer-1 equippment, such as cables, "jarretières", optical fibers, transcievers on the ground. Dust is your worst ennemy.
+  * Equippment often has small plastic or rubber plugs/caches/... to protect their ends or ports. Use them, and do not let these fall on the ground either !
+  * This also applies to layer-2 or more equippment ports : SFP(-/+/28) ports on switches follow the same rules ; they have rubber plugs to protect them, that's not for decoration !
 
-- They come in different types :
-  * LC/APC, SC/APC, LC/UPC, SC/APC
-  * The LC / SC distinction refers to the type of connector - the form-factor of the end of the cable.
-    + SC (Subscriber connector) are slightly bigger, and are essentially (supposed to be) plugged on the "user end" (Subscriber)
-    + LC (Lucent connector) are slightly smaller. They are (supposed to be) plugged on the service-provider end.
-  * The APC/UPC distinction refers to the way the fiber is polished at its end.
-    + UPC (Ultra Physical Contact) : the fiber is polished with a **flat** end face.
-    + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
-    + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
-  * All of the above are **single-mode** connector
+### Layer 2 networking practice
 
-#### Ethernet cables
-
-- "Ethernet cables" are metonymically referred to as such because they typically transport Ethernet packets.
-- The more correct term would be "Twisted pair" cable, because the strings are twisted in pairs. 
-  * They must be twisted in pairs because otherwise the electromagnetic fields interferes with itself, jamms itself and it doesn't work.
-  * There exist non-twisted, called "flat", cables. These are not more than a few meters long.
-  * The data is then transferred using tensions (potential differences) between the two strings of each pair (hence, 4 potential differences, one for each pair).
-  * There are also power supply strings in these cables.
-  * 
-- Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
-  * RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
-  * Their plastic is often transparent, and we can see eight little strings, that ought to be twisted in pairs (or not, in flat cables).
-  * RJ-45 ports can be crossed, non-crossed, rollback...
-  * Non-crossed means that the eight little strings are in the same order on both ends : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
-  * Crossed means that the pairs are crossed : (1,2,3,4,5,6,7,8) -> (2,1,4,3,6,4,8,7)
-  * Rollback are the strings are in reverse order : (1,2,3,4,5,6,7,8) -> (8,7,6,5,4,3,2,1)
-- Twisted pairs cables have categories, ranging from 3 to 8 (maybe more in the future).
-  * Some normalisation (EIA/TIA 568, 1990) started the numerotation at 3 for some (good) reason.
-  * Category 3 and 4 are not used anymore, except maybe for telephony or 10base-T Ethernet.
-  * Category 5 and more support 1000base-T Ethernet.
-- There is a distinction between Fast Ethernet (100BASE-TX, 100BASE-T), Gigabit Ethernet (1000base-T, 100BASE-TX), there is autonegotiation to allow endpoints (NICs) to negotiate a speed... Ask Dorian next-time we see him for more details.
-
-#### DWDM Equippment
-
-- Multiplexers & demultiplexers
-  * They do what we expect : multiplex and demultiplex optical colors.
-  * They are passive equippments.
-  * Recall that, generally, a multiplexer "merges", "combines" several entries into one, while a demultiplexer "demultiplexes", i.e., "untangles", "separates", a "multi-entry" to several "mono-outputs"
-- When working with optic fibers, **be cautious** ! **They can blind you** !
-- For that reason, attenuators exist. These are little things that you can put onto a fiber end to mittigate the incoming signal. They are used whenever one needs to mittigate an output or input signal.
-- OADMs
-  * OADM stands for Optical Add-Drop Multiplexer.
-  * An OADM has two inputs and two outputs. It replaces the content of one specific given wavelength (color) $\lambda$.
-  * Its inputs are one polychromatic input (A), one monochrome input (B) at with wavelength $\lambda$
-  * Its outputs are one polychromatic output (C), and one monochrome output (D) with wavelength $\lambda$.
-  * The OADM takes the polychromatic input (A), removes the wavelength $\lambda$, and drops it on output (D)
-  * and injects the input (B), at the same wavelength, on the output (D), together with rest of the polychromatic signal on a (A) (the signal (A), without its $\lambda$ wavelength)
-  * So, in a nutshell, it takes a (polychromatic) signal, and replaces the content on some wavelength (which is fixed and depends on the OADM, it's part of its specs) (with a given input), and it drops it such that you can retrieve this specific wavelength in the input signal.
-  * This equippment is passive. 
-  * They come with two sides, that are symmetric by definition (the input and output can be switched).
-  * For that reason, they are named "West" and "End"
-- Multiplexers (WDM - Wavelength Division Multiplexing technology) come in two sorts
-  * DWDM stands for Dense Wavelength Division Multiplexing. 
-    + It's a technology that allows multiplexing on polychromatic signals with dense wavelength spectrum.
-    + This part separates the wavelengths into channels (C44, C45, C46, C47...). These correspond to wavelengths ranges (there is a standard, for the precise corresponding wavelengths, lookup on the net - no one knows these by heart)
-  * CWDM stands for Coarse Wavelength Division Multiplexing
-    + It's the opposite : it's for multiplexing on polychromatic signals with _coarse_ wavelength spectrum.
-    + This part works raw wavelenths : actual values of $\lambda$
-- LR Optics means "Long-range optics" : optics for transporting signal over long distances, typically from a city to another.
-- SR Optics is the opposite : Short-range optics, for transporting signal typically between two equippments on the same server farm/cluster.
-
-#### Transcievers
-
-- SFP(-/+/28/...) Optical Transceiver Modules are the small metallic things you plug into switches. 
-  * SFP means Small Form-factor pluggable.
-  * They convert optical signals to electric signals.
-  * There exists SFP (1Gb/s), SFP+ (10Gb/s), SFP28 (25Gb/s) and SFP28 50G (50Gb/s).
-  * The form factor are the same for all the SFP variants.
-  * The first two are quite common, the last are less.
-  * Since the latter are much more expensive, they are mostly used un big datacenter and server clusters. 
-- There also exists QSFP(-/+/28/...) ports, with require adequate (QSFP(-/+/28/...))
-  * All SFP things have a Q- counterpart. The associated are larger. 
-  * Q stands for quad : these are merges of four SFP(-/+/28/...) ports.
-  * The associated speeds are four time their non-Q counterpart : 4G/s, 40G/s, 100G/s.
-  * These are an aggregated version of four of their non-Q counterpart, but better.
-  * There exists breakout cables that allow to convert QSFP(-/+/28/...) (resp. 4x SFP(-/+/28/...)) to 4x SFP(-/+/28/...) (resp. QSFP(-/+/28/...))
-- There also exists XFP, which is quite rare.
-  * It served as a transition between SFP and SFP+.
-  * It became outdated as soon as SFP+ existed.
-  * But it can still be found sometimes.
-- There also exist GBIC transcievers (Gigabit Interface Converter)
-- ONT/OLTs
-
-### Layer 2 networking equippment 
-
-- Layer 3 networking equippment essentially boils down to swiches and bridges.
-  * One could argue, rightly, that some equippment other than a switch or a bridge, is a layer-2 équippment... Whatever.
-  * The difference between a switch and a bridge is not so obvious. 
-  * Usual
-  * A bridge is, essentially, either a virtual switch, or a switch that connects different networks that are on different supports (optical fiber / waves / ethernet cables...)
-  * When configuring a switch, it is possible to logically "split" it up into several virtual switch.
-  * Your hardware then acts as if it was two switches. But, on the same hardware. -> Software-Defined Networking !
-
-### Layer 3 networking equippment
-
-- Layer 3 networking equippment essentially boils down to routers.
-- You can separate these into several categories :
-  * Routers (actual routers)
-  * Layer-3 switches (switches that can perform routing tasks in addition to mere switching)
-  * MPSL Routers (see Multi Protocol Label Switching)
-  * ...
-- An important thing to note is that most router OSs are Unix-based !
-  * For instance, the Xiaomi routers we bought at Rezel for our ISP service run OpenWRT,
-    + Note : Our very (very) competent people at Rezel qualified the OpenWRT documentation of really not terrible.
-    + Dixit them "You can spend a damn lot, lot of time reading the OpenWRT documentation without learning anything"
-  * Anyway, this means that are nothing more than Linux machines !
-    + For instance, the command `ip route add A via B`, on all Linux distributions, change the device's routing table to set the next hop for the IP range A to the IP B.
-    + Note that here A must be an IP address range.
-    + Mnemonic : `ip route add default via B` sets `B` as default gateway for the machine.
-  * I think that's quite a damn good thing to note. When you see how switches (configuration) work, you can quite quicly see that their OS is NOT Unix-based xD
-  * But routers, yes. This also implies that a router can be a virtual machine, it can be a home computer... !
-  * Buying a router means buying some device that's essentailly made to be a router. There's a good chance that not all home computers have the appropriate ports to be able to _prétendre à être un_ actual router.
-
-### Multi Protocol Label Switching (MPLS)
-
-### Configuring a switch
-
+- This essentially boilds down to configuring switches.
 - To connect to a switch, there are essentially two options
   * Either using a serial connexion
   * Or exposing an interface with an IP address on one of its VLANs, and then SSHing into it 
@@ -2693,11 +2714,18 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
     + Exit to Privileged mode with `end` or `CTRL+Z`
 - The Cisco documentation distinguishes the "Command Reference" and "Command Reference Guide" : (Excerpt from "Consolidated Platform Command Reference, Cisco IOS Release 15.2" : "For more detailed information on the command modes, see the command reference guide for this release")
 
-### Configuring a router
+### Layer 3 networking practice
 
-Note : this actually applies to any device 
-
-- `ip route add default via [IP]`
+- This essentially boils down to configuring routers.
+- Recall that a router runs on an OS that's most often (always ?) UNIX-based. 
+- `ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]` to add a line to the device's routing table. 
+- Each interface always has a MAC address one per interface.
+- Some interfaces may have IP addresses, but not necessarily all of them.
+  * If an interface has an IP address, it means that a packet with it as destination IP address will be treated by the OS as such. Interfaces without IP addresses act for Layer-2 networking.
+- Never use DHCP for routers !
+- `ip link set dev [interace] up` to up an interface.
+  * Recall that an interface is either up or down.
+  * When an interface is "up", it is equivalent to when physical ports have an electrical connection : i.e., having a little light turned on to indicate that an electrical connexion is set established.
 
 #### Physical routers
 

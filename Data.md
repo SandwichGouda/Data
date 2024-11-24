@@ -389,6 +389,7 @@ All configurations options can be written in `/etc/nixos/configuration.nix`.
   * This downloads `index.html`
   * When using `cat`, you can see `index.html`is actually a bash script !
   * -> `bash index.html` installs docker
+  * Note that this comes with its load of drawbacks : "This script is intended as a convenient way to configure docker's package repositories and to install Docker Engine, This script is not recommended for production environments. Before running this script, make yourself familiar with potential risks and limitations, and refer to the installation manual at https://docs.docker.com/engine/install/ for alternative installation methods.
 - When a prompt asks you what to do - typically : "Do this ? [Y/n] / Are you sure ? [y/N]" -, the option that's in uppercase letter is the "default" one, i.e., concretely, the one that'll be chosen if the prompt is left blank.
 - `:(){ :|:& };:` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
 
@@ -2464,6 +2465,21 @@ The application layer is the top layer, the one that contains most of the human-
 - Switches redirect packets to the right device using their **Forwarding Information Base** (FIB), also known as **forwarding table**, or **MAC table**.
   * It is a dynamic table that maps MAC addresses to ports.
 - This mechanism is what distinguishes switches from Ethernet hubs.
+- MAC Addresses
+  * These are unique identifiers for NICs (Typically, networks cards, _bref_, the peripheral device that's used for network management)
+  * They are in 6 bytes (octets), represented in hexadecimal notation separated by colons : `AB:CD:EF:01:23:45`
+  * The first half (i.e., the first three octets) of a MAC address is an Organizationally Unique Identifier (OUI)
+  * The second half (last three octets) is Network Interface Controller specific (NIC specific). _Bref_, it is network card specific.
+  * In the first octet, the least significant bit, LSB, says whether the ethernet frame is Unicast or Multicast.
+  * The second second least significant  says whether the MAC address is globally unique or locally administrated.
+  * Broadcast emission, is done by setting `FF:FF:FF:FF:FF:FF` as destination MAC address.
+  * Obviously, this will be sent to every host _on the same network_.
+  * Read the [Wikipedia page on MAC addresses](https://en.wikipedia.org/wiki/MAC_address), it's very interesting !
+- There are three frame emission modes :
+  * Unicast : One recipient
+  * Multicast : Several recipients
+  * Broadcast : Everyone is recipient.
+  * This are quite general (general notions), not necessarily Layer-2 specific.
 
 ### Layer 3 networking equippment
 
@@ -2501,9 +2517,10 @@ The application layer is the top layer, the one that contains most of the human-
 
 #### Link layer
 
-[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)##### STP
+[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
 
-- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
+##### STP
+
 - The Spanning-Tree protocol chooses a **Root bridge** : this one plays a special role in the protocol.
 
 ##### MSTP

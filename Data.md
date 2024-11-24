@@ -2521,6 +2521,19 @@ The application layer is the top layer, the one that contains most of the human-
 
 ##### STP
 
+- The Spanning-Tree Protocol is a Layer-2 protocol to allow switches to create a loop-free network topology. 
+  * If a network has many physical connexions, its graph topology might contain loops. 
+  * That is very problematic, for obvious reasons : you don't want packets Ethernet frames to loop forever, not only causing useless traffic but also making them never arrive at destination !
+  * Other reasons why STP is necessary include 
+  * Also : Broadcast storms. Basically, when an ethernet frams is recieved
+  * Switches then run a Spanning-Tree Protocol instance, that allows to agree on a (common !) spanning tree for the network graph.
+  * This is obviously necessary since the spanning tree obviously has to be common to all switches.
+- To start with it might be worth noting that there are several types of STP :
+  * Original STP (802.1D)
+  * PVST+ (Per VLAN Spanning-Tree) : A Cisco improvement of STP adding a per VLAN feature
+  * RSTP (802.1w)(Rapid Spanning-Tree Protocol) : An improved version of STP, that allows much faster convergence
+  * Rapid PVST+ : A Cisco improvement of RSTP adding a per VLAN feature.
+- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches ! (Whence the existence of RSTP)
 - The Spanning-Tree protocol chooses a **Root bridge** : this one plays a special role in the protocol.
 
 ##### MSTP

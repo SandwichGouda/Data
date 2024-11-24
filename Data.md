@@ -2524,17 +2524,29 @@ The application layer is the top layer, the one that contains most of the human-
 - The Spanning-Tree Protocol is a Layer-2 protocol to allow switches to create a loop-free network topology. 
   * If a network has many physical connexions, its graph topology might contain loops. 
   * That is very problematic, for obvious reasons : you don't want packets Ethernet frames to loop forever, not only causing useless traffic but also making them never arrive at destination !
-  * Other reasons why STP is necessary include 
-  * Also : Broadcast storms. Basically, when an ethernet frams is recieved
+  * Other reasons why STP is necessary include unstable MAC address tables.
+    + With loops, there could be frames with the same MAC address coming from different ports.    
+    + Thing is, whenever a switch recieves a frame on a given port, it learns the MAC address on that frame.
+    + So, with loops, switches might constantly change their MAC Address table.
+    + This is highly problematic, as it results on time-dependent routing methid, that can quite obviously cause many issues.
+    + Imagine setting up a network, testing it, having it to work, but having absolutely no certainty whatsoever that the situation is stable, i.e., having your network installation being able to break at any moment !
+  * Also : Broadcast storms. Basically, when an ethernet frames is sent broadcast (`FF:FF:FF:FF:FF:FF`), switches forward it on all their ports (not necessarily all ports : on the right VLAN, at least). If there is a loop... you can quite easily see what this results in, and why it's called a Broadcast storm.
+  * Another one : Duplicate frames. You can quite easily see how loops create duplicate frames - provided that you know that if a switch doesn't know a destination MAC address, it will send it on all ports.
   * Switches then run a Spanning-Tree Protocol instance, that allows to agree on a (common !) spanning tree for the network graph.
   * This is obviously necessary since the spanning tree obviously has to be common to all switches.
+  * This is done by simply blocking some links, i.e. some ports. Some links are decided (commonly, thanks to STP) to be blocked, i.e., to never be used. This way, loops are broken.
 - To start with it might be worth noting that there are several types of STP :
-  * Original STP (802.1D)
+  * Original STP (802.1D
   * PVST+ (Per VLAN Spanning-Tree) : A Cisco improvement of STP adding a per VLAN feature
   * RSTP (802.1w)(Rapid Spanning-Tree Protocol) : An improved version of STP, that allows much faster convergence
   * Rapid PVST+ : A Cisco improvement of RSTP adding a per VLAN feature.
 - In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches ! (Whence the existence of RSTP)
-- The Spanning-Tree protocol chooses a **Root bridge** : this one plays a special role in the protocol.
+- Spanning-Tree Protocol algorithm : 
+  * 1st step : Elect a Root bridge.
+    + The root bridge is one of the switches on the network.
+    + It will play a special role in the algorithm.
+  * 1nd step : 
+- The Spanning-Tree protocol chooses a **Root bridge** : this one
 
 ##### MSTP
 

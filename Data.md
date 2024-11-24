@@ -2501,7 +2501,16 @@ The application layer is the top layer, the one that contains most of the human-
 
 #### Link layer
 
-[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
+[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)##### STP
+
+- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
+- The Spanning-Tree protocol chooses a **Root bridge** : this one plays a special role in the protocol.
+
+##### MSTP
+
+- Multiple Spanning-Tree Protocol is a generalization of the Spanning Tree Protocol, that can apply to several instances at once.
+- It is used when severan VLANs share the same physical backbone (physical) network.
+- Each instance of the MSTP has its root bridge (normal).
 
 ##### LACP
 

@@ -2298,35 +2298,29 @@ The Open Systems Interconnection (OSI) model is a (reference) model from the Int
 
 #### Layer 1 - Physical layer
 
-The physical layer is responsible for the transmission and reception of data between a device and a physical transmission medium. It converts the digital bits into electrical, radio, or optical signals. Voltage levels, timing of voltage changes, physical data rates, maximum transmission distances are specified at this layer. 
-
-**Network Interface Controllers** (NICs, i.e. computer hardware components that connect a computer to a network : Ethernet ports, Wi-Fi cards, ...) and **Transmission media** (optical fibers, air for radio signals...) are systems that operate on the Physical layer (note : media is the plural of medium). 
-
-It may also define transmission modes as simplex (only one person speaks, everyone else listens), half duplex (one person speaks at a time ; you can't talk is someone else is already talking, and if no one's talking, you can start talking and everyone will be hearing. Basically the **Talkie-Walkie** way of talking, in a nutshell.), and full duplex (everyone can speak and listen to anyone simultaneously at any given moment). 
-
-The physical layer also specifies how encoding occurs over a physical signal, such as electrical voltage or a light pulse. For example, a 1 bit might be represented on a copper wire by the transition from a 0-volt to a 5-volt signal, whereas a 0 bit might be represented by the transition from a 5-volt to a 0-volt signal. As a result, common problems occurring at the physical layer are often related to the incorrect media termination, noise scrambling, and Network Interface Controllers (NICs) and hubs that are misconfigured or do not work correctly.
+- The physical layer is responsible for the transmission and reception of data between a device and a physical transmission medium. It converts the digital bits into electrical, radio, or optical signals. Voltage levels, timing of voltage changes, physical data rates, maximum transmission distances are specified at this layer. 
+- **Network Interface Controllers** (NICs, or Network Interface Cards, i.e. computer hardware components that connect a computer to a network : Ethernet ports, Wi-Fi cards, ...) and **Transmission media** (optical fibers, air for radio signals...) are systems that operate on the Physical layer (note : media is the plural of medium). 
+- It may also define transmission modes as simplex (only one person speaks, everyone else listens), half duplex (one person speaks at a time ; you can't talk is someone else is already talking, and if no one's talking, you can start talking and everyone will be hearing. Basically the **Talkie-Walkie** way of talking, in a nutshell.), and full duplex (everyone can speak and listen to anyone simultaneously at any given moment). 
+- The physical layer also specifies how encoding occurs over a physical signal, such as electrical voltage or a light pulse. For example, a 1 bit might be represented on a copper wire by the transition from a 0-volt to a 5-volt signal, whereas a 0 bit might be represented by the transition from a 5-volt to a 0-volt signal. As a result, common problems occurring at the physical layer are often related to the incorrect media termination, noise scrambling, and Network Interface Controllers (NICs) and hubs that are misconfigured or do not work correctly.
 
 #### Layer 2 - Data Link layer
 
-The data link layer provides node-to-node data transfer—a link between two directly connected nodes. It detects and possibly corrects errors that may occur in the physical layer. It defines the protocol to establish and terminate a connection between two physically connected devices. It also defines the protocol for flow control between them. It basically operates everything needed for a network to properly function, for end points being able to connect to them and talk on them, and packet redirection between two nodes that are on the same network. 
-
-**Switches** are devices that operate at the Data Link layer.
-**Ethernet** (II) is an (the) ubiquitous protocol that operates at this layer.
-
-The IEEE divides the data link layer into two sublayers :
+- The data link layer provides node-to-node data transfer—a link between two directly connected nodes. It detects and possibly corrects errors that may occur in the physical layer. It defines the protocol to establish and terminate a connection between two physically connected devices. It also defines the protocol for flow control between them. It basically operates everything needed for a network to properly function, for end points being able to connect to them and talk on them, and packet redirection between two nodes that are on the same network. 
+- **Switches** are devices that operate at the Data Link layer.
+- **Ethernet** (and all its variants ; Ethernet II, VLANs, QinQ...) is an (the) ubiquitous protocol that operates at this layer.
+- The IEEE divides the data link layer into two sublayers :
 - Medium access control (MAC) sublayer, responsible for controlling how devices in a network gain access to a medium and permission to transmit data.
 - Logical link control (LLC) sublayer, responsible for identifying and encapsulating network layer protocols, and controls error checking and synchronization.
 
 #### Layer 3 - Network layer
 
-The network layer provides what's needed to transfer packets from one _point_ to another, connected in different networks. There is a usual semantic distinction between what we call a _point_ and an _end_ :
-- A _network node_ refers to any hardware (or virtual !) device that's able to recieve and/or send data : a computer, a switch, a router, ...
-- Point-to-point transmission means sending a data packet from a network node to another one that's connected on the same network (with eventual switches standing in the midst). No routers are involved.
-- End-to-end transmission means transmitting data packets between two network nodes that are not necessarily on the same network : routers are then involved.
-If the message is too large to be transmitted from one node to another on the data link layer between those nodes, the network may implement message delivery by splitting the message into several fragments at one node, sending the fragments independently, and reassembling the fragments at another node. This is typically done in the IP Protocol. Message delivery at the network layer is not necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it does not need to do so.
-
-**Routers** are uniquitous that operate on the Network layer.
-**Internet Protocol** (IP) is an ubisuitous third-layer protocol.
+- The network layer provides what's needed to transfer packets from one _point_ to another, connected in different networks. There is a usual semantic distinction between what we call a _point_ and an _end_ :
+  * A _network node_ refers to any hardware (or virtual !) device that's able to recieve and/or send data : a computer, a switch, a router, ...
+  * Point-to-point transmission means sending a data packet from a network node to another one that's connected on the same network (with eventual switches standing in the midst). No routers are involved.
+  * End-to-end transmission means transmitting data packets between two network nodes that are not necessarily on the same network : routers are then involved.
+- If the message is too large to be transmitted from one node to another on the data link layer between those nodes, the network may implement message delivery by splitting the message into several fragments at one node, sending the fragments independently, and reassembling the fragments at another node. This is typically done in the IP Protocol. Message delivery at the network layer is not necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it does not need to do so.
+- **Routers** are uniquitous that operate on the Network layer.
+- **Internet Protocol** (IP) is the ubiquitous third-layer protocol.
 
 #### Layer 4 - Transport layer
 
@@ -2509,15 +2503,6 @@ The application layer is the top layer, the one that contains most of the human-
 
 [All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
 
-##### STP
-
-- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
-
-##### MSTP
-
-- Multiple Spanning-Tree Protocol is a variant of the Spanning Tree Protocol.
-- It is used at Rezel for their ISP (Internet Service Provider) service
-
 ##### LACP
 
 - Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
@@ -2691,7 +2676,8 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * Actually, a entering a "subfolder" of a "folder" means going more specific in the configuration.  * When anywhere in the console (in any context), you can type `/path/to/something/command` to execute the command `command` in the context `path/to/something`. 
   * In particular, for instance, typing `/command` executes command `command` at the "root" `/`. 
   * So, typing `/command` and command at `/` is the same thing.
-  * i no path is specified (which is equivalent to : if the typed prompt does not start with `/`), the command will be executed in the current context.
+  * If no path is specified (which is equivalent to : if the typed prompt does not start with `/`), the command will be executed in the current context.
+  * Use `..` to go back one step in the arborescence
 - To see all the configuration that's been set up on the switch, to can type /export.
   * More generally, `export` shows the list of commands that have been executed in the current context, and recursively in all subcontexts.
   * It allows to export a configuration ! (or part of a configuration)
@@ -3170,6 +3156,9 @@ explicit.
 - By default, "port" understates "TCP port".
 - The ` character is called _backtick`. 
 - When in (_virtually any_) terminal, `ALT+ENTER` puts in fullscreen. :):D
+- RFCs, Request for Comments, are documents publicly published documents prominently by the IETF (Internet Engineering Task Force), that set standards, such as protocol specifications, typically.
+- CVEs (Common Vulnerabilities and Exposures) is a system that provides publicly known security vulnerabilities and exposures. _Bref_, these show vulnerabilities and security breaches.
+- CVEs are published _after_ the breach is patched ! (!!!)
 
 ## Remaining questions
 

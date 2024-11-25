@@ -2372,6 +2372,12 @@ The application layer is the top layer, the one that contains most of the human-
     + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
     + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
   * All of the above are **single-mode** connector
+- Monomode/Multimode fibers change the path that.
+  * This has nothing to do with wavelengths !
+  * You can have monomode fibers that transmit one or several wavelengths.
+  * Modes are about paths that light can follow.
+  * Monomode means that there's only one path followed my light, multimode means that there are many.
+  * Monomode is better that Multimode fibers, actually. Because multimode fibers can cause dispersion. _Bref_, it's less good.
 
 #### Ethernet cables
 
@@ -2506,6 +2512,7 @@ The application layer is the top layer, the one that contains most of the human-
 - Routers route IP packets to their next hop according to their Routing Table.
 - Routers and more generally any Layer-3 networking device abstract any Layer-2 (by definition of networking layers and the OSI models) : Adding a switch or not is basically equivalent to adding cables, changing cables, plugging a longer cables... The routers have no idea of this. They send Ethernet frames, encapsulating with a MAC destination in the header, and let switches to their job afterwards.
 - Note that we say Ethernet **frames** and IP **packets**.
+- Routers can use VRRP for redundancy, and many other 
 
 ### Layer 6 networking theory
 
@@ -2545,7 +2552,6 @@ The application layer is the top layer, the one that contains most of the human-
   * 1st step : Elect a Root bridge.
     + The root bridge is one of the switches on the network.
     + It will play a special role in the algorithm.
-  * 1nd step : 
 - The Spanning-Tree protocol chooses a **Root bridge** : this one
 
 ##### MSTP
@@ -2632,7 +2638,7 @@ The application layer is the top layer, the one that contains most of the human-
   * The payload limit for jumbo frames is variable, 9000 bytes is the most commonly used limit, but smaller and larger limits exist.
   * Many Gigabit Ethernet switches and Gigabit Ethernet NICs, and some Fast Ethernet switches and Fast Ethernet NICs can support jumbo frames.
   * Many vendors also adopted the size; however, jumbo frames are not part of the official IEEE (802.3) Ethernet standard.
-
+- QinQ is often writted as Q-in-Q (useful to know when `CTRL+F`-ing or `F3`-ing (_bref_, searching) the keyword in a documentation)
 ### VXLANS
 
 - VXLANs are a way to pass Layer-2 frames over IP.
@@ -2711,6 +2717,7 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 #### MiktoTik switches
 
+- MikroTik switches run on RouterOS
 - Physical-aspects related generalities
   * Quite obviously, the CONSOLE RJ45 port is for establishing a serial connection.
   * Then, the SFP(-/+/28/...) ports nature are specified under the ports.
@@ -2735,6 +2742,7 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 
 #### Cisco switches
 
+- Cisco switches run on Cisco IOS
 - Similarities with MikroTik switches :
   * It is possible to type the beginning of keyword, the console will guess what you meant if there's no ambiguity.
   * Using `TAB` will complete a partial command (without ambiguity) into a whole one.

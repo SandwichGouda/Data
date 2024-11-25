@@ -2649,6 +2649,14 @@ The application layer is the top layer, the one that contains most of the human-
   * Note that according to this protocol there's only one possibility for SEQ and ACK numbers for both the client and the server !
   * From now on, all packets will be sent using SEQ and ACK numbers $A+n$ and $B+n$ for the reciever and $B+n$ and $A+n$ respectively.
 - Then, 
+
+##### UDP 
+
+- UDP is the other ubiquitous protocol on layer 4.
+  * UDP packets are not sent using connexion, but rather using the "Fire and Forget" principle.
+  * i.e., UDP packets are sent, but never resent if they do not reach destination.
+  * This is very useful, for Zoom of video games for instance !
+  * If you roolback on a multiplayer video game, that's because some UDP packets were lost !
  
 ### VLANS
 

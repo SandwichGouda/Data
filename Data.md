@@ -1253,7 +1253,7 @@ body
 
 - Proxies, reverse-proxies, are often used. Firewalls are always used. 
 - When hosting a website, you must always specify the port the server is listening onto. 
-- Requests : port 3000 (cf. https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers port 3000) or 80/443 (HTTP/HTTPS) ? (...)
+- Requests : port 3000 (cf. https://en.wikipedia.org/wiki/List_of_²_and_UDP_port_numbers port 3000) or 80/443 (HTTP/HTTPS) ? (...)
   * How com Sacha Montel's website listens on port 8080 and not 43 ?? When browsers emit requests, they should emit either on 80 or 443 don't they ?
 
 ### Identity providers
@@ -2522,7 +2522,7 @@ The application layer is the top layer, the one that contains most of the human-
 
 ### Networking protocols 
 
-#### Link layer
+#### Link layer protocols
 
 [All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
 
@@ -2616,6 +2616,40 @@ The application layer is the top layer, the one that contains most of the human-
 
 ##### IPsecmore...
 
+#### Network layer Protocols
+
+##### Internet Protocol (IP)
+
+- The most ubiquitous protocol over the internet !
+- The aren't many protocols other than IP $
+
+##### Internet Control Message Protocol (ICMP)
+
+- ICMP is used to debug IP.
+- Essentially, its packets are used and sent whenever an IP packets encounters a problem.
+  * For instance, if a packet has a TTL (Time To Live) equal to $t$, it will jump on at most $t$ hops before being discarded.
+  * Each hop (router encountered) decreases the TTL of 1, until the last one, that discards it (TTL = 0)
+  * The packet will then die without the reciever recieving it.
+  * In such situation, equippments are then configured to send ICMP packets, to warn the sender that its packet has reached its TTL and was 
+  * The `traceroute` packet and command leverages this to be able to trace the route of a packet !
+  * Indeed, what `traceroute` does is that it sends the same packets with TTLs equal to 1,2,3,4,... until the packets reach destination.
+  * Then, thanks to ICMP, `traceroute` knows on which router the $n$-th packet had TTL = 0 : 
+  * i.e., what is the $n$-th hop on the route to destination !
+
+#### Transport layer protocolx
+
+##### TCP 
+
+- The TCP protocol establishes a connexion between two hosts.
+  * To establish the connexion, the protocol uses a **three way handshake** :
+  * SYN : The client attempts to establish a connexion with a remote host (server) by sending a first packet SYN (Synchronized). The SEQ number of this packet is **random**, let us denote it $A$.
+  * SYN-ACK : The servers responds to the client with a packet SYN-ACK packet (Synchronize, Acknowledge). The ACK number is the sequence number of the previous packet incremented by 1 : $A+1$. The SEQ number of the SYN-ACK packet is a random number $B$.
+  * ACK : Finally, the client sends an ACK packet to the server, that acknowledges the previous packet. Its SEQ number will be $A+1$ and its ACK number will be the $B+1$.
+  * This protocol defines synchronized SEQ and ACK numbers for both the client and the server !
+  * Note that according to this protocol there's only one possibility for SEQ and ACK numbers for both the client and the server !
+  * From now on, all packets will be sent using SEQ and ACK numbers $A+n$ and $B+n$ for the reciever and $B+n$ and $A+n$ respectively.
+- Then, 
+ 
 ### VLANS
 
 - VLANs are used in an effort to apply the hardware virtualization principle to layer-2 networking to create Software Defined Networking. Software Defined Networking is Computer Network's analog of Software-defined radio and Software-defined data centers.

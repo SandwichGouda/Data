@@ -2636,7 +2636,7 @@ The application layer is the top layer, the one that contains most of the human-
   * Then, thanks to ICMP, `traceroute` knows on which router the $n$-th packet had TTL = 0 : 
   * i.e., what is the $n$-th hop on the route to destination !
 
-#### Transport layer protocolx
+#### Transport layer protocols
 
 ##### TCP 
 
@@ -2648,7 +2648,9 @@ The application layer is the top layer, the one that contains most of the human-
   * This protocol defines synchronized SEQ and ACK numbers for both the client and the server !
   * Note that according to this protocol there's only one possibility for SEQ and ACK numbers for both the client and the server !
   * From now on, all packets will be sent using SEQ and ACK numbers $A+n$ and $B+n$ for the reciever and $B+n$ and $A+n$ respectively.
-- Then, 
+- Then, the two hosts are connected. 
+- TCP resends packets that aren't acknowledged, to make sure that the reciever recieves all the data.
+- For instance, if you download a file, or request a web page, TCP ensures you your data will be whole.
 
 ##### UDP 
 

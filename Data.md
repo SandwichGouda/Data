@@ -2518,7 +2518,7 @@ The application layer is the top layer, the one that contains most of the human-
 
 - The standard protocol for cyphering data over the internet is TLS (Transport Layer Security). Its predecessor was SSL (Secure Sockets Layer). TLS is used to cypher HTTPS, mails, ...
 - One can say that HTTPS is basically HTTP + TLS
-- For that reason, when looking at the internet traffic going in and out of your computer (with Wireshark) when browsing the internet, you see TLS everywhere. That's because traffic is encrypted !²
+- For that reason, when looking at the internet traffic going in and out of your computer (with Wireshark) when browsing the internet, you see TLS everywhere. That's because traffic is encrypted !
 
 ### Networking protocols 
 
@@ -3025,6 +3025,13 @@ To send files through the FTP Protocol :
 ### Vivenot.dev
 
 - ``configuration.nix`` is located in ``/etc/nixos/profiles/homelab``
+
+### OSInt
+
+- Open-Source Intelligence : Its the science of aquiring non-trivial information using public information
+- Methods and tools :
+  * aperisolve.com, for steganography, is useful 
+  * MrHolmes is a open-source tool : https://github.com/Lucksi/Mr.Holmes
 
 ### OpenGL
 

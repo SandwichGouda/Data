@@ -12,6 +12,7 @@ Data not to forget.
     + [Super User](#super-user)
     + [Linux distributions and desktop environments](#linux-distributions-and-desktop-environments)
     + [The shell](#the-shell)
+    + [Cursed terminal behaviour](#cursed-terminal-behaviour)
     + [Virtual terminals](#virtual-terminals)
     + [OOM-killer score](#oom-killer-score)
     + [Regex](#regex)
@@ -34,48 +35,74 @@ Data not to forget.
   * [Linux package managers](#linux-package-managers)
     + [How APT Works](#how-apt-works)
     + [APT Subcommands](#apt-subcommands)
-  * [Linux base system packages and options](#linux-base-system-packages-and-options)
-    + [``man``](#man)
-    + [``df``](#df)
+  * [Linux base system commands and options](#linux-base-system-commands-and-options)
+    + [`man`](#man)
+    + [`df`](#df)
     + [``free``](#free)
-    + [``tldr``](#tldr)
     + [``cd``](#cd)
-    + [``ls``](#ls)
-    + [``htop``](#htop)
-    + [``tar``](#tar)
-    + [``curl``](#curl)
-    + [``mount``](#mount)
-    + [``umount``](#umount)
-    + [``grep``](#grep)
-    + [``tee``, ``boundary``, ``vboundary``](#tee,-boundary,-vboundary)
+    + [`ls`](#ls)
+    + [`htop`](#htop)
+    + [`tar`](#tar)
+    + [`curl`](#curl)
+    + [`mount`](#mount)
+    + [`umount`](#umount)
+    + [`grep`](#grep)
+    + [`chsh`](#chsh)
+    + [`.bashrc` and `.profile`](#.bashrc-and-.profile)
+    + [`/etc/shells`](#/etc/shells)
+    + [`/etc/passwd`](#/etc/passwd)
+    + [`/etc/shadow`](#/etc/shadow)
+    + [`chroot`](#chroot)
+    + [`nc` (netcat)](#nc-(netcat))
+    + [`alias`](#alias)
     + [Other small commands](#other-small-commands)
     + [Remaining commands to deal with](#remaining-commands-to-deal-with)
   * [Other Linux packages](#other-linux-packages)
-    + [poppler-utils](#poppler-utils)
+    + [Nano](#nano)
+    + [Tldr](#tldr)
+    + [Cron](#cron)
+    + [Poppler-utils](#poppler-utils)
+    + [xpdf or xpopple](#xpdf-or-xpopple)
+    + [Screen](#screen)
   * [Commands cool things](#commands-cool-things)
   * [Linux miscellaneous things](#linux-miscellaneous-things)
 - [Operating systems](#operating-systems)
   * [The kernel](#the-kernel)
+  * [I/O and drivers](#i/o-and-drivers)
+  * [Sockets](#sockets)
+  * [Miscellaneous OS information](#miscellaneous-os-information)
 - [Web](#web)
   * [Web development](#web-development)
   * [HTML](#html)
     + [HTML Basics](#html-basics)
   * [CSS](#css)
   * [Django](#django)
+  * [PHP](#php)
   * [Further reading and tools](#further-reading-and-tools)
   * [Web certificates](#web-certificates)
   * [Web hosting](#web-hosting)
   * [Identity providers](#identity-providers)
+    + [Authentik](#authentik)
+  * [Self-hosting](#self-hosting)
+    + [CodiMD](#codimd)
+    + [HedgeDoc](#hedgedoc)
   * [Web miscellaneous things](#web-miscellaneous-things)
 - [Go](#go)
   * [Go basics](#go-basics)
-  * [Echo framework](#echo-framework)
+  * [fmt](#fmt)
+  * [math](#math)
+    + [math/cmplx](#math/cmplx)
+    + [math/rand](#math/rand)
+    + [time](#time)
+  * [Go interpreters](#go-interpreters)
+    + [Yaegi](#yaegi)
+  * [Echo web framework](#echo-web-framework)
 - [Python](#python)
   * [Python virtual environments](#python-virtual-environments)
 - [Windows](#windows)
   * [Windows Powershell](#windows-powershell)
-  * [Windows miscellaneous information](#windows-miscellaneous-information)
   * [WSL](#wsl)
+  * [Windows miscellaneous information](#windows-miscellaneous-information)
 - [SSH](#ssh)
   * [How SSH works](#how-ssh-works)
   * [SSH usage](#ssh-usage)
@@ -86,9 +113,9 @@ Data not to forget.
   * [Cross-site scripting (XSS)](#cross-site-scripting-(xss))
   * [Cryptography](#cryptography)
     + [Symmetric cryptography](#symmetric-cryptography)
+    + [Asymmetric cryptography](#asymmetric-cryptography)
   * [Reverse](#reverse)
-  * [Cryptography](#cryptography)
-  * [Stéganography](#st�ganography)
+  * [Steganography](#steganography)
   * [Forensic](#forensic)
   * [Network](#network)
   * [OSint](#osint)
@@ -97,9 +124,20 @@ Data not to forget.
   * [Containers and virtual machines](#containers-and-virtual-machines)
   * [ProxmoxVE](#proxmoxve)
 - [Git](#git)
+  * [Creating a repo](#creating-a-repo)
+  * [Git branches](#git-branches)
+  * [Git merge](#git-merge)
+  * [Git rebase](#git-rebase)
+    + [Fast-forwarding](#fast-forwarding)
+  * [Git remotes](#git-remotes)
+  * [Git credentials](#git-credentials)
+  * [Git stash](#git-stash)
+    + [SSH](#ssh)
+  * [Git CICD](#git-cicd)
+    + [GitHub Actions](#github-actions)
   * [Git miscellaneous information](#git-miscellaneous-information)
-- [VSCode](#vscode)
-- [Computer architecture](#computer-architecture)
+- [Computer](#computer)
+  * [Processors](#processors)
   * [Storage types](#storage-types)
   * [Character encoding](#character-encoding)
     + [ASCII](#ascii)
@@ -108,7 +146,7 @@ Data not to forget.
     + [Other ways of encoding / other encoding tables](#other-ways-of-encoding-/-other-encoding-tables)
     + [Building a server](#building-a-server)
   * [Other](#other)
-- [Computer Networking Theory](#computer-networking-theory)
+- [Computer networking Theory](#computer-networking-theory)
   * [The OSI Model](#the-osi-model)
     + [Layer 1 - Physical layer](#layer-1---physical-layer)
     + [Layer 2 - Data Link layer](#layer-2---data-link-layer)
@@ -117,10 +155,23 @@ Data not to forget.
     + [Layer 5 - Session layer](#layer-5---session-layer)
     + [Layer 6 - Presentation layer](#layer-6---presentation-layer)
     + [Layer 7 - Application layer](#layer-7---application-layer)
-  * [Routers](#routers)
-  * [Switches](#switches)
+  * [Layer 1 networking equippment](#layer-1-networking-equippment)
+    + [Optical fibers](#optical-fibers)
+    + [Ethernet cables](#ethernet-cables)
+    + [DWDM Equippment](#dwdm-equippment)
+    + [Transcievers](#transcievers)
+    + [Ethernet hubs](#ethernet-hubs)
+  * [Layer 2 networking theory and equippment](#layer-2-networking-theory-and-equippment)
+  * [Layer 3 networking equippment](#layer-3-networking-equippment)
+  * [Layer 3 networking theory](#layer-3-networking-theory)
+  * [Layer 6 networking theory](#layer-6-networking-theory)
   * [Networking protocols](#networking-protocols)
-    + [Link layer](#link-layer)
+    + [Link layer protocols](#link-layer-protocols)
+      - [STP](#stp)
+      - [MSTP](#mstp)
+      - [LACP](#lacp)
+      - [SNMP](#snmp)
+      - [LLDP](#lldp)
       - [ARP](#arp)
       - [Tunnels](#tunnels)
       - [PPP](#ppp)
@@ -132,25 +183,52 @@ Data not to forget.
       - [ECN](#ecn)
       - [IGMP](#igmp)
       - [IPsecmore...](#ipsecmore...)
+    + [Network layer Protocols](#network-layer-protocols)
+      - [Internet Protocol (IP)](#internet-protocol-(ip))
+      - [Internet Control Message Protocol (ICMP)](#internet-control-message-protocol-(icmp))
+    + [Transport layer protocols](#transport-layer-protocols)
+      - [TCP](#tcp)
+      - [UDP](#udp)
   * [VLANS](#vlans)
+  * [QinQ](#qinq)
   * [VXLANS](#vxlans)
   * [VPNs](#vpns)
   * [Firewalls, proxies, reverse-proxies](#firewalls,-proxies,-reverse-proxies)
   * [DHCP](#dhcp)
   * [NAT](#nat)
-- [Computer networking Practice](#computer-networking-:-practice)
-  * [Configuring a switch](#configuring-a-switch)
-  * [Configuring a router](#configuring-a-router)
+  * [Other protocols](#other-protocols)
+  * [Control plane, Management plane, Data plane](#control-plane,-management-plane,-data-plane)
+- [Computer Networking Practice](#computer-networking-practice)
+  * [Layer 1 networking pratice](#layer-1-networking-pratice)
+  * [Layer 2 networking practice](#layer-2-networking-practice)
+    + [MiktoTik switches](#miktotik-switches)
+    + [Cisco switches](#cisco-switches)
+  * [Layer 3 networking practice](#layer-3-networking-practice)
     + [Physical routers](#physical-routers)
     + [Virtual routers](#virtual-routers)
   * [Netbox](#netbox)
+  * [VPNs](#vpns)
+    + [OpenVPN](#openvpn)
+    + [Wireguard](#wireguard)
+  * [Reverse-proxies](#reverse-proxies)
+    + [Nginx](#nginx)
+    + [Caddy](#caddy)
+    + [Systemctl](#systemctl)
+    + [Traefik](#traefik)
+    + [Haproxy](#haproxy)
 - [Other](#other)
+  * [VSCode](#vscode)
   * [ffmpeg](#ffmpeg)
   * [Chrome](#chrome)
   * [Markdown](#markdown)
   * [The FTP Protocol](#the-ftp-protocol)
   * [Vivenot.dev](#vivenot.dev)
+  * [OSInt](#osint)
+  * [OpenGL](#opengl)
+  * [Cairo](#cairo)
+  * [Free software](#free-software)
   * [@ This document](#this-document)
+  * [Fun facts](#fun-facts)
   * [Other other](#other-other)
 - [Remaining questions](#remaining-questions)
 - [Rezel](#rezel)
@@ -192,9 +270,9 @@ Un lien symbolique (symlink) est un fichier qui pointe vers un (autre) fichier o
 - `sudo su` switches to root without login environment.
 - `sudo -i` shanges to root's home directory (`/root`)
 - `sudo su` stays in the current working directory
-- `sudo -i` loads root user's login environment.	
+- `sudo -i` loads root user's login environment.  
 - `sudo su` keeps current user environment by default
-- `sudo -i` Loads root-specific profile files (e.g., .bashrc, .profile).	
+- `sudo -i` Loads root-specific profile files (e.g., .bashrc, .profile).  
 - `sudo su` Does not load root profile files unless sudo su - is used.
 | Aspect | `sudo -i` | `sudo su` |
 |--------|-----------|-----------|
@@ -389,6 +467,8 @@ All configurations options can be written in `/etc/nixos/configuration.nix`.
   * This downloads `index.html`
   * When using `cat`, you can see `index.html`is actually a bash script !
   * -> `bash index.html` installs docker
+  * Note that this comes with its load of drawbacks : "This script is intended as a convenient way to configure docker's package repositories and to install Docker Engine, This script is not recommended for production environments. Before running this script, make yourself familiar with potential risks and limitations, and refer to the installation manual at https://docs.docker.com/engine/install/ for alternative installation methods.
+- When a prompt asks you what to do - typically : "Do this ? [Y/n] / Are you sure ? [y/N]" -, the option that's in uppercase letter is the "default" one, i.e., concretely, the one that'll be chosen if the prompt is left blank.
 - `:(){ :|:& };:` is a fork bomb. A fork bomb (or rabbit virus) is a denial-of-service (DoS) attack wherein a process continually replicates (forks) itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
 
 ### Linux package managers
@@ -643,7 +723,7 @@ This command changes the login shell of a given user.
 - **This part has to be re-processed, and studied hands-on with a shell**
 - The `CHROOT_DIR` (or simply chroot directory) is a directory that serves as the root directory for a program or user, but only within a restricted environment. It’s used when executing a chroot (short for "change root") command, which changes the apparent root directory for a running process and its children.
 - It's useful for 
-  * Isolating Processes: By restricting a process to a specified directory, it creates a separate environment, effectively “jailing” the process so that it can’t access files or directories outside of its specified `CHROOT_DIR`.
+  * Isolating Processes: By restricting a process to a specified directory, it creates a separate environment, effectively "jailing" the process so that it can’t access files or directories outside of its specified `CHROOT_DIR`.
   * Enhancing Security: Commonly used for security purposes, especially for running potentially risky or unknown applications. For example, web servers, FTP servers, and other services can run within a chroot jail to minimize damage from potential security vulnerabilities.
   * Testing and Development: Developers can set up different versions of libraries and dependencies in `CHROOT_DIR` without affecting the main operating system environment. It’s a safer way to test and debug software.
   * System Recovery: chroot can be used to "enter" a separate Linux installation, such as when you need to repair a system from a live CD by accessing it from within a chroot environment.
@@ -901,6 +981,14 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * Polling is a technique that **repeatedly requests data** from a server at **regular intervals until** a desired response is received or a timeout period elapses.
   * RFC 6455 states that WebSocket "is designed to work over HTTP ports 443 and 80 as well as to support HTTP proxies and intermediaries". 
   * Obviously, to communicate, Websocket uses sockets ! 
+
+### Miscellaneous OS information
+
+- Swapping is the process of moving data from the computer's RAM and storage (hard drive).
+  * This is often used to get some more memory space on computers in situations that require more RAM that there actually is.
+  * Hence the name : RAM <-- swap --> Storage
+  * On Windows for instance, if you see files ending in `.swp`, especially in a saturated RAM context, you know what this is !
+  * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.q
 
 ## Web
 
@@ -1243,7 +1331,7 @@ body
 
 - Proxies, reverse-proxies, are often used. Firewalls are always used. 
 - When hosting a website, you must always specify the port the server is listening onto. 
-- Requests : port 3000 (cf. https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers port 3000) or 80/443 (HTTP/HTTPS) ? (...)
+- Requests : port 3000 (cf. https://en.wikipedia.org/wiki/List_of_²_and_UDP_port_numbers port 3000) or 80/443 (HTTP/HTTPS) ? (...)
   * How com Sacha Montel's website listens on port 8080 and not 43 ?? When browsers emit requests, they should emit either on 80 or 443 don't they ?
 
 ### Identity providers
@@ -1274,7 +1362,7 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * Every Go program is organized in a package. 
   A package is a collection of source files in the same directory that allows variables, types, and functions to be visible among other source files within the same package. 
   * For standalone files, the package is called main, but the name of the file is decided by the programmer.
-  * The `fmt` package that implements formatted I/O.
+  * The `fmt` package implements formatted I/O.
   * All go files start with `package [packagename]`. When importing, one imports `path/to/package`. _Bref_, the packagename is the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement `package rand`.
 - Package importation :
   * `import package` or `import path/to/package`
@@ -1340,7 +1428,7 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * Go _verbs_ include :
     + `%v` : The value in a default format
     + `%+v` : Same as `%v`, but adds field names when printing structs
-    + `%#v` :	a Go-syntax representation of the value
+    + `%#v` :  a Go-syntax representation of the value
   (floating-point infinities and NaNs print as ±Inf and NaN)
     + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
     + `%%` : The way to write a percent `%` sign (without it being interpreted as a verb attempt)
@@ -1377,7 +1465,7 @@ func main() {
 ```
 - **Exported names** : As said before, variables, types, and functions declared in a file associated to a package `package` are visible among other source files within the same package. This is actually only partially true : it is only true for **exported names**. Exported names are the names that start with a capital letter. Exported names will be seen from other source files in the same package. For instance, `import "math"` allows to write `math.Pi` to display the value of $\pi$, but `math.pi`won't work.
 - Functions are declared like so :
-  * ``go
+  * ```go
     func add(x int, y int) int {
       return x + y
     }
@@ -1390,7 +1478,7 @@ func main() {
       return x*y
     }
     ```
-- If the function returns several values (as a tuple), the return should be indicated as follows :
+- If the function returns several values (as a tuple), the return type should be indicated as follows :
   * ```go
     func swap(int x, string s) (string, int) {
       return s,x 
@@ -1410,8 +1498,8 @@ func main() {
   * When doing this, the variable is (pre-)declared. You can affect it (so don't re-declare it).
   * ```go 
     func split(sum int) (x int) {
-	  x = sum * 4 / 9
-	  return
+    x = sum * 4 / 9
+    return
     }
     ```
 - Operators : 
@@ -1588,6 +1676,20 @@ func main() {
     ```
   * If you have a pointer `p` to a struct `v`, you can access the fields of `v` with `(*p).field`.
   * This is kind of cumbersome. Hence, Go allows to access these using `p.X`, without explicit dereference.
+- Anonymous structs
+  * It is possible to use anonymous structs, i.e., structs that don't have a name.
+  * ```go
+    z := struct {
+      i int
+      b bool
+    }{2, true}
+    ```
+  * i.e., these are structs, but not defined in the standard way seen just above. 
+  * They are defined and used in-place ; they don't have a name. 
+  * A inline version is possible, but you have to add a semicolon between the fields to replace the carriage return.
+  * `z := struct {x int; y bool}{2, true}`
+  * `z := struct {x int; y bool}{x: 2, y: true}`
+  * `z := struct {int; bool}{2, true}`
 - Arrays
   * The type `[n]T` is an array of n values of type `T`.
   * Declaration and initialization go as follows : 
@@ -1601,8 +1703,39 @@ func main() {
   * An array's length is part of its type, so arrays cannot be resized. Slices offer a dynamic solution to this problem/
   * You can get the length of an array with `len(arr)`.
 - Slices 
-  * An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
+  * An array has a fixed size. A slice, on the other hand, is a dynamically-sized, and flexible. In practice, slices are much more common than arrays.
   * The type `[]T` is a slice with elements of type `T`.
+  * A slice is build from an array, by taking a slice of it :
+  * ```go
+    primes := [6]int{2, 3, 5, 7, 11, 13}
+    var s []int = primes[1:4]
+    ```
+  * Slices are _references to arrays_, in the sense that changing the elements of a slice modifies the corresponding elements of its underlying array. 
+  * Other slices that are built from the same underlying array will be impacted.
+  * A slice does not store any data, it just describes a section of an underlying array.
+  * When slicing, one can omit the lower or higher bounds.
+  * `a[0:length of a]`, `a[:length of a]`, `a[0:]` and `a[:]` are equivalent.
+- Slice literals
+  * `[3]bool{true, true, false}` is an array.
+  * `[]bool{true, true, false}` creates the same array as above, then builds a slice that references it.
+  * So, slice literals are arrays without the length.
+- Reslicing slices
+  * The length of a slice is the number of elements it contains.
+  * It is obtained with `len(s)`.
+  * The capacity of a slice is the number of elements in the underlying array **counting from the first element in the slice**.
+  * It is obtained with `cap(s)`
+  * ```go
+    s := []int{2, 3, 5, 7, 11, 13}
+    s = s[:0] // Slices the slice to give it zero length.
+    s = s[:4] // Extends its length.
+    s = s[2:] // Drops its first two values.
+    ```
+- Nil slices
+  * The zero value of a slice is nil.
+  * A nil slice has a length and capacity of 0 and has **no underlying array**.
+- Dynamically sized slices
+  * Slices can be created with the built-in `make` function. 
+  * This allows to create dynamically-sized arrays.
 
 ### fmt
 
@@ -1710,6 +1843,9 @@ Use `deactivate` to exit the venv
     - `wsl.exe --update` updates WSL
     - [Install manual](https://learn.microsoft.com/en-gb/windows/wsl/install-manual)
 - WSL is very cool, _except_ for computer notworking. Use (actual) Linux.
+- More generally, networking on Windows is shitty. 
+  * The Windows Firewall is unmanageable and has uncontrollable and unpredictable behaviour. 
+  * Use Linux.
 - On windows, by default, the WSL executable is stored in `C:\Program Files\WSL\wsl.exe`. 
   * This means that you can also open WSL from a PowerShell by typing `wsl`. (actually, `C:\Program Files\WSL` is not in the PATH - not in mine at least, I don't know how it works)
   * If you run `wsl` from PowerShell
@@ -1727,6 +1863,14 @@ Use `deactivate` to exit the venv
   * But anyway, you can run any command available in the Windows PowerShell in WSL - but you have to use it in the form `executable.exe` ! 
   * (obviously, otherwise, it won't work : it'll search for a command in WSL - i.e., an executable file, in the PATH, the name of which is `command` - rather than `command.exe`.)
   * (_Bref_, the difference here is that Powershell interprets `command` as a search for `command.exe` while linux only searches an executable file the name of which is `command`)
+- You can run a wsl instance (terminal) from PowerShell using the command `wsl`. 
+- You can run a Powershell instance (terminal) from WSL by running `powershell.exe` which is located in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/` : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe`.
+- You can also run Powershell commands in Linux (WSL) scripts, by `source`-ing such command : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\Users\willi\Documents\_La vie\Computers\Go'"`
+- This is particularly useful for running VSCode on the Windows file system instead of WSL's. As a matter of fact, doing the latter is slower.
+- You can run a wsl instance (terminal) from PowerShell using the command `wsl`. 
+- You can run a Powershell instance (terminal) from WSL by running `powershell.exe` which is located in `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/` : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe`.
+- You can also run Powershell commands in Linux (WSL) scripts, by `source`-ing such command : `/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\Users\willi\Documents\_La vie\Computers\Go'"`
+- This is particularly useful for running VSCode on the Windows file system instead of WSL's. As a matter of fact, doing the latter is slower.
 
 ### Windows miscellaneous information
 
@@ -2216,6 +2360,9 @@ Exercise : Find the characters that break the `EditSummary` script (they are it 
 ## Computer networking Theory
 
 Note : Wireshark is your friend ! :)
+Note 2 : The difference between "Theory" and "Practice" should be the following :
+  * Practice is about how to actually set up networking and how to configure the different equippments.
+  * Theory is about explaining the nature and role of the underlying concepts, equippment and protocols.
 
 ### The OSI Model
 
@@ -2230,35 +2377,29 @@ The Open Systems Interconnection (OSI) model is a (reference) model from the Int
 
 #### Layer 1 - Physical layer
 
-The physical layer is responsible for the transmission and reception of data between a device and a physical transmission medium. It converts the digital bits into electrical, radio, or optical signals. Voltage levels, timing of voltage changes, physical data rates, maximum transmission distances are specified at this layer. 
-
-**Network Interface Controllers** (NICs, i.e. computer hardware components that connect a computer to a network : Ethernet ports, Wi-Fi cards, ...) and **Transmission media** (optical fibers, air for radio signals...) are systems that operate on the Physical layer (note : media is the plural of medium). 
-
-It may also define transmission modes as simplex (only one person speaks, everyone else listens), half duplex (one person speaks at a time ; you can't talk is someone else is already talking, and if no one's talking, you can start talking and everyone will be hearing. Basically the **Talkie-Walkie** way of talking, in a nutshell.), and full duplex (everyone can speak and listen to anyone simultaneously at any given moment). 
-
-The physical layer also specifies how encoding occurs over a physical signal, such as electrical voltage or a light pulse. For example, a 1 bit might be represented on a copper wire by the transition from a 0-volt to a 5-volt signal, whereas a 0 bit might be represented by the transition from a 5-volt to a 0-volt signal. As a result, common problems occurring at the physical layer are often related to the incorrect media termination, noise scrambling, and Network Interface Controllers (NICs) and hubs that are misconfigured or do not work correctly.
+- The physical layer is responsible for the transmission and reception of data between a device and a physical transmission medium. It converts the digital bits into electrical, radio, or optical signals. Voltage levels, timing of voltage changes, physical data rates, maximum transmission distances are specified at this layer. 
+- **Network Interface Controllers** (NICs, or Network Interface Cards, i.e. computer hardware components that connect a computer to a network : Ethernet ports, Wi-Fi cards, ...) and **Transmission media** (optical fibers, air for radio signals...) are systems that operate on the Physical layer (note : media is the plural of medium). 
+- It may also define transmission modes as simplex (only one person speaks, everyone else listens), half duplex (one person speaks at a time ; you can't talk is someone else is already talking, and if no one's talking, you can start talking and everyone will be hearing. Basically the **Talkie-Walkie** way of talking, in a nutshell.), and full duplex (everyone can speak and listen to anyone simultaneously at any given moment). 
+- The physical layer also specifies how encoding occurs over a physical signal, such as electrical voltage or a light pulse. For example, a 1 bit might be represented on a copper wire by the transition from a 0-volt to a 5-volt signal, whereas a 0 bit might be represented by the transition from a 5-volt to a 0-volt signal. As a result, common problems occurring at the physical layer are often related to the incorrect media termination, noise scrambling, and Network Interface Controllers (NICs) and hubs that are misconfigured or do not work correctly.
 
 #### Layer 2 - Data Link layer
 
-The data link layer provides node-to-node data transfer—a link between two directly connected nodes. It detects and possibly corrects errors that may occur in the physical layer. It defines the protocol to establish and terminate a connection between two physically connected devices. It also defines the protocol for flow control between them. It basically operates everything needed for a network to properly function, for end points being able to connect to them and talk on them, and packet redirection between two nodes that are on the same network. 
-
-**Switches** are devices that operate at the Data Link layer.
-**Ethernet** (II) is an (the) ubiquitous protocol that operates at this layer.
-
-The IEEE divides the data link layer into two sublayers :
+- The data link layer provides node-to-node data transfer—a link between two directly connected nodes. It detects and possibly corrects errors that may occur in the physical layer. It defines the protocol to establish and terminate a connection between two physically connected devices. It also defines the protocol for flow control between them. It basically operates everything needed for a network to properly function, for end points being able to connect to them and talk on them, and packet redirection between two nodes that are on the same network. 
+- **Switches** are devices that operate at the Data Link layer.
+- **Ethernet** (and all its variants ; Ethernet II, VLANs, QinQ...) is an (the) ubiquitous protocol that operates at this layer.
+- The IEEE divides the data link layer into two sublayers :
 - Medium access control (MAC) sublayer, responsible for controlling how devices in a network gain access to a medium and permission to transmit data.
 - Logical link control (LLC) sublayer, responsible for identifying and encapsulating network layer protocols, and controls error checking and synchronization.
 
 #### Layer 3 - Network layer
 
-The network layer provides what's needed to transfer packets from one _point_ to another, connected in different networks. There is a usual semantic distinction between what we call a _point_ and an _end_ :
-- A _network node_ refers to any hardware (or virtual !) device that's able to recieve and/or send data : a computer, a switch, a router, ...
-- Point-to-point transmission means sending a data packet from a network node to another one that's connected on the same network (with eventual switches standing in the midst). No routers are involved.
-- End-to-end transmission means transmitting data packets between two network nodes that are not necessarily on the same network : routers are then involved.
-If the message is too large to be transmitted from one node to another on the data link layer between those nodes, the network may implement message delivery by splitting the message into several fragments at one node, sending the fragments independently, and reassembling the fragments at another node. This is typically done in the IP Protocol. Message delivery at the network layer is not necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it does not need to do so.
-
-**Routers** are uniquitous that operate on the Network layer.
-**Internet Protocol** (IP) is an ubisuitous third-layer protocol.
+- The network layer provides what's needed to transfer packets from one _point_ to another, connected in different networks. There is a usual semantic distinction between what we call a _point_ and an _end_ :
+  * A _network node_ refers to any hardware (or virtual !) device that's able to recieve and/or send data : a computer, a switch, a router, ...
+  * Point-to-point transmission means sending a data packet from a network node to another one that's connected on the same network (with eventual switches standing in the midst). No routers are involved.
+  * End-to-end transmission means transmitting data packets between two network nodes that are not necessarily on the same network : routers are then involved.
+- If the message is too large to be transmitted from one node to another on the data link layer between those nodes, the network may implement message delivery by splitting the message into several fragments at one node, sending the fragments independently, and reassembling the fragments at another node. This is typically done in the IP Protocol. Message delivery at the network layer is not necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it does not need to do so.
+- **Routers** are uniquitous that operate on the Network layer.
+- **Internet Protocol** (IP) is the ubiquitous third-layer protocol.
 
 #### Layer 4 - Transport layer
 
@@ -2295,114 +2436,6 @@ Encryption and Decryption are typically done at this level too,[9] although it c
 
 The application layer is the top layer, the one that contains most of the human-machine interfaces. Its definition varies between the OSI Model and the Internet Protocol suite. Essentially, the application layer is where everything related to user-facing application occurs.
 
-### Layer 2 networking
-
-Switches
-
-### Layer 3 networking
-
-Routers
-- `ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]`
-- One MAC per interface.
-- Never use DHCP for routers !
-- `ip link set dev [interace] up` to up an interface
-
-### Layer 6 networking
-
-The standard protocol for cyphering data over the internet is TLS (Transport Layer Security). Its predecessor was SSL (Secure Sockets Layer). TLS is used to cypher HTTPS, mails, ...
-One can say that HTTPS is basically HTTP + TLS
-
-### Networking protocols 
-
-#### Link layer
-
-[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
-
-##### STP
-
-- The Spanning Tree protocol is a protocol
-- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches !
-
-##### MSTP
-
-- Multiple Spanning-Tree Protocol is a variant of the Spanning Tree Protocol.
-- It is used at Rezel for their ISP (Internet Service Provider) service
-
-##### LACP
-
-- Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
-- You could think that aggregating two (same speed) links would double the link speed, but in practice, the traffic due to protocol communication implies that you would typically get around 1.5x speed.
-
-##### ARP 
-
-##### Tunnels
-
-##### PPP 
-
-##### MAC
-
-##### IPv4
-
-##### IPv6
-
-##### ICMP 
-
-##### NDP
-
-##### ECN
-
-##### IGMP
-
-##### IPsecmore...
-
-### VLANS
-
-VLANs are used in an effort to apply the hardware virtualization principle to layer-2 networking to create Software Defined Networking. Software Defined Networking is Computer Network's analog of Software-defined radio and Software-defined data centers.
-
-Without VLANs, a switch can only belong to one network. There is no possible notion of a switch beloning to several networks without VLANs. It then does its job and routes the frames (trames) to the right switches and endpoints normally. With VLANs, a switch is able to belong to sifferent networks at the same time. The way it works is as follows : 
-- The endpoints are not aware of the existence of VLANs and of several networks. They talk to (send and recieve) untagged frames. It is the switches' problem to deal with VLANs and tagged frames. When a switch recieves an un tagged frame (that is : from an endpoint), it either :
-  * transmits it _as is_ to the reciever endpoint, if the next hop is an endpoint (the intended recipient)
-  * or, if the next hop is a switch : tags it with the corresponding VLAN (the port's VLAN), and send it to the switch. 
-- In ACCESS A switch has several ports, and theses are _tagged_.
-- In virtual networking, a câble requires a VLAN to exist
-
-### VXLANS
-
-### VPNs
-
-### Firewalls, proxies, reverse-proxies
-
-Note : By default, "port 3000" meands "TCP port 3000". Of the protocol is not specified, it is TCP by default.
-
-### DHCP
-
-DCHP is useful for configuring several IP addresses on a network, automatically and without conflict. 
-
-### NAT
-
-NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
-
-### Control plane, Management plane, Data plane
-
-- The Control Plane
-  * It is where we decide what our networking will look like. 
-  * How to we setup our networking ? Where do we put what ? 
-  * How many switches ? Where do we put them ? 
-  * Who's connected to who, and how (with which support) ?
-  * It is basically the first step, deciding the "theory" of how do we set things up.
-  * Typically, at Rezel, the big schemes on the networking infrastructure explain everything that's Control-plane related.
-- The Management Plane
-  * It is about actually setting up in practice.
-  * Configuring switches, routers, with the corresponding interfaces
-  * monitoring the connexions...
-  * It can be seen as a "second step"
-- The Data Plane
-  * It is about actually transferring data.
-  * It concerns everything that's related to actual data transferring.
-  * It can be seen as a "third step".
-
-## Computer Networking Practice
-
 ### Layer 1 networking equippment
 
 #### Optical fibers
@@ -2417,6 +2450,12 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
     + APC (Angled Physical Contact) : the fiber is polished with a **8-degree** angle at the end face.
     + The "Angled" version is supposed to be slightly better, because the 8-degree angle (is supposed to) mittigate the power loss due to reflexion (cf. Snell-Descarte sine law)
   * All of the above are **single-mode** connector
+- Monomode/Multimode fibers change the path that.
+  * This has nothing to do with wavelengths !
+  * You can have monomode fibers that transmit one or several wavelengths.
+  * Modes are about paths that light can follow.
+  * Monomode means that there's only one path followed my light, multimode means that there are many.
+  * Monomode is better that Multimode fibers, actually. Because multimode fibers can cause dispersion. _Bref_, it's less good.
 
 #### Ethernet cables
 
@@ -2426,7 +2465,6 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
   * There exist non-twisted, called "flat", cables. These are not more than a few meters long.
   * The data is then transferred using tensions (potential differences) between the two strings of each pair (hence, 4 potential differences, one for each pair).
   * There are also power supply strings in these cables.
-  * 
 - Similarly, "Ethernet cables" often have RJ-45 ports on their ends. We often metonymically refer to these as Ethernet ports.
   * RJ-45 ends can be used for ethernet or serial communication (or telephony, but who cares about telephony). According to Dorian, that's pretty much it.
   * Their plastic is often transparent, and we can see eight little strings, that ought to be twisted in pairs (or not, in flat cables).
@@ -2491,21 +2529,390 @@ NATs exist because of the Bozos at Bell labs who decided there would be only 2^3
 - There also exist GBIC transcievers (Gigabit Interface Converter)
 - ONT/OLTs
 
-### Configuring a switch
+#### Ethernet hubs
 
+- Ethernet hubs are layer-1 devices that have several ethernet ports.
+  * Their goal is to redistribute packets, acting as "forks", or "nodes".
+  * They can be called Ethernet hubs or active hubs, or network hubs, or repeater hubs, or even multiport repeaters, or simply hubs. 
+  * They make several devices act as a single network segment.
+  * They have multiple input/output (I/O) ports, in which a signal introduced at any input is repeated in all outputs, except the original input.
+
+### Layer 2 networking theory and equippment 
+
+- Layer 2 networking equippment essentially boils down to swiches and bridges.
+  * One could argue, rightly, that some equippment other than a switch or a bridge, is a layer-2 équippment... Whatever.
+  * The difference between a switch and a bridge is not so obvious. 
+  * Usual
+  * A bridge is, essentially, either a virtual switch, or a switch that connects different networks that are on different supports (optical fiber / waves / ethernet cables...)
+  * When configuring a switch, it is possible to logically "split" it up into several virtual switch.
+  * Your hardware then acts as if it was two switches. But, on the same hardware. -> Software-Defined Networking !
+- Switches redirect packets to the right device using their **Forwarding Information Base** (FIB), also known as **forwarding table**, or **MAC table**.
+  * It is a dynamic table that maps MAC addresses to ports.
+- This mechanism is what distinguishes switches from Ethernet hubs.
+- MAC Addresses
+  * These are unique identifiers for NICs (Typically, networks cards, _bref_, the peripheral device that's used for network management)
+  * They are in 6 bytes (octets), represented in hexadecimal notation separated by colons : `AB:CD:EF:01:23:45`
+  * The first half (i.e., the first three octets) of a MAC address is an Organizationally Unique Identifier (OUI)
+  * The second half (last three octets) is Network Interface Controller specific (NIC specific). _Bref_, it is network card specific.
+  * In the first octet, the least significant bit, LSB, says whether the ethernet frame is Unicast or Multicast.
+  * The second second least significant  says whether the MAC address is globally unique or locally administrated.
+  * Broadcast emission, is done by setting `FF:FF:FF:FF:FF:FF` as destination MAC address.
+  * Obviously, this will be sent to every host _on the same network_.
+  * Read the [Wikipedia page on MAC addresses](https://en.wikipedia.org/wiki/MAC_address), it's very interesting !
+- There are three frame emission modes :
+  * Unicast : One recipient
+  * Multicast : Several recipients
+  * Broadcast : Everyone is recipient.
+  * This are quite general (general notions), not necessarily Layer-2 specific.
+
+### Layer 3 networking equippment
+
+- Layer 3 networking equippment essentially boils down to routers.
+- You can separate these into several categories :
+  * Routers (actual routers)
+  * Layer-3 switches (switches that can perform routing tasks in addition to mere switching)
+  * MPSL Routers (see Multi Protocol Label Switching)
+  * ...
+- An important thing to note is that most router OSs are Unix-based !
+  * For instance, the Xiaomi routers we bought at Rezel for our ISP service run OpenWRT,
+    + Note : Our very (very) competent people at Rezel qualified the OpenWRT documentation of really not terrible.
+    + Dixit them "You can spend a damn lot, lot of time reading the OpenWRT documentation without learning anything"
+  * Anyway, this means that are nothing more than Linux machines !
+    + For instance, the command `ip route add A via B`, on all Linux distributions, change the device's routing table to set the next hop for the IP range A to the IP B.
+    + Note that here A must be an IP address range.
+    + Mnemonic : `ip route add default via B` sets `B` as default gateway for the machine.
+  * I think that's quite a damn good thing to note. When you see how switches (configuration) work, you can quite quicly see that their OS is NOT Unix-based xD
+  * But routers, yes. This also implies that a router can be a virtual machine, it can be a home computer... !
+  * Buying a router means buying some device that's essentailly made to be a router. There's a good chance that not all home computers have the appropriate ports to be able to _prétendre à être un_ actual router.
+
+### Layer 3 networking theory
+
+- Routers route IP packets to their next hop according to their Routing Table.
+- Routers and more generally any Layer-3 networking device abstract any Layer-2 (by definition of networking layers and the OSI models) : Adding a switch or not is basically equivalent to adding cables, changing cables, plugging a longer cables... The routers have no idea of this. They send Ethernet frames, encapsulating with a MAC destination in the header, and let switches to their job afterwards.
+- Note that we say Ethernet **frames** and IP **packets**.
+- Routers can use VRRP for redundancy, and many other 
+
+### Layer 6 networking theory
+
+- The standard protocol for cyphering data over the internet is TLS (Transport Layer Security). Its predecessor was SSL (Secure Sockets Layer). TLS is used to cypher HTTPS, mails, ...
+- One can say that HTTPS is basically HTTP + TLS
+- For that reason, when looking at the internet traffic going in and out of your computer (with Wireshark) when browsing the internet, you see TLS everywhere. That's because traffic is encrypted !
+
+### Networking protocols 
+
+#### Link layer protocols
+
+[All link layer Protocols](https://en.wikipedia.org/wiki/Category:Link_protocols)
+
+##### STP
+
+- The Spanning-Tree Protocol is a Layer-2 protocol to allow switches to create a loop-free network topology. 
+  * If a network has many physical connexions, its graph topology might contain loops. 
+  * That is very problematic, for obvious reasons : you don't want packets Ethernet frames to loop forever, not only causing useless traffic but also making them never arrive at destination !
+  * Other reasons why STP is necessary include unstable MAC address tables.
+    + With loops, there could be frames with the same MAC address coming from different ports.    
+    + Thing is, whenever a switch recieves a frame on a given port, it learns the MAC address on that frame.
+    + So, with loops, switches might constantly change their MAC Address table.
+    + This is highly problematic, as it results on time-dependent routing methid, that can quite obviously cause many issues.
+    + Imagine setting up a network, testing it, having it to work, but having absolutely no certainty whatsoever that the situation is stable, i.e., having your network installation being able to break at any moment !
+  * Also : Broadcast storms. Basically, when an ethernet frames is sent broadcast (`FF:FF:FF:FF:FF:FF`), switches forward it on all their ports (not necessarily all ports : on the right VLAN, at least). If there is a loop... you can quite easily see what this results in, and why it's called a Broadcast storm.
+  * Another one : Duplicate frames. You can quite easily see how loops create duplicate frames - provided that you know that if a switch doesn't know a destination MAC address, it will send it on all ports.
+  * Switches then run a Spanning-Tree Protocol instance, that allows to agree on a (common !) spanning tree for the network graph.
+  * This is obviously necessary since the spanning tree obviously has to be common to all switches.
+  * This is done by simply blocking some links, i.e. some ports. Some links are decided (commonly, thanks to STP) to be blocked, i.e., to never be used. This way, loops are broken.
+- To start with it might be worth noting that there are several types of STP :
+  * Original STP (802.1D
+  * PVST+ (Per VLAN Spanning-Tree) : A Cisco improvement of STP adding a per VLAN feature
+  * RSTP (802.1w)(Rapid Spanning-Tree Protocol) : An improved version of STP, that allows much faster convergence
+  * Rapid PVST+ : A Cisco improvement of RSTP adding a per VLAN feature.
+- In practice, it can take about 30s or 1min to converge to a solution. It can be even worse if you have a lot of switches ! (Whence the existence of RSTP)
+- Spanning-Tree Protocol algorithm : 
+  * 1st step : Elect a Root bridge.
+    + The root bridge is one of the switches on the network.
+    + It will play a special role in the algorithm.
+- The Spanning-Tree protocol chooses a **Root bridge** : this one
+
+##### MSTP
+
+- Multiple Spanning-Tree Protocol is a generalization of the Spanning Tree Protocol, that can apply to several instances at once.
+- It is used when severan VLANs share the same physical backbone (physical) network.
+- Each instance of the MSTP has its root bridge (normal).
+
+##### LACP
+
+- Link Aggregation Control Protocol is a protocol that allows to aggregate several links into one to speed up the transmission.
+- You could think that aggregating two (same speed) links would double the link speed, but in practice, the traffic due to protocol communication implies that you would typically get around 1.5x speed.
+
+##### SNMP 
+
+- Simple Network Management Protocol (SNMP) is an [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard) protocol (which means that it's standard over the Internet ; especially and typically, standardized by the IETF (Internet Engineering Task Force)(which looks like is the layer-3 equivalent to the IEEE, which semingly works more on layer 2)). 
+  * It allows to get/manage **and edit** information about devices on IP networks.
+  * Routers, switches, servers, workstations, printers, ... handle SNMP.
+
+##### LLDP
+
+- LLDP, Link Layer Discovery Protocol, a manufacturer-neutral link layer protocol used by network devices for showing their identity, capabilities, and neighbors on a local area network. 
+  * It is based on IEEE 802 technology, principally wired Ethernet.
+  * There are many proprietary equivalent protocols :
+    + Cisco Discovery Protocol (CDP)
+    + Foundry Discovery Protocol (FDP)
+    + Nortel Discovery Protocol (NDP)
+    + MikroTik Neighbor Discovery protocol (MNDP) 
+    + Link Layer Topology Discovery (LLTP)(Microsoft)
+  * In practice, devices are often, sometimes, but not always, compaptible with (some of) these.
+- This protocols allows a device to retrieve information such as 
+  * The topology of the network - actually, of the part of the network that's LLDP-enabled network
+  * Information on the hosts of the network, such as :
+    + System name and description
+    + Port name(s) and description
+    + VLAN name
+    + IP management address
+    + System capabilities (switching, routing, ...)
+    + MAC/PHY information
+    + Power of links (see Power over Ethernet, PoE)
+    + Link aggregation
+
+##### ARP 
+
+##### Tunnels
+
+##### PPP 
+
+##### MAC
+
+##### IPv4
+
+##### IPv6
+
+##### ICMP 
+
+##### NDP
+
+##### ECN
+
+##### IGMP
+
+##### IPsecmore...
+
+#### Network layer Protocols
+
+##### Internet Protocol (IP)
+
+- The most ubiquitous protocol over the internet !
+- The aren't many protocols other than IP $
+
+##### Internet Control Message Protocol (ICMP)
+
+- ICMP is used to debug IP.
+- Essentially, its packets are used and sent whenever an IP packets encounters a problem.
+  * For instance, if a packet has a TTL (Time To Live) equal to $t$, it will jump on at most $t$ hops before being discarded.
+  * Each hop (router encountered) decreases the TTL of 1, until the last one, that discards it (TTL = 0)
+  * The packet will then die without the reciever recieving it.
+  * In such situation, equippments are then configured to send ICMP packets, to warn the sender that its packet has reached its TTL and was 
+  * The `traceroute` packet and command leverages this to be able to trace the route of a packet !
+  * Indeed, what `traceroute` does is that it sends the same packets with TTLs equal to 1,2,3,4,... until the packets reach destination.
+  * Then, thanks to ICMP, `traceroute` knows on which router the $n$-th packet had TTL = 0 : 
+  * i.e., what is the $n$-th hop on the route to destination !
+
+#### Transport layer protocols
+
+##### TCP 
+
+- The TCP protocol establishes a connexion between two hosts.
+  * To establish the connexion, the protocol uses a **three way handshake** :
+  * SYN : The client attempts to establish a connexion with a remote host (server) by sending a first packet SYN (Synchronized). The SEQ number of this packet is **random**, let us denote it $A$.
+  * SYN-ACK : The servers responds to the client with a packet SYN-ACK packet (Synchronize, Acknowledge). The ACK number is the sequence number of the previous packet incremented by 1 : $A+1$. The SEQ number of the SYN-ACK packet is a random number $B$.
+  * ACK : Finally, the client sends an ACK packet to the server, that acknowledges the previous packet. Its SEQ number will be $A+1$ and its ACK number will be the $B+1$.
+  * This protocol defines synchronized SEQ and ACK numbers for both the client and the server !
+  * Note that according to this protocol there's only one possibility for SEQ and ACK numbers for both the client and the server !
+  * From now on, all packets will be sent using SEQ and ACK numbers $A+n$ and $B+n$ for the reciever and $B+n$ and $A+n$ respectively.
+- Then, the two hosts are connected. 
+- TCP resends packets that aren't acknowledged, to make sure that the reciever recieves all the data.
+- For instance, if you download a file, or request a web page, TCP ensures you your data will be whole.
+
+##### UDP 
+
+- UDP is the other ubiquitous protocol on layer 4.
+  * UDP packets are not sent using connexion, but rather using the "Fire and Forget" principle.
+  * i.e., UDP packets are sent, but never resent if they do not reach destination.
+  * This is very useful, for Zoom of video games for instance !
+  * If you roolback on a multiplayer video game, that's because some UDP packets were lost !
+ 
+### VLANS
+
+- VLANs are used in an effort to apply the hardware virtualization principle to layer-2 networking to create Software Defined Networking. Software Defined Networking is Computer Network's analog of Software-defined radio and Software-defined data centers.
+- Without VLANs, a switch can only belong to one network. There is no possible notion of a switch beloning to several networks without VLANs. It then does its job and routes the frames (trames) to the right switches and endpoints normally. With VLANs, a switch is able to belong to sifferent networks at the same time. The way it works is as follows : 
+- The endpoints are not aware of the existence of VLANs and of several networks. They talk to (send and recieve) untagged frames. It is the switches' problem to deal with VLANs and tagged frames. When a switch recieves an un tagged frame (that is : from an endpoint), it either :
+  * transmits it _as is_ to the reciever endpoint, if the next hop is an endpoint (the intended recipient)
+  * or, if the next hop is a switch : tags it with the corresponding VLAN (the port's VLAN), and send it to the switch. 
+- In ACCESS A switch has several ports, and theses are _tagged_.
+- In virtual networking, a câble requires a VLAN to exist
+
+### QinQ
+
+- VLANs were introduced with the standard [IEEE_802.1Q](https://fr.wikipedia.org/wiki/IEEE_802.1Q)
+  * Note the presence of the Q letter : this is why its descendent is called QinQ.
+  * The standard [IEEE 802.1ad](https://en.wikipedia.org/wiki/IEEE_802.1ad), known informally as **QinQ** (or stacked VLANs), allows multiple VLAN tags to be inserted into a single frame.
+  * The frame is then double tagged. One tag contains the VLAN ID, the second the "sub-vlan" ID (so to speak).
+- Using the norm IEEE_802.1ad implies to increase the maximum ethernet frame size of 4 bytes
+- Or, to switch into Jumbo frame.
+  * Jumbo frames are Ethernet frames with more than 1500 bytes of payload, the limit set by the IEEE (802.3) standard.
+  * The payload limit for jumbo frames is variable, 9000 bytes is the most commonly used limit, but smaller and larger limits exist.
+  * Many Gigabit Ethernet switches and Gigabit Ethernet NICs, and some Fast Ethernet switches and Fast Ethernet NICs can support jumbo frames.
+  * Many vendors also adopted the size; however, jumbo frames are not part of the official IEEE (802.3) Ethernet standard.
+- QinQ is often writted as Q-in-Q (useful to know when `CTRL+F`-ing or `F3`-ing (_bref_, searching) the keyword in a documentation)
+### VXLANS
+
+- VXLANs are a way to pass Layer-2 frames over IP.
+  * The idea is to be able to send a Layer-2 (Ethernet, typically) frame using the IP protocol.
+  * So, the ethernet frame becomes the payload of an IP packet : it is encapsulated into an IP packet and sent - hence, encapsulated into Ethernet again.
+  * So, to sum it up, you have an Ethernet Header, followed by an IP header, maybe followed by a TCP header, that contains, as its payload, an Ethernet frame : i.e., the TCP payload starts with an Ethernet header (that might, again, contain an IP header, etc... or not)
+
+### VPNs
+
+### Firewalls, proxies, reverse-proxies
+
+Note : By default, "port 3000" meands "TCP port 3000". Of the protocol is not specified, it is TCP by default.
+
+### DHCP
+
+DCHP is useful for configuring several IP addresses on a network, automatically and without conflict. 
+
+### NAT
+
+NATs exist because of the Bozos at Bell labs who decided there would be only 2^32 addresses.
+
+### Other protocols
+
+- Telnet (lol)
+  * Telnet is an old, archaic ancestor of SSH
+  * No one uses it anymore x)
+
+### Control plane, Management plane, Data plane
+
+- The Control Plane
+  * It is where we decide what our networking will look like. 
+  * How to we setup our networking ? Where do we put what ? 
+  * How many switches ? Where do we put them ? 
+  * Who's connected to who, and how (with which support) ?
+  * It is basically the first step, deciding the "theory" of how do we set things up.
+  * Typically, at Rezel, the big schemes on the networking infrastructure explain everything that's Control-plane related.
+- The Management Plane
+  * It is about actually setting up in practice.
+  * Configuring switches, routers, with the corresponding interfaces
+  * monitoring the connexions...
+  * It can be seen as a "second step"
+- The Data Plane
+  * It is about actually transferring data.
+  * It concerns everything that's related to actual data transferring.
+  * It can be seen as a "third step".
+
+## Computer Networking Practice
+
+### Layer 1 networking pratice
+
+- There isn't much to do except plugging the right cables at the right places. :)
+- Except maybe being cautious : 
+  * When working with opticAL fibers, beware of never approaching your eyes from stuff that can blind you.
+  * Also, when working with optical fibers and transcievers, be gentle. Fibers are fragile and can break if you pinch them too hard. 
+  * You likely won't break a transciever by merely pinching it, but letting it fall on the ground pretty much sign's its death warrant.
+  * More generally never let layer-1 equippment, such as cables, "jarretières", optical fibers, transcievers on the ground. Dust is your worst ennemy.
+  * Equippment often has small plastic or rubber plugs/caches/... to protect their ends or ports. Use them, and do not let these fall on the ground either !
+  * This also applies to layer-2 or more equippment ports : SFP(-/+/28) ports on switches follow the same rules ; they have rubber plugs to protect them, that's not for decoration !
+
+### Layer 2 networking practice
+
+- This essentially boilds down to configuring switches.
 - To connect to a switch, there are essentially two options
   * Either using a serial connexion
   * Or exposing an interface with an IP address on one of its VLANs, and then SSHing into it 
-- Serial connexions 
+  * Or using a WebUI : the switch then has an IP address on one of its interfaces (on one of its VLANs, typically), and will expose a web server on (some port on) that IP address. Then, just go to the associated website (by typing the switch's IP address in the URL bar, specifying the port if needed - i.e. if it's neither 80 nor 443, could be that it's the case)
+- Serial connexions
   * Switches usually have a serial port, to connect using a serial.
   * Serial communication usually goes through either RJ-45 ports, or, on older equippments (computers or switches), serial ports, which look like VGA ports, but with **2 pin rows** (often 9 pins, can be 25 pins sometimes), unlike VGA ports which contain 3 rows.
   * It can also, very usefully, be pased through USB ! For this, you will likely need a Serial USB driver. There exist many on the web, just lookup Serial-USB driver. 
+- Then, the detail of the switch configuration, i.e. what commands should be typed, depend on the switch manufacturer : MikroTik, Cisco, Brocade, HP...
+- A switch has a login and password for serial communication (probably not only serial communication, by the way).
+  * When the switch is turned off, the session is closed.
+  * But, if the switch is configures using serial communication, recall that the **serial protocol is only made to inject text**.
+  * Hence, it **won't logout** when you unplug the serial port.
 
-### Configuring a router
+#### MiktoTik switches
 
-Note : this actually applies to any device 
+- MikroTik switches run on RouterOS
+- Physical-aspects related generalities
+  * Quite obviously, the CONSOLE RJ45 port is for establishing a serial connection.
+  * Then, the SFP(-/+/28/...) ports nature are specified under the ports.
+- Console generalities
+  * If you type the beginning of a command, and that there's no ambiguity as to the follow-up of your command, you can type a part of it and the console will understand what you meant.
+  * For example, you can type `span ...` instead of `spanning-tree ...`, `p ...` instead of `print`...
+  * There is a lot of autocompletion, in the sense of what's right above, but also right below.
+  * When anywhere in the console, and even, anywhere right in the middle of a a command, you can press `TAB` for autocompletion. 
+  * This will tell you all possible arguments to all commands, and even all possible values to command arguments ! 
+  * (i.e. : `add ` + `TAB` will tell you that you can type `bridge` as parameter to `add`, and then, `add bridge=` + `TAB` will tell you all the possible values to the argument `bridge` : that is, all possible bridges, hence, all existing bridges).
+- The notion of context
+  * When in the console, there is a notion of "context", which is kind of like a folders, but not really.
+  * There is a an arborescence, kind of like the Linux file system arborescence, but the folders do not "contain files".
+  * Actually, a entering a "subfolder" of a "folder" means going more specific in the configuration.  * When anywhere in the console (in any context), you can type `/path/to/something/command` to execute the command `command` in the context `path/to/something`. 
+  * In particular, for instance, typing `/command` executes command `command` at the "root" `/`. 
+  * So, typing `/command` and command at `/` is the same thing.
+  * If no path is specified (which is equivalent to : if the typed prompt does not start with `/`), the command will be executed in the current context.
+  * Use `..` to go back one step in the arborescence
+- To see all the configuration that's been set up on the switch, to can type /export.
+  * More generally, `export` shows the list of commands that have been executed in the current context, and recursively in all subcontexts.
+  * It allows to export a configuration ! (or part of a configuration)
 
-- `ip route add default via [IP]`
+#### Cisco switches
+
+- Cisco switches run on Cisco IOS
+- Similarities with MikroTik switches :
+  * It is possible to type the beginning of keyword, the console will guess what you meant if there's no ambiguity.
+  * Using `TAB` will complete a partial command (without ambiguity) into a whole one.
+  * `?` will list all possible commands (in current configuration mode)
+  * `command ?` will list all possible arguments to command `command`
+  * `command arg=?` will list all possible values to argument `arg` for command `command`
+- Commande modes :
+  * Prompt `Switch>`
+    + "User EXEC" mode.
+    + The default mode when accessing the switch command line.
+    + Exit with `logout` or `quit`
+  * Prompt `Device#`
+    + "Privileged EXEC" mode (≃`root`)
+    + Enter with `enable`
+    + Exit with `disable`
+    + Is password protected, or should be...
+  * Prompt `Device(config)#`
+    + Global configuration mode
+    + Enter with `configure` in Priviledged mode
+    + Exit with `exit`, or `end`, or `CTRL+Z`
+    + Use this mode to configure parameters that apply to the **entire switch**.
+  * Prompt `Device(config-vlan)#`
+    + VLAN configuration mode
+    + Enter with `vlan <vlan-id>` in Global configuration mode
+    + Exit to global configuration mode with `exit`
+    + Exit to Privileged mode with `end` or `CTRL+Z`
+  * Prompt `Device(config-if)#`
+    + Interface configuration mode
+    + Enter with `interface <interface>` in Global configuration mode
+  * Prompt `Device(config-line)#`
+    + This is for connecting to the switch via Telnet or SSH
+    + Enter with `line vty <x> <y>`, specifying a line (`line console` exists)
+    + Exit to global configuration mode with `exit`
+    + Exit to Privileged mode with `end` or `CTRL+Z`
+- The Cisco documentation distinguishes the "Command Reference" and "Command Reference Guide" : (Excerpt from "Consolidated Platform Command Reference, Cisco IOS Release 15.2" : "For more detailed information on the command modes, see the command reference guide for this release")
+
+### Layer 3 networking practice
+
+- This essentially boils down to configuring routers.
+- Recall that a router runs on an OS that's most often (always ?) UNIX-based. 
+- `ip route add [mask : IP range / or : "default" for setting default gateway] via [nexthop]` to add a line to the device's routing table. 
+- Each interface always has a MAC address one per interface.
+- Some interfaces may have IP addresses, but not necessarily all of them.
+  * If an interface has an IP address, it means that a packet with it as destination IP address will be treated by the OS as such. Interfaces without IP addresses act for Layer-2 networking.
+- Never use DHCP for routers !
+- `ip link set dev [interace] up` to up an interface.
+  * Recall that an interface is either up or down.
+  * When an interface is "up", it is equivalent to when physical ports have an electrical connection : i.e., having a little light turned on to indicate that an electrical connexion is set established.
 
 #### Physical routers
 
@@ -2697,6 +3104,13 @@ To send files through the FTP Protocol :
 
 - ``configuration.nix`` is located in ``/etc/nixos/profiles/homelab``
 
+### OSInt
+
+- Open-Source Intelligence : Its the science of aquiring non-trivial information using public information
+- Methods and tools :
+  * aperisolve.com, for steganography, is useful 
+  * MrHolmes is a open-source tool : https://github.com/Lucksi/Mr.Holmes
+
 ### OpenGL
 
 ### Cairo
@@ -2766,11 +3180,11 @@ To send files through the FTP Protocol :
 ```
 MIT License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 - License examples 
   * Very permissive
@@ -2840,7 +3254,7 @@ agreement, that agreement will supersede.
 
 Isn’t this just how it works already? Yep. This is widely accepted
 as the norm in the open-source community; it’s commonly referred
-to by the shorthand “inbound=outbound”. We’re just making it
+to by the shorthand "inbound=outbound". We’re just making it
 explicit.
 ```
 - Economic models
@@ -2930,6 +3344,9 @@ explicit.
 - By default, "port" understates "TCP port".
 - The ` character is called _backtick`. 
 - When in (_virtually any_) terminal, `ALT+ENTER` puts in fullscreen. :):D
+- RFCs, Request for Comments, are documents publicly published documents prominently by the IETF (Internet Engineering Task Force), that set standards, such as protocol specifications, typically.
+- CVEs (Common Vulnerabilities and Exposures) is a system that provides publicly known security vulnerabilities and exposures. _Bref_, these show vulnerabilities and security breaches.
+- CVEs are published _after_ the breach is patched ! (!!!)
 
 ## Remaining questions
 

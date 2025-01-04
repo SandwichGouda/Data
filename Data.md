@@ -3040,6 +3040,7 @@ It is not as easy to use as Caddy...
 - `CTRL+K CTRL+S` to open (and edit) keyboard shortcuts !
 - `CTRL+*` to split up the screen vertically.
 - When in "Find and replace mode", pressing enter in the first field searches for next occurence of the pattern, while pressing enter in the second _replaces current occurence_ and finds the next one. ! :)
+- When in VSCode, `CTRL+SHIFT+C` opens in the (VSCode) working directory. There is likely an equivalent way for opening a terminal on Linux.
 
 ### ffmpeg
 

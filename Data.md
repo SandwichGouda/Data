@@ -2174,6 +2174,18 @@ It is easier on Linux to have these : VirtualBox
     + No wildcards such as `*` or `?`
     + No `exec` or `sh` or `bash` (otherwise that'd allow the user to escape the restricted shell)
     + No `set` or `unset`
+  * If the restricted shell is misconfigured, it is possible to escape it...!
+    + Using `export` : if this command is allowed, it is possible for the user to change environment variables.
+    + `export PATH=/any/path:$PATH` will change the `PATH` to its current value, adding `/any/path/` in the beginning.
+    + Then, when typing any command, the shell will start by looking into `/any/path/` if a relevant binary file is in it...!
+    + This way, you add a file containing `/bin/bash`, and when running it (typing its name anywhere), it'll open a new bash instance, non-restricted !
+    + The `export` command allows to set environment variables in the current shell.
+    + `export VAR=<value>` sets the environment variable `VAR` to `<value>`. 
+    + That's why, when editing the PATH environment variable, add its previous content by adding `:$PATH` at the end !
+    + Note that environment variables are only attached to a given shell.
+    + This can sound quite unintuitive when you're used to setting the `PATH` environment variable in the Windows settings - not in any Windows PowerShell, as if these applied to the OS (globally).
+    + Actually, "changing the Path" in the Windows settings just changes the default environment variables of any shell. As a consequence, for instance, Python will then be able to find `C:\Users\username\AppData\Local\Programs\Python\Python312\python.exe`
+- `sudo -l` allows a user to see what people can run with `sudo`. `sudo -ll` displays more information. `sudo -lll` displays even more.
 
 ## Steganography
 

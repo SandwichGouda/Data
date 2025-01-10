@@ -2153,6 +2153,12 @@ It is easier on Linux to have these : VirtualBox
     + The file owner can read, write and execute the file
     + People in the same group as the file owner can read and write the file
     + Other people (anyone else) can only read the file.
+  * `SUID` (Set User ID) : This allows a user to allow other user groups to execute a file with specific permissions.
+    + The `SUID` bit is set if and only if the file permission looks like `**s******`
+    + If the owner has `s` as file execution permission (i.e., the `SUID` is set), the **program runs with the permissions of the file's owner**
+    + If a file has the `SUID` bit set, people who have 
+    + To set the `SUID` bit : `chmod u+s path/to/file`
+    + To remove it : `chmod u-s path/to/file`
 
 ### Steganography
 

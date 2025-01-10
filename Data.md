@@ -2143,13 +2143,20 @@ It is easier on Linux to have these : VirtualBox
   * You can mix both approaches : Use gdb, set breakpoints, find a function, and decompile it using a _static_ approach (Ghidra), swtich back to the dynamic
   * More generally you can switch between tools to get more diversified results :)
 
+### Priviledge escalation (PrivEsc)
+
+- Priviledge escalation happens when some user manages to get higher priviledges than what he's supposedly allowed to.
+- File permissions : `r` (read), write (`w`), execute (`x`) (`rwx`)
+  * The first three correspond to the `file owner`
+  * Example : 
+    + `rwxrw-r--` : 
+    + The file owner can read, write and execute the file
+    + People in the same group as the file owner can read and write the file
+    + Other people (anyone else) can only read the file.
+
 ### Steganography
 
 Hiding data into data : changing certain pixels in an image to 
-
-### Forensic
-
-Understanding what happened in 
 
 ### Network
 
@@ -2163,6 +2170,7 @@ Some information is public, but hidden.
 
 - Pentesting, IMSI Catcher, ...
 - root.me, hackthebox, Cryptohack (for crypto, very pedagogic, more than root.me), Ozint ; practice !
+- _Forensic_ is the practice of searching a (typically old) hard drive, trying to get old files that were typically not erased.
 
 ## Virtualization 
 

@@ -2159,8 +2159,23 @@ It is easier on Linux to have these : VirtualBox
     + If a file has the `SUID` bit set, people who have 
     + To set the `SUID` bit : `chmod u+s path/to/file`
     + To remove it : `chmod u-s path/to/file`
+  * `GUID` (Group User ID)
+    + It's the same as `SUID`, but replacing "the file owner's permissions" by "the file's group permissions" (pr)
+    + Recall that a file has an owner and a group : `rwxrwxrwx alice devteam`, for instance.
+  * There's also the sticky bit (`t`) that can be set on a directory to unallow anyone **to modify or delete files that they do not own**
+    + For instance, when the Sticky Bit is set on a directory, you cannot mess with files owned by other users in that directory.
+- Restricted shells
+  * Running `bash -r` opens a restricted shell in the current environment.
+  * In a restricted shell, the user typically can't :
+    + Change directory (no `cd`)
+    + Change or set environment variable (no `export`)
+    + Execute commands using absolute or relative paths : no `/path/to/executable_file` or `./path/to/executable_file`
+    + No output redirection : no `>`, `>>`, `<`, or `|`
+    + No wildcards such as `*` or `?`
+    + No `exec` or `sh` or `bash` (otherwise that'd allow the user to escape the restricted shell)
+    + No `set` or `unset`
 
-### Steganography
+## Steganography
 
 Hiding data into data : changing certain pixels in an image to 
 

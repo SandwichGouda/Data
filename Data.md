@@ -2198,6 +2198,13 @@ It is easier on Linux to have these : VirtualBox
   * In a similar way, the most reasonable way to try to find a collision is to bruteforce it, and this also takes ages (with the current limits of our technology).
 - Applications : Passwords should always be stored as hashes ! Moreover, the hash should always be computed on the server !
   * _En effet_, if the hash is computed on the client's side, it's all as if the password was the hash (see it).
+- They are used to :
+  * **Store passwords**
+  * To compute checksums :
+    + To identify malwares
+    + For SSL certificates
+    + To prevent corruption in a file when downloading
+- Tools to break hashes include Hashcat or JohnTheRipper
 
 ### Steganography
 

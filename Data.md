@@ -2187,7 +2187,19 @@ It is easier on Linux to have these : VirtualBox
     + Actually, "changing the Path" in the Windows settings just changes the default environment variables of any shell. As a consequence, for instance, Python will then be able to find `C:\Users\username\AppData\Local\Programs\Python\Python312\python.exe`
 - `sudo -l` allows a user to see what people can run with `sudo`. `sudo -ll` displays more information. `sudo -lll` displays even more.
 
-## Steganography
+### Hash maps
+
+- Hask maps are non injective functions to the set of finite strings to hashs bit vords.
+- The lengths of the hashs depend on the hash map : SHA1 produces 128 bits hash words, SHA256 produces 256 bit words.
+- A collision is a couple of distinct entries that output the same hash. By pigeonhole principle, there are necessarily infinitely many.
+- A pre-image of some hash $h$, obtained with an entry $x$, is another $y \neq x$ that outputs the same hash $h$ as $x$.
+- Their robustness is based on the following fact :
+  * They are non revertible in reasonable time. I.e. : the most reasonable way to try to revert it is to bruteforce it, and this takes ages (with the current limits of our technology).
+  * In a similar way, the most reasonable way to try to find a collision is to bruteforce it, and this also takes ages (with the current limits of our technology).
+- Applications : Passwords should always be stored as hashes ! Moreover, the hash should always be computed on the server !
+  * _En effet_, if the hash is computed on the client's side, it's all as if the password was the hash (see it).
+
+### Steganography
 
 Hiding data into data : changing certain pixels in an image to 
 

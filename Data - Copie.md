@@ -77,7 +77,6 @@ Data not to forget.
     + [HTML Basics](#html-basics)
   * [CSS](#css)
   * [Django](#django)
-  * [TypeScript](#typescript)
   * [PHP](#php)
   * [Further reading and tools](#further-reading-and-tools)
   * [Web certificates](#web-certificates)
@@ -116,9 +115,8 @@ Data not to forget.
     + [Symmetric cryptography](#symmetric-cryptography)
     + [Asymmetric cryptography](#asymmetric-cryptography)
   * [Reverse](#reverse)
-  * [Priviledge escalation (PrivEsc)](#priviledge-escalation-(privesc))
-  * [Hash maps](#hash-maps)
   * [Steganography](#steganography)
+  * [Forensic](#forensic)
   * [Network](#network)
   * [OSint](#osint)
   * [Other](#other)
@@ -235,8 +233,8 @@ Data not to forget.
 - [Remaining questions](#remaining-questions)
 - [Rezel](#rezel)
   * [Infrastructures internes](#infrastructures-internes)
-  * [FAI](#fai)
-  * [Choses faites et à faire](#choses-faites-et-�-faire)
+  * [FAI (Fournission d'Accès à Internet)](#fai-(fournission-d'acc�s-�-internet))
+  * [Choses faites et à faire](#choses-faites-et-�-faire)
   * [Autre](#autre)
   * [Rezel Daily](#rezel-daily)
 - [What is...](#what-is...)
@@ -3490,7 +3488,7 @@ This part should probably be hidden for security purposes
 
 enki : déploiement du réseau, écrit avec ansible (YAML)
 
-### FAI
+### FAI (Fournission d'Accès à Internet) 
 
 - OpenWRT est l'OS installé sur les Routeurs fournis et distribués par Rezel dans le cadre de la FAI qu'ils mettent en place.
 - FTTH = Fiber To The Home : Fibre À La Maison

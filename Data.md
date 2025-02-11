@@ -1242,6 +1242,12 @@ body
 - Uninstalled migrations -> python -m django manage.py migrate
 - ```You have 21 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions, wordcounter.     Run 'python manage.py migrate' to apply them.```
 
+### TypeScript
+
+- TypeScript is a statically typed superset of JavaScript. 
+  * This means that every JavaScript code is a valid TypeScript code,
+  * and that TypeScript has a static type compiler, the job of which is essentially to transpile TypeScript to JavaScript by erasing types.
+
 ### PHP
 
 - PHP used to stand for Personal Home Page, but now the official meaning is "PHP : Hypertext Processor"

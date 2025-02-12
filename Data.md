@@ -236,7 +236,7 @@ Data not to forget.
 - [Rezel](#rezel)
   * [Infrastructures internes](#infrastructures-internes)
   * [FAI](#fai)
-  * [Choses faites et à faire](#choses-faites-et-�-faire)
+  * [Choses faites et à faire](#choses-faites-et-�-faire)
   * [Autre](#autre)
   * [Rezel Daily](#rezel-daily)
 - [What is...](#what-is...)
@@ -991,6 +991,64 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * Hence the name : RAM <-- swap --> Storage
   * On Windows for instance, if you see files ending in `.swp`, especially in a saturated RAM context, you know what this is !
   * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.q
+
+## Docker
+
+- Docker is useful for deployment, scaling, and management of applications using containers. 
+- Recall that containers are lightweight, portable, and isolated environments that run applications along with all their dependencies. 
+- They are alike VMs, but the main difference with VMs is that they do not emulate a kernel : they share the kernel of the host machine, making them much more lightweight. 
+- Dockers are useful to run things anywhere.
+- Docker uses a Dockerfile to build images. Images can then be ran, giving birth to containers : Containers are running instances of images.
+  * `docker ps` lists all running containers
+  * `docker ps -a` lists all containers, including stopped ones
+  * The docker daemon (`dockerd`) runs in the background and manages containers. 
+  * `docker pull <ubuntu/...>` pulls (downloads) images from DockerHub
+  * `docker images` lists docker images that were pulled from the DockerHub.
+  * `docker rmi image_name` removes an image
+  * `docker run -it ubuntu` run a container interactively
+  * `docker start container_id` starts a container
+  * `docker stop container_id` stops a container
+  * `docker rm container_id` removes a container
+  * `docker exec -it container_id bash` accesses a running container’s shell
+  * `docker logs container_id` to see container logs
+- Docker images are created using Dockerfiles : 
+```dockerfile
+# Use Ubuntu as base image
+FROM ubuntu:latest
+
+# Install curl
+RUN apt-get update && apt-get install -y curl
+
+# Set the working directory
+WORKDIR /app
+
+# Copy local files to the container
+COPY . /app
+
+# Specify the default command when the container runs
+CMD ["bash"]
+```
+- You can 
+- Docker can be used together with `systemctl` : `systemctl start docker`
+- Docker `build` builds docker images using docker files 
+  * `docker build -t myapp .` builds an image into a container, in the current environment (`.`)
+  * `docker build -f custom.Dockerfile -t myapp .`  builds with a custom Dockerfile
+  * `docker build --no-cache -t myapp .` forces Docker to rebuild all layers from scratch
+  * `docker build --build-arg ENVIRONMENT=production -t myapp .` passes an argument ENVIRONMENT to the Dockerfile
+  * `docker build -t myapp https://github.com/user/repo.git` builds from a remote repository
+  * When you run `docker build`, you see output like : "Step 1/5 FROM ubuntu:latest", ... : each step corresponds to an instruction 
+- After building, you can run the image using 
+  * `docker run myapp` starts a new container from the specified image
+  * The `-i` option (interactive mode) keeps the standard input (stdin) open, allowing user interaction inside the container.
+- When using Docker, Volumes are persistent storage for containers.
+  * Containers are ephemeral, meaning they lose data when stopped
+  * Volumes persist data outside the container
+  * They are used for databases, logs, and configuration files.
+  * `docker volume create myvolume`  create a volume
+  * `docker volume ls` lists all volumes
+  * `docker volume rm myvolume` removes a volume
+  * `docker run -v myvolume:/data ubuntu` mounts myvolume to /data inside the container.
+- Networks enable communication between containers.
 
 ## Web
 

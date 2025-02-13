@@ -1457,9 +1457,6 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * `var s string` assigns s to the value `""`.
 - Declaring and assigning values :
   * `var x = 5`
-- Go handles a short variable declaration, without keyword : 
-  * `k := 3`
-  * Note that **outside a function, every statement must begin with a keyword** (var, func, ...). The `:=` construct is hence not available.
 - Available types include :
   * `uint8`
   * `uint16`
@@ -1598,14 +1595,14 @@ func main() {
     ```
 - Go supports chain commands separated by semicolons : 
   * `x := 0 ; x++ ; fmt.Println(x) ; x++ ; fmt.Println(x)`
-- You can "manipulate" integers that are over $2^63$ in `consts`.
+- You can "manipulate" integers that are over $2^{63}$ in `consts`.
   * You can define `const big = 1<<100` and even `const big 1<<100 + 1`.
   * But once defined, constants cannot be edited. 
   * Doing this, the `const` **does not have a type**. It is an **untyped const**.
   * You cannot cast them as `int`s because of overflow. 
   * You cannot `Println` them beccause that requires to convert the `const` to have a type.
   * You can cast them as `float64`s because... idk why, but it works. It will yield a float of the type `1.2676506002282295e+29`.
-- For statements : 
+- `For` statements : 
   * ```go
     for n := 0; n <= 10; n++ {
         fmt.Println(sum_of_squares(n))
@@ -1780,7 +1777,7 @@ func main() {
   * Other slices that are built from the same underlying array will be impacted.
   * A slice does not store any data, it just describes a section of an underlying array.
   * When slicing, one can omit the lower or higher bounds.
-  * `a[0:length of a]`, `a[:length of a]`, `a[0:]` and `a[:]` are equivalent.
+  * `a[0:len(a)]`, `a[:len(a)]`, `a[0:]` and `a[:]` are equivalent.
 - Slice literals
   * `[3]bool{true, true, false}` is an array.
   * `[]bool{true, true, false}` creates the same array as above, then builds a slice that references it.

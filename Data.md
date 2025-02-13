@@ -794,7 +794,8 @@ gitpush() {
 
 #### `wget` 
 
-- `wget` is used to download stuff
+- `wget` is used to download stuff.
+- `wget` supports HTTP, HTTPS and FTP.
 
 #### Other small commands
 

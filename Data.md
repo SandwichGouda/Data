@@ -792,6 +792,10 @@ gitpush() {
 - The command `curl` is used to communicate and send network packets between packets using different protocols.
 - curl supports FTP, FTPS, GOPHER, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
 
+#### `wget` 
+
+- `wget` is used to download stuff
+
 #### Other small commands
 
 - ``date`` : Prints the date of the machine you are working on. You can specify an output format (see manual).

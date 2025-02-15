@@ -2464,6 +2464,14 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
     + This is useful for specific projects
     + Just remove the `--global` flag (and execute the commands in the right repo) : `git config user.email "email@domain.com"`, `git config user.name "username"`
 
+### Git Large File Storage (LFS)
+
+- Git does not allow to push files that are too big.
+- For this, you have to use Git Large File Storage (LFS)
+- Installation : 
+  * `sudo apt install git-lfs`
+  * `git lfs install`
+
 ## Computer 
 
 ### Processors

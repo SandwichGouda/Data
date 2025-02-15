@@ -1916,14 +1916,18 @@ func main() {
   * Since `[]T` is the type a slice of type `T`, you can recursively create slices of slices.
   * For instance, `[][]int` is the type of an (`int`) matrix.
   * `append(slice, a, b, c, ...)` returns a slice containing the original slice plus values `a, b, c, ...`.
-  * The underlying array is the same if the capacity is not exceeded by appending elements to the slice.
-  * It will be a new allocated one if the capacity gets exceeded. 
-  * That is, the link will be conserved if the capacity is not exceeded : changing values in the original array will affect the appended slice.
-  * If the capcity gets exceeded, a new (literal...) slice will be allocated, and changing the values of the original array won't affect the slice.
+    + The underlying array is the same if the capacity is not exceeded by appending elements to the slice.
+    + It will be a new allocated one if the capacity gets exceeded. 
+    + That is, the link will be conserved if the capacity is not exceeded : changing values in the original array will affect the appended slice.
+    + If the capcity gets exceeded, a new (literal...) slice will be allocated, and changing the values of the original array won't affect the slice.
+    + You can use it to concatenate slices !
+    + if `a, b` are two strings (of same type), `append(a, b...)` returns a slice that's the concatenation of `a` and `b`
+    + That is, it is equivalent to `append(a, b[0], b[1], ..., b[len(b)])"`
   * The `copy` function copies the content of some slice into another.
     + It has signature `func copy(dst, src []T) int`
     + The copy function supports copying between slices of different lengths (it will copy only up to the smaller number of elements).
     + In addition, copy can handle source and destination slices that share the same underlying array, handling overlapping slices correctly : the destination slice will just be a (new) slice of the original array.
+  * When dealing with slices, keep in mind that the garbage collector does not realease the underlying arrays until the slices are dereferenced.
 
 ### fmt
 

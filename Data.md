@@ -1846,6 +1846,7 @@ func main() {
   * `z := struct {x int; y bool}{2, true}`
   * `z := struct {x int; y bool}{x: 2, y: true}`
   * `z := struct {int; bool}{2, true}`
+  * Conceptually, this acts kinda like a `tuple` in Python.
 - Arrays
   * The type `[n]T` is an array of n values of type `T`.
   * Declaration and initialization go as follows : 
@@ -1853,7 +1854,7 @@ func main() {
     var a [3]int 
     var b [3]int = [3]int{1,2,3}
     var c = [3]int{1,2,3}
-    d := int[3]{1,2,3}
+    d := [3]int{1,2,3}
     ```
   * `a[i]` then accesses the i-th element of `a`.  
   * An array's length is part of its type, so arrays cannot be resized. Slices offer a dynamic solution to this problem/
@@ -1866,6 +1867,7 @@ func main() {
     primes := [6]int{2, 3, 5, 7, 11, 13}
     var s []int = primes[1:4]
     ```
+  * Just like in Python, **the beginning is included, the end is excluded**.
   * Slices are _references to arrays_, in the sense that changing the elements of a slice modifies the corresponding elements of its underlying array. 
   * Other slices that are built from the same underlying array will be impacted.
   * A slice does not store any data, it just describes a section of an underlying array.
@@ -1874,11 +1876,12 @@ func main() {
 - Slice literals
   * `[3]bool{true, true, false}` is an array.
   * `[]bool{true, true, false}` creates the same array as above, then builds a slice that references it.
-  * So, slice literals are arrays without the length.
+  * We call these **slice literals** are arrays without the length.
 - Reslicing slices
   * The length of a slice is the number of elements it contains.
   * It is obtained with `len(s)`.
   * The capacity of a slice is the number of elements in the underlying array **counting from the first element in the slice**.
+  * That is, it's the maximum number of elements that it can contain ! Whence "capacity".
   * It is obtained with `cap(s)`
   * ```go
     s := []int{2, 3, 5, 7, 11, 13}
@@ -1886,27 +1889,60 @@ func main() {
     s = s[:4] // Extends its length.
     s = s[2:] // Drops its first two values.
     ```
+  * Note that slices can be extended "to the right" : trying `s[-1:...]` to extend "to the left" does not work.
+  * Re-slicing is equivalent to create a new slice that points to the original array.
+  * As a result, editing a (re-
+  )slice of a slice affects the original slice. (in the above example, the slice is re-sliced onto itself, but it could not have been the case)
+  * If the slice is a slice literal (see above), it can not be extended and dropping its values is permanent (since the underlying array does not really exist)
+  * Slice extension is possible as long as the slice has sufficient capacity (of course)
 - Nil slices
   * The zero value of a slice is nil.
   * A nil slice has a length and capacity of 0 and has **no underlying array**.
 - Dynamically sized slices
-  * Slices can be created with the built-in `make` function. 
+  * Slices can be created with the built-in `make` function.
+  * The `make` function has signature `func make([]T, len, cap) []T`.
+  * The capacity can be omitted and will be set to the length `len` by default
   * This allows to create dynamically-sized arrays.
+  * Example : 
+  * ```go
+    a := make([]int, 5)  // len(a)=5
+    b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+    b = b[:cap(b)] // len(b)=5, cap(b)=5
+    b = b[1:]      // len(b)=4, cap(b)=4
+    ```
+  * The underlying array will be filled with the zero value of the appropriate type : `0` for `int`, `""` for `String` (see above for other types)
+  * Recall that dropping the first values is irreversible, while droping values at the end is not - they can be recovered since they still are stored in the underlying array.
+- More on slices
+  * Since `[]T` is the type a slice of type `T`, you can recursively create slices of slices.
+  * For instance, `[][]int` is the type of an (`int`) matrix.
+  * `append(slice, a, b, c, ...)` returns a slice containing the original slice plus values `a, b, c, ...`.
+  * The underlying array is the same if the capacity is not exceeded by appending elements to the slice.
+  * It will be a new allocated one if the capacity gets exceeded. 
+  * That is, the link will be conserved if the capacity is not exceeded : changing values in the original array will affect the appended slice.
+  * If the capcity gets exceeded, a new (literal...) slice will be allocated, and changing the values of the original array won't affect the slice.
+  * The `copy` function copies the content of some slice into another.
+    + It has signature `func copy(dst, src []T) int`
+    + The copy function supports copying between slices of different lengths (it will copy only up to the smaller number of elements).
+    + In addition, copy can handle source and destination slices that share the same underlying array, handling overlapping slices correctly : the destination slice will just be a (new) slice of the original array.
 
 ### fmt
 
-Printf, all %... verbs
-Println, \n  support
+- Printf, all %... verbs
+- Println, \n  support
+
+### strings
+
+- `strings.Join(str1, str2)` produces the concatenation of strings `str1`, `str2` 
 
 ### math
 
-MaxInt uint64     = 1<<64 - 1
-z      complex128 = cmplx.Sqrt(-5 + 12i)
+- MaxInt uint64     = 1<<64 - 1
+- complex128 = cmplx.Sqrt(-5 + 12i)
 
 #### math/cmplx
 
 math.Sqrt(x)
-Sqrt(-2)
+S qrt(-2)
 Sqrt(-5 + 12i)
 
 #### math/rand

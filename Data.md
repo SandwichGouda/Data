@@ -2386,7 +2386,13 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 
 - `git push --force` with force push your repo to the remote. 
   * Be cautious with this ! This will erase the distant repo contents !
-- Once the remote is set up, you must set an upstream for every branch in the project. 
+- `git remote`
+  * `git remote add remotename <url>` adds a remote named `remotename` pointing to the url `<url>`
+  * `git remote show` shows a list of all remotes names that were set up
+  * `git remote show remotename` shows more information on a particular remote `remotename`
+  * `git remote rename` allows to rename a remote
+  * `git remote set-url` , with `--push` (equivalent to no option), `--delete`, `--add`, allow respectivemlt to manipulate (push) urls.
+- Once the remote is set up (exists remotely)(on GitHub/Gitlab/Gitea), you must set an upstream for every branch in the project. 
   * i.e., linking all branches of the local project to an existing branch in the remote repository.
   * Checkout on the branch you want to link (`git checkout localbranch`)
   * Run `git branch --set-upstream-to=origin/main localbranch`

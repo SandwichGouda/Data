@@ -905,6 +905,7 @@ gitpush() {
 - `CTRL + X` `N` saves and exists.
 - `CTRL + K` allows to _cut_ large chunks of text. 
 - In particular, `CTRL + K` allows to _remove_ large chunks of code !
+- Use `CTRL+W` to search for something specific
 
 #### Tldr
 

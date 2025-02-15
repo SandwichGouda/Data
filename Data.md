@@ -1059,6 +1059,25 @@ CMD ["bash"]
   * `docker volume rm myvolume` removes a volume
   * `docker run -v myvolume:/data ubuntu` mounts myvolume to /data inside the container.
 - Networks enable communication between containers.
+- `docker compose` :
+  * It allows you to define and manage multi-container applications using a simple YAML file (`docker-compose.yml`). 
+  * Instead of running multiple `docker run` commands, you can define your services in a file and start them with a single command.
+  * Example : `bulle.rezel.net`'s docker compose :
+```yaml
+services:
+  neo4j:
+    image: bullotheque-local-neo4j
+    container_name: bullotheque-neo4j
+    ports:
+      - 7474:7474
+      - 7687:7687
+
+  keycloak:
+    image: bullotheque-local-keycloak
+    container_name: bullotheque-keycloak
+    ports:
+      - 8080:8080
+```
 
 ## Web
 

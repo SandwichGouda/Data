@@ -2483,10 +2483,20 @@ remote: error: GH001: Large files detected. You may want to try Git Large File S
 ```
 - For the latter issue, you should not make commits that are more that 2GB big in size in the first place.
 - For the former however, it can happend that some files are bigger than 100 MB. Actually, for some code, it should never happen. So, it is likely that you are doing something wrong, such as putting a database in a Git for instance, or some compressed file (a `.tar` containing a docker image, or whatever). Start by thinking about this first.
+- Also, having huge files in a Git repository leads to performance issues (for instance, commits and pushes being very long). For having tried this, it is a true and reasonable reason to consider avoiding these issues. More information : [Removeing large files from a repository](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#removing-files-from-a-repositorys-history). While we're here : [Remove sensitive data from a repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
 - For this, you have to use Git Large File Storage (LFS)
 - Installation : 
   * `sudo apt install git-lfs`
   * `git lfs install`
+- Git LFS handles large files by storing references to the file in the repository, but not the actual file itself. Git LFS creates a pointer file which acts as a reference to the actual file (which is stored somewhere else). GitHub manages this pointer file in your repository. When you clone the repository down, GitHub uses the pointer file as a map to go and find the large file for you.
+  * But, sometimes, it happens that when cloning or pulling the repo, **only the pointer file is downloaded**.
+  * You then get, instad of your original file, a file that looks like this :
+```
+version https://git-lfs.github.com/spec/v1
+oid sha256:ba2b221267fc9cf5c642b09ebbd42fff38f10f1568cac653d68abb100bdeb817
+size 234825216
+```
+  * Beware if this issue !
 
 ## Computer 
 

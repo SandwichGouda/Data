@@ -2467,10 +2467,21 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 ### Git Large File Storage (LFS)
 
 - Git does not allow to push files that are too big.
+- More specifically, Git does not allow to push files that are over **100 MB**, and does not allow pushes that are over 2GB.
+```
+remote: Resolving deltas: 100% (1/1), done.
+remote: error: Trace: [hash]
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File [...] is 128.00 MB; this exceeds GitHub's file size limit of 100.00 MB 
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+```
+- For the latter issue, you should not make commits that are more that 2GB big in size in the first place.
+- For the former however, it can happend that some files are bigger than 100 MB. Actually, for some code, it should never happen. So, it is likely that you are doing something wrong, such as putting a database in a Git for instance, or some compressed file (a `.tar` containing a docker image, or whatever). Start by thinking about this first.
 - For this, you have to use Git Large File Storage (LFS)
 - Installation : 
   * `sudo apt install git-lfs`
   * `git lfs install`
+- 
 
 ## Computer 
 

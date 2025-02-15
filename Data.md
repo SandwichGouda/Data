@@ -2481,7 +2481,6 @@ remote: error: GH001: Large files detected. You may want to try Git Large File S
 - Installation : 
   * `sudo apt install git-lfs`
   * `git lfs install`
-- 
 
 ## Computer 
 

@@ -1023,7 +1023,7 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * `docker pull <ubuntu/...>` pulls (downloads) images from DockerHub
   * `docker images` lists docker images that were pulled from the DockerHub.
   * `docker rmi image_name` removes an image
-  * `docker run -it ubuntu` run a container interactively
+  * `docker run -it ubuntu` runs a container interactively
   * `docker start container_id` starts a container
   * `docker stop container_id` stops a container
   * `docker rm container_id` removes a container
@@ -1068,7 +1068,7 @@ CMD ["bash"]
   * `docker run -v myvolume:/data ubuntu` mounts myvolume to /data inside the container.
 - Networks enable communication between containers.
 - `docker compose` :
-  * It allows you to define and manage multi-container applications using a simple YAML file (`docker-compose.yml`). 
+  * The `docker-compose` command allows you to define and manage multi-container applications using a simple YAML file : `docker-compose.yml`. 
   * Instead of running multiple `docker run` commands, you can define your services in a file and start them with a single command.
   * Example : `bulle.rezel.net`'s docker compose :
 ```yaml
@@ -1086,6 +1086,26 @@ services:
     ports:
       - 8080:8080
 ```
+  * Another example : 
+```
+version: "3"
+
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+```
+  * You can then docker compose with `docker-compose up -d`. 
+    + `up` is for "upping" the containers (running them).
+    + `-d` is for running them in detached mode (in the background). 
+    + Run this command where the `docker-compose.yml` file is.
+  * You can then check if it works with `docker-compose ps` and stop them with `docker-compose down`
 
 ## Web
 
@@ -2497,6 +2517,8 @@ oid sha256:ba2b221267fc9cf5c642b09ebbd42fff38f10f1568cac653d68abb100bdeb817
 size 234825216
 ```
   * Beware if this issue !
+- (What does it do to install git LFS if pulling gives the thing directly ?)
+- (Truy using Git LFS on an example to see how it works)
 
 ## Computer 
 
@@ -3288,16 +3310,16 @@ To send files through the FTP Protocol :
 - Set Up the FTP Server : You need to set up an FTP server on the computer that sends the file.
 - After setting up the FTP server, get the IP Address of the FTP Server : find the local IP address of the computer that is running the FTP server.
 - Access Files Using Chrome (or any other browser) : In the URL bar, you can enter an FTP URL in the following format: ``ftp://username:password@ip-address:port``
-  * ``username`` : The username you set up on the FTP server.
-  * ``password`` : The password associated with that username.
-  * ``ip-address`` : The local IP address of the FTP server.
-  * ``port`` : The port number of the FTP server : default for FTP is 21.
+  * `username` : The username you set up on the FTP server.
+  * `password` : The password associated with that username.
+  * `ip-address` : The local IP address of the FTP server.
+  * `port` : The port number of the FTP server : default for FTP is 21.
   * If authentication is not required, you can omit the username and password.
 - Once you enter the FTP URL, you should be able to browse the directories on the FTP server. Clicking on a file will start a download.
 
 ### Vivenot.dev
 
-- ``configuration.nix`` is located in ``/etc/nixos/profiles/homelab``
+- `configuration.nix` is located in `/etc/nixos/profiles/homelab`
 
 ### OSInt
 

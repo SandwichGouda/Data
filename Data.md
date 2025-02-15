@@ -435,9 +435,17 @@ Then use parted to create a partition and format the disk.
 
 #### Ubuntu
 
+- The oldes Linux distribution.
+
 #### Debian
 
+- It is more recent, Ubuntu-based.
+
 #### Arch Linux
+
+- Often associated to the darkest programmers ("I use Arch btw"), it's famous for it's DIY approach : it is not pre-configured, users have to manually install and configure everything. It's more complicated, more resource and time-consuming.
+- It uses the pacman package manager.
+- The packages are based on the famous AUR repo. All Arch packages are there.
 
 #### Fedora
 
@@ -445,11 +453,12 @@ Then use parted to create a partition and format the disk.
 
 #### NixOS
 
-NixOS is a distribution based on the Nix package manager. It is special in it's package management and configuration systems. NixOS is the package manager that has the most package. 
-
-The NixOS repo
-
-AUR repo
+- NixOS is a distribution based on the Nix package manager. 
+  * It is special in it's package management and configuration systems.
+  * NixOS is the package manager that has the most packages.
+- The idea is that instead of changing the system configuration by typing 
+- you cna change the configuration and 
+  * `sudo nixos-rebuild switch --flake ./nixos`
 
 ##### Package management in NixOS
 

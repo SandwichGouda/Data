@@ -418,6 +418,14 @@ Regular Expressions (often abbreviated as Regex, or Regexp), are expressions tha
 
 They can be used in the terminal or in `*` : all
 
+#### Shell features
+
+##### For loops
+
+- The shell allows to run for loops. 
+- Example : 
+  * `for package in package1 package2 package3 ; do sudo apt-get remove $pkg ; done`
+
 #### Setting up external hard drives
 
 First, plug the hard drive. 

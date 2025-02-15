@@ -457,8 +457,34 @@ Then use parted to create a partition and format the disk.
   * It is special in it's package management and configuration systems.
   * NixOS is the package manager that has the most packages.
 - The idea is that instead of changing the system configuration by typing 
-- you cna change the configuration and 
-  * `sudo nixos-rebuild switch --flake ./nixos`
+- You can change the configuration and 
+  * Rebuild (a part of) the OS by running `sudo nixos-rebuild switch --flake <folder containing configuration>`
+- To use nginx on Nixos :
+  * ```services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts = 
+      let 
+        SSL = {
+          enableACME = true;
+          forceSSL = true;
+        };
+      in  {
+        "service1.vivenot.dev" = (SSL // {locations."/" = {
+          proxyPass = "http://localhost:8000";
+          proxyWebsockets = true;
+        };});
+        "service2.vivenot.dev" = (SSL // {locations."/" = {
+          proxyPass = "http://localhost:8001";
+          proxyWebsockets = true;
+        };});
+      };
+    };
+    ```
+  * Put this is configuration.nix (of the profile your want this to apply to) 
 
 ##### Package management in NixOS
 
@@ -3330,6 +3356,7 @@ To send files through the FTP Protocol :
 ### Vivenot.dev
 
 - `configuration.nix` is located in `/etc/nixos/profiles/homelab`
+- To rebuild the os, run `sudo nixos-rebuild switch --flake ./nixos` in Axel's home (`/home/axel`)
 
 ### OSInt
 

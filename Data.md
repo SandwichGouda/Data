@@ -2042,8 +2042,9 @@ func main() {
 ### math
 
 - The math package implements many handy math-related functions and constants
-  * Functions : `Abs`, `Cos`, `Sin`, `Exp`, `Sqrt`, `Log`, `Log10`, `Min`, `Max`, `Pow`, `Cbrt`
-  *  `Remainder`, `Ceil`, `Floor`, ... :
+- Functions : 
+  * `Abs`, `Cos`, `Sin`, `Exp`, `Sqrt`, `Log`, `Log10`, `Min`, `Max`, `Pow`, `Cbrt`
+  * `Mod`, `Ceil`, `Floor`, ... :
     + `Floor(x float64) float64` returns the greatest integer less than or equal to `x` (as a `float64`)
     + `Ceil(x float64) float64` returns the least integer greater than or equal to `x` (as a `float64`)
     + `Mod(x, y float64) float64` returns the floating-point remainder of `x/y`. The result is in $(-y,y)$ and its sign is that of `x`.
@@ -2055,8 +2056,12 @@ func main() {
   * It also allows to deal with `NaN` values and $ \pm \infty $.
   * `Inf(sign int) float64` returns positive infinity if `sign >= 0`, negative infinity if `sign < 0`.
   * Many functions have (hardcoded) special cases for dealing with `NaN` and $ \pm \infty $ (see `Floor` for instance)
-- MaxInt uint64     = 1<<64 - 1
-- complex128 = cmplx.Sqrt(-5 + 12i)
+  * More at https://pkg.go.dev/math#pkg-functions
+- Constants : 
+  * `E`, `Pi`, `Phi`, `Sqrt2`, `SqrtE`, `SqrtPi`, `Ln2`, `Ln10`
+  * `MaxInt`, `MinInt`, `MaxFloat32`, `SmallestNonzeroFloat32`, `MaxFloat64`, `SmallestNonzeroFloat64`
+  * `MaxInt` and `MinInt` are `Max/MinInt32` or `Max/MinInt64` depending on `intSize` (which will be 64 except on some old or special computers...)
+  * More at https://pkg.go.dev/math#pkg-constants
 
 #### math/cmplx
 

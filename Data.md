@@ -1972,6 +1972,23 @@ func main() {
     + `elem, ok := m[key]` / `elem, ok = m[key]`
     + If `key` is in the map : `ok = true` and `elem = m[key]`
     + If not, `ok = false` and `elem` if the nil element of the maps values' type.
+- Range
+  * The range form of the for loop iterates over a slice or map.
+  * ```go
+    for i, v := range slice {
+		  fmt.Println(slice[i] == v)
+	  }
+    ```
+  * This is analoguos to `enumerate(<iterable>)` in Python.
+  * You can skip the index or value by assigning to _.
+  * ```go
+    for i, _ := range slice
+    for _, value := range slice
+    ```
+  * If you only want the index, you can omit the second variable.
+    ```go
+    for i := range pow
+    ```
 
     
 ### fmt

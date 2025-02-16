@@ -1989,7 +1989,19 @@ func main() {
     ```go
     for i := range pow
     ```
-
+- Closures
+  * Functions are values and can be passed around.
+  * A closure is a function that carries and uses a variable that's defined outside its body.
+  * Example :
+  * ```go
+    func adder() func(int) int {
+	    sum := math.rand(1,6)
+	    return func(x int) int {
+		    sum += x
+		    return sum
+	    }
+    }
+    ```
     
 ### fmt
 

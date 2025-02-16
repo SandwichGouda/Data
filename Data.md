@@ -2038,6 +2038,7 @@ func main() {
       return math.Sqrt(v.X*v.X + v.Y*v.Y)
     }
     ```
+  * What a methods works on is called a **reciever**.
   * This is only possible on types taht are defined in the same package. 
   * In particular, it is not possible for any of the built-in types (`int`, `string`, ...)
   * However you can make copies of (rename) a type using
@@ -2045,6 +2046,7 @@ func main() {
     type MyFloat float64
     ```
   * and then create methods on that new type. 
+  * You can have several methods with the same name but different input types (different recievers). Go will infer which one to use depending on the type of what you'll give it.
 - Pointers and functions
   * If you have a function that is supposed to work on a value directly, i.e. edit the value of a variable, such as this one :
   * ```go
@@ -2080,6 +2082,17 @@ func main() {
     x.incr(myint(2))
     ```
   * i.e. : `func (x *T)  method()`, can be applied to `&x` and `x` indifferently. Both work !
+  * If the method takes a pointer type `*T` as reciever, and `x` is of type `T`, then `x.method` is interpreted as `(&x).method`
+  * **Conversely**, methods that take non-pointer recievers can work on pointers :
+  * `func (x T)  method()` can be applied to `x` and `*x` indifferently. Both work !
+  * If the method takes a non pointer type `T` as reciever, and `x` is of type `*T`, then `x.method` is interpreted as `(*x).method`
+  * On the other hand, function benefit none of these arrangements. Functions that take type `T` must be called with variables of type `T`, and functions that take type `*T` must be called with variables of type `*T`.
+  * Although, keep in mind that methods with non pointer arguments will work on a copy of the variable they're supposed to work on.
+  * There are two reasons to use a pointer receiver : 
+    + First, the method can'n modify the value that it recieves if it's a non pointer argument.
+    + Second, working with pointers in methods avoids to copy the value on each method call. 
+    + This can be more efficient if the receiver is a large struct, for example !
+    + In general, all methods on a given type should have either value or pointer receivers, but not a mixture of both. 
 
 ### fmt
 

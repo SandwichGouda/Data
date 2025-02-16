@@ -1910,7 +1910,7 @@ func main() {
     b = b[:cap(b)] // len(b)=5, cap(b)=5
     b = b[1:]      // len(b)=4, cap(b)=4
     ```
-  * The underlying array will be filled with the zero value of the appropriate type : `0` for `int`, `""` for `String` (see above for other types)
+  * The underlying array will be filled with the zero value of the appropriate type : `0` for `int`, `""` for `string` (see above for other types)
   * Recall that dropping the first values is irreversible, while droping values at the end is not - they can be recovered since they still are stored in the underlying array.
 - More on slices
   * Since `[]T` is the type a slice of type `T`, you can recursively create slices of slices.
@@ -1928,15 +1928,62 @@ func main() {
     + The copy function supports copying between slices of different lengths (it will copy only up to the smaller number of elements).
     + In addition, copy can handle source and destination slices that share the same underlying array, handling overlapping slices correctly : the destination slice will just be a (new) slice of the original array.
   * When dealing with slices, keep in mind that the garbage collector does not realease the underlying arrays until the slices are dereferenced.
+- Maps
+  * Maps are analoguous to dictionaries (`dict`) in Python.
+  * `maps[T]V` is the type of a map, the keys of which are of type `T` and the values of which are of type `V`
+  * The zero value of a map is `nil`. It has no keys and cannot have any !
+  * ```go
+    m = make(map[int]string)
+    m[0] = "zero"
+    m[1] = "one"
+    ```
+  * ```go
+    type TwoDIntVector struct {
+      X int
+      Y int
+    }
+    
+    m = make(map[[]int]IntVector)
+- Map literals 
+  * Map literals are like struct literals. 
+  * ```go
+    type TwoDIntVector struct {
+      X int
+      Y int
+    }
 
+    m := map[[2]int]TwoDIntVector{
+		  [2]int{1, 2}: TwoDIntVector{1, 2},
+		  [2]int{3, 4}: TwoDIntVector{3, 4},
+	  }
+    ```
+  * You can omit to specify the type of the element of the struct, it will be inferred if/since the type of the map's elements is specified when defining it.
+  * ```go
+    m := map[[2]int]TwoDIntVector{
+		  [2]int{1, 2}: {1, 2},
+		  [2]int{3, 4}: {3, 4},
+	  }
+    ```
+- Editing (mutating) maps
+  * `m[key] = value`
+  * `elem = m[key]`
+  * `delete(m, key)`
+  * Test if a key is in the map :
+    + `elem, ok := m[key]` / `elem, ok = m[key]`
+    + If `key` is in the map : `ok = true` and `elem = m[key]`
+    + If not, `ok = false` and `elem` if the nil element of the maps values' type.
+
+    
 ### fmt
 
 - Printf, all %... verbs
 - Println, \n  support
+- Fprintf, Sprintf 
 
 ### strings
 
 - `strings.Join(str1, str2)` produces the concatenation of strings `str1`, `str2` 
+- More at https://pkg.go.dev/strings
 
 ### math
 

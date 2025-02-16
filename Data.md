@@ -1666,7 +1666,7 @@ func main() {
   * Not that for all int types (recall that all int types are fixed-sized, somethimes signed using two's complement, sometimes not)
 - Type conversions : 
   * The expression `T(v)` converts the value `v` to the type `T`.
-  * Example : `r := float64(5)`
+  * Examples : `r := int(1.0)`, `x := float64(5)`, 
 - Type inference : 
   * When the types aren't statically precised, they are inferred. 
   * Examples :
@@ -2063,6 +2063,23 @@ func main() {
       incr(&x)
       ```
   * This is especially true when dealing with **structs**. To edit their values, better use pointers !
+- Methods and pointers
+  * The last remark also applies to methods. (Methods are just functions called differently)
+  * Although, since methods are often used to work on variables directly (i.e., edit them), they have a special arrangement :
+  * As said earlier, methods with non-pointers recievers won't edit the variable ; they will work on a copy of their argument.
+  * But, methods with pointer recievers will work on the object their (given) pointer points to.
+  * The special arrangement is that methods with pointer recievers can be given the original object, like so :
+  * ```go
+    type myint int
+    
+    func (x *myint) incr(y myint) {
+      *x = *x + y
+    }
+
+    x := myint(2)
+    x.incr(myint(2))
+    ```
+  * i.e. : `func (x *T)  method()`, can be applied to `&x` and `x` indifferently. Both work !
 
 ### fmt
 

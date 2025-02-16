@@ -2027,6 +2027,42 @@ func main() {
   * To create them, see above : we create a bigger (mother) function that returns a closure. 
   * The variables declared in the mother function will be the ones "attached", "bundled" with the function returned. 
   * Note that of course all of this is because we edited the variables inside the function returned. (There's no need to carry the other variables around - those that aren't edited by the function returned)
+- Methods
+  * One can define methods on types :
+  * ```go 
+    type Vertex struct {
+      X, Y float64
+    }
+
+    func (v Vertex) Abs() float64 {
+      return math.Sqrt(v.X*v.X + v.Y*v.Y)
+    }
+    ```
+  * This is only possible on types taht are defined in the same package. 
+  * In particular, it is not possible for any of the built-in types (`int`, `string`, ...)
+  * However you can make copies of (rename) a type using
+    ```go
+    type MyFloat float64
+    ```
+  * and then create methods on that new type. 
+- Pointers and functions
+  * If you have a function that is supposed to work on a value directly, i.e. edit the value of a variable, such as this one :
+  * ```go
+    func incr(x int) {
+	    x = x + 1
+    }
+    ```
+  * It will **not** work. To modify variables using functions, you must either :
+    + make the function return a new value, and do something like `x = f(x)`
+    + or, use pointers: 
+    + ```go
+      func incr(x *int) {
+	      *x++
+      }
+
+      incr(&x)
+      ```
+  * This is especially true when dealing with **structs**. To edit their values, better use pointers !
 
 ### fmt
 

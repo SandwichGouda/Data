@@ -1588,7 +1588,6 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   (floating-point infinities and NaNs print as ±Inf and NaN)
     + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
     + `%%` : The way to write a percent `%` sign (without it being interpreted as a verb attempt)
-    + See more in our breakdown of the [fmt](#fmt) package.
 - `fmt.Println()` allows to print stuff without bothering with `%T`, `%d`...
 ```go
 package main
@@ -2094,11 +2093,66 @@ func main() {
     + This can be more efficient if the receiver is a large struct, for example !
     + In general, all methods on a given type should have either value or pointer receivers, but not a mixture of both. 
 - Interfaces 
-  
+  * An _interface type_ is defined as a set of method signatures.
+  * It is a (sort of) type : if `I` is an interface, you can declare and use variables that have "type `I`".
+  * Actually, these variables will have one of the types that implement this interface.
+  * We say that a type _implements an interface_ when it implements its methods.
+  * Example :
+  * ```go
+    type I interface {
+      M()
+    }
+
+    type T struct {
+      S string
+    }
+
+    type V int 
+
+    func (t T) M() {
+      fmt.Println(t.S)
+    }
+
+    func (v V) M() {
+      fmt.Println(v+1)
+    }
+    ```
+  * In this code, the types `T` and `V` implement the interface `I` because it implements its method (`M()`) :
+  * A variable of "type `I`" (`I` is an interface) can then hold any value of any value or type either `T` or `V`.
+  * ```go
+    var a I
+    a = T{"abc"}
+    a = 5
+    ```
+  * `a.M()` will then call the right method according the `a`'s (real) type.
+  * The fact that a type implements an interface is implicit. There is no keyword that says "this type implements this method".
+  * As a result, implementations of an interface can the appear in any package without prearrangement.
+- Interfaces and nil values, nil interfaces
+  * If the concrete value inside the interface itself is nil (nil slice, nil map), the method will be called with a nil receiver.
+  * In some languages this would trigger a null pointer exception, but not in Go, as long as the method can handle nil values.
+  * There's an interface called the empty interface : `var i interface{}`. 
+  * It can hold values of any type : every type implements at least zero methods.
+  * Empty interfaces come in handy when handing values of unknown type. 
+  * For instnace, `fmt.Print` takes any number of arguments of type `interface{}`.
+
+
+
 ### fmt
 
-- Printf, all %... verbs
-- Println, \n  support
+- `fmt.Printf()` works like `printf` in C. 
+  * `fmt.Printf("%v, %T\n", i, i)` prints the value and the type of `i`, then a newline.
+  * Recall Go _verbs_ : 
+    + `%v` : The value in a default format
+    + `%+v` : Same as `%v`, but adds field names when printing structs
+    + `%#v` :  a Go-syntax representation of the value
+    + `%d` : Decimal representation
+    + `%e`: Scientific notation, e.g. `-1.234456e+78`
+    + `%E` : scientific notation, e.g. `-1.234456E+78`
+    + `%f` : decimal point but no exponent, e.g. `123.456`
+    + `%F`: synonym for `%f`
+    + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
+- `fmt.Print()` prints variables (of any type). It is varyadic (takes as may (comma-separated) arguments as we want)
+- `fmt.Println()` is just like `fmt.Print()`, but adds a newline (carriage return `\n`) at the end of each print.
 - Fprintf, Sprintf 
 
 ### strings

@@ -2204,6 +2204,14 @@ func main() {
 - `func Join(elems []string, sep string) string` produces the concatenation of strings inside `elems`, separated with the delimitor `sep`
 - More at https://pkg.go.dev/strings
 
+### strconv
+
+- A package to convert text to numbers. 
+  * The most used functions are `Atoi` and `Itoa` that convert between `string` and `int`
+  * `func Atoi(s string) (int, error)`
+  * `func Itoa(i int) string`
+  * Everything is in base 10. There are more functions to deal with other bases and fo other stuff (Quote, Parse, ...) : https://pkg.go.dev/strconv
+
 ### math
 
 - The math package implements many handy math-related functions and constants

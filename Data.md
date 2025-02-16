@@ -2286,9 +2286,21 @@ Sqrt(-5 + 12i)
 
 #### math/rand
 
-rand.Intn(10)
-Mod
-Power
+- `func Float32() float32` returns a pseudo-random `float32` in the half-open interval $[0.0,1.0)$
+- `func Float64() float64` returns a pseudo-random `float64` in the half-open interval $[0.0,1.0)$
+- `func Int() int` returns a non-negative pseudo-random `int`
+- `func Intn(n int) int` returns a non-negative pseudo-random `int` in the half-open interval $[0,n)$. It panics if `n <= 0`.
+- `func NormFloat64() float64` returns a normally distributed `float64` in the range `[-math.MaxFloat64, +[math.MaxFloat64]]` from the standard normal distribution $ \mathcal N(0,1) $. Multiply by the $ \sigma $ and  add $\mu$ to get any $ \mathcal N(\mu,\sigma^2) $
+- `func Perm(n int) []int` returns, as a slice of $n$ `int`s, a pseudo-random permutation of the integers in the half-open interval $[0,n)$
+- `func Shuffle(n int, swap func(i, j int))` shuffles anything given an appropriate swap function.
+  * Example : 
+  * ```go
+    rand.Shuffle(len(words), func(i, j int) {
+      words[i], words[j] = words[j], words[i]
+    })
+
+    ```
+- The package allows to manage random seeds.
 
 ### time
 

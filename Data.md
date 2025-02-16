@@ -2180,6 +2180,24 @@ func main() {
       z = Person{"Sarah", 43}
       fmt.Println(a, z)
     }
+- Errors
+  * Go expresses errors with error values.
+  * The `error` type is a built-in **interface** similar to `fmt.Stringer` :
+  * ```go
+    type error interface {
+        Error() string
+    }
+    ```
+  * A nil error denotes success; a non-nil error denotes failure.
+  * Example with `Atoi` (see `strconv`) :
+  * ```go
+    i, err := strconv.Atoi("42")
+    if err != nil {
+        // an error occured
+    } else {
+        // no error occured
+    }
+    ```
 
 ### fmt
 

@@ -2041,6 +2041,20 @@ func main() {
 
 ### math
 
+- The math package implements many handy math-related functions and constants
+  * Functions : `Abs`, `Cos`, `Sin`, `Exp`, `Sqrt`, `Log`, `Log10`, `Min`, `Max`, `Pow`, `Cbrt`
+  *  `Remainder`, `Ceil`, `Floor`, ... :
+    + `Floor(x float64) float64` returns the greatest integer less than or equal to `x` (as a `float64`)
+    + `Ceil(x float64) float64` returns the least integer greater than or equal to `x` (as a `float64`)
+    + `Mod(x, y float64) float64` returns the floating-point remainder of `x/y`. The result is in $(-y,y)$ and its sign is that of `x`.
+    + In particular, `Mod(x, 1)` returns the fractional part of `x` if x is non-negative.
+    + `Modf(x float64) (int float64, frac float64)` returns the integer and fractional part of `x` respectively. **They sum to `x`, and both have the same sign as `x`.**
+    + `Remainder(x, y float64) float64` is really no very different from `Mod`. Use `Mod`.
+    + `Round(x float64) float64` returns the nearest integer, rounding half-integers away from zero.
+    + `RoundToEven(x float64) float64` returns the nearest integer, rounding ties to the nearest even integer.
+  * It also allows to deal with `NaN` values and $ \pm \infty $.
+  * `Inf(sign int) float64` returns positive infinity if `sign >= 0`, negative infinity if `sign < 0`.
+  * Many functions have (hardcoded) special cases for dealing with `NaN` and $ \pm \infty $ (see `Floor` for instance)
 - MaxInt uint64     = 1<<64 - 1
 - complex128 = cmplx.Sqrt(-5 + 12i)
 

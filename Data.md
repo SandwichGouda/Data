@@ -2134,8 +2134,52 @@ func main() {
   * It can hold values of any type : every type implements at least zero methods.
   * Empty interfaces come in handy when handing values of unknown type. 
   * For instnace, `fmt.Print` takes any number of arguments of type `interface{}`.
+- Type assertions (for interfaces)
+  * A type assertion provides access to an interface value's underlying concrete value.
+  * `t := i.(T)`
+  * This statement asserts that the interface value `i` holds the concrete type `T` and assigns the underlying `T` value to the variable `t`.
+  * If `i` does not hold a `T`, the statement will trigger a panic.
+  * To safely test whether an interface value holds a specific type, a type assertion can return two values: the underlying value and a boolean value that reports whether the assertion succeeded.
+  * `t, ok := i.(T)`
+    + If `i` holds a `T`, then `t` will be the underlying value and `ok` will be `true`.
+    + If not, `ok` will be false and `t` will be the zero value of type `T`, and no panic occurs.
+- Type switches (for interfaces)
+  * ```go
+    switch v := i.(type) {
+    case T:
+        // here v has type T
+    case S:
+        // here v has type S
+    default:
+        // no match; here v has the same type as i
+    }
+    ```
+  * The syntax at the tophas the same syntax as a type assertion `i.(T)`, but the specific type `T` is replaced with the (new!) keyword `type`.
+- Stringers
+  * One of the (apprently so) mostly used interfaces is `Stringer` defined by the `fmt` package.
+  * ```go
+    type Stringer interface {
+        String() string
+    }
+    ```
+  * ```go
+    import "fmt"
+    
+    type Person struct {
+      Name string
+      Age  int
+    }
 
+    func (p Person) String() string {
+      return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
+    }
 
+    func main() {
+      var a,z fmt.Stringer
+      a = Person{"John", 42}
+      z = Person{"Sarah", 43}
+      fmt.Println(a, z)
+    }
 
 ### fmt
 
@@ -2157,7 +2201,7 @@ func main() {
 
 ### strings
 
-- `strings.Join(str1, str2)` produces the concatenation of strings `str1`, `str2` 
+- `func Join(elems []string, sep string) string` produces the concatenation of strings inside `elems`, separated with the delimitor `sep`
 - More at https://pkg.go.dev/strings
 
 ### math

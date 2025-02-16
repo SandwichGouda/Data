@@ -2235,7 +2235,11 @@ func main() {
 
 ### strings
 
-- `func Join(elems []string, sep string) string` produces the concatenation of strings inside `elems`, separated with the delimitor `sep`
+- `func Join(elems []string, sep string) string` produces the concatenation of strings inside `elems`, separated with the delimitor `sep`.
+- `func Fields(s string) []string` splits the string `s` each time there's one or more consecutive white space characters (defined by `unicode.IsSpace`)
+- `func ToLower(s string) string` converts a string `s` to lowercase.
+- `func ToUpper(s string) string` converts a string `s` to uppercase.
+- `func Index(s, substr string) int` returns the index of the first instance of `substr` in `s`, or `-1` if `substr` is not present in `s`.
 - More at https://pkg.go.dev/strings
 
 ### strconv

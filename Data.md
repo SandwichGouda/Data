@@ -1995,14 +1995,39 @@ func main() {
   * Example :
   * ```go
     func adder() func(int) int {
-	    sum := math.rand(1,6)
+	    sum := rand.Intn(10)
 	    return func(x int) int {
 		    sum += x
 		    return sum
 	    }
     }
     ```
-    
+  * The above function return a function that increments by a random amount comprised between 0 and 10.
+  * Another example : Fibonacci using closures
+    ```go
+      func Fibonacci() func() int {
+      a := 0
+      b := 1
+
+      return func() int {
+        a, b = b, a+b
+        return a
+      }
+    }
+
+    func main() {
+      f := Fibonacci()
+      for k := 0; k <= 15; k++ {
+        fmt.Println(f())
+      }
+    }
+    ```
+  * Conceptually, closures consist in "bundles" function + variables attached to it. 
+  * When calling the function, you can edit these values 
+  * To create them, see above : we create a bigger (mother) function that returns a closure. 
+  * The variables declared in the mother function will be the ones "attached", "bundled" with the function returned. 
+  * Note that of course all of this is because we edited the variables inside the function returned. (There's no need to carry the other variables around - those that aren't edited by the function returned)
+
 ### fmt
 
 - Printf, all %... verbs

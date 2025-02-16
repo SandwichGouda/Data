@@ -2198,6 +2198,22 @@ func main() {
         // no error occured
     }
     ```
+- The `io` package specifies the `io.Reader` interface, which represents the read end of a stream of data.
+  * It can be used to detect the end of any stream of data (EOF).
+  * This comes in handy when dealing with files !
+  * ```go
+    r := strings.NewReader("Hello, Reader!")
+
+    b := make([]byte, 8)
+    for {
+      n, err := r.Read(b)
+      fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
+      fmt.Printf("b[:n] = %q\n", b[:n])
+      if err == io.EOF {
+        break
+      }
+    }
+    ```
 
 ### fmt
 

@@ -2139,7 +2139,20 @@ func main() {
 
 ### fmt
 
-
+- `fmt.Printf()` works like `printf` in C. 
+  * `fmt.Printf("%v, %T\n", i, i)` prints the value and the type of `i`, then a newline.
+  * Recall Go _verbs_ : 
+    + `%v` : The value in a default format
+    + `%+v` : Same as `%v`, but adds field names when printing structs
+    + `%#v` :  a Go-syntax representation of the value
+    + `%d` : Decimal representation
+    + `%e`: Scientific notation, e.g. `-1.234456e+78`
+    + `%E` : scientific notation, e.g. `-1.234456E+78`
+    + `%f` : decimal point but no exponent, e.g. `123.456`
+    + `%F`: synonym for `%f`
+    + `%T`: a Go-syntax representation of the type of the value : `int`, `float64`...
+- `fmt.Print()` prints variables (of any type). It is varyadic (takes as may (comma-separated) arguments as we want)
+- `fmt.Println()` is just like `fmt.Print()`, but adds a newline (carriage return `\n`) at the end of each print.
 - Fprintf, Sprintf 
 
 ### strings

@@ -2062,6 +2062,10 @@ func main() {
   * `MaxInt`, `MinInt`, `MaxFloat32`, `SmallestNonzeroFloat32`, `MaxFloat64`, `SmallestNonzeroFloat64`
   * `MaxInt` and `MinInt` are `Max/MinInt32` or `Max/MinInt64` depending on `intSize` (which will be 64 except on some old or special computers...)
   * More at https://pkg.go.dev/math#pkg-constants
+- The `big` directory implements stuff to deal with large numbers, such as binomial coefficients, or the `Rat` type for dealing with rational numbers.
+  * In particular, the `ProbablyPrime` method (`(x *Int) ProbablyPrime(n int)` in type `big.Int` reports whether `x` is probably prime, applying the Miller-Rabin test (with `n` pseudorandomly chosen bases) as well as a Baillie-PSW test.
+  * If `x` is prime, `ProbablyPrime` returns `true`. If `x` is chosen randomly and not prime, ProbablyPrime _probably_ returns `false`. The probability of returning true for a randomly chosen non-prime is at most $ 1/4^n $.
+  * ProbablyPrime is 100% accurate for inputs less than $2^{64}$.
 
 #### math/cmplx
 
@@ -2075,7 +2079,7 @@ rand.Intn(10)
 Mod
 Power
 
-#### time
+### time
 
 today := time.Now().Weekday()
 time.Saturday 

@@ -2947,7 +2947,7 @@ remote: error: File [...] is 128.00 MB; this exceeds GitHub's file size limit of
 remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
 ```
 - For the latter issue, you should not make commits that are more that 2GB big in size in the first place.
-- For the former however, it can happend that some files are bigger than 100 MB. Actually, for some code, it should never happen. So, it is likely that you are doing something wrong, such as putting a database in a Git for instance, or some compressed file (a `.tar` containing a docker image, or whatever). Start by thinking about this first.
+- For the former however, it can happen that some files are bigger than 100 MB. Actually, for some code, it should never happen. So, it is likely that you are doing something wrong, such as putting a database in a Git for instance, or some compressed file (a `.tar` containing a docker image, or whatever). Start by thinking about this first.
 - Also, having huge files in a Git repository leads to performance issues (for instance, commits and pushes being very long). For having tried this, it is a true and reasonable reason to consider avoiding these issues. More information : [Removeing large files from a repository](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#removing-files-from-a-repositorys-history). While we're here : [Remove sensitive data from a repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
 - For this, you have to use Git Large File Storage (LFS)
 - Installation : 

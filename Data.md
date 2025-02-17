@@ -2256,6 +2256,13 @@ func main() {
   * `func Itoa(i int) string`
   * Everything is in base 10. There are more functions to deal with other bases and fo other stuff (Quote, Parse, ...) : https://pkg.go.dev/strconv
 
+### cmp
+
+- A package for dealing with comparisons.
+  * `func Compare[T Ordered](x, y T) int` returns 0 if x = y, -1 if x < y and 1 otherwise.
+  * `func Less[T Ordered](x, y T) bool` reports whether x is less than y. For floating-point types, `NaN`s are considered less than any non-`NaN`, and `-0.0` is not less than (is equal to) 0.0.
+  * It notably provides the `Ordered` interface that allows other packages to require `cmp.Ordered` types values (values of a type that instances this interface)
+
 ### slices
 
 - A package that implements many things to deal with slices

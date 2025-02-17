@@ -1706,7 +1706,8 @@ func main() {
     for ; sum < 1000; {
       sum += sum
     }
-      * But at that point... This is just a while loop. You can drop the semicolons !
+    ```
+  * But at that point... This is just a while loop. You can drop the semicolons !
     ```go
     sum := 1
     for sum < 1000 {
@@ -2214,7 +2215,12 @@ func main() {
       }
     }
     ```
+- More at : 
+  * https://go.dev/doc
+  * https://go.dev/tour/list
+  * https://go.dev/doc/tutorial/call-module-code
 
+  
 ### fmt
 
 - `fmt.Printf()` works like `printf` in C. 
@@ -2249,6 +2255,15 @@ func main() {
   * `func Atoi(s string) (int, error)`
   * `func Itoa(i int) string`
   * Everything is in base 10. There are more functions to deal with other bases and fo other stuff (Quote, Parse, ...) : https://pkg.go.dev/strconv
+
+### slices
+
+- A package that implements many things to deal with slices
+  * `func Repeat[S ~[]E, E any](x S, count int) S` repeats the slice `x` `count` times
+  * `func Reverse[S ~[]E, E any](s S)` reverses the elements of the slice in place.
+  * `func Sort[S ~[]E, E cmp.Ordered](x S)` sorts a slice of any ordered type in ascending order. (`NaN`s are sorted before everything in floats)
+  * `func Grow[S ~[]E, E any](s S, n int) S` increases a slice's capacity.
+  * `func Max[S ~[]E, E cmp.Ordered](x S) E`, `Min[S ~[]E, E cmp.Ordered](x S) E`
 
 ### math
 

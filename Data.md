@@ -2139,6 +2139,7 @@ func main() {
   * It can hold values of any type : every type implements at least zero methods.
   * Empty interfaces come in handy when handing values of unknown type. 
   * For instnace, `fmt.Print` takes any number of arguments of type `interface{}`.
+  * **For convenience, the predeclared type any is an alias for the empty interface !**
 - Type assertions (for interfaces)
   * A type assertion provides access to an interface value's underlying concrete value.
   * `t := i.(T)`

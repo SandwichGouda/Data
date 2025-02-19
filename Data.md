@@ -2220,6 +2220,26 @@ func main() {
       }
     }
     ```
+- Type parameters
+  * You can make functions be able to work with different types using type parameters : 
+  * ```go
+    func Reverse[T any](s []T) []T {
+
+    l := len(s)
+    r := make([]T, l, l)
+
+    for k := 0; k < l; k++ {
+      r[l-k-1] = s[k]
+    }
+    
+    return r
+    }
+    ```
+  * To do this, specify it under brackets between the function name and its arguments.
+  * Using `function[T any](...)` allows the function to work on any type.
+  * However, note that doing this you won't be able to use the `==` and `!=` operators.
+  * For this, you must use `function[T any](...)`
+
 - More at : 
   * https://go.dev/doc
   * https://go.dev/tour/list

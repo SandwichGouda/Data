@@ -2238,7 +2238,7 @@ func main() {
   * To do this, specify it under brackets between the function name and its arguments.
   * Using `function[T any](...)` allows the function to work on any type.
   * However, note that doing this you won't be able to use the `==` and `!=` operators.
-  * For this, you must use `function[T any](...)`
+  * For this, you must use `function[T any](...)`.
 
 - More at : 
   * https://go.dev/doc

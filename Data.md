@@ -1568,6 +1568,9 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * `string` (UTF-8)
 - `int` is `int32` on 32-bits systems, and `int64` on 64-bits systems. 
 - The Go documentation says to use `int` unless you have a specific reason to use a fixed-size `intXX` type. 
+  * However, on a perseonal and subjective note, I find it a good idea to use `uint` if the integers you are manipulating are supposed to be positive, especially in contexts where the it would be nonsensical to have a negative input for a function for instance.
+  * On the other hand though, using `uint` is a form of defensive programming, which, should maybe arguably be applied "either at 100% or 0%". But on the other hand, come on, dont use signed integers if you don't need them. It's just stupid.
+  * Some people argue : "use `int` unless you have specific reasons to use another specific integer type", "`int` is more idiomatic". After a careful think, by honest opinion about this is that it's more about people having habits, and everyone seeing everyone else do so (using almost always `int`, almose never `uint`, and so deducing that "yeah, it's more idiomatic"). So yeah. See https://stackoverflow.com/questions/63105394/in-go-when-should-you-use-uint-vs-int for further discussion.
 - Aliases :
   * `byte` is an alias for `uint8`
   * `rune` is an alias for `int32`

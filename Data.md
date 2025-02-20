@@ -1663,7 +1663,8 @@ func main() {
 - Operators : 
   * `+`, `-`, `*`
   * The interger modulo can be obtained with `%` !
-  * If one of its arguments is a `string`, `+` will automatically cast its other argument into a string and concatenate them (as strings). Example : `5 + "i"` returns the string "5i".
+  * It is possible to concatenate strings using the `+` operator.
+  * Even better : if one of its arguments is a `string`, `+` will automatically cast its other argument into a string and concatenate them (as strings). Example : `5 + "i"` returns the string "5i" !
   * The `/` operator rounds up **towards zero**, if both arguments are `int`s, otherwise it'll be a float) : `-1/2` returns 0, `0.5/2` returns `0.25`
   * The bitwise left shift `<<` (and the bitwise right shift `>>`) do what we expect they do.
   * Not that for all int types (recall that all int types are fixed-sized, somethimes signed using two's complement, sometimes not)
@@ -2266,6 +2267,7 @@ func main() {
 
 ### strings
 
+- It is possible to concatenate strings using the `+` operator.
 - `func Join(elems []string, sep string) string` produces the concatenation of strings inside `elems`, separated with the delimitor `sep`.
 - `func Fields(s string) []string` splits the string `s` each time there's one or more consecutive white space characters (defined by `unicode.IsSpace`)
 - `func ToLower(s string) string` converts a string `s` to lowercase.

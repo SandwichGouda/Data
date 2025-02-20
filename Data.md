@@ -440,6 +440,8 @@ They can be used in the terminal or in `*` : all
 - The shell allows to run for loops. 
 - Example : 
   * `for package in package1 package2 package3 ; do sudo apt-get remove $pkg ; done`
+  * You can run several commands in the for loop by separating them with semicolons : 
+  * `for package in package1 package2 package3 ; do this ; that ; andthat ; done`
 
 #### Setting up external hard drives
 

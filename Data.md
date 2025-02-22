@@ -2894,6 +2894,8 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
   * This commands pushes _and_ sets the upstream to the local branch.
   * Once it worked once (even if you have to `--force` the command), the upstream'll be set (and a simple `git push` will suffice)
   * It'll likely tell you that the remote branch already has commits and that you can't just push like that. If the remote repo is pretty much empty (has no subtantial work that mustn't be deleted), you can clean it (it will delete everything on it) by adding `--force`
+- But actually, this is golemic.
+  * Just create the remote repo and clone it. There's litterally no reason to do otherwise.
 
 ### Git credentials
 

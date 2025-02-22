@@ -1045,6 +1045,7 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * Hence the name : RAM <-- swap --> Storage
   * On Windows for instance, if you see files ending in `.swp`, especially in a saturated RAM context, you know what this is !
   * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.q
+- "Scratch space" is a term used to describe space on the hard disk drive that is dedicated for storage of temporary user data, by analogy of "scratch paper." It is unreliable by intention and has no backup. 
 
 ## Docker
 

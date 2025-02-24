@@ -2870,6 +2870,12 @@ https://fr.wikipedia.org/wiki/Virtualisation
   * There is no difference with `checkout`, simply, the `checkout` command was too weird (it is indeed!!) so they changed it, by splitting its features into several other subcommands. 
   * Git being already widely spread and used, they kept `checkout` for habit purposes.
 
+### Git restore
+
+- `git restore` is the command that allows to transfer files from last commit to working tree.
+  * `git restore .` restores the (whole) content of the current folder from last commit.
+  * `git restore path/to/file` restores one file.
+
 ### Git merge
 
 - When on branch `main`, `git merge develop` merges `develop` into `main`.
@@ -3747,7 +3753,7 @@ It is not as easy to use as Caddy...
 - Go rocks !
 - When coding, you can speedrun, but project building, project management, code organisation & cleanup, project design (what exactly the code should do, which functions to implement, in which files, which packages) will take some time. 
   * If this part does not take much time, then it means that some choices are overlooked, and that's where technical debt kicks in.
-
+- Go rocks !!
 
 #### Web development
 

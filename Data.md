@@ -2876,6 +2876,12 @@ https://fr.wikipedia.org/wiki/Virtualisation
   * `git restore .` restores the (whole) content of the current folder from last commit.
   * `git restore path/to/file` restores one file.
 
+### Git reset
+
+- `git reset` is the command that allows to go back in time, restoring previous commits.
+  * `git reset --soft HEAD~1` sets the head back to 1 commit, keeping the working tree unchanged.
+  * `git reset --hard HEAD~1` sets the head back to 1 commit, overwriting the working tree. Beware, with `--hard`, you can't get your modifications back (think before you type !)
+
 ### Git merge
 
 - When on branch `main`, `git merge develop` merges `develop` into `main`.

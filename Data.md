@@ -20,6 +20,8 @@ Data not to forget.
       - [Special character classes](#special-character-classes)
       - [Examples](#examples)
     + [Shell wildcard patterns](#shell-wildcard-patterns)
+    + [Shell features](#shell-features)
+      - [For loops](#for-loops)
     + [Setting up external hard drives](#setting-up-external-hard-drives)
   * [Differences between Linux distributions](#differences-between-linux-distributions)
     + [Ubuntu](#ubuntu)
@@ -55,6 +57,8 @@ Data not to forget.
     + [`chroot`](#chroot)
     + [`nc` (netcat)](#nc-(netcat))
     + [`alias`](#alias)
+    + [`curl`](#curl)
+    + [`wget`](#wget)
     + [Other small commands](#other-small-commands)
     + [Remaining commands to deal with](#remaining-commands-to-deal-with)
   * [Other Linux packages](#other-linux-packages)
@@ -71,6 +75,12 @@ Data not to forget.
   * [I/O and drivers](#i/o-and-drivers)
   * [Sockets](#sockets)
   * [Miscellaneous OS information](#miscellaneous-os-information)
+- [Docker](#docker)
++ [Use Ubuntu as base image](#use-ubuntu-as-base-image)
++ [Install curl](#install-curl)
++ [Set the working directory](#set-the-working-directory)
++ [Copy local files to the container](#copy-local-files-to-the-container)
++ [Specify the default command when the container runs](#specify-the-default-command-when-the-container-runs)
 - [Web](#web)
   * [Web development](#web-development)
   * [HTML](#html)
@@ -91,10 +101,14 @@ Data not to forget.
 - [Go](#go)
   * [Go basics](#go-basics)
   * [fmt](#fmt)
+  * [strings](#strings)
+  * [strconv](#strconv)
+  * [cmp](#cmp)
+  * [slices](#slices)
   * [math](#math)
     + [math/cmplx](#math/cmplx)
     + [math/rand](#math/rand)
-    + [time](#time)
+  * [time](#time)
   * [Go interpreters](#go-interpreters)
     + [Yaegi](#yaegi)
   * [Echo web framework](#echo-web-framework)
@@ -138,6 +152,7 @@ Data not to forget.
   * [Git CICD](#git-cicd)
     + [GitHub Actions](#github-actions)
   * [Git miscellaneous information](#git-miscellaneous-information)
+  * [Git Large File Storage (LFS)](#git-large-file-storage-(lfs))
 - [Computer](#computer)
   * [Processors](#processors)
   * [Storage types](#storage-types)
@@ -236,7 +251,7 @@ Data not to forget.
 - [Rezel](#rezel)
   * [Infrastructures internes](#infrastructures-internes)
   * [FAI](#fai)
-  * [Choses faites et à faire](#choses-faites-et-�-faire)
+  * [Choses faites et à faire](#choses-faites-et-à-faire)
   * [Autre](#autre)
   * [Rezel Daily](#rezel-daily)
 - [What is...](#what-is...)
@@ -2811,7 +2826,7 @@ Wireshark is your friend.
 
 Some information is public, but hidden.
 
-### Other
+### Misc information about cryptography
 
 - Pentesting, IMSI Catcher, ...
 - root.me, hackthebox, Cryptohack (for crypto, very pedagogic, more than root.me), Ozint ; practice !
@@ -3723,6 +3738,20 @@ Haproxy is what Antonin uses at Rezel for the hosting-gateway reverse-proxy.
 It is not as easy to use as Caddy...
 
 ## Other
+
+### Experience gathered from different projects
+
+#### Aidantix
+
+- With AI, it can be tempting to essentially prompt and copy-paste whole code chunks. AI is a great tool to speed some things up, but it is a very satisfying sensation not to be to reliant on it.
+- Go rocks !
+- When coding, you can speedrun, but project building, project management, code organisation & cleanup, project design (what exactly the code should do, which functions to implement, in which files, which packages) will take some time. 
+  * If this part does not take much time, then it means that some choices are overlooked, and that's where technical debt kicks in.
+
+
+#### Web development
+
+- When developing a site `website.com`, you can typically create a subsite `dev.website.com` that'll expose the dev version of your site. Of course, it should not be exposed for hours or days, but a few minutes, just enough to see the result. Typically, this version will be associated to a developing git branch, that'll be merged to the main branch (corresponding to `website.com`) for production.
 
 ### VSCode
 

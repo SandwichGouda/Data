@@ -2924,6 +2924,7 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
   * It'll likely tell you that the remote branch already has commits and that you can't just push like that. If the remote repo is pretty much empty (has no subtantial work that mustn't be deleted), you can clean it (it will delete everything on it) by adding `--force`
 - But actually, this is golemic.
   * Just create the remote repo and clone it. There's litterally no reason to do otherwise.
+  * By doing this, git automatically adds the remote, creates all branches, sets the correct upstreams on the correct branches to the correct remote branches, etc. It's good to have in mind that to do this manually, theses are steps to follow (add a remote and set remote branch upstreams one by one), but yeah. Just git clone.
 
 ### Git credentials
 

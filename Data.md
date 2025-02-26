@@ -2919,6 +2919,7 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
   * Run `git branch --set-upstream-to=origin/main localbranch`
   * You can then push this branch to its upstream.
   * If it doesn't work, run `git push --set-upstream origin main`. 
+    + In particular, this won't work if the remote git does not have any commits or branches. In this case, the command that allows to _add a branch to the remote repo, that's actually the local branch we're working on, and set an upstream to the local branch pointing to that remote branch we're creating_  is the latter. You can replace `--set-upstream` by the shorcut `-u`.
   * This commands pushes _and_ sets the upstream to the local branch.
   * Once it worked once (even if you have to `--force` the command), the upstream'll be set (and a simple `git push` will suffice)
   * It'll likely tell you that the remote branch already has commits and that you can't just push like that. If the remote repo is pretty much empty (has no subtantial work that mustn't be deleted), you can clean it (it will delete everything on it) by adding `--force`

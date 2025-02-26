@@ -2855,6 +2855,7 @@ https://fr.wikipedia.org/wiki/Virtualisation
   * Don't mess around too much creating new branches without having any commits. :)
 - You can also clone a distant repo and commit to it.
   * The repo can be empty, it can have been created from a web UI. This is practice that prevents errors.
+- You can use `git commit -am "Your commit message"` will automatically stage all modified and deleted files before the commit, so you don't have to `git add` them. Note that is will **not** add new untracked files however<>
 
 ### Git branches
 
@@ -3759,6 +3760,9 @@ It is not as easy to use as Caddy...
 - Go rocks !
 - When coding, you can speedrun, but project building, project management, code organisation & cleanup, project design (what exactly the code should do, which functions to implement, in which files, which packages) will take some time. 
   * If this part does not take much time, then it means that some choices are overlooked, and that's where technical debt kicks in.
+- When dumping a text database into a text file (very natural idea), there are several ways to do.
+  * The first idea would be to write the data into a natural format adapted to the data we're storing.
+  * Actually, this is quite golemic. Many standards already exist and it would be a shame not to use them. It makes the result sound and look more professional, and moreover, many libraries in many languages will have pre-implemente
 - Go rocks !!
 
 #### Web development
@@ -3786,6 +3790,7 @@ It is not as easy to use as Caddy...
 - You can set particular website query shortcuts in `chrome://settings/searchEngines` : add the URL with `%s` where the query should be inserted and the shortcut to type in the search bar.
 
 ### Markdown
+
 - `<ins> ... </ins>` to underline text.
 - `<sup> ... </sup>` to superscript (écrire en exposant)
 - `<sub> ... </sub>` to subscript (écrire en indice)

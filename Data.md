@@ -2930,6 +2930,7 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
     + https://github.com/new/import
     + https://docs.github.com/en/migrations/importing-source-code/using-github-importer/about-github-importer
     + https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#importing-a-git-repository-with-the-command-line
+    + The last links explains how to import a local git repository to GitHub. As explained, there is no other method than "importing the branches one by one", i.e. running `git push -u ...` (recall that `-u` = `--set-upstream`) for each branch.
     + https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-with-github-cli
 
 ### Git credentials

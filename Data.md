@@ -2925,6 +2925,11 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 - But actually, this is golemic.
   * Just create the remote repo and clone it. There's litterally no reason to do otherwise.
   * By doing this, git automatically adds the remote, creates all branches, sets the correct upstreams on the correct branches to the correct remote branches, etc. It's good to have in mind that to do this manually, theses are steps to follow (add a remote and set remote branch upstreams one by one), but yeah. Just git clone.
+  * Relevant links :
+    + https://github.com/new/import
+    + https://docs.github.com/en/migrations/importing-source-code/using-github-importer/about-github-importer
+    + https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#importing-a-git-repository-with-the-command-line
+    + https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-with-github-cli
 
 ### Git credentials
 

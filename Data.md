@@ -480,6 +480,7 @@ done
   * i.e., if you run a script that assigns variables `a`, `b`, `c`, then they will always be available in the global context. At any given time, `echo $a` will return the last value that `a` was assigned to in your script(s).
   * You can insert a string value stored in a variable in another string directly like so : `b:="Hi, $a !"`
   * You can concatenate strings by just inserting them one after anotehr : `c="$a$b"`
+- `... | rev` will reverse the output of `...`
 - You can work with strings (edit them, format them...) by extensively using `echo $variable | any_command_you_like`
   * For instance, `... | tr "a" "b"` will replace all occurences of `a` by `b` in the output of `...` (and return the result)
   * `... | cut -c4-22` will keep the slice of the string outputted by `...` contained between the 4th and 22th index. 
@@ -489,10 +490,14 @@ done
   * You can set nothing to mean "from the beginning" or "until the end" :
   * `cut -c-3` will keep only the 3 first characters
   * `cut -c3-` will keep everything from the 3rd character
+  * To get everything but the last 3 characters, combine `cut` with `rev` : `| rev | cut -c3- | rev`
+- You can escape characters using backslashes (as in Python).
+  * `"\""` (`"""`)
+  * `"\\"` (`"\"`)
 - Example : 
 ```bashrc
 codehere() {
-    if [[ $PWD == /mnt/c* ]]; then
+    if [[ $PWD == /mnt/c* ]]; then # This allows to test whether $PWD starts with "/mnt/c"
         /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\\$(echo $(echo $PWD | cut -c8-) | tr "/" "\\")'"
     else
         echo "You are not inside the Windows filesystem (/mnt/c)."

@@ -443,6 +443,56 @@ They can be used in the terminal or in `*` : all
   * You can run several commands in the for loop by separating them with semicolons : 
   * `for package in package1 package2 package3 ; do this ; that ; andthat ; done`
 
+#### Bash scripts
+
+- You can create bash scripts :
+```bash
+function(arg1, ...) {
+  command1 arg1
+  command2 arg1 arg2
+  ...
+```
+- When putting this in any file, and then `source`-ing it.
+- Since `source` is what must be ran to execute the script, and `source` only reads a file and executes commands one by one, everything in this section can be executed in the terminal directly.
+- Comments are done as in Python : `#`
+- if-else conditions : 
+```bash
+codehere() {
+if [ -z "$1" ]; then
+  ...
+else 
+  ...
+fi
+```
+- For loops
+```bash
+for package in package1 package2 package3 ; do 
+  this ; 
+  that ; 
+  andthat ; 
+done
+```
+- The semicolons are not mandatory.
+- You can assign variables : 
+  * `a="Hello world"`
+  * And then retrieve their value with `$a`.
+  * Note that they will be assigned in the global context. 
+  * i.e., if you run a script that assigns variables `a`, `b`, `c`, then they will always be available in the global context. At any given time, `echo $a` will return the last value that `a` was assigned to in your script(s).
+  * You can insert a string value stored in a variable in another string directly like so : `b:="Hi, $a !"`
+  * You can concatenate strings by just inserting them one after anotehr : `c="$a$b"`
+- You can work with strings (edit them, format them...) by extensively using `echo $variable | any_command_you_like`
+  * For instance, `... | tr "a" "b"` will replace all occurences of `a` by `b` in the output of `...` (and return the result)
+- Example : 
+```bashrc
+codehere() {
+    if [[ $PWD == /mnt/c* ]]; then
+        /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\\$(echo $(echo $PWD | cut -c8-) | tr "/" "\\")'"
+    else
+        echo "You are not inside the Windows filesystem (/mnt/c)."
+    fi
+}
+```
+
 #### Setting up external hard drives
 
 First, plug the hard drive. 

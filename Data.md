@@ -482,6 +482,13 @@ done
   * You can concatenate strings by just inserting them one after anotehr : `c="$a$b"`
 - You can work with strings (edit them, format them...) by extensively using `echo $variable | any_command_you_like`
   * For instance, `... | tr "a" "b"` will replace all occurences of `a` by `b` in the output of `...` (and return the result)
+  * `... | cut -c4-22` will keep the slice of the string outputted by `...` contained between the 4th and 22th index. 
+  * **Note that here, the indexes do NOT start at 0**
+  * 1-5 will start from the first column, i.e., this only stops after the 5th column.
+  * The end is included : `cut -c1-2` will output two characters (or less)
+  * You can set nothing to mean "from the beginning" or "until the end" :
+  * `cut -c-3` will keep only the 3 first characters
+  * `cut -c3-` will keep everything from the 3rd character
 - Example : 
 ```bashrc
 codehere() {

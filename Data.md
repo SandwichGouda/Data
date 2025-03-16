@@ -1058,6 +1058,21 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 - `Ctrl-A p` Switch to the previous window
 - `Ctrl-A k` Kill the current window
 
+#### Filebrowser
+
+- A real banger !
+- Whenever executing the command `filebrowser`, it will add a `filebrowser.db` file in the current directory.
+  * This file contains a filbrowser configuration that will be applied when filebrowser will serve that directory
+- `filebrowser`, or `filebrowser -r .` will listen and serve current directory
+  * The option `-r path/to/dir` ("root to prepend to relative paths") is used to tell filebrower "serve files in `path/to/dir`" that is, it will add `path/to/dir` to relative paths in your URL (`file.vivenot.dev/...`)
+- `filebrowser users ls` lists users
+- `filebrowser users add <username> <password>` to add a user and a password
+  * `users add <username> <password> --perm.admin`
+- `filebrowser users rm <id|username>` to remove users
+- `filebrowser users update <id|username>` **edits users**
+  * In particular, `filebrowser users update <id|username> --password <password>` will change the password of a user
+  * In particular, `filebrowser users update admin --password <password>` will change the password of user `admin`, which is `admin` by default (...!)
+
 ### Commands cool things
 
 - (pipe, double pipe, <, >, <<, >>)

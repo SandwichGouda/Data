@@ -1052,11 +1052,11 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
 - `screen` starts a new screen session
 - `screen -r` reattach to existing session
 - `screen -ls` List existing screen sessions
-- `Ctrl-A d` **detach from the current session**
-- `Ctrl-A c` Create a new window
-- `Ctrl-A n` Switch to the next window
-- `Ctrl-A p` Switch to the previous window
-- `Ctrl-A k` Kill the current window
+- `Ctrl A d` **detach from the current session**
+- `Ctrl A c` Create a new window
+- `Ctrl A n` Switch to the next window
+- `Ctrl A p` Switch to the previous window
+- `Ctrl A k` Kill the current window ; `CTRL+D` also works 
 
 #### Filebrowser
 

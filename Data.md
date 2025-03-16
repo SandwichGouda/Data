@@ -569,7 +569,13 @@ Then use parted to create a partition and format the disk.
 
 ##### Configurations in NixOS
 
-All configurations options can be written in `/etc/nixos/configuration.nix`.
+- There's three "layers" : the system, profiles and users in each profile.
+  * When rebuilding a profile, you rebuild its global configuration and each users (each home)
+    + To do this, run `sudo nixos-rebuild switch --flake /etc/nixos`
+    + Global configuration (applies to all users) is stored in `configuration.nix`
+  * You can also rebuild home independently - i.e., juste rebuild your own configuration
+    + To do this, run `home-manager switch --flake /etc/nixos`
+    + Personal configuration (special to each user) is stored in `configuration.nix`
 
 ### Dual boots
 

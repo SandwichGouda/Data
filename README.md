@@ -20,6 +20,8 @@ Data not to forget.
       - [Special character classes](#special-character-classes)
       - [Examples](#examples)
     + [Shell wildcard patterns](#shell-wildcard-patterns)
+    + [Shell features](#shell-features)
+      - [For loops](#for-loops)
     + [Setting up external hard drives](#setting-up-external-hard-drives)
   * [Differences between Linux distributions](#differences-between-linux-distributions)
     + [Ubuntu](#ubuntu)
@@ -55,6 +57,8 @@ Data not to forget.
     + [`chroot`](#chroot)
     + [`nc` (netcat)](#nc-(netcat))
     + [`alias`](#alias)
+    + [`curl`](#curl)
+    + [`wget`](#wget)
     + [Other small commands](#other-small-commands)
     + [Remaining commands to deal with](#remaining-commands-to-deal-with)
   * [Other Linux packages](#other-linux-packages)
@@ -71,6 +75,12 @@ Data not to forget.
   * [I/O and drivers](#i/o-and-drivers)
   * [Sockets](#sockets)
   * [Miscellaneous OS information](#miscellaneous-os-information)
+- [Docker](#docker)
++ [Use Ubuntu as base image](#use-ubuntu-as-base-image)
++ [Install curl](#install-curl)
++ [Set the working directory](#set-the-working-directory)
++ [Copy local files to the container](#copy-local-files-to-the-container)
++ [Specify the default command when the container runs](#specify-the-default-command-when-the-container-runs)
 - [Web](#web)
   * [Web development](#web-development)
   * [HTML](#html)
@@ -91,10 +101,14 @@ Data not to forget.
 - [Go](#go)
   * [Go basics](#go-basics)
   * [fmt](#fmt)
+  * [strings](#strings)
+  * [strconv](#strconv)
+  * [cmp](#cmp)
+  * [slices](#slices)
   * [math](#math)
     + [math/cmplx](#math/cmplx)
     + [math/rand](#math/rand)
-    + [time](#time)
+  * [time](#time)
   * [Go interpreters](#go-interpreters)
     + [Yaegi](#yaegi)
   * [Echo web framework](#echo-web-framework)
@@ -138,6 +152,7 @@ Data not to forget.
   * [Git CICD](#git-cicd)
     + [GitHub Actions](#github-actions)
   * [Git miscellaneous information](#git-miscellaneous-information)
+  * [Git Large File Storage (LFS)](#git-large-file-storage-(lfs))
 - [Computer](#computer)
   * [Processors](#processors)
   * [Storage types](#storage-types)
@@ -236,7 +251,7 @@ Data not to forget.
 - [Rezel](#rezel)
   * [Infrastructures internes](#infrastructures-internes)
   * [FAI](#fai)
-  * [Choses faites et à faire](#choses-faites-et-�-faire)
+  * [Choses faites et à faire](#choses-faites-et-à-faire)
   * [Autre](#autre)
   * [Rezel Daily](#rezel-daily)
 - [What is...](#what-is...)
@@ -425,6 +440,70 @@ They can be used in the terminal or in `*` : all
 - The shell allows to run for loops. 
 - Example : 
   * `for package in package1 package2 package3 ; do sudo apt-get remove $pkg ; done`
+  * You can run several commands in the for loop by separating them with semicolons : 
+  * `for package in package1 package2 package3 ; do this ; that ; andthat ; done`
+
+#### Bash scripts
+
+- You can create bash scripts :
+```bash
+function(arg1, ...) {
+  command1 arg1
+  command2 arg1 arg2
+  ...
+```
+- When putting this in any file, and then `source`-ing it.
+- Since `source` is what must be ran to execute the script, and `source` only reads a file and executes commands one by one, everything in this section can be executed in the terminal directly.
+- Comments are done as in Python : `#`
+- if-else conditions : 
+```bash
+codehere() {
+if [ -z "$1" ]; then
+  ...
+else 
+  ...
+fi
+```
+- For loops
+```bash
+for package in package1 package2 package3 ; do 
+  this ; 
+  that ; 
+  andthat ; 
+done
+```
+- The semicolons are not mandatory.
+- You can assign variables : 
+  * `a="Hello world"`
+  * And then retrieve their value with `$a`.
+  * Note that they will be assigned in the global context. 
+  * i.e., if you run a script that assigns variables `a`, `b`, `c`, then they will always be available in the global context. At any given time, `echo $a` will return the last value that `a` was assigned to in your script(s).
+  * You can insert a string value stored in a variable in another string directly like so : `b:="Hi, $a !"`
+  * You can concatenate strings by just inserting them one after anotehr : `c="$a$b"`
+- `... | rev` will reverse the output of `...`
+- You can work with strings (edit them, format them...) by extensively using `echo $variable | any_command_you_like`
+  * For instance, `... | tr "a" "b"` will replace all occurences of `a` by `b` in the output of `...` (and return the result)
+  * `... | cut -c4-22` will keep the slice of the string outputted by `...` contained between the 4th and 22th index. 
+  * **Note that here, the indexes do NOT start at 0**
+  * 1-5 will start from the first column, i.e., this only stops after the 5th column.
+  * The end is included : `cut -c1-2` will output two characters (or less)
+  * You can set nothing to mean "from the beginning" or "until the end" :
+  * `cut -c-3` will keep only the 3 first characters
+  * `cut -c3-` will keep everything from the 3rd character
+  * To get everything but the last 3 characters, combine `cut` with `rev` : `| rev | cut -c3- | rev`
+- You can escape characters using backslashes (as in Python).
+  * `"\""` (`"""`)
+  * `"\\"` (`"\"`)
+- Example : 
+```bashrc
+codehere() {
+    if [[ $PWD == /mnt/c* ]]; then # This allows to test whether $PWD starts with "/mnt/c"
+        /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\\$(echo $(echo $PWD | cut -c8-) | tr "/" "\\")'"
+    else
+        echo "You are not inside the Windows filesystem (/mnt/c)."
+    fi
+}
+```
 
 #### Setting up external hard drives
 
@@ -490,7 +569,13 @@ Then use parted to create a partition and format the disk.
 
 ##### Configurations in NixOS
 
-All configurations options can be written in `/etc/nixos/configuration.nix`.
+- There's three "layers" : the system, profiles and users in each profile.
+  * When rebuilding a profile, you rebuild its global configuration and each users (each home)
+    + To do this, run `sudo nixos-rebuild switch --flake /etc/nixos`
+    + Global configuration (applies to all users) is stored in `configuration.nix`
+  * You can also rebuild home independently - i.e., juste rebuild your own configuration
+    + To do this, run `home-manager switch --flake /etc/nixos`
+    + Personal configuration (special to each user) is stored in `configuration.nix`
 
 ### Dual boots
 
@@ -1045,6 +1130,7 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * Hence the name : RAM <-- swap --> Storage
   * On Windows for instance, if you see files ending in `.swp`, especially in a saturated RAM context, you know what this is !
   * On Linux, you can type `vmstat` too see the current swap usage, or `top`, or `htop`.q
+- "Scratch space" is a term used to describe space on the hard disk drive that is dedicated for storage of temporary user data, by analogy of "scratch paper." It is unreliable by intention and has no backup. 
 
 ## Docker
 
@@ -1568,6 +1654,9 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
   * `string` (UTF-8)
 - `int` is `int32` on 32-bits systems, and `int64` on 64-bits systems. 
 - The Go documentation says to use `int` unless you have a specific reason to use a fixed-size `intXX` type. 
+  * However, on a perseonal and subjective note, I find it a good idea to use `uint` if the integers you are manipulating are supposed to be positive, especially in contexts where the it would be nonsensical to have a negative input for a function for instance.
+  * On the other hand though, using `uint` is a form of defensive programming, which, should maybe arguably be applied "either at 100% or 0%". But on the other hand, come on, dont use signed integers if you don't need them. It's just stupid.
+  * Some people argue : "use `int` unless you have specific reasons to use another specific integer type", "`int` is more idiomatic". After a careful think, by honest opinion about this is that it's more about people having habits, and everyone seeing everyone else do so (using almost always `int`, almose never `uint`, and so deducing that "yeah, it's more idiomatic"). So yeah. See https://stackoverflow.com/questions/63105394/in-go-when-should-you-use-uint-vs-int for further discussion.
 - Aliases :
   * `byte` is an alias for `uint8`
   * `rune` is an alias for `int32`
@@ -1660,7 +1749,8 @@ func main() {
 - Operators : 
   * `+`, `-`, `*`
   * The interger modulo can be obtained with `%` !
-  * If one of its arguments is a `string`, `+` will automatically cast its other argument into a string and concatenate them (as strings). Example : `5 + "i"` returns the string "5i".
+  * It is possible to concatenate strings using the `+` operator.
+  * Even better : if one of its arguments is a `string`, `+` will automatically cast its other argument into a string and concatenate them (as strings). Example : `5 + "i"` returns the string "5i" !
   * The `/` operator rounds up **towards zero**, if both arguments are `int`s, otherwise it'll be a float) : `-1/2` returns 0, `0.5/2` returns `0.25`
   * The bitwise left shift `<<` (and the bitwise right shift `>>`) do what we expect they do.
   * Not that for all int types (recall that all int types are fixed-sized, somethimes signed using two's complement, sometimes not)
@@ -2136,6 +2226,7 @@ func main() {
   * It can hold values of any type : every type implements at least zero methods.
   * Empty interfaces come in handy when handing values of unknown type. 
   * For instnace, `fmt.Print` takes any number of arguments of type `interface{}`.
+  * **For convenience, the predeclared type any is an alias for the empty interface !**
 - Type assertions (for interfaces)
   * A type assertion provides access to an interface value's underlying concrete value.
   * `t := i.(T)`
@@ -2216,6 +2307,26 @@ func main() {
       }
     }
     ```
+- Type parameters
+  * You can make functions be able to work with different types using type parameters : 
+  * ```go
+    func Reverse[T any](s []T) []T {
+
+    l := len(s)
+    r := make([]T, l, l)
+
+    for k := 0; k < l; k++ {
+      r[l-k-1] = s[k]
+    }
+    
+    return r
+    }
+    ```
+  * To do this, specify it under brackets between the function name and its arguments.
+  * Using `function[T any](...)` allows the function to work on any type.
+  * However, note that doing this you won't be able to use the `==` and `!=` operators.
+  * For this, you must use `function[T any](...)`.
+
 - More at : 
   * https://go.dev/doc
   * https://go.dev/tour/list
@@ -2242,6 +2353,7 @@ func main() {
 
 ### strings
 
+- It is possible to concatenate strings using the `+` operator.
 - `func Join(elems []string, sep string) string` produces the concatenation of strings inside `elems`, separated with the delimitor `sep`.
 - `func Fields(s string) []string` splits the string `s` each time there's one or more consecutive white space characters (defined by `unicode.IsSpace`)
 - `func ToLower(s string) string` converts a string `s` to lowercase.
@@ -2784,7 +2896,7 @@ Wireshark is your friend.
 
 Some information is public, but hidden.
 
-### Other
+### Misc information about cryptography
 
 - Pentesting, IMSI Catcher, ...
 - root.me, hackthebox, Cryptohack (for crypto, very pedagogic, more than root.me), Ozint ; practice !
@@ -2813,6 +2925,7 @@ https://fr.wikipedia.org/wiki/Virtualisation
   * Don't mess around too much creating new branches without having any commits. :)
 - You can also clone a distant repo and commit to it.
   * The repo can be empty, it can have been created from a web UI. This is practice that prevents errors.
+- You can use `git commit -am "Your commit message"` will automatically stage all modified and deleted files before the commit, so you don't have to `git add` them. Note that is will **not** add new untracked files however<>
 
 ### Git branches
 
@@ -2827,6 +2940,18 @@ https://fr.wikipedia.org/wiki/Virtualisation
 - `git switch branch` also switches to branch `branch`. 
   * There is no difference with `checkout`, simply, the `checkout` command was too weird (it is indeed!!) so they changed it, by splitting its features into several other subcommands. 
   * Git being already widely spread and used, they kept `checkout` for habit purposes.
+
+### Git restore
+
+- `git restore` is the command that allows to transfer files from last commit to working tree.
+  * `git restore .` restores the (whole) content of the current folder from last commit.
+  * `git restore path/to/file` restores one file.
+
+### Git reset
+
+- `git reset` is the command that allows to go back in time, restoring previous commits.
+  * `git reset --soft HEAD~1` sets the head back to 1 commit, keeping the working tree unchanged.
+  * `git reset --hard HEAD~1` sets the head back to 1 commit, overwriting the working tree. Beware, with `--hard`, you can't get your modifications back (think before you type !)
 
 ### Git merge
 
@@ -2864,9 +2989,19 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
   * Run `git branch --set-upstream-to=origin/main localbranch`
   * You can then push this branch to its upstream.
   * If it doesn't work, run `git push --set-upstream origin main`. 
+    + In particular, this won't work if the remote git does not have any commits or branches. In this case, the command that allows to _add a branch to the remote repo, that's actually the local branch we're working on, and set an upstream to the local branch pointing to that remote branch we're creating_  is the latter. You can replace `--set-upstream` by the shorcut `-u`.
   * This commands pushes _and_ sets the upstream to the local branch.
   * Once it worked once (even if you have to `--force` the command), the upstream'll be set (and a simple `git push` will suffice)
   * It'll likely tell you that the remote branch already has commits and that you can't just push like that. If the remote repo is pretty much empty (has no subtantial work that mustn't be deleted), you can clean it (it will delete everything on it) by adding `--force`
+- But actually, this is golemic.
+  * Just create the remote repo and clone it. There's litterally no reason to do otherwise.
+  * By doing this, git automatically adds the remote, creates all branches, sets the correct upstreams on the correct branches to the correct remote branches, etc. It's good to have in mind that to do this manually, theses are steps to follow (add a remote and set remote branch upstreams one by one), but yeah. Just git clone.
+  * Relevant links :
+    + https://github.com/new/import
+    + https://docs.github.com/en/migrations/importing-source-code/using-github-importer/about-github-importer
+    + https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#importing-a-git-repository-with-the-command-line
+    + The last links explains how to import a local git repository to GitHub. As explained, there is no other method than "importing the branches one by one", i.e. running `git push -u ...` (recall that `-u` = `--set-upstream`) for each branch.
+    + https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-with-github-cli
 
 ### Git credentials
 
@@ -3695,6 +3830,23 @@ It is not as easy to use as Caddy...
 
 ## Other
 
+### Experience gathered from different projects
+
+#### Aidantix
+
+- With AI, it can be tempting to essentially prompt and copy-paste whole code chunks. AI is a great tool to speed some things up, but it is a very satisfying sensation not to be to reliant on it.
+- Go rocks !
+- When coding, you can speedrun, but project building, project management, code organisation & cleanup, project design (what exactly the code should do, which functions to implement, in which files, which packages) will take some time. 
+  * If this part does not take much time, then it means that some choices are overlooked, and that's where technical debt kicks in.
+- When dumping a text database into a text file (very natural idea), there are several ways to do.
+  * The first idea would be to write the data into a natural format adapted to the data we're storing.
+  * Actually, this is quite golemic. Many standards already exist and it would be a shame not to use them. It makes the result sound and look more professional, and moreover, many libraries in many languages will have pre-implemente
+- Go rocks !!
+
+#### Web development
+
+- When developing a site `website.com`, you can typically create a subsite `dev.website.com` that'll expose the dev version of your site. Of course, it should not be exposed for hours or days, but a few minutes, just enough to see the result. Typically, this version will be associated to a developing git branch, that'll be merged to the main branch (corresponding to `website.com`) for production.
+
 ### VSCode
 
 - `CTRL+K CTRL+O` to expand all.
@@ -3716,6 +3868,7 @@ It is not as easy to use as Caddy...
 - You can set particular website query shortcuts in `chrome://settings/searchEngines` : add the URL with `%s` where the query should be inserted and the shortcut to type in the search bar.
 
 ### Markdown
+
 - `<ins> ... </ins>` to underline text.
 - `<sup> ... </sup>` to superscript (écrire en exposant)
 - `<sub> ... </sub>` to subscript (écrire en indice)
@@ -3767,6 +3920,8 @@ To send files through the FTP Protocol :
 
 - `configuration.nix` is located in `/etc/nixos/profiles/homelab`
 - To rebuild the os, run `sudo nixos-rebuild switch --flake ./nixos` in Axel's home (`/home/axel`)
+- Use the `nrs` alias to rebuild the system
+- Use the `hms` alias to rebuild your home
 
 ### OSInt
 

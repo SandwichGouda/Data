@@ -3914,6 +3914,8 @@ To send files through the FTP Protocol :
 
 - `configuration.nix` is located in `/etc/nixos/profiles/homelab`
 - To rebuild the os, run `sudo nixos-rebuild switch --flake ./nixos` in Axel's home (`/home/axel`)
+- Use the `nrs` alias to rebuild the system
+- Use the `hms` alias to rebuild your home
 
 ### OSInt
 

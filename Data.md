@@ -3937,6 +3937,10 @@ To send files through the FTP Protocol :
 - To rebuild the os, run `sudo nixos-rebuild switch --flake ./nixos` in Axel's home (`/home/axel`)
 - Use the `nrs` alias to rebuild the system
 - Use the `hms` alias to rebuild your home
+- To push on the private repository, you must add the key to the ssh agent.
+  * use `exec ssh-agent bash`
+  * it'll enter bash, `ssh-add ~/.ssh/ed_serveur`
+  * You can then push (from this bash shell) on the remote repository
 
 ### OSInt
 

@@ -2671,6 +2671,11 @@ Host pace
   * `%%` : will be replaced by `%`
   * ProxyCommand and ProxyJump do not accept any other [TOKENS  described by the Documentation](https://man.openbsd.org/ssh_config#TOKENS)
   * There exists other tokens.
+- Adding a key to the ssh agent (on Windows)
+  * Start the SSH agent : `Get-Service ssh-agent | Set-Service -StartupType Automatic`
+  * Add the key : `ssh-add $env:USERPROFILE\.ssh\ed`
+Start-Service ssh-agent
+
 - **Documentation** : 
   * https://man.openbsd.org/ssh_config
   * https://man.openbsd.org/ssh_config#ProxyCommand

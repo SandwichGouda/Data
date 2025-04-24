@@ -565,6 +565,40 @@ Then use parted to create a partition and format the disk.
     ```
   * Put this is configuration.nix (of the profile your want this to apply to) 
 
+#### Unpatched dynamically linked binaries in NixOS
+
+- Generally speaking, most mainstream Linux distributions follow a standardized file hierarchy defined by the Linux Foundation, known as the Filesystem Hierarchy Standard (FHS), defined here : https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html. 
+- This specification outlines the expected directory structure for distributions that use the Linux kernel.
+- As a result, developers began creating dynamically linked binaries. Linking is the final step in the compilation process from source code to binary (assembly → binary); during compilation, many assembly files are generated, which serve as building blocks for the linker to combine into the final executable.
+- Because the filesystem layout on Linux systems is standardized, it became common practice to hardcode paths to dependencies. For example, if glibc is always located at a specific path in the file hierarchy across systems, binaries can assume that location and refer to it directly.
+- This standardization ensures that, on most systems, executables and dependencies are always located in the same places. Consequently, when a dynamically linked binary is executed, it can rely on paths like /bin/... being consistent and available.
+- This model worked well — until NixOS came along. By design, Nix does not follow the traditional FHS. It uses paths like /nix/store/... and provides isolated environments for nearly everything, meaning it does not conform to the standard Linux directory layout.
+- As a result, unpatched dynamically linked binaries — that is, executables that are (1) dynamically linked and thus hardcoded to look for dependencies at standard locations, and (2) unpatched, meaning they were compiled on traditional Linux distributions without adapting these assumptions — cannot run out of the box on NixOS, since the dependencies are not located where the binary expects them to be.
+- This is the core issue behind the statement: "NixOS cannot run dynamically linked executables intended for generic Linux environments out of the box."
+- A dynamic linker is a component that performs the linking step at runtime by retrieving the required dependencies from predefined locations — typically those laid out by the FHS.
+- For instance, `.dll` files on Windows : Dynamic-Link Libraries are runtime dependencies.
+- Recognizing that NixOS is still a niche distribution and that many dynamically linked binaries remain unpatched — since the dominant distributions (Ubuntu, Debian, etc.) continue to follow the FHS — the Nix community came up with a workaround: ✨ nix-ld ✨
+- https://github.com/nix-community/nix-ld
+- The Nix Dynamic Linker: in essence, it's a dynamic linker for Nix that resolves dependencies from the correct locations within the /nix/store.
+- Now, while that might sound simple — “just look in a different place” — the underlying technical complexity of making legacy software, originally built with Ubuntu-like assumptions, run on a uniquely structured platform like Nix is far from trivial. Respect to the developers who pulled this off.
+- Previously, there was a tool called `autoPatchelfHook`, which attempted to solve the same problem by patching unpatched binaries. It worked well for many cases, but not all. That’s where `nix-ld` came in — it goes a step further and handles more edge cases effectively. 
+- More specifically, autoPatchelfHook helped patch a wide range of unpatched software and binaries (PACE), but certain use cases still required a better solution — hence the development of `nix-ld`.
+- `nix-ld` has been included in the nixpkgs collection since NixOS 22.05, which means you can now enable it by adding the following to your configuration.nix:
+- ```
+  {
+    programs.nix-ld.enable = true;
+  }
+  ```
+- In the particular case of getting remote-ssh-server to run, I had to specify the package explicitly:
+- ```nix
+  programs.nix-ld = {
+  enable = true;
+  package = pkgs.nix-ld-rs;
+  };
+  ```
+- This setup allows NixOS to execute unpatched dynamically linked binaries.
+- Thanks to this, I was able to run the VSCode remote SSH server — and I wouldn’t be surprised if IntelliJ's remote features suffered from the same issue.
+
 ##### Package management in NixOS
 
 ##### Configurations in NixOS

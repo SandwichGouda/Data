@@ -1491,6 +1491,23 @@ body
   * Other selectors : https://www.w3.org/Style/css3-selectors-updates/WD-css3-selectors-20010126.fr.html
   * [Comprehensive list of CSS selectors](https://www.w3schools.com/cssref/css_selectors.php)
 
+### JavaScript
+
+### TypeScript
+
+### NodeJS
+
+- `.mjs` files correspond to the ES6 syntax.
+- Old files are with extension `.js` and use `require("module")`. 
+  * These files are CommonJS files. 
+  * Any .js file is assumed to be CommonJS.
+- New files are with extension .mjs and use `import {func} from "module"`. 
+  * These files are using ES6 syntax. 
+  * Files with .mjs extension are assumed to be ES6.
+  * Using require in .mjs or import in .js will give an error. Mixing import and require will give an error.
+
+
+
 ### Django
 
 - Uninstalled migrations -> python -m django manage.py migrate

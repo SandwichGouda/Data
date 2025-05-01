@@ -1497,9 +1497,9 @@ body
 
 ### Nuxt.js
 
+- Some Nuxt.js tips : https://michaelnthiessen.com/nuxt-tips-collection?aff=J0Emk
 
-
-### NodeJS
+### Node.js
 
 - `.mjs` files correspond to the ES6 syntax.
 - Old files are with extension `.js` and use `require("module")`. 
@@ -1510,7 +1510,15 @@ body
   * Files with .mjs extension are assumed to be ES6.
   * Using require in .mjs or import in .js will give an error. Mixing import and require will give an error.
 - In the usual sense, Node.js modules are a type of package that can be published to `npm`
-
+- To read environment variables (and create a portable environment) :
+  * Create a `.env` file
+  * Put the variables in it : `PORT=8080`, `APP_URL=https://bulle.vivenot.dev`, etc.
+  * Then in any NodeJS code, tou can call `process.env.USER_ID`
+  * Process is a core module, which means that it need not to be imported.
+  * In order for this to work, you must run `node --env-file=.env app.js`.
+  * If you use a JavaScript framework for your backend, you will have to edit the `"scripts"` in `package.json`
+  * You can stack `.env` files `node --env-file=.env --env-file=.development.env app.js`
+  * The first ones will over write the ones after in case of conflict.
 ### npm
 
 - `npm` is automatically installed when installing node.js

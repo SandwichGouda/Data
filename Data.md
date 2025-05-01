@@ -1495,6 +1495,10 @@ body
 
 ### TypeScript
 
+### Nuxt.js
+
+
+
 ### NodeJS
 
 - `.mjs` files correspond to the ES6 syntax.
@@ -1505,8 +1509,26 @@ body
   * These files are using ES6 syntax. 
   * Files with .mjs extension are assumed to be ES6.
   * Using require in .mjs or import in .js will give an error. Mixing import and require will give an error.
+- In the usual sense, Node.js modules are a type of package that can be published to `npm`
 
+### npm
 
+- `npm` is automatically installed when installing node.js
+- The npm registry contains packages, many of which are also Node modules, or contain Node modules.
+  * A package is a file or directory that is described by a `package.json` file. A package must contain a package.json file in order to be published to the npm registry.
+  * Package scopes allow to manage access level, and visibility for public/private packages
+  * A **module** is any file or directory in the `node_modules` directory that can be loaded by the Node.js `require()` function.
+  * A module can be a whole package or a subset (single file / set of files / directory) of a package
+  * Since modules are not required to have a p`ackage.json` file, not all modules are packages. Only modules that have a `package.json` file are also packages.
+- `npm init` is used to create a packege : i.e., a `package.json` file.
+  * It will ask you questions in the form of a CLI questionnaire and will create the `package.json` file accordingly.
+  * You can customize this questionnaire (not sure that we'll have many usecases for which it's not faster to just edit the `package.json` directly but whatever)
+  * You can run `npm init --yes` to set everything to default
+  * `npm create` is just an alias for `npm init`.
+- `yarn` is snother node package manager like `npm`
+- `npm run` is an alias for `npm run-script` and runs scripts in `package.json` (in `"scripts"`)
+  * use `--` to pass --prefixed flags and options to the script itself which would otherwise be parsed by npm.
+ex : `npm run test -- --grep="pattern"`
 
 ### Django
 

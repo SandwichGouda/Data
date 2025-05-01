@@ -3059,6 +3059,10 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 
 ### Git credentials
 
+- If git asks for credentials, you must use a token. Tokens are used as passwords.
+  * `git config credential.helper store` will store your credentials so you don't have to type them each time.
+  * `git config credential.helper cache` does the same caching instead of permanent storing
+
 ### Git stash
 
 - `git stash list `

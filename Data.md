@@ -1495,8 +1495,20 @@ body
 
 ### TypeScript
 
+- TypeScript code can be imported into HTML using `<script setup lang="ts"><script />`
+
 ### Nuxt.js
 
+- The server configuration is stored in `nuxt.config.ts`
+  * Especially in the `defineNuxtConfig`
+- Use the `runtimeConfig : {...}` in `nuxt.config.ts` to set secret tokens, or any environment variable that's supposed to be server-side only. 
+  * Then access them in JavaScript code using `const runtimeConfig = useRuntimeConfig()` (and then `runtimeConfig.foo`)
+  * More at https://nuxt.com/docs/guide/going-further/runtime-config
+- You can also expose environment variables in the app configuration file : the `app.config.ts` file
+  * When to use `runtimeConfig` or `app.config` ?
+  * `runtimeConfig` : Private or public tokens that need to be specified after build using environment variables.
+  * `app.config` : Public tokens that are determined at build time, website configuration such as theme variant, title and any project config that are not sensitive.
+- The default nuxt project contains a `<div>` with `<NuxtRouteAnnouncer />` and `<NuxtWelcome />`
 - Some Nuxt.js tips : https://michaelnthiessen.com/nuxt-tips-collection?aff=J0Emk
 
 ### Node.js

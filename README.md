@@ -1,4 +1,4 @@
-# Acquired Data in Computer Science
+![image](https://github.com/user-attachments/assets/584e0d56-863e-4622-82cb-bced0dc07947)# Acquired Data in Computer Science
 
 Data not to forget.
 
@@ -2604,6 +2604,14 @@ Use `deactivate` to exit the venv
 - Open the Run Command dialog (`WIN+R`) and type `shell:AppsFolder`to get a pretty exhaustive list of installed apps/softwares on the OS. Very useful for setting up a shortcut to open them (WhatsApp for instance) ! Create a shortcut, `sh.lnk` for instance, place it somewhere accessible from the PATH environment variable (`~` for instance) and typing `sh` in the Run Command dialog (`WIN+R`) will open it !
 - Paint is opened with the `mspaint.exe` executable file located in ` C:\WINDOWS\system32`, which is in the PATH environment variable : `WIN+R` and `mspaint` opens it.
 - If, especially when trying to backup, some folders like Pictures, Videos, Documents... don't appear in the `~`, they may be in `~/OneDrive` (i.e., OneDrive has been configured on this hard drive)! (cf. Adventures with Paola and her hard drive)
+- If the Xbox game bar says "Unable to get your captures, try again in a bit"
+  * Then that's because the Registry is not set up properly.
+  * In the Registry Editor (`regedit`), go to `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders`
+  * Then, `{B7BEDE81-DF94-4682-A7D8-57A52620B86F}` and `{EDC0FE71-98D8-4F4A-B920-C8DC133CB165}` are the entries that contain respectively
+    + The folder where the Windows screenshots go
+    + The folder where the Windows (xbox game bar) screen recordings go
+  * Also consider looking at `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameDVR`, it contains some useful registry entries.
+  * More generally, `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders` contains interesting default explorer folders that can be edited !
 
 ## SSH
 

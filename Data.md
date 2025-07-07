@@ -3911,6 +3911,29 @@ It is not as easy to use as Caddy...
 ## TeX Live
 
 - TeX Live is a LaTeX distribution. MiKTeX is another one. Both provide the `pdflatex` command.
+- As opposed to Tex Live, MikTeX supports on-the-fly package installation.
+- With TeX Live, you must install "manually" using `tlmgr`.
+- TeX Live installation
+  * Essentially, you must get the software targz on `https://tug.org/texlive/`
+  * It seems that trying to install using apt will always get a non-up-to-date version
+  * and run the `install-tl` installation software.
+  * Choose your scheme with either
+    + `--scheme=scheme-base`
+    + `--scheme=scheme-small`
+    + `--scheme=scheme-medium`
+    + `--scheme=scheme-full`
+  * There are some other ones (see the documentation).
+  * The full scheme takes about 7 to 9 GB. It comprehends anything you could possibly ever need.
+  * The medium schele takes about 1 GB. It comprehends most things we could possibly ever need.
+  * The base scheme is minimalist and barely even takes much space.
+  * The small is a little bigger than the scheme (a few hundred MBs)
+- After installing, you **must** add texlive to PATH !
+  * Run `PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH`
+  * You will have to add this command, or `export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux` (or `export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH`) to `.bashrc` (or `.zrc`, the script that will run automatically on each login)
+- Uninstalling 
+  * To uninstall current installation, run 
+    + `rm -rf /usr/local/texlive/2025`
+    + `rm -rf ~/.texlive2025`
 
 ## Other
 

@@ -3906,6 +3906,12 @@ GitHub stars : 4.9k
 Haproxy is what Antonin uses at Rezel for the hosting-gateway reverse-proxy. 
 It is not as easy to use as Caddy...
 
+## LaTeX
+
+## TeX Live
+
+- TeX Live is a LaTeX distribution. MiKTeX is another one. Both provide the `pdflatex` command.
+
 ## Other
 
 ### Experience gathered from different projects

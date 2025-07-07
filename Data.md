@@ -3930,10 +3930,30 @@ It is not as easy to use as Caddy...
 - After installing, you **must** add texlive to PATH !
   * Run `PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH`
   * You will have to add this command, or `export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux` (or `export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH`) to `.bashrc` (or `.zrc`, the script that will run automatically on each login)
-- Uninstalling 
+- Package installation with TeX Live
+  * Essentially, find the package you need to install and run the following command
+  * `tlmgr install pkg`
+  * But, this will require to write in `/usr/local`, which can only done while being root.
+  * So, you will have to run `sudo tlmgr install ...`
+  * But, TeX Live has only been added to _your_ PATH and not `root`'s.
+  * So, you will have to run `which tlmgr` and replace `sudo tlmgr` by `sudo path/to/tlmgr/command`
+- How to know which packages I am missing ? 
+  * TeX Live will often say that it is missing some specific files when missing something.
+  * But, it will never tell you which package the files can be found in. 
+  * So, how to know what to install to get what...?
+  * This is where `tlmgr info` comes in.
+  * `tlmgr info anything` will seek and tell you which packages contain what you need !
+  * So you should never worry again about missing some package or file.
+  * **Just in case**, remember that `kpsewhich filename-or-packagename` can be effective too !
+  * And so can be `tlmgr search --file mathrsfs.sty`
+  * Alternatively, `https://ctan.org/search` or `https://ctan.org/pkg` exist too (actually, searching for files in the former should lead you to packages in the latter)
+  * Finally, remember that some packages or even TeX Live might have to be updated at some point.
+- By the way, CTAN exists (Comprehensive TeX Archive Network)
+- Uninstallation
   * To uninstall current installation, run 
     + `rm -rf /usr/local/texlive/2025`
     + `rm -rf ~/.texlive2025`
+
 
 ## Other
 

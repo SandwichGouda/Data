@@ -3908,7 +3908,7 @@ It is not as easy to use as Caddy...
 
 ## LaTeX
 
-## TeX Live
+### TeX Live
 
 - TeX Live is a LaTeX distribution. MiKTeX is another one. Both provide the `pdflatex` command.
 - As opposed to Tex Live, MikTeX supports on-the-fly package installation.

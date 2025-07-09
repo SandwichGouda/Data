@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/584e0d56-863e-4622-82cb-bced0dc07947)# Acquired Data in Computer Science
+Acquired Data in Computer Science
 
 Data not to forget.
 

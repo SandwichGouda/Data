@@ -505,6 +505,46 @@ codehere() {
 }
 ```
 
+#### Current custom bash script
+
+```bash
+# ---------- SELF-ADDED ----------
+
+alias mountddrive='sudo mount -t drvfs D: /mnt/d -o metadata'
+alias mountd='sudo mount -t drvfs D: /mnt/d -o metadata'
+alias md='sudo mount -t drvfs D: /mnt/d -o metadata'
+
+codehere() {
+    if [[ $PWD == /mnt/c* ]]; then
+        /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\\$(echo $(echo $PWD | cut -c8-) | tr "/" "\\\\")'"
+    else
+        echo "You are not inside the Windows filesystem (/mnt/c)."
+    fi
+}
+
+newlatex() {
+    cd ../LaTeXCheatsheet
+    pdflatex latex.tex
+    explorer.exe latex.pdf
+    cd ../Optim
+}
+
+optim() {
+    cd "/mnt/c/Users/William (Lucie)/Documents/Computer programming/Optim"
+    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "code 'C:\\Users\\William (Lucie)\\Documents\\Computer programming\\optim.code-workspace'"
+}
+
+export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux
+
+gitpush() {
+    git add .
+    git commit -m "$1"
+    git push
+}
+
+# --------------------------------
+```
+
 #### Setting up external hard drives
 
 First, plug the hard drive. 

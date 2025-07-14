@@ -3172,6 +3172,9 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
   * **You can set up a username and email for a repo only**
     + This is useful for specific projects
     + Just remove the `--global` flag (and execute the commands in the right repo) : `git config user.email "email@domain.com"`, `git config user.name "username"`
+- If Git says that all files are modified when they aren't, run
+  * `git config core.filemode false`
+  * `git config --global core.filemode false`
 
 ### Git Large File Storage (LFS)
 

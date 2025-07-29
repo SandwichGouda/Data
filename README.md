@@ -3127,6 +3127,12 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 - For this, just put your public key in the settings on the website where the GitHub repo is (it could be GitHub (github.com), or git/gitlab/gitea.yourcompany.com, ...).
 - Then, if you have writing rights on the repo, you should be able to push.
 
+### Git Remote SSH and workflow
+
+- Use the VSCode Git remote SSH server to remotely code
+- Then use the following command to get the uncommitted changes on the local machine :
+  * `ssh ppdevback 'cd  ~/project-path-apis/ && git diff --name-only develop && git ls-files --others --exclude-standard' | while read file; do    mkdir -p "$(dirname "./$file")" ;   scp ppdevback:~/project-path-apis/"$file" "./$file" ; done`
+
 ### Git CICD
 
 #### GitHub Actions
@@ -3189,7 +3195,7 @@ remote: error: GH001: Large files detected. You may want to try Git Large File S
 ```
 - For the latter issue, you should not make commits that are more that 2GB big in size in the first place.
 - For the former however, it can happen that some files are bigger than 100 MB. Actually, for some code, it should never happen. So, it is likely that you are doing something wrong, such as putting a database in a Git for instance, or some compressed file (a `.tar` containing a docker image, or whatever). Start by thinking about this first.
-- Also, having huge files in a Git repository leads to performance issues (for instance, commits and pushes being very long). For having tried this, it is a true and reasonable reason to consider avoiding these issues. More information : [Removeing large files from a repository](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#removing-files-from-a-repositorys-history). While we're here : [Remove sensitive data from a repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+- Also, having huge files in a Git repository leads to performance issues (for instance, commits and pushes being very long). For having tried this, it is a true and reasonable reason to consider avoiding these issues. More information : [Removing large files from a repository](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#removing-files-from-a-repositorys-history). While we're here : [Remove sensitive data from a repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
 - For this, you have to use Git Large File Storage (LFS)
 - Installation : 
   * `sudo apt install git-lfs`

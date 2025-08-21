@@ -3108,6 +3108,7 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
 ### Git credentials
 
 - Use `git config credential.helper store` in a Git repository to permanently store your credentials so as to be able to push, pull, ..., if the repository is private.
+- Use `git config --global credential.helper store` to store them permanently and globally (independently of any Git repository).
 - It is possible to do this via SSH too.
 
 ### Git stash

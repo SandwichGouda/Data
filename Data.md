@@ -2553,6 +2553,12 @@ today + 2:
 - https://echo.labstack.com/
 - https://echo.labstack.com/docs/quick-start
 
+## PostgreSQL
+
+- After installing the PostgreSQL, a user `postgres` was created. It can ru nthe `psql` command which allows to write SQL in command line.
+- `CREATE DATABASE mydb;` (wrapper : `createdb mydb`)
+- `DROP DATABASE mydb;` (wrapper : `dropdb mydb`)
+
 ## Python 
 
 ### Python virtual environments

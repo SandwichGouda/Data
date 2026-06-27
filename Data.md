@@ -518,35 +518,28 @@ codehere() {
 First, plug the hard drive. 
 Then use parted to create a partition and format the disk.
 
-### Differences between Linux distributions 
+#### Differences between Linux distributions 
 
-#### Ubuntu
-
-- The oldes Linux distribution.
-
-#### Debian
-
-- It is more recent, Ubuntu-based.
-
-#### Arch Linux
-
-- Often associated to the darkest programmers ("I use Arch btw"), it's famous for it's DIY approach : it is not pre-configured, users have to manually install and configure everything. It's more complicated, more resource and time-consuming.
-- It uses the pacman package manager.
-- The packages are based on the famous AUR repo. All Arch packages are there.
-
-#### Fedora
-
-#### OpenSUSE
-
-#### NixOS
-
-- NixOS is a distribution based on the Nix package manager. 
+- Linux and UNIX
+  * Unix is the older operating system family and design standard. Linux is a newer Unix-like operating system kernel, usually distributed as part of complete systems such as Ubuntu, Debian, Fedora, Arch, or Android.
+  * The main difference is that Unix is a historical and commercial operating-system family, while Linux is an open-source Unix-like system.
+- Ubuntu
+  * The oldest Linux distribution.
+- Debian
+  * It is more recent, Ubuntu-based.
+- Arch Linux
+  * Often associated to the darkest programmers ("I use Arch btw"), it's famous for it's DIY approach : it is not pre-configured, users have to manually install and configure everything. It's more complicated, more resource and time-consuming.
+  *It uses the pacman package manager.
+  *The packages are based on the famous AUR repo. All Arch packages are there.
+- Fedora
+- OpenSUSE
+- NixOS
+  * A distribution based on the Nix package manager. 
   * It is special in it's package management and configuration systems.
   * NixOS is the package manager that has the most packages.
-- The idea is that instead of changing the system configuration by typing 
-- You can change the configuration and 
-  * Rebuild (a part of) the OS by running `sudo nixos-rebuild switch --flake <folder containing configuration>`
-- To use nginx on Nixos :
+  * The idea is that instead of changing the system configuration by typing a rebuild command.
+  * You can change the configuration and rebuild (a part of) the OS by running `sudo nixos-rebuild switch --flake <folder containing configuration>`
+  * To use nginx on Nixos :
   * ```services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
@@ -626,13 +619,8 @@ APT refers to a list of package available at `https://packages.ubuntu.com/` (...
 #### APT Subcommands
 
 - `apt`
-  * `apt search` searches and prints the list of packages containing the 
-- `tree`
-  * `tree -L 2` : maximum depth = 2
-- `apt`
   * `apt`
-    + `apt search`
-    + `
+    + `apt search` : lists packages containing the given string, regex or glob
   * `dpkg`
   * `apt-get`
   * `apt-cache`
@@ -641,8 +629,17 @@ APT refers to a list of package available at `https://packages.ubuntu.com/` (...
 - `apt-file search` seemingly works better than `apt search`
 - If the installation of a package fails : `sudo apt install pip --fix-missing` ; `sudo apt --fix-broken install` 
 - `dpkg -L packagename` displays exacly all files added to the system after installing packagename. In particular, `dpkg -L packagename | grep /usr/bin` should display all commands newly installed !
-- `apt upgrade` upgrades installed packages. It does not remove anything or install anything more than what's not installed.
-- `apt-get dist-upgrade` does what upgrade does while also intelligently handling changing dependencies with new versions. It a "smart" conflict resolution system, and it will attempt to upgrade the most important packages at the expense of less important ones if necessary. _Bref_, it is better.
+- `apt upgrade`
+  * Upgrades installed packages. It does not remove anything or install anything more than what's not installed.
+- `apt-get dist-upgrade` *
+  * Does what upgrade does while also intelligently handling changing dependencies with new versions. It a "smart" conflict resolution system, and it will attempt to upgrade the most important packages at the expense of less important ones if necessary. _Bref_, it is better.
+- `apt depends`
+  * Show the dependencies of a package.
+  * The dependencies are separated into categories :
+    + Depends
+    + Conflicts
+    + Recommends
+    + Suggests
 
 ### Linux base system commands and options
 
@@ -826,27 +823,27 @@ This command changes the login shell of a given user.
     + Some older UNIX systems might store the actual password hash here, but modern systems use /etc/shadow instead.
   * `UID` is the User ID
     + This is the user ID number (UID) assigned to the user.
-    + The UID is used by the system to identify the user, rather than by their username. It’s referenced for file permissions and ownership.
+    + The UID is used by the system to identify the user, rather than by their username. It's referenced for file permissions and ownership.
     + In this field :
       - 0 is the root user (the superuser).
       - 1-999 are t ypically reserved for system accounts and services (like daemon, bin).
       - 1000+ are generally used for regular user accounts (though this cutoff can vary by Linux distribution).
       - So, you would see 0 for `root`, and typically 1001, 1002, ... for regular users.
   * `GID` is the Group ID
-    + It links the user to a default group, specifying the user’s group permissions.
+    + It links the user to a default group, specifying the user's group permissions.
     + The group name corresponding to this GID is defined in `/etc/group`.
     + The system uses the GID for permissions to files and directories.
-    + For instnace, if a user is assigned a primary group with GID 1001, they’ll inherit permissions associated with that group.
+    + For instnace, if a user is assigned a primary group with GID 1001, they'll inherit permissions associated with that group.
   * Comment (User Info / GECOS Field)
-    + This field often contains additional information about the user. It’s also called the GECOS (General Electric Comprehensive Operating System) field, named after an early operating system.
-    + Usage: It’s generally used to store the full name of the user, along with optional extra information (such as their phone number, office location, etc.).
+    + This field often contains additional information about the user. It's also called the GECOS (General Electric Comprehensive Operating System) field, named after an early operating system.
+    + Usage: It's generally used to store the full name of the user, along with optional extra information (such as their phone number, office location, etc.).
     + It can contain multiple pieces of information separated by commas, though typically it just stores the full name. 
     + Example: `John Doe`, or `John Doe,Room 101,123-456-7890`
   * `home_directory`
-    + This is the absolute path to the user’s home directory.
-    + It is the directory where the user starts when they log in, and it’s where their personal files, configurations, and settings are stored.
+    + This is the absolute path to the user's home directory.
+    + It is the directory where the user starts when they log in, and it's where their personal files, configurations, and settings are stored.
     + Most regular user home directories are located under `/home`, e.g., `/home/johndoe`.
-    + The root user’s home directory is usually `/root`.
+    + The root user's home directory is usually `/root`.
   * `shell` is the Login Shell
     + This is the path to the default shell that the system runs when the user logs in.
     + The login shell defines the command-line interface for the user. It can be any shell installed on the system (such as `/bin/bash`, `/bin/zsh`, or `/bin/sh`).
@@ -859,11 +856,11 @@ This command changes the login shell of a given user.
 #### `chroot`
 
 - **This part has to be re-processed, and studied hands-on with a shell**
-- The `CHROOT_DIR` (or simply chroot directory) is a directory that serves as the root directory for a program or user, but only within a restricted environment. It’s used when executing a chroot (short for "change root") command, which changes the apparent root directory for a running process and its children.
+- The `CHROOT_DIR` (or simply chroot directory) is a directory that serves as the root directory for a program or user, but only within a restricted environment. It's used when executing a chroot (short for "change root") command, which changes the apparent root directory for a running process and its children.
 - It's useful for 
-  * Isolating Processes: By restricting a process to a specified directory, it creates a separate environment, effectively "jailing" the process so that it can’t access files or directories outside of its specified `CHROOT_DIR`.
+  * Isolating Processes: By restricting a process to a specified directory, it creates a separate environment, effectively "jailing" the process so that it can't access files or directories outside of its specified `CHROOT_DIR`.
   * Enhancing Security: Commonly used for security purposes, especially for running potentially risky or unknown applications. For example, web servers, FTP servers, and other services can run within a chroot jail to minimize damage from potential security vulnerabilities.
-  * Testing and Development: Developers can set up different versions of libraries and dependencies in `CHROOT_DIR` without affecting the main operating system environment. It’s a safer way to test and debug software.
+  * Testing and Development: Developers can set up different versions of libraries and dependencies in `CHROOT_DIR` without affecting the main operating system environment. It's a safer way to test and debug software.
   * System Recovery: chroot can be used to "enter" a separate Linux installation, such as when you need to repair a system from a live CD by accessing it from within a chroot environment.
 - When you use the chroot command, it:
   * Creates a New Root Environment: It designates a specific directory as the new root (/) for any  process running within it.
@@ -878,18 +875,18 @@ This command changes the login shell of a given user.
       sudo cp -r /lib /var/chroot/
       sudo cp -r /lib64 /var/chroot/
       ```
-    + You’ll need to include all libraries required by binaries inside `CHROOT_DIR`, as they won’t have access to the main system libraries.
+    + You'll need to include all libraries required by binaries inside `CHROOT_DIR`, as they won't have access to the main system libraries.
     + Switch to `CHROOT_DIR` : `sudo chroot /var/chroot /bin/bash`
-    + After this command, you’ll be inside a restricted shell where `/var/chroot` is treated as /, meaning you’re effectively isolated from the actual root filesystem.
+    + After this command, you'll be inside a restricted shell where `/var/chroot` is treated as /, meaning you're effectively isolated from the actual root filesystem.
     + To exit the chroot environment, simply type exit or press Ctrl+D.
 - Practical Uses of CHROOT_DIR
   * Web and FTP Servers: Servers running in chroot jails are restricted to only those files they need to function, minimizing access to the rest of the system.
   * Package Compilation: Distributions often use chroot environments to build software packages without conflicting dependencies.
-  * System Recovery: If you boot a system from a live CD, you can chroot into the system’s root partition to run commands as if you were in the installed environment, allowing repairs or updates.
+  * System Recovery: If you boot a system from a live CD, you can chroot into the system's root partition to run commands as if you were in the installed environment, allowing repairs or updates.
 -  Limitations of chroot
-  * Not Full Isolation: chroot isn’t a replacement for full containerization (like Docker or LXC), as it doesn’t isolate network, process tables, or other system-level resources.
+  * Not Full Isolation: chroot isn't a replacement for full containerization (like Docker or LXC), as it doesn't isolate network, process tables, or other system-level resources.
   * Requires Root Privileges: Only users with root access can create or execute commands within a chroot environment.
-  * Limited Security: While it adds a layer of security, advanced users can sometimes escape a chroot jail if it’s misconfigured, which is why it’s generally used alongside other security practices.
+  * Limited Security: While it adds a layer of security, advanced users can sometimes escape a chroot jail if it's misconfigured, which is why it's generally used alongside other security practices.
 
 #### `nc` (netcat)
 
@@ -1172,7 +1169,7 @@ _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as 
   * `docker start container_id` starts a container
   * `docker stop container_id` stops a container
   * `docker rm container_id` removes a container
-  * `docker exec -it container_id bash` accesses a running container’s shell
+  * `docker exec -it container_id bash` accesses a running container's shell
   * `docker logs container_id` to see container logs
 - Docker images are created using Dockerfiles : 
 ```dockerfile
@@ -1676,7 +1673,38 @@ CodiMD is what Rezel hosts for its self-hosted collaborative markdown notes.
 HedgeDoc is a fork of CodiMD.
 Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be amazing. :O
 
-### Web miscellaneous things
+## The C Programming Language
+
+### C Standards and Implementations
+
+- A C Standard defines the language and behavior (from a theoretical perspective).
+  * It can be obscure and impenetrable.
+- Implementations are essentially C compilers.
+  * They are defined as : "A particular set of software, running in a particular translation environment under particular control options, that performs translation of programs for, and supports execution of functions in, a particular execution environment."
+  * The "control options" are the flags in the compilation command.
+  * The behavior of the code may vary when compiled by a different implementation on different platforms or even the same implementation using a different set of flags or a different C Standard Library implementation. Code behavior can even vary between versions of a compiler.
+  * The C Compiler Explorer lets you explore behaviors of different C implementations.
+  * The GNU Compiler Collection (GCC), uses the `-std= flag` to determine the language standard. Possible values for this option include c89, c90, c99, c11, c17, c18, and c2x.
+  * The C Standard is the only document that specifies which behaviors are guaranteed for all implementations, and where you need to plan for variability.
+- GCC is known to be a C compiler that does the exact opposite of : 
+  * 1) Being friendly
+  * 2) Helping the user
+  * 3) Explaining what the user what he/she did wrong
+- Clang is a more firendly C compiler.
+- `cc` is the standard C compiler on Linux and Unix systems.
+- `C2x` refers to  is the working draft and informal placeholder name used by the ISO working group for the major revision of the C programming language standard, which was officially published as C23 in late 2024. The "2x" represents the working draft phase. Now that it is ratified and finalized, it is universally referred to as C23 (formally ISO/IEC 9899:2024).
+- Every C compiler implementation is a little different. Compilers continually evolve, so, for example, a compiler like GCC might provide full support for C17 but be working toward support for C23, in which case it might have some C23 features implemented but not others. 
+- The overall evolution of C implementations is slow, with many compilers significantly lagging behind the C standard.
+- Programs written for C can be considered strictly conforming if they use only those features of the language and library specified in the standard. These programs are intended to be maximally portable. However, because of the range of implementation behaviors, no real-world C program is strictly conforming, nor will it ever be (and probably shouldn't be). Instead, the C standard allows you to write conforming programs that may depend on nonportable language and library features.
+- It's common practice to write code for a single reference implementation, or sometimes several implementations, depending on the platforms to which you plan to deploy your code. The C standard ensures that these implementations don't differ too much, and it allows you to target several at once without having to learn a new language each time.
+- Five kinds of portability issues are enumerated in Annex J of the C standard
+documents.
+- **Read the standard one day**, it will be a good exercise
+
+### Basics
+
+- Whitespace characters (including newlines) are generally not syntactically meaningful.
+- "Take care not to pass user-supplied data as part of the first argument to the printf function, because doing so can result in a formatted output security vulnerability (Seacord 2013)."
 
 ## Go
 
@@ -2732,7 +2760,7 @@ Host pace
 - Uppercase first letters are mandatory.
 - `Hostname`, `User`, `IdentityFile` are self-explanatory...
 - `ProxyCommand` specifies the command to use to connect to the server. (...)
-  * The command string extends to the end of the line, and is executed using the user's shell ‘exec’ directive to avoid a lingering shell process. (...)
+  * The command string extends to the end of the line, and is executed using the user's shell ‘exec' directive to avoid a lingering shell process. (...)
   * `ProxyCommand ssh -W %h:%p ssh.enst.fr` can be used to automate the connection to a SSH bridge. (What does -W do though ?)(...)
 - ProxyJump too, but easier. 
   * `ProxyJump user@host:port`
@@ -2812,7 +2840,7 @@ Cryptography is about protecting and piercing secrets. Cryptography algorithms u
   * Security depends on key exchange process + encryption algorithm
   * It is faster, but less secure : hence, needs bigger keys. It is hard to scale up (taking bigger (prime) numbers isn't enough, you need more work for things to work out)
 - **Asymmetric cryptography**
-  * Both people don’t share the same secret (they have different keys)
+  * Both people don't share the same secret (they have different keys)
   * It is more secure, but slower. 
   * Most commonly used schemes are broken by quantum-computers
 - In both cases, base principles of cryptography include : 
@@ -3136,7 +3164,7 @@ The act of rebasing means taking a bunch of commits, and _re-basing_ them, i.e.,
   * Scheduled Workflows: Run workflows on a schedule, such as every day or week, to automate tasks like backup, reporting, or maintenance tasks.
   * Monitoring and Notifications : Automated Notifications: Set up alerts and notifications to be sent to Slack, Microsoft Teams, email, or other services based on specific events (e.g., failed builds, successful deployments, etc.).
   * Metrics and Reporting: Generate reports or trigger notifications based on code metrics, test coverage, or custom health checks.
-  * Publishing and Distribution : Publish Packages: Automatically build and publish packages to package registries, including npm, PyPI, Docker Hub, and GitHub’s own package registry.
+  * Publishing and Distribution : Publish Packages: Automatically build and publish packages to package registries, including npm, PyPI, Docker Hub, and GitHub's own package registry.
   * Create Releases: Automate the creation of GitHub releases by tagging a specific commit, adding release notes, and even uploading binaries or assets associated with the release.
   * Infrastructure as Code (IaC) Automation
   * Provisioning and Managing Cloud Resources: Automatically provision infrastructure using IaC tools like Terraform, Pulumi, or AWS CloudFormation.
@@ -3847,7 +3875,7 @@ Wireguard is what Clément and Axel use for their private use of VPN.
 - GitHub stars : 57.9k
 - Caddy is very cool ! :)
 - It allows easy configuration, automatic HTTPS, without any external dependencies.
-- An amazing fun fact : A paper written by experts describing Let's encrypt, "Let’s Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
+- An amazing fun fact : A paper written by experts describing Let's encrypt, "Let's Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
 - Caddy is one of those packages that you don't install directly via a package manager.
   * The [documentation](https://caddyserver.com/docs/install) says to run 
   * ```bash 
@@ -4224,9 +4252,9 @@ If you have a separate agreement to license
 that Content under different terms, such as a contributor license
 agreement, that agreement will supersede.
 
-Isn’t this just how it works already? Yep. This is widely accepted
-as the norm in the open-source community; it’s commonly referred
-to by the shorthand "inbound=outbound". We’re just making it
+Isn't this just how it works already? Yep. This is widely accepted
+as the norm in the open-source community; it's commonly referred
+to by the shorthand "inbound=outbound". We're just making it
 explicit.
 ```
 - Economic models
@@ -4293,7 +4321,7 @@ explicit.
 - Ubuntu devs are quite golems because of the existence of the link
   * http://archive.ubuntu.com/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/
   * http://archive.ubuntu.com/ubuntu exists, and if you click on the `ubuntu` folder, it leads to (a copy of ?) itself. This loop stops after clicking 38 times. Ptdrrr
-- A paper written by experts describing Let's encrypt, "Let’s Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
+- A paper written by experts describing Let's encrypt, "Let's Encrypt: An Automated Certificate Authority to Encrypt the Entire Web", explicitely says : "Servers running Caddy exhibit nearly ubiquitous HTTPS deployment and use modern TLS configurations. ... We hope to see other popular server software follow Caddy's lead." !
 
 ### Other other
 
@@ -4342,6 +4370,115 @@ explicit.
 - **What is the difference between a command and a package ?** When using apt can I install commands directly ? What happens if I try to do that ?
 - What's in `/bin`, `/var`, `/usr/share`, and all other folders at `/` (`lost+found`, ...) ? (...)
 - `http://archive.ubuntu.com/ubuntu jammy-updates/` ? Whos is Jammy (lol) ? What can be found on this website ?
+
+## To be investigated
+
+- Explain eaech step of the APT install chain :
+```
+read package database
+↓
+find package named gcc
+↓
+resolve dependencies
+↓
+choose exact package versions
+↓
+download .deb files
+↓
+verify them
+↓
+unpack them
+↓
+configure them
+↓
+update system records
+```
+- Explain what is the local package index : `/var/lib/apt/lists/` and what it contains
+- Explain the contents of the repositories listed in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`
+- Explain the differences between `main`, `universe`, `restricted`, and `multiverse`
+- Explain what `sudo apt update` does, exlain the most important metadata that is being printed to standard output when performing this command
+- Explain the difference between a glob and a regex
+- Explain the most importnat `apt` subcommands (remove, purge, autoremove, show, depends...)
+- Confirm this : Use apt remove first, then apt autoremove to remove dependencies that were installed only for gcc. `sudo apt remove gcc`, `sudo apt autoremove`. If you also want to remove configuration files for packages that are no longer needed, use: `sudo apt purge gcc`, `sudo apt autoremove --purge
+- How do I know that the command obtained after performing `sudo apt install gcc` will be the same as the one obtaiend after performing `sudo apt install clang` ?
+- What is "standard output" ? A "file stream" ?
+- Breakdown package versioning :
+```
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+
+gcc    (Ubuntu 13.3.0-6ubuntu2~24.04.1)    13.3.0
+│       │                                    │
+│       │                                    └─ upstream GCC version reported by the compiler
+│       │
+│       └─ Ubuntu/Debian package version
+│          │
+│          └─ 13.3.0-6ubuntu2~24.04.1
+│             │     │ │       │
+│             │     │ │       └─ Ubuntu 24.04-specific update/backport revision
+│             │     │ │          │
+│             │     │ │          ├─ 24.04 = target Ubuntu release
+│             │     │ │          └─ .1 = first revision for that Ubuntu 24.04 package line
+│             │     │ │
+│             │     │ └─ ubuntu2 = second Ubuntu packaging revision
+│             │     │
+│             │     └─ 6 = Debian packaging revision
+│             │
+│             └─ 13.3.0 = upstream GCC version used as the base package version
+│                │ │ │
+│                │ │ └─ patch version: 0
+│                │ └─ minor version: 3
+│                └─ major version: 13
+│
+└─ program name / executable name 
+```
+
+```
+Ubuntu clang version 18.1.3 (1ubuntu1)
+│      │     │       │        │
+│      │     │       │        └─ Ubuntu package revision
+│      │     │       │           │
+│      │     │       │           └─ 1ubuntu1
+│      │     │       │              │ │
+│      │     │       │              │ └─ first Ubuntu revision of this package
+│      │     │       │              └─ Debian/base package revision 1
+│      │     │       │
+│      │     │       └─ upstream Clang version: 18.1.3
+│      │     │          │  │ │
+│      │     │          │  │ └─ patch version: 3
+│      │     │          │  └─ minor version: 1
+│      │     │          └─ major version: 18
+│      │
+│      └─ clang = compiler driver name
+│
+└─ Ubuntu = distribution/package maintainer label
+
+
+Target: x86_64-pc-linux-gnu
+│       │      │  │     │
+│       │      │  │     └─ ABI / system interface convention, GNU/Linux userland
+│       │      │  │
+│       │      │  └─ operating system: Linux
+│       │      │
+│       │      └─ vendor field: pc
+│       │
+│       └─ CPU architecture: x86_64, meaning 64-bit x86 / AMD64
+│
+└─ target platform for generated machine code
+
+
+Thread model: posix
+│             │
+│             └─ threading API/model used by the compiler runtime
+│
+└─ Clang uses POSIX threads for this target
+
+
+InstalledDir: /usr/bin
+│             │
+│             └─ directory where the clang executable is installed
+│
+└─ installation location reported by clang
+```
 
 ## Resources, projects, other
 

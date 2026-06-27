@@ -1701,6 +1701,46 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
 documents.
 - **Read the standard one day**, it will be a good exercise
 
+#### Implementation-defined behavior, and other types of behavior
+
+- Being wrong about the behavior type can cause **portability issues**
+- Implementation-defined behavior
+  * Implementation-defined behavior is program behavior that's **not specified by the C standard** and that may produce different results between implementations, but has consistent, documented behavior within an implementation. 
+  * An example of implementation-defined behavior is the number of bits in a byte.
+  * Implementation-defined behaviors are mostly harmless but can cause defects when porting to different implementations. 
+  * Whenever possible, avoid writing code that depends on implementation-defined behaviors that vary among the C implementations you plan to compile your code with.
+  * A complete list of implementation-defined behaviors is enumerated in Annex J.3 of the C standard.
+  * You can document your dependencies on these implementation-defined behaviors by using a static_assert declaration.
+- Unspecified behavior
+  * Unspecified behavior is program behavior for which the standard provides two or more options but doesn’t mandate which option is chosen in any instance. 
+  * Each execution of a given expression may yield different results or produce a different value than a previous execution of the same expression.
+  * An example of unspecified behavior is function parameter storage layout, which can vary among function invocations within the same program.
+  * Unspecified behaviors are enumerated in Annex J.1 of the C standard.
+- Undefined behavior
+  * Behavior non defined by the standard.
+  * Examples include dereferencing an invalid pointer value, or signed integer overflow.
+  * Undefined behaviors are identified in the
+standard as follows:
+    + Explicit Undefined Behavior 1 : When a "shall" or "shall not" requirement if the Standard (e.g. `int` variables _shall not_ have ...) is violated and that requirement appears outside a constraint, behavior is undefined. A `constraint` is the set of things a compiler must and will complain about, and will refuse to compile. "Outside constraints" means "outside of the set of things a compiler will be designed to care about".
+    + Explicit Undefined Behavior 2 : When behavior is explicitly specified by the words "undefined behavior." in the Standard.
+    + Implicit Undefined Behavior : By the omission of any explicit definition of behavior in the Standard.
+  * The C standard Annex J.2, "Undefined
+behavior," lists the explicit undefined behaviors in C.
+  * Behaviors are classified as undefined by the C standards
+committee for one of the following reasons:
+    + Give the (compiler) implementer license not to catch program errors that are difficult to diagnose;
+    + Avoid defining obscure corner cases that would favor one implementation strategy over another;
+    + Identify areas of possible conforming language extension in which the implementer may augment the language by providing a definition of the officially undefined behavior.
+  * Upon encountering undefined behavior, compilers have the latitude to do the following:
+    + Ignore undefined behavior completely, giving unpredictable results
+    + Behave in a documented manner characteristic of the environment (with or without issuing a diagnostic)
+    + Terminate a translation or execution (and issue a diagnostic)
+  * Compilers sometimes have a pedantic mode that can help notify the programmer of these portability issues.
+- Locale-specific behavior
+  * Locale-specific behavior depends on local conventions of nationality, culture, and language that each implementation documents.
+- Common extensions
+  * They are widely used in many systems but are not portable to all implementations.
+
 ### Basics
 
 - Whitespace characters (including newlines) are generally not syntactically meaningful.

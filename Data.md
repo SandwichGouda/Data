@@ -3479,6 +3479,14 @@ The application layer is the top layer, the one that contains most of the human-
 - One can say that HTTPS is basically HTTP + TLS
 - For that reason, when looking at the internet traffic going in and out of your computer (with Wireshark) when browsing the internet, you see TLS everywhere. That's because traffic is encrypted !
 
+### More vocabulary
+
+#### Delay-tolerant networking
+
+Delay-tolerant networking (DTN) is an approach to computer network architecture that seeks to address the technical issues in heterogeneous networks that may lack continuous network connectivity. Examples of such networks are those operating in mobile or extreme terrestrial environments, or planned networks in space.
+
+It is seemingly mainly developed and aimed at usage in space (internplanetary networks, satellite networking). It has a few (very few) applications on earth. 
+
 ### Networking protocols 
 
 #### Link layer protocols
@@ -3815,7 +3823,7 @@ OpenVPN is what Telecom Paris uses for its VPN.
 
 #### Wireguard
 
-Wireguard is what Clément uses for his private use of VPN. :O
+Wireguard is what Clément and Axel use for their private use of VPN.
 
 ### Reverse-proxies
 
@@ -4253,16 +4261,15 @@ explicit.
   * Write some documentation
   * Edit some documentation to make it clearer
 
-### @ This document
+### This document
 
-- When deploying this manual on our personal website, it might be a good thing to _parse_ it and remove some unnecessary parts : like this, or the one right above. Maybe add a tag for titles lines of whole paragraphs that don't need to be deployed (Make them start with ``### @`` for instance).
 - As Louis Chollet said : when undertaking something, always remember its original purpose :
   * Remembering things : when learning, reading, processing, writing down, to remember things better (rather than hearing/reading and forgetting) ; as a reminder this is the best way for learning (cf. Anki in prépa...)
   * Cheatsheet
   * A document I can quickly readthrough to re-grasp everything I've seen/known/understood before, to quickly reactivate my knowledge
   * To show people what we've seen in Computer Science before
 - It should only contain non-trivial data, not trivial stuff everyone knows
-- This website should be presented to others as a Memo (a big cheatsheet) containing information I processed, and not as something _intended to_ show my skills (or worse, to show off !) 
+- This note is a memo containing information I processed, but might forget.
 - Conventions :
   * Writing in English
   * Linting 
@@ -4274,7 +4281,7 @@ explicit.
 ### Fun facts
 
 - Rollbacks happen in online multiplayer videogames because packets are sent using UPD. :):D
-- ``.io`` is the Top-Level Domain associated to the British Indian Ocean Territory. In October 2024, the United Kingdom announced that it would cede the British Indian Ocean Territory to Mauritius 'République de Maurice, in French). After the transfer, current IANA rules require the ``.io`` domain to be phased out within the following several years...! (Although, historically, some exceptions have been granted, as was the case for ``.su``). ``agar.io``, ``slither.io``, ``diep.io``, and ``github.io`` are extremely famous pages on the ``.io`` Top-Level Domain.
+- `.io` is the Top-Level Domain associated to the British Indian Ocean Territory. In October 2024, the United Kingdom announced that it would cede the British Indian Ocean Territory to Mauritius (République de Maurice, in French). After the transfer, current IANA rules require the `.io` domain to be phased out within the following several years...! (Although, historically, some exceptions have been granted, as was the case for `.su`). `agar.io`, `slither.io`, `diep.io`, and `github.io` are extremely famous pages on the `.io` Top-Level Domain.
 - Ubuntu devs are quite golems because of the existence of the link
   * http://archive.ubuntu.com/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/ubuntu/
   * http://archive.ubuntu.com/ubuntu exists, and if you click on the `ubuntu` folder, it leads to (a copy of ?) itself. This loop stops after clicking 38 times. Ptdrrr
@@ -4290,12 +4297,12 @@ explicit.
     + React : The final website developped by Séverin has a global style that... I don't really like so much (it reminds of (shitty) mobile apps). Happy that I didn't enter 
     + wordle.louan.me has a cool layout that I like !
     + dimden.dev too !
-- ``^`` in Computer Science is called a **caret**
+- `^` in Computer Science is called a **caret**
 - 2FA = Two-Factor Authtication
 - A Request for Comments (RFC) is a series of standards-setting documents  or the Internet. An RFC is authored by individuals or groups of engineers and computer scientists in the form of a memorandum describing methods, behaviors, research, or innovations applicable to the working of the Internet and Internet-connected systems.
-- ``https://cppreference.com`` lists C and C++ commands. It can be used as a standard C and C++ documentation.
-- W3Schools (``https://www.w3schools.com/``) is very useful for learning many things about many languages, especially Web-oriented programming languages.
-- ``https://awesome-selfhosted.net/`` lists a bunch of self-hostable open-source softwares
+- `https://cppreference.com` lists C and C++ commands. It can be used as a standard C and C++ documentation.
+- W3Schools (`https://www.w3schools.com/`) is very useful for learning many things about many languages, especially Web-oriented programming languages.
+- `https://awesome-selfhosted.net/` lists a bunch of self-hostable open-source softwares
 - Linting is the automated checking of your source code for programmatic and stylistic errors. This is done by using a lint tool (otherwise known as linter).
 - By default, "port" understates "TCP port".
 - The ` character is called _backtick`. 
@@ -4306,150 +4313,37 @@ explicit.
 
 ## Remaining questions
 
-- How come ``la`` displays anything in a Linux terminal ? How could I've known that ? Same for `l` ???
-- The existence of the ``-T`` option for the ``clear`` command (the manual description of which is "``indicates the type of the terminal``" (<ins>type</ins> being an argument to be given : ``clear -T <type>`` ) implies the existence of different terminal Types. A way to understand why (the fucking hell on earth) ``bulledev`` acts strangely when pressing the arrow keys ? <ins>Note :</ins> The ``$TERM`` environment variable (``echo $TERM``) contains the terminal type.
-- What does ``curl`` really do ?
+- How come `la` displays anything in a Linux terminal ? How could I've known that ? Same for `l` ???
+- The existence of the `-T` option for the `clear` command (the manual description of which is "`indicates the type of the terminal`" (<ins>type</ins> being an argument to be given : `clear -T <type>` ) implies the existence of different terminal Types. A way to understand why (the fucking hell on earth) `bulledev` acts strangely when pressing the arrow keys ? <ins>Note :</ins> The `$TERM` environment variable (`echo $TERM`) contains the terminal type.
+- What does `curl` really do ?
 - How to use a printer with linux ?
-- How to use ``mount`` and ``umount`` ?
-- ``sudo apt intall tm`` returned ``E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'`` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between ``apt`` and ``dpkg`` (and, more generally, between `pacman`, `nala` ... and all other package managers) ?
-- What is the difference between `apt-get` and ``apt`` ?
+- How to use `mount` and `umount` ?
+- `sudo apt intall tm` returned `E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.'` What happened, what is the problem, what does this command do and why does it solve the problem ? Also, What's the difference between `apt` and `dpkg` (and, more generally, between `pacman`, `nala` ... and all other package managers) ?
+- What is the difference between `apt-get` and `apt` ?
 - What is the difference between `apt update` and `apt upgrade` ?
 - What is the difference between `apt rm` and `apt remove` ?
-- How to update a pacjage manager's package list ? ``sudo apt update-list`` ?
-- What do the colors mean in ``ls /`` and ``ls /bin`` (directories vs. files) ?
-- How to use ``||``, ``&&``, ``>>`` and ``<<`` on Linux terminal ? 
+- How to update a pacjage manager's package list ? `sudo apt update-list` ?
+- What do the colors mean in `ls /` and `ls /bin` (directories vs. files) ?
+- How to use `||`, `&&`, `>>` and `<<` on Linux terminal ? 
 - What is the language used on linux terminals ? 
-- What does ``/usr``contain ? ``/usr/share/ `` ? ``/usr/local/share`` ?
-- What does ``/etc`` contain ? How to use configurations ?
-- What do the text/lighlight colors mean when using ``ls`` ?
-- **What does ``curl`` do ?**
+- What does `/usr`contain ? `/usr/share/ ` ? `/usr/local/share` ?
+- What does `/etc` contain ? How to use configurations ?
+- What do the text/lighlight colors mean when using `ls` ?
+- **What does `curl` do ?**
 - Why does `.` in a Linux terminal not return an (a syn tax) error ? (There is clearly a hidden feature)
 - **What is the difference between a command and a package ?** When using apt can I install commands directly ? What happens if I try to do that ?
-- What's in ``/bin``, ``/var``, ``/usr/share``, and all other folders at ``/`` (``lost+found``, ...) ? (...)
-- ``http://archive.ubuntu.com/ubuntu jammy-updates/`` ? Whos is Jammy (lol) ? What can be found on this website ?
+- What's in `/bin`, `/var`, `/usr/share`, and all other folders at `/` (`lost+found`, ...) ? (...)
+- `http://archive.ubuntu.com/ubuntu jammy-updates/` ? Whos is Jammy (lol) ? What can be found on this website ?
 
-## Rezel
-
-This part should probably be hidden for security purposes
-
-### Infrastructures internes
-
-- grafana.fai.rezel.net est une instance de [Grafana](https://grafana.com/) hébergée chez Rezel qui permet d'avoir un Dashboard qui donne entre autres le traffic de FAI (Fournission Accès Intenet, en l'occurence, vu la grammaire de la phrase)
-- garezeldap.rezel.net sert à se connecter (Keycloak, etc)
-- Garezeldap est un annuaire LDAP, qui sert à gérer les comptes des télécommiens pour l'accès aux services des télécommiens. 
-- GDO est un autre annuaire LDAP qui sert à gérer les comptes pour l'accès à la FAI.
-- Authentik est aussi un fournisseur d'identité, dont Rezel se sert pour gérer l'accès (les connexions) au Gitlab FAI, aux routeurs...
-- Zitadel est aussi un fournisseur d'identité, dont Rezel se sert pour gérer pour gérer l'accès (les connexions) aux adhérents pour la FAI.
-- Il y a, dans Zitadel, une partie exposition et une partie stockage des données. Le stockage des données utilise un protocole différent
-- Keycloak utilise l'annuaire LDAP. C'est un cousin de Authentik et Zitadel.
-- Vaultwarden est le gestionnaire de mots de passe utilisé par Rezel
-- vache.fai.rezel.net
-- gdo.rezel.net (ou gdo.rezel.enst.fr) est le nom de la machine qui héberge le **FreeIPA**, qui est ce dont ils se servent pour gérer les droits d'administration.
-- gitlab.fai.rezel.net contient le gitlab de tout le code lié à la FAI
-- Proxmox & Truenas :
-  * Proxmox is an hypervisor
-  * Truenas is a special OS that's useful for doing backups.
-- Garezeldap is a Directory service (in French : un annuaire)
-- Our Garezeldap authentication information (account username/identifier) is the same as on ``matrix`` :
-  * william.driot@gmail.com / sandwichfromage
-- Sous-domaines de rezel.net :
-  * ``lufi.rezel.net``
-  * ``git.rezel.net`` (Gitea)
-    + https://git.rezel.net/Rezel/ contains all public repositories
-    + ``https://git.rezel.net/Rezel/rezelator`` is the one to add websites on ``index.rezel.net``
-  * ``fai.rezel.net``
-  * ``hosting.rezel.net``
-  * ``bulle.rezel.net``
-  * ``chat.rezel.net``
-  * ``index.rezel.net``
-  * ``matrix.rezel.net``
-  * ``s.rezel.net`` (``https://s.rezel.net/account/qrcodes/new``)
-  * ``peertube.rezel.net``
-  * ``drive.rezel.net``
-  * ``auth.rezel.net``
-  * Some other services available at ``https://index.rezel.net/``
-  * List on rezel.zone or hosting.repart
-  * ``gitlab.rezel.net`` 
-    + ``rezel.zone`` contains the DNS, especially ``/rezel/include/hosting.rezel``
-    + ``hosting-repart`` contains the reverse-proxy server configuration, espacially ``haproxy-conf/domains_list.txt``
-    + Read the documentations (READMEs) !
-- To add some website to the DNS and make the reverse-proxy accept it...
-
-enki : déploiement du réseau, écrit avec ansible (YAML)
-
-### FAI
-
-- OpenWRT est l'OS installé sur les Routeurs fournis et distribués par Rezel dans le cadre de la FAI qu'ils mettent en place.
-- FTTH = Fiber To The Home : Fibre À La Maison
-
-### Choses faites et à faire
-
-- Petits trucs faits
-  * Flasher des box, bugtracker le site de Séverin
-  * Retrier les adresses sur hosting repart 
-- Hosting : Gérer mieux
-  * Faire en sorte qu'on ait le contact des gens
-  * Et de pouvoir savoir quand ils ont plus besoin de leur VM
-  * Automatiser ça
-
-### Autre
-
-- Process ``kswapd0`` taking 100% of CPU : 
-
-### Rezel Daily
-
-- 14/08/24
-  * Hm Ansible est pété sur ansible.rezel.net
-wtf y'a un binaire ansible dans ``/usr/local/bin/ansible`` mais aucune trace d'un paquet Ansible installé via pip ou apt :/
-Ouais le paquet ansible n'existe pas... Y'a juste le binaire
-J'ai tej le binaire dans /usr/local/bin et j'ai installé ansible via APT à la place
-C'est réparé - j'ai installé ``ansible``, ``python3-ipalib`` & ``python3-ipaclient via APT``
-Au vu de l'emplacement de l'ancien binaire ``Ansible /usr/local/bin`` & du fait que maintenant la machine est sous debian 12, j'imagine que Ansible avait globalement été installé via pip à l'époque et qu'il n'a pas survécu à l'upgrade :)
-Maintenant l'install devrait être solide...
-Antonin Blot
-  * Sinon... Source .venv/bon/activate dans le dossier ansible et hop
-  * Ça marchait
-- 20/09
-  * J'ai finis de déployer traefik et authentik en test. J'ai besoin d'aide pour la config du proxy d'auth Séverin Messiaen  pour arriver à discriminer un path qui doit être protégé et pas tout le domaine
-- 23/09 
-  * Pour hosting-repartv2, on a eu un test en prod pour le site d'une liste forum, si ça te paraît ok Flavien on migre ?
-  * btw la fwd auth c'est par cookie, je pense que du coup pas besoin de modifier le front end de comete-tp
-- 24/09
-  * s.rezel.net semble avoir un problème de certificats 😅 Flavien Forest
-  * hello ! de toute façon ça va migrer sur le nouveau, je pense que la hosting gw fait de la merde (cf le pb que j'ai eu avec transforumers)
-  
-## What is...
-
-- What is...
-  * un certificat ?
-  * a DNS ?
-  * "RDNS" ?
-  * un proxy ? un reverseproxy ?
-  * un pare-feu ?
-  * Ansible
-  * ``FTP`` ? Difference with HTTP ?
-  * dolibarr ? 
-  * KDE ? GNOME ?
-  * Jammy ? (seen while installing packages with apt on Ubuntu)(https://manpages.ubuntu.com/manpages/) 
-  * https://snapcraft.io/
-  * X11 ? Wayland ? The XFCE Wayland development roadmap ? https://wiki.xfce.org/releng/wayland_roadmap
-  * POSIX 
-
-## Ressources
+## Resources, projects, other
 
 - https://git-scm.com/docs/
 - https://www.gnu.org/software/coreutils/manual/html_node/
 - https://gnu.org/software/coreutils
 - Tunnel : Acquérir toute la data sur SSH
-  * From ``man ssh``
+  * From `man ssh`
   * From RFCs
-
-## Projets
-
-- ``curl la-tim.fr/marge``
+- `curl la-tim.fr/marge`
 - https://github.com/sagemath/sage
 - https://github.com/manimCommunity/
-
-## Unsorted 
-
 - "Powerful websites you should know part. ..."

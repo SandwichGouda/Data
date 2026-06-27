@@ -1701,8 +1701,6 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
 documents.
 - **Read the standard one day**, it will be a good exercise
 
-#### Implementation-defined behavior, and other types of behavior
-
 - Being wrong about the behavior type can cause **portability issues**
 - Implementation-defined behavior
   * Implementation-defined behavior is program behavior that's **not specified by the C standard** and that may produce different results between implementations, but has consistent, documented behavior within an implementation. 
@@ -1712,7 +1710,7 @@ documents.
   * A complete list of implementation-defined behaviors is enumerated in Annex J.3 of the C standard.
   * You can document your dependencies on these implementation-defined behaviors by using a static_assert declaration.
 - Unspecified behavior
-  * Unspecified behavior is program behavior for which the standard provides two or more options but doesn’t mandate which option is chosen in any instance. 
+  * Unspecified behavior is program behavior for which the standard provides two or more options but doesn't mandate which option is chosen in any instance. 
   * Each execution of a given expression may yield different results or produce a different value than a previous execution of the same expression.
   * An example of unspecified behavior is function parameter storage layout, which can vary among function invocations within the same program.
   * Unspecified behaviors are enumerated in Annex J.1 of the C standard.
@@ -1745,6 +1743,19 @@ committee for one of the following reasons:
 
 - Whitespace characters (including newlines) are generally not syntactically meaningful.
 - "Take care not to pass user-supplied data as part of the first argument to the printf function, because doing so can result in a formatted output security vulnerability (Seacord 2013)."
+- These are objects:
+```c
+int x;              // named object: variable
+int arr[5];         // array object
+struct S s;         // struct object
+s.member;           // member object
+malloc(100);        // allocated object, unnamed
+"abc";              // string literal object
+```
+- Functions, expressions, types, labels, macros, and `enum` constants are not objects.
+- C is a call-by-value (also called a pass-by-value) language, which means that when you provide an argument to a function, the value of that argument is copied into a distinct variable for use within the function. In other words, `swap(a,b)` will not change the values of `a` or `b`.
+- Parameters : `int func(int a)` ; Arguments : `func(5)`
+- One can declare without defining/assigning a variable. One _initializes_ a variable by declaring it and defining it in one go.
 
 ## Go
 

@@ -1757,6 +1757,52 @@ malloc(100);        // allocated object, unnamed
 - Parameters : `int func(int a)` ; Arguments : `func(5)`
 - One can declare without defining/assigning a variable. One _initializes_ a variable by declaring it and defining it in one go.
 
+### Basic types
+
+- A Boolean type was introduced in C99 starting with an underscore (_Bool) to differentiate it in existing programs that had already declared their own identifiers
+named bool. 
+  * Identifiers that begin with an underscore and either an uppercase letter or another underscore are always reserved. * The C standards committee often creates new keywords such as _Bool under the assumption that you have avoided the use of reserved identifiers.
+  * If you haven't, as far as the C standards committee is concerned, it's your fault for not having read the standard more carefully.
+  * In older versions of C, it is still possible to use the bool identifier normally by including `<stdbool.h>`
+  * Historically, Boolean values were represented by integers and still behave as integers. They can be stored in integer variables and used anywhere integers would be valid, including in indexing, arithmetic, parsing, and formatting. C guarantees that any two true values will compare equally (which was impossible to achieve before the introduction of the bool type). Bref, use the bool type.
+- Chars, signed chars and unsigned chars
+  * Each compiler implementation defines `char` to have the same alignment, size, range, representation, and behavior as either `signed char` or `unsigned char`. Regardless of the choice made, char is a separate type from the other two and is incompatible with both.
+  * The size of objects of type `char` is always 1 byte, and its width is `CHAR_BIT` bits. The CHAR_BIT macro from `<limits.h>` defines the number of bits in a byte. The value of `CHAR_BIT` macro cannot be less than 8, and on most modern platforms, it is 8.
+  * Objects of type char can represent the basic execution character set, which is the minimum set of characters required in the execution environment : upper- and lowercase letters, the 10 decimal digits, the space character, punctuation, and control characters.
+  * The `char` type is inappropriate for integer data; use `signed char` to represent small, signed integer values, and use `unsigned char` to represent small, unsigned integer values.
+  * You can represent the characters of a larger character set as wide characters by using the `wchar_t` type, which generally takes more space than a basic character.
+  * Typically, implementations choose 16 or 32 bits to represent a wide character. The C standard library provides functions that support both narrow and wide character types. * The `wchar_t` type was not designed to support Unicode and has consequently fallen out of favor for most implementations with the notable exception of Microsoft Visual Studio.
+- Integer types
+  * Signed types : `signed char`, `short int`, `int`, `long int`, and `long long int`
+  * Unsigned types : `unsigned char`, `unsigned short int`, `unsigned int`, `unsigned long int`, and `unsigned long long int`
+  * There is also `bool`.
+  * The signed and unsigned integer types are used to represent integers of various widths. 
+  * **Each platform** determines the width for each of these types, given some constraints.
+  * A "**platform**" means the concrete environment in which a C program is translated and executed.
+    + It is usually the combination of :
+    + Hardware architecture (x86-64, ARM64, RISC-V)
+    + Operating system
+    + C implementation, meaning the compiler plus the C standard library plus their documented choices.
+  * Each type has a minimum representable range. 
+    + The types are ordered by width, guaranteeing that wider types are **at least as** large as narrower types.
+    + In other words, larger types can always represent all values of all narrower types.
+  * The implementation-defined minimum and maximum representable values for integer types are specified in the `<limits.h>` header file.
+  * There are also Bit-precise int types, and the size if int is typically assigned the natural width suggested by the architecture of the execution environment (for example, 16 bits on a 16-bit architecture and 32 bits on a 32-bit or 64-bit architecture). See Page 49 of Effective C, 2nd ed, hoping Chapter 3 will sort things out. Check BITINT_MAXWIDTH, etc, re-read this part after Chapter 3.
+- Enumerations
+  * If you don't specify a value to the first enumerator with the = operator, the value of its enumeration constant is 0, and each subsequent enumerator without an = adds 1 to the value of the previous enumeration constant.
+  * Starting with C23, you can specify the underlying type of the enumeration like this:
+    + `enum a : unsigned long long { a0 = 0xFFFFFFFFFFFFFFFFULL };`
+    + For portability and other reasons, it is always better to specify the enumeration type. 
+    + An omitted type is implementation defined. Visual C++ uses a signed int for the type, and GCC uses an unsigned int.
+- Floating values
+  * They are of three types : `float`, `double`, and `long double`. 
+  * The set of values of the type float is a subset of the set of values
+of the type double; the set of values of the type double is a subset of the set of
+values of the type long double.
+  * C23 adds three decimal floating types, designated as `_Decimal32`, `_Decimal64`, and `_Decimal128`.
+  * There are also three complex types, designated as `float complex`, `double complex`, and `long double complex`.
+- `void` means "cannot hold any value", `void*` means "a pointer that cannot point to anything".
+
 ## Go
 
 ### Go basics 

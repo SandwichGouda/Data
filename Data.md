@@ -1803,6 +1803,27 @@ values of the type long double.
   * There are also three complex types, designated as `float complex`, `double complex`, and `long double complex`.
 - `void` means "cannot hold any value", `void*` means "a pointer that cannot point to anything".
 
+### Derived types
+
+- Derived types are constructed from other types.
+  * Examples : function types, pointer types, array types, type definitions, structure types, and union types.
+- Functions
+  * A function type is derived from the return type and the number and types of its parameters.
+  * A function can return any complete object type except for an array type.
+  * In the expression str[i], str is automatically converted to a pointer to the first member of the array (pointer to char), and i has an unsigned integer type.
+  * The subscript ([]) and addition (+) operators are defined so that str[i] is identical to *(str + i).
+  * This is the precise reason and explanation behind the sentence "In C, arrays behave like pointers".
+  * Re-read this after having processed pointer arithmetic and type casts will likely make things even brighter.
+  * If the operand of the unary & operator is the result of a [] operator, the result is as if the & operator were removed and the [] operator were changed to a + operator. 
+  * For example, &str[10] is the same as str + 10:
+  * `&str[10]` → `&*(str + 10)` → `str + 10`
+  * If `arr` is `int arr[3][5]`, when you use the expression `arr[i]`, which is equivalent to *(arr+i), the following occurs:
+    + `arr` is converted to a pointer to the initial array of five elements of type `int` starting at `arr[i]`
+    + `i` is scaled to the type of `arr` by multiplying `i` by the size of one array of five `int` objects
+    + The results from these two steps are added
+    + Indirection is applied to the sum to produce an array of five elements of type `int`.
+    + Note that `arr[3][5]` is not (arr[3])[5]
+
 ## Go
 
 ### Go basics 
@@ -4432,6 +4453,21 @@ explicit.
     + dimden.dev too !
 - `^` in Computer Science is called a **caret**
 - 2FA = Two-Factor Authtication
+- Numerical contractions examples (neuronyms) :
+  * `a11y` – accessibility
+  * `c12s` – communications
+  * `c14n` – containerization or canonicalization
+  * `d14n` – decentralization
+  * `E15` – The Eyjafjallajökull volcano in Iceland
+  * `g11n` – globalization
+  * `i14y` – interoperability
+  * `i18n` – internationaization
+  * `K8s` – Kubernetes
+  * `l10n` – localization
+  * `m12n` – modularization
+  * `o11n` – orchestration
+  * `o11y` – observability
+  * `p13n` – personalization
 - A Request for Comments (RFC) is a series of standards-setting documents  or the Internet. An RFC is authored by individuals or groups of engineers and computer scientists in the form of a memorandum describing methods, behaviors, research, or innovations applicable to the working of the Internet and Internet-connected systems.
 - `https://cppreference.com` lists C and C++ commands. It can be used as a standard C and C++ documentation.
 - W3Schools (`https://www.w3schools.com/`) is very useful for learning many things about many languages, especially Web-oriented programming languages.

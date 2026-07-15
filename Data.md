@@ -1699,7 +1699,7 @@ Apparently, a lot of people say that when HedgeHoc 2.0 will come out, it'll be a
 - It's common practice to write code for a single reference implementation, or sometimes several implementations, depending on the platforms to which you plan to deploy your code. The C standard ensures that these implementations don't differ too much, and it allows you to target several at once without having to learn a new language each time.
 - Five kinds of portability issues are enumerated in Annex J of the C standard
 documents.
-- **Read the standard one day**, it will be a good exercise
+- **Read the standard one day**, it will be a good exercise.
 
 - Being wrong about the behavior type can cause **portability issues**
 - Implementation-defined behavior
@@ -1823,8 +1823,13 @@ values of the type long double.
     + The results from these two steps are added
     + Indirection is applied to the sum to produce an array of five elements of type `int`.
     + Note that `arr[3][5]` is not (arr[3])[5]
+- `struct`
+  * `struct_pointer->struct_member = value`
+  * Note that a "field" for a `struct` is a "member" of the struct.
+  * `strcopy` from `<strings.h>` allows to assigns arrays, so in particular, to assign (copy) strings.
+  * Otherwise that's not possible directly (must do it value per value)
 
-## Go
+## The Go Programming Language
 
 ### Go basics 
 
@@ -2707,6 +2712,11 @@ today + 2:
 - https://echo.labstack.com/
 - https://echo.labstack.com/docs/quick-start
 
+## The Rust Programming Language
+
+- This section will exist.
+- https://pico.implrust.com/index.html
+
 ## PostgreSQL
 
 - After installing the PostgreSQL, a user `postgres` was created. It can ru nthe `psql` command which allows to write SQL in command line.
@@ -2905,6 +2915,67 @@ Host pace
   * Un client peut se connecter à un serveur en SSH au user `utilisateur` si (et seulement si) sa clé publique se situe dans le `authorized_keys` de l'utilisateur, autrement dit dans le fichier `/home/utilisateur/.ssh/authorized_keys`. 
 
 ## Cybersecurity
+
+### The Science of MiFare Classic 1k (RFID) tags
+
+- Note : [This documentation](https://pico.implrust.com/rfid/index.html) is pixel-perfect
+- RFID means Radio-Frequency Identification.
+  * It refers to the broad technology of system identifications at radio frequencies (electromagnetic spectrum 3 Hz - 3000 GHz, LF, MF, HF, VHF)
+- MIFARE is an NXP product family of contactless smart-card chips using HF RFID at 13.56 MHz.
+  * NXP Semiconductors N.V. is a Dutch semiconductor manufacturing and design company with headquarters in the Netherlands.
+  * It is the third largest European semiconductor company by market capitalization as of 2024.
+  * Specifications can be read on their website : for instance, 
+  * MIFARE type identification procedure: https://www.nxp.com/docs/en/application-note/AN10833.pdf
+- An MiFare tag contains data in a dump encoded in hexadecimal format
+  * 16 Sectors
+  * Each sector has 4 "blocks" (lines) of 32x16 bits (32 hexadecimal letters)
+  * The first block, (**block 0**), of the first sector (**sector 0**) is always some manufacturer information
+  * For each sector, there are 3 blocks (blocks 0-2) of raw data and a last one (the 4th) for storing keys and access conditions
+- Example : two blocks of an `.mct` file (the file format associated to the MiFare Classic Tool app for dumps, though it's just a text file)
+```
++Sector: 0
+210BACA92F08040003940556FDFC5990 // Manufacturer information
+00000000000000000000000000000000 // Data
+00000000000000000000000000000000 // Data
+FFFFFFFFFFFFFF078069FFFFFFFFFFFF // KeyA, ACs, KeyB
+...
++Sector: 5
+A2469199995502DDC9B12D1227ED9CEE // Data
+0B47EF6B771958016C6462BEE80614D1 // Data
+276C10FF7BD47B8F4D50922470DD01F8 // Data
+6A1987C40A21F78F005A7F33625BC129 // KeyA, ACs, KeyB
+```
+- The **Sector Trailer** (block 3, 4th line) of each block is divided in the following way:
+  * KeyA (12x16 bits)
+  * ACs (Acces Conditions) (6x16 bits)
+  * 2x16 bits of apparently nothing, or filling up, usually "69" for some reason
+  * KeyB (12x16 bits)
+  * The total is indeed 32x16 bits (per line)
+- The Access Conditions are the information that says who can access what under which conditions.
+  * Editing Access Conditions wrongly can make an card irreversibly uneditable or unreadable.
+  * The default Access Condition is 0xFF0780
+  * It roughly means "you can write and read almost everything".
+  * More details at : https://pico.implrust.com/rfid/access-bits-calculator.html#mifare-classic-1k-access-bits-calculator
+- KeyA and KeyB are keys used to "protect" and cipher the card
+  * You need them to read and write stuff
+  * There are key dictionaries online, allowinf dictionary attacks
+  * The MiFare Classic Tool app provides a huge bunch of keys, gathered from many different sources, that comprehend many, many of the standard keys used in the real world and industry, making it very pratical and usable!
+- When buying MiFare 1k tags, there are essentially three types of tags (or cards):
+  * First, all of these cards are sometimes referred as "IC cards" (sometimes as NFC cards too), "IC" usually means Integrated Circuit
+  * ID Cards
+    + They store an ID number, and the device identifies the card by reading this ID
+    + There is no algorithm involved, making it easy to copy, and offering low security
+  * M1 Cards
+    + M1 is to be understood as "MiFare 1K"
+    + It stores an ID number and can read and write data.
+  * CPU Cards
+    + They are the "smartest" type, with a small integrated CPU.
+    + They have an operating system, can store data, and also have their own ID number.
+  * CPU cards can function as M1 cards or ID cards.
+  * M1 cardscan function as ID cards but cannot be used as CPU cards.
+  * ID cardscannot be used as M1 cards or CPU cards.
+  * Whence the hierarchy CPU > M1 > ID.
+  * You will find these information when buying blank NFC/IC cards online
 
 ### Metadatas
 

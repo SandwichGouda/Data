@@ -4683,7 +4683,166 @@ InstalledDir: /usr/bin
 │
 └─ installation location reported by clang
 ```
+- Explain this script
+```bash
+#!/usr/bin/env zsh
+set -euo pipefail
 
+usage() {
+  cat <<'EOF'
+Usage:
+  vpn-bypass-route.zsh add [host-or-ip ...]
+  vpn-bypass-route.zsh delete [host-or-ip ...]
+  vpn-bypass-route.zsh list [host-or-ip ...]
+  vpn-bypass-route.zsh test [host-or-ip ...]
+
+Default target:
+  frp-pen.com
+
+Environment:
+  BYPASS_WIFI_SERVICE="Wi-Fi"   macOS network service used to find the router
+  BYPASS_GATEWAY="192.168.x.1"  override gateway if needed
+
+Examples:
+  ./vpn-bypass-route.zsh add
+  ./vpn-bypass-route.zsh add frp-pen.com
+  ./vpn-bypass-route.zsh delete frp-pen.com
+  ./vpn-bypass-route.zsh list
+EOF
+}
+
+is_ipv4() {
+  [[ "$1" =~ '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' ]]
+}
+
+gateway_for_wifi() {
+  if [[ -n "${BYPASS_GATEWAY:-}" ]]; then
+    print -r -- "$BYPASS_GATEWAY"
+    return
+  fi
+
+  local service="${BYPASS_WIFI_SERVICE:-Wi-Fi}"
+  local router
+  router="$(networksetup -getinfo "$service" 2>/dev/null | awk -F': ' '/^Router:/ {print $2; exit}')"
+
+  if [[ -z "$router" || "$router" == "none" ]]; then
+    print -u2 "Could not find Router for network service '$service'."
+    print -u2 "Try: BYPASS_GATEWAY=192.168.x.1 $0 add frp-pen.com"
+    exit 1
+  fi
+
+  print -r -- "$router"
+}
+
+resolve_target() {
+  local target="$1"
+  if is_ipv4 "$target"; then
+    print -r -- "$target"
+    return
+  fi
+
+  dig +short "$target" A | awk '/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/ {print}' | sort -u
+}
+
+route_summary() {
+  local ip="$1"
+  route -n get "$ip" 2>/dev/null | awk '
+    /route to:/ {rt=$0}
+    /destination:/ {dst=$0}
+    /gateway:/ {gw=$0}
+    /interface:/ {iface=$0}
+    END {
+      if (rt) print rt
+      if (dst) print dst
+      if (gw) print gw
+      if (iface) print iface
+    }'
+}
+
+add_route() {
+  local ip="$1"
+  local gateway="$2"
+
+  if route -n get "$ip" 2>/dev/null | grep -q "gateway: $gateway"; then
+    print "OK existing bypass: $ip -> $gateway"
+    return
+  fi
+
+  sudo route -n delete -host "$ip" >/dev/null 2>&1 || true
+  sudo route -n add -host "$ip" "$gateway"
+}
+
+delete_route() {
+  local ip="$1"
+  sudo route -n delete -host "$ip" >/dev/null 2>&1 || true
+  print "Deleted host route if present: $ip"
+}
+
+action="${1:-add}"
+if [[ "$action" == "-h" || "$action" == "--help" ]]; then
+  usage
+  exit 0
+fi
+shift || true
+
+targets=("$@")
+if (( ${#targets[@]} == 0 )); then
+  targets=(frp-pen.com)
+fi
+
+case "$action" in
+  add|delete|list|test) ;;
+  *)
+    usage
+    exit 2
+    ;;
+esac
+
+gateway=""
+if [[ "$action" == "add" ]]; then
+  gateway="$(gateway_for_wifi)"
+  print "Using gateway: $gateway"
+fi
+
+ips=()
+for target in "${targets[@]}"; do
+  resolved=("${(@f)$(resolve_target "$target")}")
+  if (( ${#resolved[@]} == 0 )); then
+    print -u2 "No IPv4 records found for: $target"
+    continue
+  fi
+  for ip in "${resolved[@]}"; do
+    ips+=("$ip")
+  done
+done
+ips=("${(@u)ips}")
+
+if (( ${#ips[@]} == 0 )); then
+  print -u2 "No targets to process."
+  exit 1
+fi
+
+for ip in "${ips[@]}"; do
+  print -- "--- $ip"
+  case "$action" in
+    add)
+      add_route "$ip" "$gateway"
+      route_summary "$ip"
+      ;;
+    delete)
+      delete_route "$ip"
+      route_summary "$ip" || true
+      ;;
+    list)
+      route_summary "$ip"
+      ;;
+    test)
+      route_summary "$ip"
+      nc -vz -G 5 "$ip" 53781 || true
+      ;;
+  esac
+done
+```
 ## Resources, projects, other
 
 - https://git-scm.com/docs/

@@ -1048,6 +1048,9 @@ The difference between xpopple, poppler and xpdf is quite subtle (and historical
 
 _Bref_, these are PDF viewers widely used on Linux Desktop Environments such as GNOME or KDE.
 
+- To convert a pdf to a png image, you can use `pdftoppm -png -r <DPI, default is 150> path/to/file.pdf path/to/result/file_name_root` (no extention needed for `file_root`) 
+- To extract images from a PDF file, you can use `pdfimages -png path/to/file.pdf path/to/result/file_name_root`
+
 #### Screen
 
 - Screen is a terminal multiplexer, i.e. it allows to run separate shells (in separate processes) and, in particular. 
